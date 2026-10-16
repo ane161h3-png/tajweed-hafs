@@ -1,0 +1,305 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* الألوان رموز تتبدّل مع الوضع الليلي؛ استعملها في Tailwind: bg-surface, text-ink, border-line ... */
+:root {
+  --bg: #f7f4ec;
+  --surface: #fffdf8;
+  --surface-2: #f0ebdf;
+  --ink: #1d2a2c;
+  --muted: #5d6b6b;
+  --line: #e2dccd;
+  --accent: #1f6f5c;
+  --accent-ink: #ffffff;
+  --accent-soft: #dcebe4;
+  --gold: #a87b2e;
+  --focus: #1f6f5c;
+  --quran-scale: 1;
+}
+
+.dark {
+  --bg: #121719;
+  --surface: #1a2124;
+  --surface-2: #222b2f;
+  --ink: #e8e3d6;
+  --muted: #9aa6a4;
+  --line: #2e383c;
+  --accent: #5fb7a0;
+  --accent-ink: #0d1a16;
+  --accent-soft: #1d3a33;
+  --gold: #d4a75a;
+  --focus: #7fd1ba;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-gold: var(--gold);
+  --font-sans: 'IBM Plex Sans Arabic', 'Tajawal', system-ui, sans-serif;
+  --font-quran: 'KFGQPC Uthmanic Script HAFS', 'Amiri Quran', 'Amiri', serif;
+}
+
+html {
+  background: var(--bg);
+  color: var(--ink);
+  color-scheme: light;
+  -webkit-text-size-adjust: 100%;
+}
+html.dark {
+  color-scheme: dark;
+}
+body {
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  min-height: 100dvh;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.font-quran {
+  font-family: var(--font-quran);
+  font-size: calc(1.75rem * var(--quran-scale));
+  line-height: 2.3;
+  word-spacing: 0.08em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---------- ورقة الدفتر (دروس الأحكام) ---------- */
+:root {
+  --paper: #fffef9;
+  --paper-line: #d9e3ec;
+  --paper-margin: #e8a3a8;
+  --paper-hole: #ece6d8;
+  --pen-red: #b23a48;
+  --pen-blue: #1f4e8c;
+  --rule: 2.25rem; /* المسافة بين سطور الدفتر */
+}
+.dark {
+  --paper: #1b2225;
+  --paper-line: #2a3438;
+  --paper-margin: #6b3a40;
+  --paper-hole: #121719;
+  --pen-red: #e48a94;
+  --pen-blue: #8db4ea;
+}
+
+.notebook {
+  position: relative;
+  background-color: var(--paper);
+  /* الهامش الأحمر على اليمين (بداية السطر العربي) ثم سطور الدفتر الأفقية */
+  background-image:
+    linear-gradient(to left, transparent 3.25rem, var(--paper-margin) 3.25rem, var(--paper-margin) calc(3.25rem + 2px), transparent calc(3.25rem + 2px)),
+    repeating-linear-gradient(to bottom, transparent 0, transparent calc(var(--rule) - 1px), var(--paper-line) calc(var(--rule) - 1px), var(--paper-line) var(--rule));
+  background-position: 0 0, 0 calc(var(--rule) * 2);
+  background-repeat: no-repeat, repeat;
+  background-size: 100% 100%, 100% 100%;
+  line-height: var(--rule);
+  padding: calc(var(--rule) * 1) 4.75rem calc(var(--rule) * 1.5) 1.5rem;
+  border-radius: 6px 18px 18px 6px;
+  box-shadow: 0 1px 0 var(--line), 0 12px 30px -18px rgb(0 0 0 / 0.35);
+  min-height: calc(var(--rule) * 16);
+}
+/* ثقوب الدفتر على الحافة اليمنى */
+.notebook::before {
+  content: '';
+  position: absolute;
+  inset-block: calc(var(--rule) * 1.5);
+  inset-inline-start: 1rem;
+  width: 1.1rem;
+  background: radial-gradient(circle at center, var(--paper-hole) 0.42rem, transparent 0.46rem) center top / 1.1rem calc(var(--rule) * 2.5) repeat-y;
+  pointer-events: none;
+}
+.notebook-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: calc(var(--rule) * 2);
+  color: var(--pen-blue);
+}
+.notebook-label {
+  color: var(--pen-red);
+  font-weight: 700;
+}
+.notebook-text {
+  white-space: pre-line;
+}
+.notebook .font-quran {
+  line-height: calc(var(--rule) * 1.5);
+}
+.notebook-field {
+  width: 100%;
+  background: transparent;
+  line-height: var(--rule);
+  resize: none;
+  field-sizing: content;
+  min-height: calc(var(--rule) * 2);
+  border-radius: 4px;
+  outline: 1px dashed color-mix(in srgb, var(--pen-blue) 35%, transparent);
+  outline-offset: 0;
+  padding: 0 0.4rem;
+}
+.notebook-field:focus {
+  outline: 2px solid var(--pen-blue);
+  background: color-mix(in srgb, var(--pen-blue) 5%, transparent);
+}
+input.notebook-field {
+  min-height: var(--rule);
+  height: var(--rule);
+}
+.stamp {
+  display: inline-block;
+  transform: rotate(-4deg);
+  border: 2px solid currentColor;
+  border-radius: 6px;
+  padding: 0 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.8;
+}
+@media (max-width: 640px) {
+  .notebook {
+    padding-inline: 3.25rem 0.9rem;
+    --rule: 2.1rem;
+  }
+  .notebook {
+    background-image:
+      linear-gradient(to left, transparent 2.4rem, var(--paper-margin) 2.4rem, var(--paper-margin) calc(2.4rem + 2px), transparent calc(2.4rem + 2px)),
+      repeating-linear-gradient(to bottom, transparent 0, transparent calc(var(--rule) - 1px), var(--paper-line) calc(var(--rule) - 1px), var(--paper-line) var(--rule));
+  }
+  .notebook::before {
+    inset-inline-start: 0.55rem;
+    width: 0.9rem;
+    background-size: 0.9rem calc(var(--rule) * 2.5);
+  }
+}
+
+/* ---------- المصحف ---------- */
+.mushaf.colors-on .tj {
+  cursor: pointer;
+}
+/* إبراز حكم واحد: يُخفَّت النص وبقية الأحكام، ويبقى الحكم المختار بلونه (الأنماط المولّدة في RuleStyles) */
+.mushaf[data-focus] .ayah-body {
+  color: color-mix(in srgb, var(--ink) 30%, transparent);
+}
+.mushaf[data-focus] .tj {
+  color: inherit !important;
+  text-decoration: none !important;
+  opacity: 1 !important;
+  background: none;
+}
+.mushaf .ayah-num {
+  font-size: 0.9em;
+}
+
+/* ---------- رسوم المخارج ---------- */
+.mk {
+  --mk-skin-1: #f7dcc8;
+  --mk-skin-2: #e8bb9c;
+  --mk-muscle-1: #e07a85;
+  --mk-muscle-2: #c0505e;
+  --mk-mucosa-1: #f3b0b5;
+  --mk-mucosa-2: #e18a94;
+  --mk-bone: #efe5d3;
+  --mk-tooth: #fffdf7;
+  --mk-cavity: #6b3d47;
+  --mk-line: #9a6b5a;
+  --mk-hl: #1f9d7f;
+  --mk-air: #2b7de9;
+  --mk-label: var(--ink);
+}
+.dark .mk {
+  --mk-skin-1: #8a6a58;
+  --mk-skin-2: #6b4f40;
+  --mk-muscle-1: #c86872;
+  --mk-muscle-2: #9c4652;
+  --mk-mucosa-1: #c98a92;
+  --mk-mucosa-2: #a96a74;
+  --mk-bone: #b9ab96;
+  --mk-tooth: #ece6d8;
+  --mk-cavity: #2a1a1e;
+  --mk-line: #c49a86;
+  --mk-hl: #5fd3b4;
+  --mk-air: #74b0ff;
+}
+.mk svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.mk .t-skin { fill: url(#g-skin); stroke: var(--mk-line); stroke-width: 1.2; }
+.mk .t-muscle { fill: url(#g-muscle); stroke: var(--mk-line); stroke-width: 1; }
+.mk .t-mucosa { fill: url(#g-mucosa); stroke: var(--mk-line); stroke-width: 0.8; }
+.mk .t-lip { fill: #d98a86; stroke: var(--mk-line); stroke-width: 1; }
+.dark .mk .t-lip { fill: #a8645f; }
+.mk .t-bone { fill: var(--mk-bone); stroke: var(--mk-line); stroke-width: 0.8; }
+.mk .t-tooth { fill: var(--mk-tooth); stroke: var(--mk-line); stroke-width: 0.9; }
+.mk .t-cavity { fill: var(--mk-cavity); }
+.mk .detail { fill: none; stroke: var(--mk-line); stroke-width: 0.8; opacity: 0.6; }
+.mk .detail-strong { fill: none; stroke: var(--mk-line); stroke-width: 1.6; stroke-linecap: round; }
+.mk .molars { fill: none; stroke: var(--mk-tooth); stroke-width: 1; stroke-dasharray: 3 3; opacity: 0.8; }
+.mk .region { fill: transparent; transition: fill 0.3s; }
+.mk path.on, .mk rect.on { stroke: var(--mk-hl) !important; stroke-width: 2.2 !important; filter: drop-shadow(0 0 3px var(--mk-hl)); }
+.mk .region.on, .mk .molars.on { fill: color-mix(in srgb, var(--mk-hl) 45%, transparent); }
+.mk .spot { fill: var(--mk-hl); opacity: 0; transition: opacity 0.3s; transform-box: fill-box; transform-origin: center; pointer-events: none; }
+.mk .spot.on { opacity: 0.85; animation: mk-pulse 1.4s ease-in-out infinite; }
+.mk.quiz .spot { opacity: 0.25; pointer-events: all; cursor: pointer; }
+.mk.quiz .spot:hover { opacity: 0.6; }
+.mk.quiz .spot.picked { opacity: 0.9; fill: var(--gold); animation: none; }
+.mk.quiz .spot.correct { opacity: 0.9; fill: var(--mk-hl); }
+.mk .air { fill: none; stroke: var(--mk-air); stroke-width: 3; stroke-linecap: round; opacity: 0; transition: opacity 0.25s; }
+.mk .air.flow { opacity: 0.9; stroke-dasharray: 6 9; animation: mk-flow 0.6s linear infinite; }
+.mk .air.weak { stroke-width: 2; opacity: 0.6; }
+.mk .air.blocked { opacity: 0.9; }
+.mk .label text { font-family: var(--font-sans); font-size: 10.5px; fill: var(--mk-label); }
+.mk .leader { fill: none; stroke: var(--muted); stroke-width: 0.6; opacity: 0.7; }
+.mk .leader-dot { fill: var(--muted); }
+.mk .label.on text { fill: var(--mk-hl); font-weight: 700; }
+.mk .label.on .leader { stroke: var(--mk-hl); opacity: 1; stroke-width: 1; }
+.mk.no-labels #labels { display: none; }
+.mk .part-marker { fill: var(--mk-hl); stroke: white; stroke-width: 1.2; }
+.mk .tooth { cursor: pointer; transition: fill 0.2s; }
+.mk .tooth.on { fill: var(--mk-hl); }
+.mk .jaw-label { font-family: var(--font-sans); font-size: 12px; fill: var(--muted); }
+@keyframes mk-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.45); } }
+@keyframes mk-flow { to { stroke-dashoffset: -15; } }
+@media (prefers-reduced-motion: reduce) {
+  .mk .spot.on, .mk .air.flow { animation: none; }
+}
+
+/* ---------- الطباعة: ورقة الدرس وحدها ---------- */
+@media print {
+  aside, header, nav, .no-print, [aria-label='مشغّل التلاوة'], [aria-label='التنقل السفلي'] {
+    display: none !important;
+  }
+  main {
+    padding: 0 !important;
+    max-width: none !important;
+  }
+  .notebook {
+    box-shadow: none;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .notebook::before {
+    display: none;
+  }
+}

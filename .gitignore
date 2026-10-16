@@ -1,0 +1,13 @@
+.venv/
+node_modules/
+frontend/dist/
+data/*.db
+data/*.tmp
+__pycache__/
+.pytest_cache/
+*.pyc
+data/content/backups/
+frontend/public/data/
+frontend/android/app/src/main/assets/public/
+dist-web/
+*.zip

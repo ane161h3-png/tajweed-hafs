@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 20 525 430" direction="rtl" role="img" aria-labelledby="mk-title">
+  <title id="mk-title">مقطع جانبي لأعضاء النطق</title>
+  <defs>
+    <!-- أوضاع اللسان والشفتين: المكوّن يقرأ هذه المسارات ويحرّك الشكل بينها -->
+    <path id="tongue--rest" d="M 318 264 C 310 258 310 251 300 250 C 286 246 286 242 270 242 C 252 242 250 242 238 248 C 224 254 214 258 210 278 C 207 294 214 314 232 318 C 262 324 300 312 314 296 C 320 288 320 278 318 264 Z"/>
+    <path id="tongue--qaf" d="M 318 266 C 310 260 310 255 300 254 C 286 250 282 240 266 240 C 248 240 238 220 226 226 C 212 232 212 256 208 276 C 205 292 214 314 232 318 C 262 324 300 312 314 296 C 320 288 320 280 318 266 Z"/>
+    <path id="tongue--kaf" d="M 318 266 C 310 260 310 251 300 250 C 286 246 284 232 268 232 C 250 232 252 212 240 218 C 226 224 214 256 210 276 C 207 292 214 314 232 318 C 262 324 300 312 314 296 C 320 288 320 280 318 266 Z"/>
+    <path id="tongue--wasat" d="M 318 262 C 310 256 312 239 302 238 C 288 234 290 216 274 216 C 256 216 254 226 242 232 C 228 238 214 256 210 276 C 207 292 214 314 232 318 C 262 324 300 312 314 296 C 320 288 320 276 318 262 Z"/>
+    <path id="tongue--dad" d="M 318 262 C 310 256 312 243 302 242 C 288 238 294 226 278 226 C 260 226 256 228 244 234 C 230 240 214 256 210 276 C 207 292 214 314 232 318 C 262 324 300 312 314 296 C 320 288 320 276 318 262 Z"/>
+    <path id="tongue--lam" d="M 316 240 C 308 234 308 239 298 238 C 284 234 286 238 270 238 C 252 238 250 240 238 246 C 224 252 214 258 210 278 C 207 294 214 314 232 318 C 262 324 300 312 314 296 C 320 288 318 254 316 240 Z"/>
+    <path id="tongue--noon" d="M 320 242 C 312 236 310 239 300 238 C 286 234 286 240 270 240 C 252 240 250 240 238 246 C 224 252 214 258 210 278 C 207 294 214 314 232 318 C 262 324 300 312 314 296 C 320 288 322 256 320 242 Z"/>
+    <path id="tongue--ra" d="M 313 239 C 305 233 306 237 296 236 C 282 232 284 238 268 238 C 250 238 250 240 238 246 C 224 252 214 258 210 278 C 207 294 214 314 232 318 C 262 324 300 312 314 296 C 320 288 315 253 313 239 Z"/>
+    <path id="tongue--nit" d="M 322 242 C 314 236 312 237 302 236 C 288 232 286 240 270 240 C 252 240 250 240 238 246 C 224 252 214 258 210 278 C 207 294 214 314 232 318 C 262 324 300 312 314 296 C 320 288 324 256 322 242 Z"/>
+    <path id="tongue--nit-itbaq" d="M 322 242 C 314 236 312 233 302 232 C 288 228 288 224 272 224 C 254 224 252 220 240 226 C 226 232 214 256 210 276 C 207 292 214 314 232 318 C 262 324 300 312 314 296 C 320 288 324 256 322 242 Z"/>
+    <path id="tongue--asal" d="M 328 256 C 320 250 318 247 308 246 C 294 242 290 238 274 238 C 256 238 250 240 238 246 C 224 252 214 258 210 278 C 207 294 214 314 232 318 C 262 324 300 312 314 296 C 320 288 330 270 328 256 Z"/>
+    <path id="tongue--asal-itbaq" d="M 328 256 C 320 250 318 241 308 240 C 294 236 290 222 274 222 C 256 222 252 220 240 226 C 226 232 214 256 210 276 C 207 292 214 314 232 318 C 262 324 300 312 314 296 C 320 288 330 270 328 256 Z"/>
+    <path id="tongue--lithah" d="M 337 253 C 329 247 326 247 316 246 C 302 242 292 238 276 238 C 258 238 250 240 238 246 C 224 252 214 258 210 278 C 207 294 214 314 232 318 C 262 324 300 312 314 296 C 320 288 339 267 337 253 Z"/>
+    <path id="tongue--lithah-itbaq" d="M 337 253 C 329 247 326 241 316 240 C 302 236 292 222 276 222 C 258 222 252 220 240 226 C 226 232 214 256 210 276 C 207 292 214 314 232 318 C 262 324 300 312 314 296 C 320 288 339 267 337 253 Z"/>
+    <path id="tongue--istila" d="M 318 266 C 310 260 310 253 300 252 C 286 248 284 236 268 236 C 250 236 244 224 232 230 C 218 236 212 256 208 276 C 205 292 214 314 232 318 C 262 324 300 312 314 296 C 320 288 320 280 318 266 Z"/>
+    <path id="upper-lip--rest" d="M 338 226 C 352 226 364 236 362 252 C 356 254 346 252 340 250 Z"/>
+    <path id="upper-lip--closed" d="M 338 226 C 352 226 364 238 364 256 C 356 258 346 258 340 257 Z"/>
+    <path id="upper-lip--round" d="M 340 228 C 356 226 372 238 370 252 C 362 255 350 253 342 251 Z"/>
+    <path id="lower-lip--rest" d="M 338 262 C 350 258 362 260 366 268 C 364 280 354 286 340 284 Z"/>
+    <path id="lower-lip--closed" d="M 338 258 C 350 257 362 257 366 262 C 364 278 354 286 340 284 Z"/>
+    <path id="lower-lip--fa" d="M 330 258 C 340 252 352 254 358 262 C 358 276 350 284 336 284 Z"/>
+    <path id="lower-lip--round" d="M 340 262 C 354 258 370 260 372 268 C 368 280 356 286 342 284 Z"/>
+    <radialGradient id="g-skin" cx="0.6" cy="0.45" r="0.7"><stop offset="0" style="stop-color:var(--mk-skin-1)"/><stop offset="1" style="stop-color:var(--mk-skin-2)"/></radialGradient>
+    <linearGradient id="g-muscle" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--mk-muscle-1)"/><stop offset="1" style="stop-color:var(--mk-muscle-2)"/></linearGradient>
+    <linearGradient id="g-mucosa" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--mk-mucosa-1)"/><stop offset="1" style="stop-color:var(--mk-mucosa-2)"/></linearGradient>
+    <marker id="air-head" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" style="fill:var(--mk-air)"/></marker>
+  </defs>
+
+  <g id="anatomy">
+    <path id="head" class="t-skin" d="M 95 440 C 80 360 40 300 50 230 C 60 120 130 55 215 52 C 300 50 345 100 348 150 C 349 165 352 172 358 180 C 372 198 386 210 380 218 C 376 224 362 224 352 224 L 340 226 L 338 286 C 352 292 356 312 338 330 C 310 336 290 340 280 360 L 275 440 Z"/>
+    <g id="spine" opacity="0.55">
+    <rect class="t-bone" x="118" y="230" width="40" height="32" rx="8"/>
+    <rect class="t-bone" x="118" y="270" width="40" height="32" rx="8"/>
+    <rect class="t-bone" x="118" y="310" width="40" height="32" rx="8"/>
+    <rect class="t-bone" x="118" y="350" width="40" height="32" rx="8"/>
+    <rect class="t-bone" x="118" y="390" width="40" height="32" rx="8"/>
+    </g>
+    <!-- التجاويف: الفم والحلق -->
+    <path id="cavity" class="t-cavity" d="M 180 340 L 178 260 C 180 225 200 205 230 203 C 270 200 310 210 336 236 L 342 262 C 330 290 300 312 260 318 L 212 318 L 206 340 Z"/>
+    <path id="nasal" class="t-cavity" d="M 222 204 C 240 186 290 180 330 182 C 350 184 362 196 366 212 C 346 214 330 208 300 206 C 270 204 245 206 222 212 Z"/>
+    <path id="conchae" class="detail" d="M 250 198 C 270 190 300 190 320 194 M 258 204 C 280 198 306 199 330 202"/>
+    <path id="khayshum" class="t-mucosa" d="M 340 200 C 352 196 364 204 368 214 C 360 216 350 214 342 210 Z"/>
+    <path id="jawf" class="region" d="M 186 236 C 200 222 230 214 270 214 C 300 214 320 228 340 250 L 340 258 C 320 256 300 246 272 244 C 245 242 225 252 212 270 L 205 340 L 180 340 Z"/>
+    <!-- الحلق بأقسامه الثلاثة -->
+    <path id="halq-adna" class="region" d="M 186 234 C 194 232 204 236 210 240 L 208 262 L 182 262 Z"/>
+    <path id="halq-wasat" class="region" d="M 182 262 L 208 262 L 206 300 L 178 300 Z"/>
+    <path id="halq-aqsa" class="region" d="M 178 300 L 206 300 L 204 340 L 178 340 Z"/>
+    <path id="larynx" class="t-mucosa" d="M 178 340 L 204 340 L 200 380 L 182 380 Z"/>
+    <path id="vocal-folds" class="detail-strong" d="M 182 354 L 189 352 M 200 354 L 193 352"/>
+    <path id="trachea" class="t-cavity" d="M 183 380 L 199 380 L 199 440 L 183 440 Z"/>
+    <path id="epiglottis" class="t-mucosa" d="M 206 300 C 214 296 216 288 212 282 C 208 290 205 296 204 302 Z"/>
+    <path id="mandible" class="t-bone" d="M 236 322 C 270 330 310 330 330 296 L 336 300 C 330 330 300 342 262 338 C 245 336 236 330 232 326 Z"/>
+    <!-- الحنك -->
+    <path id="hard-palate" class="t-bone" d="M 326 238 C 322 222 300 210 262 207 L 225 210 L 225 218 C 260 215 298 220 316 238 Z"/>
+    <path id="soft-palate" class="t-mucosa" d="M 225 210 C 210 212 200 222 196 236 C 194 246 198 254 203 252 C 208 248 212 236 225 218 Z"/>
+    <path id="uvula" class="t-mucosa" d="M 198 244 C 196 250 199 256 203 253 C 205 250 203 246 201 243 Z"/>
+    <path id="molars" class="molars" d="M 250 214 L 300 220 L 300 230 L 250 226 Z"/>
+    <!-- اللسان: يتحرك بين الأوضاع المعرّفة في defs -->
+    <path id="tongue" class="t-muscle" d="M 318 264 C 310 258 310 251 300 250 C 286 246 286 242 270 242 C 252 242 250 242 238 248 C 224 254 214 258 210 278 C 207 294 214 314 232 318 C 262 324 300 312 314 296 C 320 288 320 278 318 264 Z"/>
+    <!-- الأسنان واللثة -->
+    <path id="gum" class="t-mucosa" d="M 316 238 C 318 228 328 224 334 232 C 334 238 328 240 320 240 Z"/>
+    <path id="upper-teeth" class="t-tooth" d="M 324 230 C 332 230 338 240 339 255 L 333 256 C 331 246 327 238 322 236 Z"/>
+    <path id="lower-gum" class="t-mucosa" d="M 320 290 C 324 280 332 280 338 292 Z"/>
+    <path id="lower-teeth" class="t-tooth" d="M 330 286 C 334 276 336 266 335 258 L 329 259 C 329 268 326 276 324 286 Z"/>
+    <!-- الشفتان -->
+    <path id="upper-lip" class="t-lip" d="M 338 226 C 352 226 364 236 362 252 C 356 254 346 252 340 250 Z"/>
+    <path id="lower-lip" class="t-lip" d="M 338 262 C 350 258 362 260 366 268 C 364 280 354 286 340 284 Z"/>
+  </g>
+
+  <!-- مسارا الهواء: من الحنجرة إلى الفم، ومن الحلق إلى الأنف -->
+  <path id="air--oral" class="air" marker-end="url(#air-head)" d="M 191 420 L 191 330 C 191 290 192 256 205 238 C 222 222 250 226 280 228 C 306 230 330 244 346 256 L 400 258"/>
+  <path id="air--nasal" class="air" marker-end="url(#air-head)" d="M 190 300 C 190 250 196 222 214 206 C 240 194 290 192 330 198 C 352 202 368 210 392 214"/>
+
+  <g id="spots">
+    <circle id="spot--jawf" class="spot" cx="250" cy="230" r="22"/>
+    <circle id="spot--aqsa-halq" class="spot" cx="191" cy="322" r="9"/>
+    <circle id="spot--wasat-halq" class="spot" cx="193" cy="281" r="9"/>
+    <circle id="spot--adna-halq" class="spot" cx="197" cy="248" r="9"/>
+    <circle id="spot--qaf" class="spot" cx="222" cy="226" r="8"/>
+    <circle id="spot--kaf" class="spot" cx="238" cy="216" r="8"/>
+    <circle id="spot--wasat-lisan" class="spot" cx="275" cy="212" r="9"/>
+    <circle id="spot--dad" class="spot" cx="285" cy="222" r="9"/>
+    <circle id="spot--lam" class="spot" cx="316" cy="235" r="6"/>
+    <circle id="spot--noon" class="spot" cx="321" cy="240" r="5"/>
+    <circle id="spot--ra" class="spot" cx="311" cy="236" r="5"/>
+    <circle id="spot--nit" class="spot" cx="325" cy="238" r="5"/>
+    <circle id="spot--asal" class="spot" cx="331" cy="257" r="6"/>
+    <circle id="spot--lithah" class="spot" cx="337" cy="251" r="6"/>
+    <circle id="spot--fa" class="spot" cx="337" cy="259" r="7"/>
+    <circle id="spot--shafatan" class="spot" cx="362" cy="257" r="8"/>
+    <circle id="spot--khayshum" class="spot" cx="356" cy="207" r="9"/>
+  </g>
+  <g id="labels">
+    <g id="label--nasal" class="label"><polyline class="leader" points="300,196 400,120 474,120"/><circle class="leader-dot" cx="300" cy="196" r="2"/><text x="478" y="124" text-anchor="start">تجويف الأنف</text></g>
+    <g id="label--khayshum" class="label"><polyline class="leader" points="356,207 400,150 474,150"/><circle class="leader-dot" cx="356" cy="207" r="2"/><text x="478" y="154" text-anchor="start">الخيشوم</text></g>
+    <g id="label--hard-palate" class="label"><polyline class="leader" points="285,213 400,182 474,182"/><circle class="leader-dot" cx="285" cy="213" r="2"/><text x="478" y="186" text-anchor="start">الحنك الصلب</text></g>
+    <g id="label--gum" class="label"><polyline class="leader" points="324,233 400,212 474,212"/><circle class="leader-dot" cx="324" cy="233" r="2"/><text x="478" y="216" text-anchor="start">اللثة</text></g>
+    <g id="label--upper-teeth" class="label"><polyline class="leader" points="335,246 400,242 474,242"/><circle class="leader-dot" cx="335" cy="246" r="2"/><text x="478" y="246" text-anchor="start">الثنايا العليا</text></g>
+    <g id="label--lips" class="label"><polyline class="leader" points="363,262 400,272 474,272"/><circle class="leader-dot" cx="363" cy="262" r="2"/><text x="478" y="276" text-anchor="start">الشفتان</text></g>
+    <g id="label--lower-teeth" class="label"><polyline class="leader" points="331,272 400,302 474,302"/><circle class="leader-dot" cx="331" cy="272" r="2"/><text x="478" y="306" text-anchor="start">الثنايا السفلى</text></g>
+    <g id="label--tongue-tip" class="label"><polyline class="leader" points="318,262 400,332 474,332"/><circle class="leader-dot" cx="318" cy="262" r="2"/><text x="478" y="336" text-anchor="start">طرف اللسان</text></g>
+    <g id="label--tongue-middle" class="label"><polyline class="leader" points="272,246 400,362 474,362"/><circle class="leader-dot" cx="272" cy="246" r="2"/><text x="478" y="366" text-anchor="start">وسط اللسان</text></g>
+    <g id="label--tongue-edge" class="label"><polyline class="leader" points="298,258 400,392 474,392"/><circle class="leader-dot" cx="298" cy="258" r="2"/><text x="478" y="396" text-anchor="start">حافتا اللسان (على الجانبين)</text></g>
+    <g id="label--jawf" class="label"><polyline class="leader" points="250,230 80,110 -31,110"/><circle class="leader-dot" cx="250" cy="230" r="2"/><text x="-35" y="114" text-anchor="end">الجوف</text></g>
+    <g id="label--soft-palate" class="label"><polyline class="leader" points="214,224 80,150 -31,150"/><circle class="leader-dot" cx="214" cy="224" r="2"/><text x="-35" y="154" text-anchor="end">الحنك اللين</text></g>
+    <g id="label--uvula" class="label"><polyline class="leader" points="201,250 80,185 -31,185"/><circle class="leader-dot" cx="201" cy="250" r="2"/><text x="-35" y="189" text-anchor="end">اللهاة</text></g>
+    <g id="label--tongue-back" class="label"><polyline class="leader" points="236,250 80,215 -31,215"/><circle class="leader-dot" cx="236" cy="250" r="2"/><text x="-35" y="219" text-anchor="end">أقصى اللسان</text></g>
+    <g id="label--halq-adna" class="label"><polyline class="leader" points="194,248 80,248 -31,248"/><circle class="leader-dot" cx="194" cy="248" r="2"/><text x="-35" y="252" text-anchor="end">أدنى الحلق</text></g>
+    <g id="label--halq-wasat" class="label"><polyline class="leader" points="190,281 80,283 -31,283"/><circle class="leader-dot" cx="190" cy="281" r="2"/><text x="-35" y="287" text-anchor="end">وسط الحلق</text></g>
+    <g id="label--halq-aqsa" class="label"><polyline class="leader" points="189,320 80,320 -31,320"/><circle class="leader-dot" cx="189" cy="320" r="2"/><text x="-35" y="324" text-anchor="end">أقصى الحلق</text></g>
+    <g id="label--larynx" class="label"><polyline class="leader" points="190,356 80,362 -31,362"/><circle class="leader-dot" cx="190" cy="356" r="2"/><text x="-35" y="366" text-anchor="end">الحنجرة والوتران الصوتيان</text></g>
+  </g>
+</svg>

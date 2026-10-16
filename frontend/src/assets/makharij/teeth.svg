@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="80 20 340 440" direction="rtl" role="img" aria-labelledby="th-title">
+  <title id="th-title">الأسنان الاثنان والثلاثون: الفك العلوي والفك السفلي</title>
+  <text class="jaw-label" x="250" y="44" text-anchor="middle">الفك العلوي (منظر من أسفل)</text>
+  <text class="jaw-label" x="250" y="452" text-anchor="middle">الفك السفلي (منظر من أعلى)</text>
+  <path class="t-mucosa" opacity="0.5" d="M 120 170 C 120 40 380 40 380 170 L 350 170 C 350 80 150 80 150 170 Z"/>
+  <path class="t-mucosa" opacity="0.5" d="M 120 310 C 120 440 380 440 380 310 L 350 310 C 350 400 150 400 150 310 Z"/>
+  <g id="teeth">
+    <rect id="tooth-upper-r1" class="tooth t-tooth" data-kind="thanaya" x="260.2" y="231.4" width="13" height="15" rx="5.4" transform="rotate(8 266.7 238.9)"/>
+    <rect id="tooth-upper-r2" class="tooth t-tooth" data-kind="rubaiyat" x="303.5" y="217.8" width="13" height="15" rx="5.4" transform="rotate(30 310 225.3)"/>
+    <rect id="tooth-upper-r3" class="tooth t-tooth" data-kind="anyab" x="337.6" y="190.2" width="14" height="15" rx="5.8" transform="rotate(52 344.6 197.7)"/>
+    <rect id="tooth-upper-r4" class="tooth t-tooth" data-kind="dawahik" x="358.9" y="152.8" width="13" height="15" rx="5.4" transform="rotate(74 365.4 160.3)"/>
+    <rect id="tooth-upper-r5" class="tooth t-tooth" data-kind="tawahin" x="358.3" y="107.5" width="22" height="22" rx="9.2" transform="rotate(96 369.3 118.5)"/>
+    <rect id="tooth-upper-r6" class="tooth t-tooth" data-kind="tawahin" x="345" y="67.4" width="22" height="22" rx="9.2" transform="rotate(118 356 78.4)"/>
+    <rect id="tooth-upper-r7" class="tooth t-tooth" data-kind="tawahin" x="316.1" y="34.7" width="22" height="22" rx="9.2" transform="rotate(140 327.1 45.7)"/>
+    <rect id="tooth-upper-r8" class="tooth t-tooth" data-kind="nawajidh" x="276.1" y="14.4" width="22" height="22" rx="9.2" transform="rotate(162 287.1 25.4)"/>
+    <rect id="tooth-upper-l1" class="tooth t-tooth" data-kind="thanaya" x="226.8" y="231.4" width="13" height="15" rx="5.4" transform="rotate(-8 233.3 238.9)"/>
+    <rect id="tooth-upper-l2" class="tooth t-tooth" data-kind="rubaiyat" x="183.5" y="217.8" width="13" height="15" rx="5.4" transform="rotate(-30 190 225.3)"/>
+    <rect id="tooth-upper-l3" class="tooth t-tooth" data-kind="anyab" x="148.4" y="190.2" width="14" height="15" rx="5.8" transform="rotate(-52 155.4 197.7)"/>
+    <rect id="tooth-upper-l4" class="tooth t-tooth" data-kind="dawahik" x="128.1" y="152.8" width="13" height="15" rx="5.4" transform="rotate(-74 134.6 160.3)"/>
+    <rect id="tooth-upper-l5" class="tooth t-tooth" data-kind="tawahin" x="119.7" y="107.5" width="22" height="22" rx="9.2" transform="rotate(-96 130.7 118.5)"/>
+    <rect id="tooth-upper-l6" class="tooth t-tooth" data-kind="tawahin" x="133" y="67.4" width="22" height="22" rx="9.2" transform="rotate(-118 144 78.4)"/>
+    <rect id="tooth-upper-l7" class="tooth t-tooth" data-kind="tawahin" x="161.9" y="34.7" width="22" height="22" rx="9.2" transform="rotate(-140 172.9 45.7)"/>
+    <rect id="tooth-upper-l8" class="tooth t-tooth" data-kind="nawajidh" x="201.9" y="14.4" width="22" height="22" rx="9.2" transform="rotate(-162 212.9 25.4)"/>
+    <rect id="tooth-lower-r1" class="tooth t-tooth" data-kind="thanaya" x="260.2" y="233.6" width="13" height="15" rx="5.4" transform="rotate(-8 266.7 241.1)"/>
+    <rect id="tooth-lower-r2" class="tooth t-tooth" data-kind="rubaiyat" x="303.5" y="247.2" width="13" height="15" rx="5.4" transform="rotate(-30 310 254.7)"/>
+    <rect id="tooth-lower-r3" class="tooth t-tooth" data-kind="anyab" x="337.6" y="274.8" width="14" height="15" rx="5.8" transform="rotate(-52 344.6 282.3)"/>
+    <rect id="tooth-lower-r4" class="tooth t-tooth" data-kind="dawahik" x="358.9" y="312.2" width="13" height="15" rx="5.4" transform="rotate(-74 365.4 319.7)"/>
+    <rect id="tooth-lower-r5" class="tooth t-tooth" data-kind="tawahin" x="358.3" y="350.5" width="22" height="22" rx="9.2" transform="rotate(-96 369.3 361.5)"/>
+    <rect id="tooth-lower-r6" class="tooth t-tooth" data-kind="tawahin" x="345" y="390.6" width="22" height="22" rx="9.2" transform="rotate(-118 356 401.6)"/>
+    <rect id="tooth-lower-r7" class="tooth t-tooth" data-kind="tawahin" x="316.1" y="423.3" width="22" height="22" rx="9.2" transform="rotate(-140 327.1 434.3)"/>
+    <rect id="tooth-lower-r8" class="tooth t-tooth" data-kind="nawajidh" x="276.1" y="443.6" width="22" height="22" rx="9.2" transform="rotate(-162 287.1 454.6)"/>
+    <rect id="tooth-lower-l1" class="tooth t-tooth" data-kind="thanaya" x="226.8" y="233.6" width="13" height="15" rx="5.4" transform="rotate(8 233.3 241.1)"/>
+    <rect id="tooth-lower-l2" class="tooth t-tooth" data-kind="rubaiyat" x="183.5" y="247.2" width="13" height="15" rx="5.4" transform="rotate(30 190 254.7)"/>
+    <rect id="tooth-lower-l3" class="tooth t-tooth" data-kind="anyab" x="148.4" y="274.8" width="14" height="15" rx="5.8" transform="rotate(52 155.4 282.3)"/>
+    <rect id="tooth-lower-l4" class="tooth t-tooth" data-kind="dawahik" x="128.1" y="312.2" width="13" height="15" rx="5.4" transform="rotate(74 134.6 319.7)"/>
+    <rect id="tooth-lower-l5" class="tooth t-tooth" data-kind="tawahin" x="119.7" y="350.5" width="22" height="22" rx="9.2" transform="rotate(96 130.7 361.5)"/>
+    <rect id="tooth-lower-l6" class="tooth t-tooth" data-kind="tawahin" x="133" y="390.6" width="22" height="22" rx="9.2" transform="rotate(118 144 401.6)"/>
+    <rect id="tooth-lower-l7" class="tooth t-tooth" data-kind="tawahin" x="161.9" y="423.3" width="22" height="22" rx="9.2" transform="rotate(140 172.9 434.3)"/>
+    <rect id="tooth-lower-l8" class="tooth t-tooth" data-kind="nawajidh" x="201.9" y="443.6" width="22" height="22" rx="9.2" transform="rotate(162 212.9 454.6)"/>
+  </g>
+</svg>

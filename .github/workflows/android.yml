@@ -1,0 +1,76 @@
+# يبني تطبيق أندرويد (Capacitor) وينشره آخر إصدار، فيُحمَّل من:
+# releases/latest/download/tajweed-hafs.apk
+name: Android APK
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: android
+  cancel-in-progress: true
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: بيانات المصحف والتصدير الثابت
+        run: |
+          python -m pip install -r requirements-dev.txt
+          python scripts/build_db.py
+          python scripts/export_static.py
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: بناء الواجهة ومزامنة أندرويد
+        working-directory: frontend
+        run: |
+          npm ci
+          npx vite build --mode android
+          npx cap sync android
+
+      - name: رقم الإصدار
+        working-directory: frontend
+        run: |
+          sed -i -E "s/versionCode [0-9]+/versionCode ${{ github.run_number }}/; s/versionName \"[^\"]*\"/versionName \"1.0.${{ github.run_number }}\"/" android/app/build.gradle
+          grep -E "versionCode|versionName" android/app/build.gradle
+
+      # المفتاح نفسه في كل بناء، فيُثبَّت التحديث فوق النسخة القديمة دون فقد التقدّم
+      - name: مفتاح التوقيع
+        run: mkdir -p ~/.android && cp signing/debug.keystore ~/.android/debug.keystore
+
+      - name: بناء APK
+        working-directory: frontend/android
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon
+
+      - run: cp frontend/android/app/build/outputs/apk/debug/app-debug.apk tajweed-hafs.apk
+
+      - name: نشر الإصدار
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete app-latest --yes --cleanup-tag || true
+          gh release create app-latest tajweed-hafs.apk --target "${{ github.sha }}" --latest \
+            --title "تعلّم التجويد 1.0.${{ github.run_number }}" \
+            --notes "حمّل tajweed-hafs.apk وثبّته على هاتف الأندرويد. للتحديث ثبّته فوق النسخة القديمة."

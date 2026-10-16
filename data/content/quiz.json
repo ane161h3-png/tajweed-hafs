@@ -1,0 +1,5173 @@
+{
+ "version": 1,
+ "status": "draft",
+ "questions": [
+  {
+   "id": "makhraj-hamza",
+   "level": 1,
+   "type": "mcq",
+   "topic": "المخارج",
+   "question": "ما مخرج حرف الهمزة (ء)؟",
+   "options": [
+    "طرف اللسان تحت مخرج اللام",
+    "أقصى الحلق",
+    "طرف اللسان مع أصول الثنايا العليا",
+    "وسط الحلق"
+   ],
+   "answer": 1,
+   "explain": "أبعد الحلق مما يلي الصدر: للهمزة والهاء.",
+   "link": "/makharij/letters/hamza"
+  },
+  {
+   "id": "tf-hamza-idhlaq",
+   "level": 1,
+   "type": "tf",
+   "topic": "الصفات",
+   "question": "من صفات حرف الهمزة (ء): الإذلاق.",
+   "answer": false,
+   "explain": "صفات الهمزة: الجهر، الشدة، الاستفال، الانفتاح، الإصمات.",
+   "link": "/sifat/cards"
+  },
+  {
+   "id": "spot-hamza",
+   "level": 2,
+   "type": "spot",
+   "topic": "المخارج",
+   "question": "اضغط على الرسم موضع مخرج حرف الهمزة (ء).",
+   "letter": "hamza",
+   "answer": "aqsa-halq",
+   "explain": "مخرجه: أقصى الحلق. أبعد الحلق مما يلي الصدر: للهمزة والهاء.",
+   "link": "/makharij/letters/hamza"
+  },
+  {
+   "id": "makhraj-ba",
+   "level": 1,
+   "type": "mcq",
+   "topic": "المخارج",
+   "question": "ما مخرج حرف الباء (ب)؟",
+   "options": [
+    "وسط الحلق",
+    "أقصى اللسان مع ما فوقه من الحنك",
+    "الجوف",
+    "الشفتان"
+   ],
+   "answer": 3,
+   "explain": "بانطباق الشفتين للباء والميم (والباء أقوى انطباقاً)، وبانفتاحهما مع الاستدارة للواو غير المدية.",
+   "link": "/makharij/letters/ba"
+  },
+  {
+   "id": "tf-ba-infitah",
+   "level": 1,
+   "type": "tf",
+   "topic": "الصفات",
+   "question": "من صفات حرف الباء (ب): الانفتاح.",
+   "answer": true,
+   "explain": "صفات الباء: الجهر، الشدة، الاستفال، الانفتاح، الإذلاق، القلقلة.",
+   "link": "/sifat/cards"
+  },
+  {
+   "id": "spot-ba",
+   "level": 2,
+   "type": "spot",
+   "topic": "المخارج",
+   "question": "اضغط على الرسم موضع مخرج حرف الباء (ب).",
+   "letter": "ba",
+   "answer": "shafatan",
+   "explain": "مخرجه: الشفتان. بانطباق الشفتين للباء والميم (والباء أقوى انطباقاً)، وبانفتاحهما مع الاستدارة للواو غير المدية.",
+   "link": "/makharij/letters/ba"
+  },
+  {
+   "id": "makhraj-ta",
+   "level": 1,
+   "type": "mcq",
+   "topic": "المخارج",
+   "question": "ما مخرج حرف التاء (ت)؟",
+   "options": [
+    "بطن الشفة السفلى مع أطراف الثنايا العليا",
+    "طرف اللسان مع أصول الثنايا العليا",
+    "طرف اللسان مع ظهره",
+    "الشفتان"
+   ],
+   "answer": 1,
+   "explain": "طرف اللسان مع أصول الثنيتين العليين: للطاء والدال والتاء.",
+   "link": "/makharij/letters/ta"
+  },
+  {
+   "id": "tf-ta-hams",
+   "level": 1,
+   "type": "tf",
+   "topic": "الصفات",
+   "question": "من صفات حرف التاء (ت): الهمس.",
+   "answer": true,
+   "explain": "صفات التاء: الهمس، الشدة، الاستفال، الانفتاح، الإصمات.",
+   "link": "/sifat/cards"
+  },
+  {
+   "id": "spot-ta",
+   "level": 2,
+   "type": "spot",
+   "topic": "المخارج",
+   "question": "اضغط على الرسم موضع مخرج حرف التاء (ت).",
+   "letter": "ta",
+   "answer": "nit",
+   "explain": "مخرجه: طرف اللسان مع أصول الثنايا العليا. طرف اللسان مع أصول الثنيتين العليين: للطاء والدال والتاء.",
+   "link": "/makharij/letters/ta"
+  },
+  {
+   "id": "makhraj-tha",
+   "level": 1,
+   "type": "mcq",
+   "topic": "المخارج",
+   "question": "ما مخرج حرف الثاء (ث)؟",
+   "options": [
+    "طرف اللسان مع أطراف الثنايا العليا",
+    "أقصى الحلق",
+    "وسط اللسان",
+    "طرف اللسان مع أصول الثنايا العليا"
+   ],
+   "answer": 0,
+   "explain": "ظهر طرف اللسان مع أطراف الثنيتين العليين.",
+   "link": "/makharij/letters/tha"
+  },
+  {
+   "id": "tf-tha-istifal",
+   "level": 1,
+   "type": "tf",
+   "topic": "الصفات",
+   "question": "من صفات حرف الثاء (ث): الاستفال.",
+   "answer": true,
+   "explain": "صفات الثاء: الهمس، الرخاوة، الاستفال، الانفتاح، الإصمات.",
+   "link": "/sifat/cards"
+  },
+  {
+   "id": "spot-tha",
+   "level": 2,
+   "type": "spot",
+   "topic": "المخارج",
+   "question": "اضغط على الرسم موضع مخرج حرف الثاء (ث).",
+   "letter": "tha",
+   "answer": "lithah",
+   "explain": "مخرجه: طرف اللسان مع أطراف الثنايا العليا. ظهر طرف اللسان مع أطراف الثنيتين العليين.",
+   "link": "/makharij/letters/tha"
+  },
+  {
+   "id": "makhraj-jeem",
+   "level": 1,
+   "type": "mcq",
+   "topic": "المخارج",
+   "question": "ما مخرج حرف الجيم (ج)؟",
+   "options": [
+    "أقصى اللسان أسفل مخرج القاف",
+    "أقصى الحلق",
+    "أقصى اللسان مع ما فوقه من الحنك",
+    "وسط اللسان"
+   ],
+   "answer": 3,
+   "explain": "وسط اللسان مع ما يحاذيه من الحنك الأعلى: للجيم والشين والياء غير المدية.",
+   "link": "/makharij/letters/jeem"
+  },
+  {
+   "id": "tf-jeem-ismat",
+   "level": 1,
+   "type": "tf",
+   "topic": "الصفات",
+   "question": "من صفات حرف الجيم (ج): الإصمات.",
+   "answer": true,
+   "explain": "صفات الجيم: الجهر، الشدة، الاستفال، الانفتاح، الإصمات، القلقلة.",
+   "link": "/sifat/cards"
+  },
+  {
+   "id": "spot-jeem",
+   "level": 2,
+   "type": "spot",
+   "topic": "المخارج",
+   "question": "اضغط على الرسم موضع مخرج حرف الجيم (ج).",
+   "letter": "jeem",
+   "answer": "wasat-lisan",
+   "explain": "مخرجه: وسط اللسان. وسط اللسان مع ما يحاذيه من الحنك الأعلى: للجيم والشين والياء غير المدية.",
+   "link": "/makharij/letters/jeem"
+  },
+  {
+   "id": "makhraj-haa",
+   "level": 1,
+   "type": "mcq",
+   "topic": "المخارج",
+   "question": "ما مخرج حرف الحاء (ح)؟",
+   "options": [
+    "أدنى الحلق",
+    "إحدى حافتي اللسان",
+    "طرف اللسان فوق الثنايا السفلى",
+    "وسط الحلق"
+   ],
+   "answer": 3,
+   "explain": "وسط الحلق: للعين والحاء.",
+   "link": "/makharij/letters/haa"
+  },
+  {
+   "id": "tf-haa-itbaq",
+   "level": 1,
+   "type": "tf",
+   "topic": "الصفات",
+   "question": "من صفات حرف الحاء (ح): الإطباق.",
+   "answer": false,
+   "explain": "صفات الحاء: الهمس، الرخاوة، الاستفال، الانفتاح، الإصمات.",
+   "link": "/sifat/cards"
+  },
+  {
+   "id": "spot-haa",
+   "level": 2,
+   "type": "spot",
+   "topic": "المخارج",
+   "question": "اضغط على الرسم موضع مخرج حرف الحاء (ح).",
+   "letter": "haa",
+   "answer": "wasat-halq",
+   "explain": "مخرجه: وسط الحلق. وسط الحلق: للعين والحاء.",
+   "link": "/makharij/letters/haa"
+  },
+  {
+   "id": "makhraj-khaa",
+   "level": 1,
+   "type": "mcq",
+   "topic": "المخارج",
+   "question": "ما مخرج حرف الخاء (خ)؟",
+   "options": [
+    "أدنى الحلق",
+    "أقصى اللسان مع ما فوقه من الحنك",
+    "إحدى حافتي اللسان",
+    "أدنى حافتي اللسان إلى منتهى طرفه"
+   ],
+   "answer": 0,
+   "explain": "أقرب الحلق إلى الفم: للغين والخاء.",
+   "link": "/makharij/letters/khaa"
+  },
+  {
+   "id": "tf-khaa-itbaq",
+   "level": 1,
+   "type": "tf",
+   "topic": "الصفات",
+   "question": "من صفات حرف الخاء (خ): الإطباق.",
+   "answer": false,
+   "explain": "صفات الخاء: الهمس، الرخاوة، الاستعلاء، الانفتاح، الإصمات.",
+   "link": "/sifat/cards"
+  },
+  {
+   "id": "spot-khaa",
+   "level": 2,
+   "type": "spot",
+   "topic": "المخارج",
+   "question": "اضغط على الرسم موضع مخرج حرف الخاء (خ).",
+   "letter": "khaa",
+   "answer": "adna-halq",
+   "explain": "مخرجه: أدنى الحلق. أقرب الحلق إلى الفم: للغين والخاء.",
+   "link": "/makharij/letters/khaa"
+  },
+  {
+   "id": "makhraj-dal",
+   "level": 1,
+   "type": "mcq",
+   "topic": "المخارج",
+   "question": "ما مخرج حرف الدال (د)؟",
+   "options": [
+    "طرف اللسان مع أصول الثنايا العليا",
+    "الجوف",
+    "الشفتان",
+    "طرف اللسان مع أطراف الثنايا العليا"
+   ],
+   "answer": 0,
+   "explain": "طرف اللسان مع أصول الثنيتين العليين: للطاء والدال والتاء.",
+   "link": "/makharij/letters/dal"
+  },
+  {
+   "id": "tf-dal-tawassut",
+   "level": 1,
+   "type": "tf",
+   "topic": "الصفات",
+   "question": "من صفات حرف الدال (د): التوسط.",
+   "answer": false,
+   "explain": "صفات الدال: الجهر، الشدة، الاستفال، الانفتاح، الإصمات، القلقلة.",
+   "link": "/sifat/cards"
+  },
+  {
+   "id": "spot-dal",
+   "level": 2,
+   "type": "spot",
+   "topic": "المخارج",
+   "question": "اضغط على الرسم موضع مخرج حرف الدال (د).",
+   "letter": "dal",
+   "answer": "nit",
+   "explain": "مخرجه: طرف اللسان مع أصول الثنايا العليا. طرف اللسان مع أصول الثنيتين العليين: للطاء والدال والتاء.",
+   "link": "/makharij/letters/dal"
+  },
+  {
+   "id": "makhraj-thal",
+   "level": 1,
+   "type": "mcq",
+   "topic": "المخارج",
+   "question": "ما مخرج حرف الذال (ذ)؟",
+   "options": [
+    "الخيشوم",
+    "إحدى حافتي اللسان",
+    "وسط اللسان",
+    "طرف اللسان مع أطراف الثنايا العليا"
+   ],
+   "answer": 3,
+   "explain": "ظهر طرف اللسان مع أطراف الثنيتين العليين.",
+   "link": "/makharij/letters/thal"
+  },
+  {
+   "id": "tf-thal-rikhwa",
+   "level": 1,
+   "type": "tf",
+   "topic": "الصفات",
+   "question": "من صفات حرف الذال (ذ): الرخاوة.",
+   "answer": true,
+   "explain": "صفات الذال: الجهر، الرخاوة، الاستفال، الانفتاح، الإصمات.",
+   "link": "/sifat/cards"
+  },
+  {
+   "id": "spot-thal",
+   "level": 2,
+   "type": "spot",
+   "topic": "المخارج",
+   "question": "اضغط على الرسم موضع مخرج حرف الذال (ذ).",
+   "letter": "thal",
+   "answer": "lithah",
+   "explain": "مخرجه: طرف اللسان مع أطراف الثنايا العليا. ظهر طرف اللسان مع أطراف الثنيتين العليين.",
+   "link": "/makharij/letters/thal"
+  },
+  {
+   "id": "makhraj-ra",
+   "level": 1,
+   "type": "mcq",
+   "topic": "المخارج",
+   "question": "ما مخرج حرف الراء (ر)؟",
+   "options": [
+    "طرف اللسان مع ظهره",
+    "بطن الشفة السفلى مع أطراف الثنايا العليا",
+    "الخيشوم",
+    "طرف اللسان مع أطراف الثنايا العليا"
+   ],
+   "answer": 0,
+   "explain": "طرف اللسان مع ظهره قريباً من مخرج النون، وهو أدخل إلى ظهر اللسان قليلاً.",
+   "link": "/makharij/letters/ra"
+  },
+  {
+   "id": "tf-ra-istila",
+   "level": 1,
+   "type": "tf",
+   "topic": "الصفات",
+   "question": "من صفات حرف الراء (ر): الاستعلاء.",
+   "answer": false,
+   "explain": "صفات الراء: الجهر، التوسط، الاستفال، الانفتاح، الإذلاق، الانحراف، التكرير.",
+   "link": "/sifat/cards"
+  },
+  {
+   "id": "spot-ra",
+   "level": 2,
+   "type": "spot",
+   "topic": "المخارج",
+   "question": "اضغط على الرسم موضع مخرج حرف الراء (ر).",
+   "letter": "ra",
+   "answer": "ra",
+   "explain": "مخرجه: طرف اللسان مع ظهره. طرف اللسان مع ظهره قريباً من مخرج النون، وهو أدخل إلى ظهر اللسان قليلاً.",
+   "link": "/makharij/letters/ra"
+  },
+  {
+   "id": "makhraj-zay",
+   "level": 1,
+   "type": "mcq",
+   "topic": "المخارج",
+   "question": "ما مخرج حرف الزاي (ز)؟",
+   "options": [
+    "الشفتان",
+    "وسط الحلق",
+    "طرف اللسان فوق الثنايا السفلى",
+    "بطن الشفة السفلى مع أطراف الثنايا العليا"
+   ],
+   "answer": 2,
+   "explain": "طرف اللسان مع ما بين الثنايا العليا والسفلى، قريباً إلى السفلى: حروف الصفير.",
+   "link": "/makharij/letters/zay"
+  },
+  {
+   "id": "tf-zay-istila",
+   "level": 1,
+   "type": "tf",
+   "topic": "الصفات",
+   "question": "من صفات حرف الزاي (ز): الاستعلاء.",
+   "answer": false,
+   "explain": "صفات الزاي: الجهر، الرخاوة، الاستفال، الانفتاح، الإصمات، الصفير.",
+   "link": "/sifat/cards"
+  },
+  {
+   "id": "spot-zay",
+   "level": 2,
+   "type": "spot",
+   "topic": "المخارج",
+   "question": "اضغط على الرسم موضع مخرج حرف الزاي (ز).",
+   "letter": "zay",
+   "answer": "asal",
+   "explain": "مخرجه: طرف اللسان فوق الثنايا السفلى. طرف اللسان مع ما بين الثنايا العليا والسفلى، قريباً إلى السفلى: حروف الصفير.",
+   "link": "/makharij/letters/zay"
+  },
+  {
+   "id": "makhraj-seen",
+   "level": 1,
+   "type": "mcq",
+   "topic": "المخارج",
+   "question": "ما مخرج حرف السين (س)؟",
+   "options": [
+    "طرف اللسان فوق الثنايا السفلى",
+    "الخيشوم",
+    "إحدى حافتي اللسان",
+    "أدنى حافتي اللسان إلى منتهى طرفه"
+   ],
+   "answer": 0,
+   "explain": "طرف اللسان مع ما بين الثنايا العليا والسفلى، قريباً إلى السفلى: حروف الصفير.",
+   "link": "/makharij/letters/seen"
+  },
+  {
+   "id": "tf-seen-safir",
+   "level": 1,
+   "type": "tf",
+   "topic": "الصفات",
+   "question": "من صفات حرف السين (س): الصفير.",
+   "answer": true,
+   "explain": "صفات السين: الهمس، الرخاوة، الاستفال، الانفتاح، الإصمات، الصفير.",
+   "link": "/sifat/cards"
+  },
+  {
+   "id": "spot-seen",
+   "level": 2,
+   "type": "spot",
+   "topic": "المخارج",
+   "question": "اضغط على الرسم موضع مخرج حرف السين (س).",
+   "letter": "seen",
+   "answer": "asal",
+   "explain": "مخرجه: طرف اللسان فوق الثنايا السفلى. طرف اللسان مع ما بين الثنايا العليا والسفلى، قريباً إلى السفلى: حروف الصفير.",
+   "link": "/makharij/letters/seen"
+  },
+  {
+   "id": "makhraj-sheen",
+   "level": 1,
+   "type": "mcq",
+   "topic": "المخارج",
+   "question": "ما مخرج حرف الشين (ش)؟",
+   "options": [
+    "وسط اللسان",
+    "الشفتان",
+    "إحدى حافتي اللسان",
+    "الخيشوم"
+   ],
+   "answer": 0,
+   "explain": "وسط اللسان مع ما يحاذيه من الحنك الأعلى: للجيم والشين والياء غير المدية.",
+   "link": "/makharij/letters/sheen"
+  },
+  {
+   "id": "tf-sheen-itbaq",
+   "level": 1,
+   "type": "tf",
+   "topic": "الصفات",
+   "question": "من صفات حرف الشين (ش): الإطباق.",
+   "answer": false,
+   "explain": "صفات الشين: الهمس، الرخاوة، الاستفال، الانفتاح، الإصمات، التفشي.",
+   "link": "/sifat/cards"
+  },
+  {
+   "id": "spot-sheen",
+   "level": 2,
+   "type": "spot",
+   "topic": "المخارج",
+   "question": "اضغط على الرسم موضع مخرج حرف الشين (ش).",
+   "letter": "sheen",
+   "answer": "wasat-lisan",
+   "explain": "مخرجه: وسط اللسان. وسط اللسان مع ما يحاذيه من الحنك الأعلى: للجيم والشين والياء غير المدية.",
+   "link": "/makharij/letters/sheen"
+  },
+  {
+   "id": "makhraj-sad",
+   "level": 1,
+   "type": "mcq",
+   "topic": "المخارج",
+   "question": "ما مخرج حرف الصاد (ص)؟",
+   "options": [
+    "بطن الشفة السفلى مع أطراف الثنايا العليا",
+    "وسط اللسان",
+    "طرف اللسان فوق الثنايا السفلى",
+    "الخيشوم"
+   ],
+   "answer": 2,
+   "explain": "طرف اللسان مع ما بين الثنايا العليا والسفلى، قريباً إلى السفلى: حروف الصفير.",
+   "link": "/makharij/letters/sad"
+  },
+  {
+   "id": "tf-sad-ismat",
+   "level": 1,
+   "type": "tf",
+   "topic": "الصفات",
+   "question": "من صفات حرف الصاد (ص): الإصمات.",
+   "answer": true,
+   "explain": "صفات الصاد: الهمس، الرخاوة، الاستعلاء، الإطباق، الإصمات، الصفير.",
+   "link": "/sifat/cards"
+  },
+  {
+   "id": "spot-sad",
+   "level": 2,
+   "type": "spot",
+   "topic": "المخارج",
+   "question": "اضغط على الرسم موضع مخرج حرف الصاد (ص).",
+   "letter": "sad",
+   "answer": "asal",
+   "explain": "مخرجه: طرف اللسان فوق الثنايا السفلى. طرف اللسان مع ما بين الثنايا العليا والسفلى، قريباً إلى السفلى: حروف الصفير.",
+   "link": "/makharij/letters/sad"
+  },
+  {
+   "id": "makhraj-dad",
+   "level": 1,
+   "type": "mcq",
+   "topic": "المخارج",
+   "question": "ما مخرج حرف الضاد (ض)؟",
+   "options": [
+    "أدنى الحلق",
+    "طرف اللسان فوق الثنايا السفلى",
+    "بطن الشفة السفلى مع أطراف الثنايا العليا",
+    "إحدى حافتي اللسان"
+   ],
+   "answer": 3,
+   "explain": "إحدى حافتي اللسان أو كلتاهما مع ما يحاذيهما من الأضراس العليا، ومن اليسرى أيسر.",
+   "link": "/makharij/letters/dad"
+  },
+  {
+   "id": "tf-dad-hams",
+   "level": 1,
+   "type": "tf",
+   "topic": "الصفات",
+   "question": "من صفات حرف الضاد (ض): الهمس.",
+   "answer": false,
+   "explain": "صفات الضاد: الجهر، الرخاوة، الاستعلاء، الإطباق، الإصمات، الاستطالة.",
+   "link": "/sifat/cards"
+  },
+  {
+   "id": "spot-dad",
+   "level": 2,
+   "type": "spot",
+   "topic": "المخارج",
+   "question": "اضغط على الرسم موضع مخرج حرف الضاد (ض).",
+   "letter": "dad",
+   "answer": "dad",
+   "explain": "مخرجه: إحدى حافتي اللسان. إحدى حافتي اللسان أو كلتاهما مع ما يحاذيهما من الأضراس العليا، ومن اليسرى أيسر.",
+   "link": "/makharij/letters/dad"
+  },
+  {
+   "id": "makhraj-taa",
+   "level": 1,
+   "type": "mcq",
+   "topic": "المخارج",
+   "question": "ما مخرج حرف الطاء (ط)؟",
+   "options": [
+    "طرف اللسان مع أصول الثنايا العليا",
+    "وسط الحلق",
+    "أدنى حافتي اللسان إلى منتهى طرفه",
+    "طرف اللسان مع أطراف الثنايا العليا"
+   ],
+   "answer": 0,
+   "explain": "طرف اللسان مع أصول الثنيتين العليين: للطاء والدال والتاء.",
+   "link": "/makharij/letters/taa"
+  },
+  {
+   "id": "tf-taa-jahr",
+   "level": 1,
+   "type": "tf",
+   "topic": "الصفات",
+   "question": "من صفات حرف الطاء (ط): الجهر.",
+   "answer": true,
+   "explain": "صفات الطاء: الجهر، الشدة، الاستعلاء، الإطباق، الإصمات، القلقلة.",
+   "link": "/sifat/cards"
+  },
+  {
+   "id": "spot-taa",
+   "level": 2,
+   "type": "spot",
+   "topic": "المخارج",
+   "question": "اضغط على الرسم موضع مخرج حرف الطاء (ط).",
+   "letter": "taa",
+   "answer": "nit",
+   "explain": "مخرجه: طرف اللسان مع أصول الثنايا العليا. طرف اللسان مع أصول الثنيتين العليين: للطاء والدال والتاء.",
+   "link": "/makharij/letters/taa"
+  },
+  {
+   "id": "makhraj-dhaa",
+   "level": 1,
+   "type": "mcq",
+   "topic": "المخارج",
+   "question": "ما مخرج حرف الظاء (ظ)؟",
+   "options": [
+    "طرف اللسان مع أطراف الثنايا العليا",
+    "إحدى حافتي اللسان",
+    "الشفتان",
+    "وسط اللسان"
+   ],
+   "answer": 0,
+   "explain": "ظهر طرف اللسان مع أطراف الثنيتين العليين.",
+   "link": "/makharij/letters/dhaa"
+  },
+  {
+   "id": "tf-dhaa-istifal",
+   "level": 1,
+   "type": "tf",
+   "topic": "الصفات",
+   "question": "من صفات حرف الظاء (ظ): الاستفال.",
+   "answer": false,
+   "explain": "صفات الظاء: الجهر، الرخاوة، الاستعلاء، الإطباق، الإصمات.",
+   "link": "/sifat/cards"
+  },
+  {
+   "id": "spot-dhaa",
+   "level": 2,
+   "type": "spot",
+   "topic": "المخارج",
+   "question": "اضغط على الرسم موضع مخرج حرف الظاء (ظ).",
+   "letter": "dhaa",
+   "answer": "lithah",
+   "explain": "مخرجه: طرف اللسان مع أطراف الثنايا العليا. ظهر طرف اللسان مع أطراف الثنيتين العليين.",
+   "link": "/makharij/letters/dhaa"
+  },
+  {
+   "id": "makhraj-ain",
+   "level": 1,
+   "type": "mcq",
+   "topic": "المخارج",
+   "question": "ما مخرج حرف العين (ع)؟",
+   "options": [
+    "الشفتان",
+    "طرف اللسان مع أصول الثنايا العليا",
+    "أقصى اللسان أسفل مخرج القاف",
+    "وسط الحلق"
+   ],
+   "answer": 3,
+   "explain": "وسط الحلق: للعين والحاء.",
+   "link": "/makharij/letters/ain"
+  },
+  {
+   "id": "tf-ain-jahr",
+   "level": 1,
+   "type": "tf",
+   "topic": "الصفات",
+   "question": "من صفات حرف العين (ع): الجهر.",
+   "answer": true,
+   "explain": "صفات العين: الجهر، التوسط، الاستفال، الانفتاح، الإصمات.",
+   "link": "/sifat/cards"
+  },
+  {
+   "id": "spot-ain",
+   "level": 2,
+   "type": "spot",
+   "topic": "المخارج",
+   "question": "اضغط على الرسم موضع مخرج حرف العين (ع).",
+   "letter": "ain",
+   "answer": "wasat-halq",
+   "explain": "مخرجه: وسط الحلق. وسط الحلق: للعين والحاء.",
+   "link": "/makharij/letters/ain"
+  },
+  {
+   "id": "makhraj-ghain",
+   "level": 1,
+   "type": "mcq",
+   "topic": "المخارج",
+   "question": "ما مخرج حرف الغين (غ)؟",
+   "options": [
+    "الجوف",
+    "بطن الشفة السفلى مع أطراف الثنايا العليا",
+    "طرف اللسان مع أطراف الثنايا العليا",
+    "أدنى الحلق"
+   ],
+   "answer": 3,
+   "explain": "أقرب الحلق إلى الفم: للغين والخاء.",
+   "link": "/makharij/letters/ghain"
+  },
+  {
+   "id": "tf-ghain-jahr",
+   "level": 1,
+   "type": "tf",
+   "topic": "الصفات",
+   "question": "من صفات حرف الغين (غ): الجهر.",
+   "answer": true,
+   "explain": "صفات الغين: الجهر، الرخاوة، الاستعلاء، الانفتاح، الإصمات.",
+   "link": "/sifat/cards"
+  },
+  {
+   "id": "spot-ghain",
+   "level": 2,
+   "type": "spot",
+   "topic": "المخارج",
+   "question": "اضغط على الرسم موضع مخرج حرف الغين (غ).",
+   "letter": "ghain",
+   "answer": "adna-halq",
+   "explain": "مخرجه: أدنى الحلق. أقرب الحلق إلى الفم: للغين والخاء.",
+   "link": "/makharij/letters/ghain"
+  },
+  {
+   "id": "makhraj-fa",
+   "level": 1,
+   "type": "mcq",
+   "topic": "المخارج",
+   "question": "ما مخرج حرف الفاء (ف)؟",
+   "options": [
+    "أقصى اللسان أسفل مخرج القاف",
+    "طرف اللسان تحت مخرج اللام",
+    "طرف اللسان فوق الثنايا السفلى",
+    "بطن الشفة السفلى مع أطراف الثنايا العليا"
+   ],
+   "answer": 3,
+   "explain": "باطن الشفة السفلى مع أطراف الثنيتين العليين.",
+   "link": "/makharij/letters/fa"
+  },
+  {
+   "id": "tf-fa-hams",
+   "level": 1,
+   "type": "tf",
+   "topic": "الصفات",
+   "question": "من صفات حرف الفاء (ف): الهمس.",
+   "answer": true,
+   "explain": "صفات الفاء: الهمس، الرخاوة، الاستفال، الانفتاح، الإذلاق.",
+   "link": "/sifat/cards"
+  },
+  {
+   "id": "spot-fa",
+   "level": 2,
+   "type": "spot",
+   "topic": "المخارج",
+   "question": "اضغط على الرسم موضع مخرج حرف الفاء (ف).",
+   "letter": "fa",
+   "answer": "fa",
+   "explain": "مخرجه: بطن الشفة السفلى مع أطراف الثنايا العليا. باطن الشفة السفلى مع أطراف الثنيتين العليين.",
+   "link": "/makharij/letters/fa"
+  },
+  {
+   "id": "makhraj-qaf",
+   "level": 1,
+   "type": "mcq",
+   "topic": "المخارج",
+   "question": "ما مخرج حرف القاف (ق)؟",
+   "options": [
+    "الشفتان",
+    "أقصى اللسان مع ما فوقه من الحنك",
+    "طرف اللسان مع ظهره",
+    "أدنى الحلق"
+   ],
+   "answer": 1,
+   "explain": "أقصى اللسان مما يلي الحلق مع ما يحاذيه من الحنك الأعلى (اللحمي).",
+   "link": "/makharij/letters/qaf"
+  },
+  {
+   "id": "tf-qaf-ismat",
+   "level": 1,
+   "type": "tf",
+   "topic": "الصفات",
+   "question": "من صفات حرف القاف (ق): الإصمات.",
+   "answer": true,
+   "explain": "صفات القاف: الجهر، الشدة، الاستعلاء، الانفتاح، الإصمات، القلقلة.",
+   "link": "/sifat/cards"
+  },
+  {
+   "id": "spot-qaf",
+   "level": 2,
+   "type": "spot",
+   "topic": "المخارج",
+   "question": "اضغط على الرسم موضع مخرج حرف القاف (ق).",
+   "letter": "qaf",
+   "answer": "qaf",
+   "explain": "مخرجه: أقصى اللسان مع ما فوقه من الحنك. أقصى اللسان مما يلي الحلق مع ما يحاذيه من الحنك الأعلى (اللحمي).",
+   "link": "/makharij/letters/qaf"
+  },
+  {
+   "id": "makhraj-kaf",
+   "level": 1,
+   "type": "mcq",
+   "topic": "المخارج",
+   "question": "ما مخرج حرف الكاف (ك)؟",
+   "options": [
+    "طرف اللسان فوق الثنايا السفلى",
+    "الشفتان",
+    "أقصى اللسان أسفل مخرج القاف",
+    "وسط الحلق"
+   ],
+   "answer": 2,
+   "explain": "أقصى اللسان أسفل من مخرج القاف قليلاً مع ما يحاذيه من الحنك الأعلى.",
+   "link": "/makharij/letters/kaf"
+  },
+  {
+   "id": "tf-kaf-itbaq",
+   "level": 1,
+   "type": "tf",
+   "topic": "الصفات",
+   "question": "من صفات حرف الكاف (ك): الإطباق.",
+   "answer": false,
+   "explain": "صفات الكاف: الهمس، الشدة، الاستفال، الانفتاح، الإصمات.",
+   "link": "/sifat/cards"
+  },
+  {
+   "id": "spot-kaf",
+   "level": 2,
+   "type": "spot",
+   "topic": "المخارج",
+   "question": "اضغط على الرسم موضع مخرج حرف الكاف (ك).",
+   "letter": "kaf",
+   "answer": "kaf",
+   "explain": "مخرجه: أقصى اللسان أسفل مخرج القاف. أقصى اللسان أسفل من مخرج القاف قليلاً مع ما يحاذيه من الحنك الأعلى.",
+   "link": "/makharij/letters/kaf"
+  },
+  {
+   "id": "makhraj-lam",
+   "level": 1,
+   "type": "mcq",
+   "topic": "المخارج",
+   "question": "ما مخرج حرف اللام (ل)؟",
+   "options": [
+    "أدنى حافتي اللسان إلى منتهى طرفه",
+    "طرف اللسان مع أصول الثنايا العليا",
+    "إحدى حافتي اللسان",
+    "طرف اللسان مع ظهره"
+   ],
+   "answer": 0,
+   "explain": "أدنى حافتي اللسان إلى منتهى طرفه مع ما يحاذيها من لثة الأسنان العليا.",
+   "link": "/makharij/letters/lam"
+  },
+  {
+   "id": "tf-lam-inhiraf",
+   "level": 1,
+   "type": "tf",
+   "topic": "الصفات",
+   "question": "من صفات حرف اللام (ل): الانحراف.",
+   "answer": true,
+   "explain": "صفات اللام: الجهر، التوسط، الاستفال، الانفتاح، الإذلاق، الانحراف.",
+   "link": "/sifat/cards"
+  },
+  {
+   "id": "spot-lam",
+   "level": 2,
+   "type": "spot",
+   "topic": "المخارج",
+   "question": "اضغط على الرسم موضع مخرج حرف اللام (ل).",
+   "letter": "lam",
+   "answer": "lam",
+   "explain": "مخرجه: أدنى حافتي اللسان إلى منتهى طرفه. أدنى حافتي اللسان إلى منتهى طرفه مع ما يحاذيها من لثة الأسنان العليا.",
+   "link": "/makharij/letters/lam"
+  },
+  {
+   "id": "makhraj-meem",
+   "level": 1,
+   "type": "mcq",
+   "topic": "المخارج",
+   "question": "ما مخرج حرف الميم (م)؟",
+   "options": [
+    "بطن الشفة السفلى مع أطراف الثنايا العليا",
+    "الشفتان",
+    "طرف اللسان فوق الثنايا السفلى",
+    "الخيشوم"
+   ],
+   "answer": 1,
+   "explain": "بانطباق الشفتين للباء والميم (والباء أقوى انطباقاً)، وبانفتاحهما مع الاستدارة للواو غير المدية.",
+   "link": "/makharij/letters/meem"
+  },
+  {
+   "id": "tf-meem-idhlaq",
+   "level": 1,
+   "type": "tf",
+   "topic": "الصفات",
+   "question": "من صفات حرف الميم (م): الإذلاق.",
+   "answer": true,
+   "explain": "صفات الميم: الجهر، التوسط، الاستفال، الانفتاح، الإذلاق، الغنة.",
+   "link": "/sifat/cards"
+  },
+  {
+   "id": "spot-meem",
+   "level": 2,
+   "type": "spot",
+   "topic": "المخارج",
+   "question": "اضغط على الرسم موضع مخرج حرف الميم (م).",
+   "letter": "meem",
+   "answer": "shafatan",
+   "explain": "مخرجه: الشفتان. بانطباق الشفتين للباء والميم (والباء أقوى انطباقاً)، وبانفتاحهما مع الاستدارة للواو غير المدية.",
+   "link": "/makharij/letters/meem"
+  },
+  {
+   "id": "makhraj-noon",
+   "level": 1,
+   "type": "mcq",
+   "topic": "المخارج",
+   "question": "ما مخرج حرف النون (ن)؟",
+   "options": [
+    "طرف اللسان تحت مخرج اللام",
+    "الجوف",
+    "أدنى الحلق",
+    "طرف اللسان مع أصول الثنايا العليا"
+   ],
+   "answer": 0,
+   "explain": "طرف اللسان تحت مخرج اللام قليلاً مع ما يحاذيه من لثة الثنيتين العليين.",
+   "link": "/makharij/letters/noon"
+  },
+  {
+   "id": "tf-noon-tawassut",
+   "level": 1,
+   "type": "tf",
+   "topic": "الصفات",
+   "question": "من صفات حرف النون (ن): التوسط.",
+   "answer": true,
+   "explain": "صفات النون: الجهر، التوسط، الاستفال، الانفتاح، الإذلاق، الغنة.",
+   "link": "/sifat/cards"
+  },
+  {
+   "id": "spot-noon",
+   "level": 2,
+   "type": "spot",
+   "topic": "المخارج",
+   "question": "اضغط على الرسم موضع مخرج حرف النون (ن).",
+   "letter": "noon",
+   "answer": "noon",
+   "explain": "مخرجه: طرف اللسان تحت مخرج اللام. طرف اللسان تحت مخرج اللام قليلاً مع ما يحاذيه من لثة الثنيتين العليين.",
+   "link": "/makharij/letters/noon"
+  },
+  {
+   "id": "makhraj-ha",
+   "level": 1,
+   "type": "mcq",
+   "topic": "المخارج",
+   "question": "ما مخرج حرف الهاء (ه)؟",
+   "options": [
+    "الشفتان",
+    "طرف اللسان فوق الثنايا السفلى",
+    "أدنى الحلق",
+    "أقصى الحلق"
+   ],
+   "answer": 3,
+   "explain": "أبعد الحلق مما يلي الصدر: للهمزة والهاء.",
+   "link": "/makharij/letters/ha"
+  },
+  {
+   "id": "tf-ha-jahr",
+   "level": 1,
+   "type": "tf",
+   "topic": "الصفات",
+   "question": "من صفات حرف الهاء (ه): الجهر.",
+   "answer": false,
+   "explain": "صفات الهاء: الهمس، الرخاوة، الاستفال، الانفتاح، الإصمات، الخفاء.",
+   "link": "/sifat/cards"
+  },
+  {
+   "id": "spot-ha",
+   "level": 2,
+   "type": "spot",
+   "topic": "المخارج",
+   "question": "اضغط على الرسم موضع مخرج حرف الهاء (ه).",
+   "letter": "ha",
+   "answer": "aqsa-halq",
+   "explain": "مخرجه: أقصى الحلق. أبعد الحلق مما يلي الصدر: للهمزة والهاء.",
+   "link": "/makharij/letters/ha"
+  },
+  {
+   "id": "makhraj-waw",
+   "level": 1,
+   "type": "mcq",
+   "topic": "المخارج",
+   "question": "ما مخرج حرف الواو (و)؟",
+   "options": [
+    "الجوف",
+    "إحدى حافتي اللسان",
+    "الشفتان",
+    "أقصى اللسان مع ما فوقه من الحنك"
+   ],
+   "answer": 2,
+   "explain": "بانطباق الشفتين للباء والميم (والباء أقوى انطباقاً)، وبانفتاحهما مع الاستدارة للواو غير المدية.",
+   "link": "/makharij/letters/waw"
+  },
+  {
+   "id": "tf-waw-rikhwa",
+   "level": 1,
+   "type": "tf",
+   "topic": "الصفات",
+   "question": "من صفات حرف الواو (و): الرخاوة.",
+   "answer": true,
+   "explain": "صفات الواو: الجهر، الرخاوة، الاستفال، الانفتاح، الإصمات، اللين، الخفاء.",
+   "link": "/sifat/cards"
+  },
+  {
+   "id": "spot-waw",
+   "level": 2,
+   "type": "spot",
+   "topic": "المخارج",
+   "question": "اضغط على الرسم موضع مخرج حرف الواو (و).",
+   "letter": "waw",
+   "answer": "shafatan",
+   "explain": "مخرجه: الشفتان. بانطباق الشفتين للباء والميم (والباء أقوى انطباقاً)، وبانفتاحهما مع الاستدارة للواو غير المدية.",
+   "link": "/makharij/letters/waw"
+  },
+  {
+   "id": "makhraj-ya",
+   "level": 1,
+   "type": "mcq",
+   "topic": "المخارج",
+   "question": "ما مخرج حرف الياء (ي)؟",
+   "options": [
+    "الخيشوم",
+    "بطن الشفة السفلى مع أطراف الثنايا العليا",
+    "وسط اللسان",
+    "طرف اللسان مع أصول الثنايا العليا"
+   ],
+   "answer": 2,
+   "explain": "وسط اللسان مع ما يحاذيه من الحنك الأعلى: للجيم والشين والياء غير المدية.",
+   "link": "/makharij/letters/ya"
+  },
+  {
+   "id": "tf-ya-jahr",
+   "level": 1,
+   "type": "tf",
+   "topic": "الصفات",
+   "question": "من صفات حرف الياء (ي): الجهر.",
+   "answer": true,
+   "explain": "صفات الياء: الجهر، الرخاوة، الاستفال، الانفتاح، الإصمات، اللين، الخفاء.",
+   "link": "/sifat/cards"
+  },
+  {
+   "id": "spot-ya",
+   "level": 2,
+   "type": "spot",
+   "topic": "المخارج",
+   "question": "اضغط على الرسم موضع مخرج حرف الياء (ي).",
+   "letter": "ya",
+   "answer": "wasat-lisan",
+   "explain": "مخرجه: وسط اللسان. وسط اللسان مع ما يحاذيه من الحنك الأعلى: للجيم والشين والياء غير المدية.",
+   "link": "/makharij/letters/ya"
+  },
+  {
+   "id": "which-safir",
+   "level": 1,
+   "type": "mcq",
+   "topic": "الصفات",
+   "question": "أيّ هذه الحروف من حروف الصفير؟",
+   "options": [
+    "غ",
+    "ص",
+    "ع",
+    "د"
+   ],
+   "answer": 1,
+   "big_options": true,
+   "explain": "حروف الصفير: ص ز س.",
+   "link": "/sifat/matrix"
+  },
+  {
+   "id": "which-qalqalah",
+   "level": 1,
+   "type": "mcq",
+   "topic": "الصفات",
+   "question": "أيّ هذه الحروف من حروف القلقلة؟",
+   "options": [
+    "ب",
+    "ف",
+    "ع",
+    "ر"
+   ],
+   "answer": 0,
+   "big_options": true,
+   "explain": "حروف القلقلة: ق ط ب ج د.",
+   "link": "/sifat/matrix"
+  },
+  {
+   "id": "which-leen",
+   "level": 1,
+   "type": "mcq",
+   "topic": "الصفات",
+   "question": "أيّ هذه الحروف من حروف اللين؟",
+   "options": [
+    "ط",
+    "ي",
+    "ه",
+    "ص"
+   ],
+   "answer": 1,
+   "big_options": true,
+   "explain": "حروف اللين: و ي.",
+   "link": "/sifat/matrix"
+  },
+  {
+   "id": "which-inhiraf",
+   "level": 1,
+   "type": "mcq",
+   "topic": "الصفات",
+   "question": "أيّ هذه الحروف من حروف الانحراف؟",
+   "options": [
+    "ر",
+    "د",
+    "و",
+    "ح"
+   ],
+   "answer": 0,
+   "big_options": true,
+   "explain": "حروف الانحراف: ل ر.",
+   "link": "/sifat/matrix"
+  },
+  {
+   "id": "which-takrir",
+   "level": 1,
+   "type": "mcq",
+   "topic": "الصفات",
+   "question": "أيّ هذه الحروف من حروف التكرير؟",
+   "options": [
+    "ط",
+    "ر",
+    "ف",
+    "غ"
+   ],
+   "answer": 1,
+   "big_options": true,
+   "explain": "حروف التكرير: ر.",
+   "link": "/sifat/matrix"
+  },
+  {
+   "id": "which-tafashi",
+   "level": 1,
+   "type": "mcq",
+   "topic": "الصفات",
+   "question": "أيّ هذه الحروف من حروف التفشي؟",
+   "options": [
+    "ش",
+    "و",
+    "ث",
+    "ر"
+   ],
+   "answer": 0,
+   "big_options": true,
+   "explain": "حروف التفشي: ش.",
+   "link": "/sifat/matrix"
+  },
+  {
+   "id": "which-istitala",
+   "level": 1,
+   "type": "mcq",
+   "topic": "الصفات",
+   "question": "أيّ هذه الحروف من حروف الاستطالة؟",
+   "options": [
+    "ض",
+    "ع",
+    "ن",
+    "ذ"
+   ],
+   "answer": 0,
+   "big_options": true,
+   "explain": "حروف الاستطالة: ض.",
+   "link": "/sifat/matrix"
+  },
+  {
+   "id": "which-ghunnah",
+   "level": 1,
+   "type": "mcq",
+   "topic": "الصفات",
+   "question": "أيّ هذه الحروف من حروف الغنة؟",
+   "options": [
+    "ج",
+    "ف",
+    "ن",
+    "ي"
+   ],
+   "answer": 2,
+   "big_options": true,
+   "explain": "حروف الغنة: ن م.",
+   "link": "/sifat/matrix"
+  },
+  {
+   "id": "which-khafa",
+   "level": 1,
+   "type": "mcq",
+   "topic": "الصفات",
+   "question": "أيّ هذه الحروف من حروف الخفاء؟",
+   "options": [
+    "ه",
+    "ن",
+    "ك",
+    "خ"
+   ],
+   "answer": 0,
+   "big_options": true,
+   "explain": "حروف الخفاء: ه ا و ي.",
+   "link": "/sifat/matrix"
+  },
+  {
+   "id": "which-hams",
+   "level": 1,
+   "type": "mcq",
+   "topic": "الصفات",
+   "question": "أيّ هذه الحروف من حروف الهمس؟",
+   "options": [
+    "ي",
+    "ر",
+    "خ",
+    "ق"
+   ],
+   "answer": 2,
+   "big_options": true,
+   "explain": "حروف الهمس: ف ح ث ه ش خ ص س ك ت.",
+   "link": "/sifat/matrix"
+  },
+  {
+   "id": "which-shidda",
+   "level": 1,
+   "type": "mcq",
+   "topic": "الصفات",
+   "question": "أيّ هذه الحروف من حروف الشدة؟",
+   "options": [
+    "ش",
+    "ل",
+    "ه",
+    "ق"
+   ],
+   "answer": 3,
+   "big_options": true,
+   "explain": "حروف الشدة: ء ج د ق ط ب ك ت.",
+   "link": "/sifat/matrix"
+  },
+  {
+   "id": "which-tawassut",
+   "level": 1,
+   "type": "mcq",
+   "topic": "الصفات",
+   "question": "أيّ هذه الحروف من حروف التوسط؟",
+   "options": [
+    "ظ",
+    "ر",
+    "غ",
+    "د"
+   ],
+   "answer": 1,
+   "big_options": true,
+   "explain": "حروف التوسط: ل ن ع م ر.",
+   "link": "/sifat/matrix"
+  },
+  {
+   "id": "which-istila",
+   "level": 1,
+   "type": "mcq",
+   "topic": "الصفات",
+   "question": "أيّ هذه الحروف من حروف الاستعلاء؟",
+   "options": [
+    "ب",
+    "ز",
+    "ض",
+    "د"
+   ],
+   "answer": 2,
+   "big_options": true,
+   "explain": "حروف الاستعلاء: خ ص ض غ ط ق ظ.",
+   "link": "/sifat/matrix"
+  },
+  {
+   "id": "which-itbaq",
+   "level": 1,
+   "type": "mcq",
+   "topic": "الصفات",
+   "question": "أيّ هذه الحروف من حروف الإطباق؟",
+   "options": [
+    "خ",
+    "غ",
+    "ه",
+    "ض"
+   ],
+   "answer": 3,
+   "big_options": true,
+   "explain": "حروف الإطباق: ص ض ط ظ.",
+   "link": "/sifat/matrix"
+  },
+  {
+   "id": "which-idhlaq",
+   "level": 1,
+   "type": "mcq",
+   "topic": "الصفات",
+   "question": "أيّ هذه الحروف من حروف الإذلاق؟",
+   "options": [
+    "ف",
+    "ه",
+    "ض",
+    "ك"
+   ],
+   "answer": 0,
+   "big_options": true,
+   "explain": "حروف الإذلاق: ف ر م ن ل ب.",
+   "link": "/sifat/matrix"
+  },
+  {
+   "id": "strong-0",
+   "level": 3,
+   "type": "mcq",
+   "topic": "قوة الحروف",
+   "question": "أيّ هذه الحروف أقوى بصفاته؟",
+   "options": [
+    "ف",
+    "غ",
+    "ر",
+    "ط"
+   ],
+   "answer": 3,
+   "big_options": true,
+   "explain": "أقواها الطاء (أقوى)، لكثرة صفاته القوية.",
+   "link": "/sifat/strength"
+  },
+  {
+   "id": "strong-2",
+   "level": 3,
+   "type": "mcq",
+   "topic": "قوة الحروف",
+   "question": "أيّ هذه الحروف أقوى بصفاته؟",
+   "options": [
+    "ظ",
+    "ه",
+    "د",
+    "ز"
+   ],
+   "answer": 0,
+   "big_options": true,
+   "explain": "أقواها الظاء (قوي)، لكثرة صفاته القوية.",
+   "link": "/sifat/strength"
+  },
+  {
+   "id": "strong-5",
+   "level": 3,
+   "type": "mcq",
+   "topic": "قوة الحروف",
+   "question": "أيّ هذه الحروف أقوى بصفاته؟",
+   "options": [
+    "ز",
+    "ه",
+    "د",
+    "ف"
+   ],
+   "answer": 2,
+   "big_options": true,
+   "explain": "أقواها الدال (متوسط)، لكثرة صفاته القوية.",
+   "link": "/sifat/strength"
+  },
+  {
+   "id": "strong-6",
+   "level": 3,
+   "type": "mcq",
+   "topic": "قوة الحروف",
+   "question": "أيّ هذه الحروف أقوى بصفاته؟",
+   "options": [
+    "ي",
+    "ز",
+    "ق",
+    "ص"
+   ],
+   "answer": 2,
+   "big_options": true,
+   "explain": "أقواها القاف (قوي)، لكثرة صفاته القوية.",
+   "link": "/sifat/strength"
+  },
+  {
+   "id": "strong-7",
+   "level": 3,
+   "type": "mcq",
+   "topic": "قوة الحروف",
+   "question": "أيّ هذه الحروف أقوى بصفاته؟",
+   "options": [
+    "ظ",
+    "س",
+    "ع",
+    "ل"
+   ],
+   "answer": 0,
+   "big_options": true,
+   "explain": "أقواها الظاء (قوي)، لكثرة صفاته القوية.",
+   "link": "/sifat/strength"
+  },
+  {
+   "id": "strong-9",
+   "level": 3,
+   "type": "mcq",
+   "topic": "قوة الحروف",
+   "question": "أيّ هذه الحروف أقوى بصفاته؟",
+   "options": [
+    "ش",
+    "ء",
+    "ف",
+    "ك"
+   ],
+   "answer": 1,
+   "big_options": true,
+   "explain": "أقواها الهمزة (متوسط)، لكثرة صفاته القوية.",
+   "link": "/sifat/strength"
+  },
+  {
+   "id": "classify-hams-jahr-0",
+   "level": 2,
+   "type": "classify",
+   "topic": "الصفات",
+   "question": "صنّف الحروف حسب الهمس والجهر: اسحب كل حرف إلى صفته.",
+   "bins": [
+    {
+     "id": "hams",
+     "name": "الهمس"
+    },
+    {
+     "id": "jahr",
+     "name": "الجهر"
+    }
+   ],
+   "letters": [
+    {
+     "id": "waw",
+     "char": "و"
+    },
+    {
+     "id": "ain",
+     "char": "ع"
+    },
+    {
+     "id": "tha",
+     "char": "ث"
+    },
+    {
+     "id": "thal",
+     "char": "ذ"
+    },
+    {
+     "id": "hamza",
+     "char": "ء"
+    },
+    {
+     "id": "haa",
+     "char": "ح"
+    }
+   ],
+   "answer": {
+    "waw": "jahr",
+    "ain": "jahr",
+    "tha": "hams",
+    "thal": "jahr",
+    "hamza": "jahr",
+    "haa": "hams"
+   },
+   "explain": "الهمس: ث ح · الجهر: و ع ذ ء",
+   "link": "/sifat/opposite"
+  },
+  {
+   "id": "classify-hams-jahr-1",
+   "level": 2,
+   "type": "classify",
+   "topic": "الصفات",
+   "question": "صنّف الحروف حسب الهمس والجهر: اسحب كل حرف إلى صفته.",
+   "bins": [
+    {
+     "id": "hams",
+     "name": "الهمس"
+    },
+    {
+     "id": "jahr",
+     "name": "الجهر"
+    }
+   ],
+   "letters": [
+    {
+     "id": "ain",
+     "char": "ع"
+    },
+    {
+     "id": "kaf",
+     "char": "ك"
+    },
+    {
+     "id": "zay",
+     "char": "ز"
+    },
+    {
+     "id": "taa",
+     "char": "ط"
+    },
+    {
+     "id": "ra",
+     "char": "ر"
+    },
+    {
+     "id": "jeem",
+     "char": "ج"
+    }
+   ],
+   "answer": {
+    "ain": "jahr",
+    "kaf": "hams",
+    "zay": "jahr",
+    "taa": "jahr",
+    "ra": "jahr",
+    "jeem": "jahr"
+   },
+   "explain": "الهمس: ك · الجهر: ع ز ط ر ج",
+   "link": "/sifat/opposite"
+  },
+  {
+   "id": "classify-shidda-rikhwa-0",
+   "level": 2,
+   "type": "classify",
+   "topic": "الصفات",
+   "question": "صنّف الحروف حسب الشدة والتوسط والرخاوة: اسحب كل حرف إلى صفته.",
+   "bins": [
+    {
+     "id": "shidda",
+     "name": "الشدة"
+    },
+    {
+     "id": "tawassut",
+     "name": "التوسط"
+    },
+    {
+     "id": "rikhwa",
+     "name": "الرخاوة"
+    }
+   ],
+   "letters": [
+    {
+     "id": "meem",
+     "char": "م"
+    },
+    {
+     "id": "tha",
+     "char": "ث"
+    },
+    {
+     "id": "kaf",
+     "char": "ك"
+    },
+    {
+     "id": "qaf",
+     "char": "ق"
+    },
+    {
+     "id": "zay",
+     "char": "ز"
+    },
+    {
+     "id": "ba",
+     "char": "ب"
+    }
+   ],
+   "answer": {
+    "meem": "tawassut",
+    "tha": "rikhwa",
+    "kaf": "shidda",
+    "qaf": "shidda",
+    "zay": "rikhwa",
+    "ba": "shidda"
+   },
+   "explain": "الشدة: ك ق ب · التوسط: م · الرخاوة: ث ز",
+   "link": "/sifat/opposite"
+  },
+  {
+   "id": "classify-shidda-rikhwa-1",
+   "level": 2,
+   "type": "classify",
+   "topic": "الصفات",
+   "question": "صنّف الحروف حسب الشدة والتوسط والرخاوة: اسحب كل حرف إلى صفته.",
+   "bins": [
+    {
+     "id": "shidda",
+     "name": "الشدة"
+    },
+    {
+     "id": "tawassut",
+     "name": "التوسط"
+    },
+    {
+     "id": "rikhwa",
+     "name": "الرخاوة"
+    }
+   ],
+   "letters": [
+    {
+     "id": "tha",
+     "char": "ث"
+    },
+    {
+     "id": "zay",
+     "char": "ز"
+    },
+    {
+     "id": "seen",
+     "char": "س"
+    },
+    {
+     "id": "thal",
+     "char": "ذ"
+    },
+    {
+     "id": "ba",
+     "char": "ب"
+    },
+    {
+     "id": "haa",
+     "char": "ح"
+    }
+   ],
+   "answer": {
+    "tha": "rikhwa",
+    "zay": "rikhwa",
+    "seen": "rikhwa",
+    "thal": "rikhwa",
+    "ba": "shidda",
+    "haa": "rikhwa"
+   },
+   "explain": "الشدة: ب · التوسط: — · الرخاوة: ث ز س ذ ح",
+   "link": "/sifat/opposite"
+  },
+  {
+   "id": "classify-istila-istifal-0",
+   "level": 2,
+   "type": "classify",
+   "topic": "الصفات",
+   "question": "صنّف الحروف حسب الاستعلاء والاستفال: اسحب كل حرف إلى صفته.",
+   "bins": [
+    {
+     "id": "istila",
+     "name": "الاستعلاء"
+    },
+    {
+     "id": "istifal",
+     "name": "الاستفال"
+    }
+   ],
+   "letters": [
+    {
+     "id": "ba",
+     "char": "ب"
+    },
+    {
+     "id": "hamza",
+     "char": "ء"
+    },
+    {
+     "id": "khaa",
+     "char": "خ"
+    },
+    {
+     "id": "ha",
+     "char": "ه"
+    },
+    {
+     "id": "waw",
+     "char": "و"
+    },
+    {
+     "id": "noon",
+     "char": "ن"
+    }
+   ],
+   "answer": {
+    "ba": "istifal",
+    "hamza": "istifal",
+    "khaa": "istila",
+    "ha": "istifal",
+    "waw": "istifal",
+    "noon": "istifal"
+   },
+   "explain": "الاستعلاء: خ · الاستفال: ب ء ه و ن",
+   "link": "/sifat/opposite"
+  },
+  {
+   "id": "classify-istila-istifal-1",
+   "level": 2,
+   "type": "classify",
+   "topic": "الصفات",
+   "question": "صنّف الحروف حسب الاستعلاء والاستفال: اسحب كل حرف إلى صفته.",
+   "bins": [
+    {
+     "id": "istila",
+     "name": "الاستعلاء"
+    },
+    {
+     "id": "istifal",
+     "name": "الاستفال"
+    }
+   ],
+   "letters": [
+    {
+     "id": "ghain",
+     "char": "غ"
+    },
+    {
+     "id": "waw",
+     "char": "و"
+    },
+    {
+     "id": "tha",
+     "char": "ث"
+    },
+    {
+     "id": "dal",
+     "char": "د"
+    },
+    {
+     "id": "haa",
+     "char": "ح"
+    },
+    {
+     "id": "sad",
+     "char": "ص"
+    }
+   ],
+   "answer": {
+    "ghain": "istila",
+    "waw": "istifal",
+    "tha": "istifal",
+    "dal": "istifal",
+    "haa": "istifal",
+    "sad": "istila"
+   },
+   "explain": "الاستعلاء: غ ص · الاستفال: و ث د ح",
+   "link": "/sifat/opposite"
+  },
+  {
+   "id": "classify-itbaq-infitah-0",
+   "level": 2,
+   "type": "classify",
+   "topic": "الصفات",
+   "question": "صنّف الحروف حسب الإطباق والانفتاح: اسحب كل حرف إلى صفته.",
+   "bins": [
+    {
+     "id": "itbaq",
+     "name": "الإطباق"
+    },
+    {
+     "id": "infitah",
+     "name": "الانفتاح"
+    }
+   ],
+   "letters": [
+    {
+     "id": "ba",
+     "char": "ب"
+    },
+    {
+     "id": "qaf",
+     "char": "ق"
+    },
+    {
+     "id": "dad",
+     "char": "ض"
+    },
+    {
+     "id": "khaa",
+     "char": "خ"
+    },
+    {
+     "id": "lam",
+     "char": "ل"
+    },
+    {
+     "id": "zay",
+     "char": "ز"
+    }
+   ],
+   "answer": {
+    "ba": "infitah",
+    "qaf": "infitah",
+    "dad": "itbaq",
+    "khaa": "infitah",
+    "lam": "infitah",
+    "zay": "infitah"
+   },
+   "explain": "الإطباق: ض · الانفتاح: ب ق خ ل ز",
+   "link": "/sifat/opposite"
+  },
+  {
+   "id": "classify-itbaq-infitah-1",
+   "level": 2,
+   "type": "classify",
+   "topic": "الصفات",
+   "question": "صنّف الحروف حسب الإطباق والانفتاح: اسحب كل حرف إلى صفته.",
+   "bins": [
+    {
+     "id": "itbaq",
+     "name": "الإطباق"
+    },
+    {
+     "id": "infitah",
+     "name": "الانفتاح"
+    }
+   ],
+   "letters": [
+    {
+     "id": "ghain",
+     "char": "غ"
+    },
+    {
+     "id": "zay",
+     "char": "ز"
+    },
+    {
+     "id": "dhaa",
+     "char": "ظ"
+    },
+    {
+     "id": "fa",
+     "char": "ف"
+    },
+    {
+     "id": "thal",
+     "char": "ذ"
+    },
+    {
+     "id": "taa",
+     "char": "ط"
+    }
+   ],
+   "answer": {
+    "ghain": "infitah",
+    "zay": "infitah",
+    "dhaa": "itbaq",
+    "fa": "infitah",
+    "thal": "infitah",
+    "taa": "itbaq"
+   },
+   "explain": "الإطباق: ظ ط · الانفتاح: غ ز ف ذ",
+   "link": "/sifat/opposite"
+  },
+  {
+   "id": "classify-idhlaq-ismat-0",
+   "level": 2,
+   "type": "classify",
+   "topic": "الصفات",
+   "question": "صنّف الحروف حسب الإذلاق والإصمات: اسحب كل حرف إلى صفته.",
+   "bins": [
+    {
+     "id": "idhlaq",
+     "name": "الإذلاق"
+    },
+    {
+     "id": "ismat",
+     "name": "الإصمات"
+    }
+   ],
+   "letters": [
+    {
+     "id": "dal",
+     "char": "د"
+    },
+    {
+     "id": "fa",
+     "char": "ف"
+    },
+    {
+     "id": "sad",
+     "char": "ص"
+    },
+    {
+     "id": "qaf",
+     "char": "ق"
+    },
+    {
+     "id": "seen",
+     "char": "س"
+    },
+    {
+     "id": "dad",
+     "char": "ض"
+    }
+   ],
+   "answer": {
+    "dal": "ismat",
+    "fa": "idhlaq",
+    "sad": "ismat",
+    "qaf": "ismat",
+    "seen": "ismat",
+    "dad": "ismat"
+   },
+   "explain": "الإذلاق: ف · الإصمات: د ص ق س ض",
+   "link": "/sifat/opposite"
+  },
+  {
+   "id": "classify-idhlaq-ismat-1",
+   "level": 2,
+   "type": "classify",
+   "topic": "الصفات",
+   "question": "صنّف الحروف حسب الإذلاق والإصمات: اسحب كل حرف إلى صفته.",
+   "bins": [
+    {
+     "id": "idhlaq",
+     "name": "الإذلاق"
+    },
+    {
+     "id": "ismat",
+     "name": "الإصمات"
+    }
+   ],
+   "letters": [
+    {
+     "id": "qaf",
+     "char": "ق"
+    },
+    {
+     "id": "thal",
+     "char": "ذ"
+    },
+    {
+     "id": "lam",
+     "char": "ل"
+    },
+    {
+     "id": "waw",
+     "char": "و"
+    },
+    {
+     "id": "dhaa",
+     "char": "ظ"
+    },
+    {
+     "id": "meem",
+     "char": "م"
+    }
+   ],
+   "answer": {
+    "qaf": "ismat",
+    "thal": "ismat",
+    "lam": "idhlaq",
+    "waw": "ismat",
+    "dhaa": "ismat",
+    "meem": "idhlaq"
+   },
+   "explain": "الإذلاق: ل م · الإصمات: ق ذ و ظ",
+   "link": "/sifat/opposite"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإدغام بغنة",
+    "الإقلاب",
+    "الإدغام بغير غنة",
+    "الإخفاء الحقيقي"
+   ],
+   "answer": 0,
+   "explain": "نون ساكنة بعدها ياء. التقاء حرف ساكن بحرف متحرك بحيث يصيران حرفاً واحداً مشدداً يرتفع اللسان عنده ارتفاعة واحدة",
+   "surah": 2,
+   "ayah": 8,
+   "word": "مَن يَقُولُ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/noon-sakinah/noon-sakinah-3",
+   "id": "rule-noon-sakinah-3-0",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «مَن يَقُولُ»؟",
+   "ayah_text": "وَمِنَ ٱلنَّاسِ مَن يَقُولُ ءَامَنَّا بِٱللَّهِ وَبِٱلْيَوْمِ ٱلْءَاخِرِ وَمَا هُم بِمُؤْمِنِينَ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإدغام بغنة",
+    "الإقلاب",
+    "الإدغام بغير غنة",
+    "الإخفاء الحقيقي"
+   ],
+   "answer": 0,
+   "explain": "نون ساكنة بعدها ياء. التقاء حرف ساكن بحرف متحرك بحيث يصيران حرفاً واحداً مشدداً يرتفع اللسان عنده ارتفاعة واحدة",
+   "surah": 2,
+   "ayah": 8,
+   "word": "مَن يَقُولُ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/noon-sakinah/noon-sakinah-3",
+   "id": "listen-noon-sakinah-3-0",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «مَن يَقُولُ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإخفاء الحقيقي",
+    "الإدغام بغير غنة",
+    "الإقلاب",
+    "الإدغام بغنة"
+   ],
+   "answer": 3,
+   "explain": "نون ساكنة بعدها نون. التقاء حرف ساكن بحرف متحرك بحيث يصيران حرفاً واحداً مشدداً يرتفع اللسان عنده ارتفاعة واحدة",
+   "surah": 16,
+   "ayah": 53,
+   "word": "مِّن نِّعْمَةٍ",
+   "surah_name": "النحل",
+   "link": "/ahkam/noon-sakinah/noon-sakinah-3",
+   "id": "rule-noon-sakinah-3-1",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «مِّن نِّعْمَةٍ»؟",
+   "ayah_text": "وَمَا بِكُم مِّن نِّعْمَةٍ فَمِنَ ٱللَّهِ ثُمَّ إِذَا مَسَّكُمُ ٱلضُّرُّ فَإِلَيْهِ تَجْـَٔرُونَ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإخفاء الحقيقي",
+    "الإدغام بغير غنة",
+    "الإقلاب",
+    "الإدغام بغنة"
+   ],
+   "answer": 3,
+   "explain": "نون ساكنة بعدها نون. التقاء حرف ساكن بحرف متحرك بحيث يصيران حرفاً واحداً مشدداً يرتفع اللسان عنده ارتفاعة واحدة",
+   "surah": 16,
+   "ayah": 53,
+   "word": "مِّن نِّعْمَةٍ",
+   "surah_name": "النحل",
+   "link": "/ahkam/noon-sakinah/noon-sakinah-3",
+   "id": "listen-noon-sakinah-3-1",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «مِّن نِّعْمَةٍ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإقلاب",
+    "الإدغام بغير غنة",
+    "الإدغام بغنة",
+    "الإخفاء الحقيقي"
+   ],
+   "answer": 2,
+   "explain": "نون ساكنة بعدها ميم. التقاء حرف ساكن بحرف متحرك بحيث يصيران حرفاً واحداً مشدداً يرتفع اللسان عنده ارتفاعة واحدة",
+   "surah": 23,
+   "ayah": 55,
+   "word": "مِن مَّالٍ",
+   "surah_name": "المؤمنون",
+   "link": "/ahkam/noon-sakinah/noon-sakinah-3",
+   "id": "rule-noon-sakinah-3-2",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «مِن مَّالٍ»؟",
+   "ayah_text": "أَيَحْسَبُونَ أَنَّمَا نُمِدُّهُم بِهِۦ مِن مَّالٍ وَبَنِينَ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإقلاب",
+    "الإدغام بغير غنة",
+    "الإدغام بغنة",
+    "الإخفاء الحقيقي"
+   ],
+   "answer": 2,
+   "explain": "نون ساكنة بعدها ميم. التقاء حرف ساكن بحرف متحرك بحيث يصيران حرفاً واحداً مشدداً يرتفع اللسان عنده ارتفاعة واحدة",
+   "surah": 23,
+   "ayah": 55,
+   "word": "مِن مَّالٍ",
+   "surah_name": "المؤمنون",
+   "link": "/ahkam/noon-sakinah/noon-sakinah-3",
+   "id": "listen-noon-sakinah-3-2",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «مِن مَّالٍ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإدغام بغنة",
+    "الإدغام بغير غنة",
+    "الإخفاء الحقيقي",
+    "الإقلاب"
+   ],
+   "answer": 0,
+   "explain": "نون ساكنة بعدها واو. التقاء حرف ساكن بحرف متحرك بحيث يصيران حرفاً واحداً مشدداً يرتفع اللسان عنده ارتفاعة واحدة",
+   "surah": 13,
+   "ayah": 11,
+   "word": "مِن وَالٍ",
+   "surah_name": "الرعد",
+   "link": "/ahkam/noon-sakinah/noon-sakinah-3",
+   "id": "rule-noon-sakinah-3-3",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «مِن وَالٍ»؟",
+   "ayah_text": "لَهُۥ مُعَقِّبَٰتٌ مِّنۢ بَيْنِ يَدَيْهِ وَمِنْ خَلْفِهِۦ يَحْفَظُونَهُۥ مِنْ أَمْرِ ٱللَّهِ إِنَّ ٱللَّهَ لَا يُغَيِّرُ مَا بِقَوْمٍ حَتَّىٰ يُغَيِّرُوا۟ مَا بِأَنفُسِهِمْ وَإِذَآ أَرَادَ ٱللَّهُ بِقَوْمٍ سُوٓءًا فَلَا مَرَدَّ لَهُۥ وَمَا لَهُم مِّن دُونِهِۦ مِن وَالٍ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإدغام بغنة",
+    "الإدغام بغير غنة",
+    "الإخفاء الحقيقي",
+    "الإقلاب"
+   ],
+   "answer": 0,
+   "explain": "نون ساكنة بعدها واو. التقاء حرف ساكن بحرف متحرك بحيث يصيران حرفاً واحداً مشدداً يرتفع اللسان عنده ارتفاعة واحدة",
+   "surah": 13,
+   "ayah": 11,
+   "word": "مِن وَالٍ",
+   "surah_name": "الرعد",
+   "link": "/ahkam/noon-sakinah/noon-sakinah-3",
+   "id": "listen-noon-sakinah-3-3",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «مِن وَالٍ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإخفاء الحقيقي",
+    "الإدغام بغير غنة",
+    "الإقلاب",
+    "الإدغام بغنة"
+   ],
+   "answer": 1,
+   "explain": "نون ساكنة بعدها راء. إدغام النون الساكنة أو التنوين في اللام أو الراء إدغاماً كاملاً من غير غنة",
+   "surah": 2,
+   "ayah": 5,
+   "word": "مِّن رَّبِّهِمْ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/noon-sakinah/noon-sakinah-5",
+   "id": "rule-noon-sakinah-5-0",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «مِّن رَّبِّهِمْ»؟",
+   "ayah_text": "أُو۟لَٰٓئِكَ عَلَىٰ هُدًى مِّن رَّبِّهِمْ وَأُو۟لَٰٓئِكَ هُمُ ٱلْمُفْلِحُونَ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإخفاء الحقيقي",
+    "الإدغام بغير غنة",
+    "الإقلاب",
+    "الإدغام بغنة"
+   ],
+   "answer": 1,
+   "explain": "نون ساكنة بعدها راء. إدغام النون الساكنة أو التنوين في اللام أو الراء إدغاماً كاملاً من غير غنة",
+   "surah": 2,
+   "ayah": 5,
+   "word": "مِّن رَّبِّهِمْ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/noon-sakinah/noon-sakinah-5",
+   "id": "listen-noon-sakinah-5-0",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «مِّن رَّبِّهِمْ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإدغام بغير غنة",
+    "الإقلاب",
+    "الإخفاء الحقيقي",
+    "الإدغام بغنة"
+   ],
+   "answer": 0,
+   "explain": "تنوين بعده لام. إدغام النون الساكنة أو التنوين في اللام أو الراء إدغاماً كاملاً من غير غنة",
+   "surah": 2,
+   "ayah": 2,
+   "word": "هُدًى لِّلْمُتَّقِينَ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/noon-sakinah/noon-sakinah-5",
+   "id": "rule-noon-sakinah-5-1",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «هُدًى لِّلْمُتَّقِينَ»؟",
+   "ayah_text": "ذَٰلِكَ ٱلْكِتَٰبُ لَا رَيْبَ فِيهِ هُدًى لِّلْمُتَّقِينَ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإدغام بغير غنة",
+    "الإقلاب",
+    "الإخفاء الحقيقي",
+    "الإدغام بغنة"
+   ],
+   "answer": 0,
+   "explain": "تنوين بعده لام. إدغام النون الساكنة أو التنوين في اللام أو الراء إدغاماً كاملاً من غير غنة",
+   "surah": 2,
+   "ayah": 2,
+   "word": "هُدًى لِّلْمُتَّقِينَ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/noon-sakinah/noon-sakinah-5",
+   "id": "listen-noon-sakinah-5-1",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «هُدًى لِّلْمُتَّقِينَ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإدغام بغنة",
+    "الإدغام بغير غنة",
+    "الإخفاء الحقيقي",
+    "الإقلاب"
+   ],
+   "answer": 1,
+   "explain": "نون ساكنة بعدها لام. إدغام النون الساكنة أو التنوين في اللام أو الراء إدغاماً كاملاً من غير غنة",
+   "surah": 2,
+   "ayah": 24,
+   "word": "فَإِن لَّمْ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/noon-sakinah/noon-sakinah-5",
+   "id": "rule-noon-sakinah-5-2",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «فَإِن لَّمْ»؟",
+   "ayah_text": "فَإِن لَّمْ تَفْعَلُوا۟ وَلَن تَفْعَلُوا۟ فَٱتَّقُوا۟ ٱلنَّارَ ٱلَّتِى وَقُودُهَا ٱلنَّاسُ وَٱلْحِجَارَةُ أُعِدَّتْ لِلْكَٰفِرِينَ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإدغام بغنة",
+    "الإدغام بغير غنة",
+    "الإخفاء الحقيقي",
+    "الإقلاب"
+   ],
+   "answer": 1,
+   "explain": "نون ساكنة بعدها لام. إدغام النون الساكنة أو التنوين في اللام أو الراء إدغاماً كاملاً من غير غنة",
+   "surah": 2,
+   "ayah": 24,
+   "word": "فَإِن لَّمْ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/noon-sakinah/noon-sakinah-5",
+   "id": "listen-noon-sakinah-5-2",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «فَإِن لَّمْ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإخفاء الحقيقي",
+    "الإدغام بغنة",
+    "الإدغام بغير غنة",
+    "الإقلاب"
+   ],
+   "answer": 2,
+   "explain": "تنوين بعده راء. إدغام النون الساكنة أو التنوين في اللام أو الراء إدغاماً كاملاً من غير غنة",
+   "surah": 2,
+   "ayah": 173,
+   "word": "غَفُورٌ رَّحِيمٌ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/noon-sakinah/noon-sakinah-5",
+   "id": "rule-noon-sakinah-5-3",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «غَفُورٌ رَّحِيمٌ»؟",
+   "ayah_text": "إِنَّمَا حَرَّمَ عَلَيْكُمُ ٱلْمَيْتَةَ وَٱلدَّمَ وَلَحْمَ ٱلْخِنزِيرِ وَمَآ أُهِلَّ بِهِۦ لِغَيْرِ ٱللَّهِ فَمَنِ ٱضْطُرَّ غَيْرَ بَاغٍ وَلَا عَادٍ فَلَآ إِثْمَ عَلَيْهِ إِنَّ ٱللَّهَ غَفُورٌ رَّحِيمٌ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإخفاء الحقيقي",
+    "الإدغام بغنة",
+    "الإدغام بغير غنة",
+    "الإقلاب"
+   ],
+   "answer": 2,
+   "explain": "تنوين بعده راء. إدغام النون الساكنة أو التنوين في اللام أو الراء إدغاماً كاملاً من غير غنة",
+   "surah": 2,
+   "ayah": 173,
+   "word": "غَفُورٌ رَّحِيمٌ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/noon-sakinah/noon-sakinah-5",
+   "id": "listen-noon-sakinah-5-3",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «غَفُورٌ رَّحِيمٌ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإقلاب",
+    "الإخفاء الحقيقي",
+    "الإدغام بغنة",
+    "الإدغام بغير غنة"
+   ],
+   "answer": 0,
+   "explain": "نون ساكنة بعدها باء. قلب النون الساكنة أو التنوين ميماً مخفاة بغنة عند الباء",
+   "surah": 2,
+   "ayah": 27,
+   "word": "مِنۢ بَعْدِ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/noon-sakinah/noon-sakinah-6",
+   "id": "rule-noon-sakinah-6-0",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «مِنۢ بَعْدِ»؟",
+   "ayah_text": "ٱلَّذِينَ يَنقُضُونَ عَهْدَ ٱللَّهِ مِنۢ بَعْدِ مِيثَٰقِهِۦ وَيَقْطَعُونَ مَآ أَمَرَ ٱللَّهُ بِهِۦٓ أَن يُوصَلَ وَيُفْسِدُونَ فِى ٱلْأَرْضِ أُو۟لَٰٓئِكَ هُمُ ٱلْخَٰسِرُونَ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإقلاب",
+    "الإخفاء الحقيقي",
+    "الإدغام بغنة",
+    "الإدغام بغير غنة"
+   ],
+   "answer": 0,
+   "explain": "نون ساكنة بعدها باء. قلب النون الساكنة أو التنوين ميماً مخفاة بغنة عند الباء",
+   "surah": 2,
+   "ayah": 27,
+   "word": "مِنۢ بَعْدِ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/noon-sakinah/noon-sakinah-6",
+   "id": "listen-noon-sakinah-6-0",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «مِنۢ بَعْدِ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإدغام بغير غنة",
+    "الإقلاب",
+    "الإدغام بغنة",
+    "الإخفاء الحقيقي"
+   ],
+   "answer": 1,
+   "explain": "نون ساكنة بعدها باء في كلمة واحدة. قلب النون الساكنة أو التنوين ميماً مخفاة بغنة عند الباء",
+   "surah": 2,
+   "ayah": 33,
+   "word": "أَنۢبِئْهُم",
+   "surah_name": "البقرة",
+   "link": "/ahkam/noon-sakinah/noon-sakinah-6",
+   "id": "rule-noon-sakinah-6-1",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «أَنۢبِئْهُم»؟",
+   "ayah_text": "قَالَ يَٰٓـَٔادَمُ أَنۢبِئْهُم بِأَسْمَآئِهِمْ فَلَمَّآ أَنۢبَأَهُم بِأَسْمَآئِهِمْ قَالَ أَلَمْ أَقُل لَّكُمْ إِنِّىٓ أَعْلَمُ غَيْبَ ٱلسَّمَٰوَٰتِ وَٱلْأَرْضِ وَأَعْلَمُ مَا تُبْدُونَ وَمَا كُنتُمْ تَكْتُمُونَ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإدغام بغير غنة",
+    "الإقلاب",
+    "الإدغام بغنة",
+    "الإخفاء الحقيقي"
+   ],
+   "answer": 1,
+   "explain": "نون ساكنة بعدها باء في كلمة واحدة. قلب النون الساكنة أو التنوين ميماً مخفاة بغنة عند الباء",
+   "surah": 2,
+   "ayah": 33,
+   "word": "أَنۢبِئْهُم",
+   "surah_name": "البقرة",
+   "link": "/ahkam/noon-sakinah/noon-sakinah-6",
+   "id": "listen-noon-sakinah-6-1",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «أَنۢبِئْهُم»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإدغام بغنة",
+    "الإدغام بغير غنة",
+    "الإخفاء الحقيقي",
+    "الإقلاب"
+   ],
+   "answer": 3,
+   "explain": "نون ساكنة بعدها باء في كلمة واحدة. قلب النون الساكنة أو التنوين ميماً مخفاة بغنة عند الباء",
+   "surah": 17,
+   "ayah": 90,
+   "word": "يَنۢبُوعًا",
+   "surah_name": "الإسراء",
+   "link": "/ahkam/noon-sakinah/noon-sakinah-6",
+   "id": "rule-noon-sakinah-6-2",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «يَنۢبُوعًا»؟",
+   "ayah_text": "وَقَالُوا۟ لَن نُّؤْمِنَ لَكَ حَتَّىٰ تَفْجُرَ لَنَا مِنَ ٱلْأَرْضِ يَنۢبُوعًا"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإدغام بغنة",
+    "الإدغام بغير غنة",
+    "الإخفاء الحقيقي",
+    "الإقلاب"
+   ],
+   "answer": 3,
+   "explain": "نون ساكنة بعدها باء في كلمة واحدة. قلب النون الساكنة أو التنوين ميماً مخفاة بغنة عند الباء",
+   "surah": 17,
+   "ayah": 90,
+   "word": "يَنۢبُوعًا",
+   "surah_name": "الإسراء",
+   "link": "/ahkam/noon-sakinah/noon-sakinah-6",
+   "id": "listen-noon-sakinah-6-2",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «يَنۢبُوعًا»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإقلاب",
+    "الإدغام بغنة",
+    "الإدغام بغير غنة",
+    "الإخفاء الحقيقي"
+   ],
+   "answer": 0,
+   "explain": "تنوين بعده باء. قلب النون الساكنة أو التنوين ميماً مخفاة بغنة عند الباء",
+   "surah": 22,
+   "ayah": 75,
+   "word": "سَمِيعٌۢ بَصِيرٌ",
+   "surah_name": "الحج",
+   "link": "/ahkam/noon-sakinah/noon-sakinah-6",
+   "id": "rule-noon-sakinah-6-3",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «سَمِيعٌۢ بَصِيرٌ»؟",
+   "ayah_text": "ٱللَّهُ يَصْطَفِى مِنَ ٱلْمَلَٰٓئِكَةِ رُسُلًا وَمِنَ ٱلنَّاسِ إِنَّ ٱللَّهَ سَمِيعٌۢ بَصِيرٌ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإقلاب",
+    "الإدغام بغنة",
+    "الإدغام بغير غنة",
+    "الإخفاء الحقيقي"
+   ],
+   "answer": 0,
+   "explain": "تنوين بعده باء. قلب النون الساكنة أو التنوين ميماً مخفاة بغنة عند الباء",
+   "surah": 22,
+   "ayah": 75,
+   "word": "سَمِيعٌۢ بَصِيرٌ",
+   "surah_name": "الحج",
+   "link": "/ahkam/noon-sakinah/noon-sakinah-6",
+   "id": "listen-noon-sakinah-6-3",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «سَمِيعٌۢ بَصِيرٌ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإخفاء الحقيقي",
+    "الإدغام بغير غنة",
+    "الإدغام بغنة",
+    "الإقلاب"
+   ],
+   "answer": 0,
+   "explain": "نون ساكنة بعدها فاء. النطق بالنون الساكنة أو التنوين بصفة بين الإظهار والإدغام، عارٍ عن التشديد، مع بقاء الغنة في الحرف الأول",
+   "surah": 2,
+   "ayah": 3,
+   "word": "يُنفِقُونَ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/noon-sakinah/noon-sakinah-7",
+   "id": "rule-noon-sakinah-7-0",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «يُنفِقُونَ»؟",
+   "ayah_text": "ٱلَّذِينَ يُؤْمِنُونَ بِٱلْغَيْبِ وَيُقِيمُونَ ٱلصَّلَوٰةَ وَمِمَّا رَزَقْنَٰهُمْ يُنفِقُونَ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإخفاء الحقيقي",
+    "الإدغام بغير غنة",
+    "الإدغام بغنة",
+    "الإقلاب"
+   ],
+   "answer": 0,
+   "explain": "نون ساكنة بعدها فاء. النطق بالنون الساكنة أو التنوين بصفة بين الإظهار والإدغام، عارٍ عن التشديد، مع بقاء الغنة في الحرف الأول",
+   "surah": 2,
+   "ayah": 3,
+   "word": "يُنفِقُونَ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/noon-sakinah/noon-sakinah-7",
+   "id": "listen-noon-sakinah-7-0",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «يُنفِقُونَ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإدغام بغنة",
+    "الإدغام بغير غنة",
+    "الإخفاء الحقيقي",
+    "الإقلاب"
+   ],
+   "answer": 2,
+   "explain": "نون ساكنة بعدها قاف (غنة مفخمة). النطق بالنون الساكنة أو التنوين بصفة بين الإظهار والإدغام، عارٍ عن التشديد، مع بقاء الغنة في الحرف الأول",
+   "surah": 2,
+   "ayah": 4,
+   "word": "مِن قَبْلِكَ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/noon-sakinah/noon-sakinah-7",
+   "id": "rule-noon-sakinah-7-1",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «مِن قَبْلِكَ»؟",
+   "ayah_text": "وَٱلَّذِينَ يُؤْمِنُونَ بِمَآ أُنزِلَ إِلَيْكَ وَمَآ أُنزِلَ مِن قَبْلِكَ وَبِٱلْءَاخِرَةِ هُمْ يُوقِنُونَ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإدغام بغنة",
+    "الإدغام بغير غنة",
+    "الإخفاء الحقيقي",
+    "الإقلاب"
+   ],
+   "answer": 2,
+   "explain": "نون ساكنة بعدها قاف (غنة مفخمة). النطق بالنون الساكنة أو التنوين بصفة بين الإظهار والإدغام، عارٍ عن التشديد، مع بقاء الغنة في الحرف الأول",
+   "surah": 2,
+   "ayah": 4,
+   "word": "مِن قَبْلِكَ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/noon-sakinah/noon-sakinah-7",
+   "id": "listen-noon-sakinah-7-1",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «مِن قَبْلِكَ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإقلاب",
+    "الإخفاء الحقيقي",
+    "الإدغام بغنة",
+    "الإدغام بغير غنة"
+   ],
+   "answer": 1,
+   "explain": "نون ساكنة بعدها زاي. النطق بالنون الساكنة أو التنوين بصفة بين الإظهار والإدغام، عارٍ عن التشديد، مع بقاء الغنة في الحرف الأول",
+   "surah": 2,
+   "ayah": 4,
+   "word": "أُنزِلَ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/noon-sakinah/noon-sakinah-7",
+   "id": "rule-noon-sakinah-7-2",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «أُنزِلَ»؟",
+   "ayah_text": "وَٱلَّذِينَ يُؤْمِنُونَ بِمَآ أُنزِلَ إِلَيْكَ وَمَآ أُنزِلَ مِن قَبْلِكَ وَبِٱلْءَاخِرَةِ هُمْ يُوقِنُونَ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإقلاب",
+    "الإخفاء الحقيقي",
+    "الإدغام بغنة",
+    "الإدغام بغير غنة"
+   ],
+   "answer": 1,
+   "explain": "نون ساكنة بعدها زاي. النطق بالنون الساكنة أو التنوين بصفة بين الإظهار والإدغام، عارٍ عن التشديد، مع بقاء الغنة في الحرف الأول",
+   "surah": 2,
+   "ayah": 4,
+   "word": "أُنزِلَ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/noon-sakinah/noon-sakinah-7",
+   "id": "listen-noon-sakinah-7-2",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «أُنزِلَ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإخفاء الحقيقي",
+    "الإدغام بغير غنة",
+    "الإقلاب",
+    "الإدغام بغنة"
+   ],
+   "answer": 0,
+   "explain": "نون ساكنة بعدها تاء. النطق بالنون الساكنة أو التنوين بصفة بين الإظهار والإدغام، عارٍ عن التشديد، مع بقاء الغنة في الحرف الأول",
+   "surah": 2,
+   "ayah": 23,
+   "word": "كُنتُمْ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/noon-sakinah/noon-sakinah-7",
+   "id": "rule-noon-sakinah-7-3",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «كُنتُمْ»؟",
+   "ayah_text": "وَإِن كُنتُمْ فِى رَيْبٍ مِّمَّا نَزَّلْنَا عَلَىٰ عَبْدِنَا فَأْتُوا۟ بِسُورَةٍ مِّن مِّثْلِهِۦ وَٱدْعُوا۟ شُهَدَآءَكُم مِّن دُونِ ٱللَّهِ إِن كُنتُمْ صَٰدِقِينَ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإخفاء الحقيقي",
+    "الإدغام بغير غنة",
+    "الإقلاب",
+    "الإدغام بغنة"
+   ],
+   "answer": 0,
+   "explain": "نون ساكنة بعدها تاء. النطق بالنون الساكنة أو التنوين بصفة بين الإظهار والإدغام، عارٍ عن التشديد، مع بقاء الغنة في الحرف الأول",
+   "surah": 2,
+   "ayah": 23,
+   "word": "كُنتُمْ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/noon-sakinah/noon-sakinah-7",
+   "id": "listen-noon-sakinah-7-3",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «كُنتُمْ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإدغام الشفوي",
+    "المد المنفصل",
+    "الإخفاء الشفوي",
+    "الإدغام بغنة"
+   ],
+   "answer": 2,
+   "explain": "ميم ساكنة بعدها باء. إخفاء الميم الساكنة عند الباء مع الغنة",
+   "surah": 105,
+   "ayah": 4,
+   "word": "تَرْمِيهِم بِحِجَارَةٍ",
+   "surah_name": "الفيل",
+   "link": "/ahkam/meem-sakinah/meem-sakinah-2",
+   "id": "rule-meem-sakinah-2-0",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «تَرْمِيهِم بِحِجَارَةٍ»؟",
+   "ayah_text": "تَرْمِيهِم بِحِجَارَةٍ مِّن سِجِّيلٍ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإدغام الشفوي",
+    "المد المنفصل",
+    "الإخفاء الشفوي",
+    "الإدغام بغنة"
+   ],
+   "answer": 2,
+   "explain": "ميم ساكنة بعدها باء. إخفاء الميم الساكنة عند الباء مع الغنة",
+   "surah": 105,
+   "ayah": 4,
+   "word": "تَرْمِيهِم بِحِجَارَةٍ",
+   "surah_name": "الفيل",
+   "link": "/ahkam/meem-sakinah/meem-sakinah-2",
+   "id": "listen-meem-sakinah-2-0",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «تَرْمِيهِم بِحِجَارَةٍ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "إدغام المتقاربين الصغير",
+    "المد اللازم وأقسامه",
+    "الإخفاء الشفوي",
+    "الإخفاء الحقيقي"
+   ],
+   "answer": 2,
+   "explain": "ميم ساكنة بعدها باء. إخفاء الميم الساكنة عند الباء مع الغنة",
+   "surah": 2,
+   "ayah": 8,
+   "word": "هُم بِمُؤْمِنِينَ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/meem-sakinah/meem-sakinah-2",
+   "id": "rule-meem-sakinah-2-1",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «هُم بِمُؤْمِنِينَ»؟",
+   "ayah_text": "وَمِنَ ٱلنَّاسِ مَن يَقُولُ ءَامَنَّا بِٱللَّهِ وَبِٱلْيَوْمِ ٱلْءَاخِرِ وَمَا هُم بِمُؤْمِنِينَ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "إدغام المتقاربين الصغير",
+    "المد اللازم وأقسامه",
+    "الإخفاء الشفوي",
+    "الإخفاء الحقيقي"
+   ],
+   "answer": 2,
+   "explain": "ميم ساكنة بعدها باء. إخفاء الميم الساكنة عند الباء مع الغنة",
+   "surah": 2,
+   "ayah": 8,
+   "word": "هُم بِمُؤْمِنِينَ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/meem-sakinah/meem-sakinah-2",
+   "id": "listen-meem-sakinah-2-1",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «هُم بِمُؤْمِنِينَ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد الطبيعي",
+    "القلقلة ومراتبها",
+    "الإدغام الشفوي",
+    "الإخفاء الشفوي"
+   ],
+   "answer": 3,
+   "explain": "ميم ساكنة بعدها باء. إخفاء الميم الساكنة عند الباء مع الغنة",
+   "surah": 3,
+   "ayah": 101,
+   "word": "يَعْتَصِم بِٱللَّهِ",
+   "surah_name": "آل عمران",
+   "link": "/ahkam/meem-sakinah/meem-sakinah-2",
+   "id": "rule-meem-sakinah-2-2",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «يَعْتَصِم بِٱللَّهِ»؟",
+   "ayah_text": "وَكَيْفَ تَكْفُرُونَ وَأَنتُمْ تُتْلَىٰ عَلَيْكُمْ ءَايَٰتُ ٱللَّهِ وَفِيكُمْ رَسُولُهُۥ وَمَن يَعْتَصِم بِٱللَّهِ فَقَدْ هُدِىَ إِلَىٰ صِرَٰطٍ مُّسْتَقِيمٍ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد الطبيعي",
+    "القلقلة ومراتبها",
+    "الإدغام الشفوي",
+    "الإخفاء الشفوي"
+   ],
+   "answer": 3,
+   "explain": "ميم ساكنة بعدها باء. إخفاء الميم الساكنة عند الباء مع الغنة",
+   "surah": 3,
+   "ayah": 101,
+   "word": "يَعْتَصِم بِٱللَّهِ",
+   "surah_name": "آل عمران",
+   "link": "/ahkam/meem-sakinah/meem-sakinah-2",
+   "id": "listen-meem-sakinah-2-2",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «يَعْتَصِم بِٱللَّهِ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "إدغام المتقاربين الصغير",
+    "همزة الوصل وهمزة القطع",
+    "الإدغام الشفوي",
+    "المد المتصل"
+   ],
+   "answer": 2,
+   "explain": "ميم ساكنة بعدها ميم. إدغام الميم الساكنة في ميم متحركة بعدها، فتصيران ميماً واحدة مشددة مع الغنة. ويسمى أيضاً: إدغام المثلين الصغير",
+   "surah": 2,
+   "ayah": 249,
+   "word": "كَم مِّن فِئَةٍ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/meem-sakinah/meem-sakinah-3",
+   "id": "rule-meem-sakinah-3-0",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «كَم مِّن فِئَةٍ»؟",
+   "ayah_text": "فَلَمَّا فَصَلَ طَالُوتُ بِٱلْجُنُودِ قَالَ إِنَّ ٱللَّهَ مُبْتَلِيكُم بِنَهَرٍ فَمَن شَرِبَ مِنْهُ فَلَيْسَ مِنِّى وَمَن لَّمْ يَطْعَمْهُ فَإِنَّهُۥ مِنِّىٓ إِلَّا مَنِ ٱغْتَرَفَ غُرْفَةًۢ بِيَدِهِۦ فَشَرِبُوا۟ مِنْهُ إِلَّا قَلِيلًا مِّنْهُمْ فَلَمَّا جَاوَزَهُۥ هُوَ وَٱلَّذِينَ ءَامَنُوا۟ مَعَهُۥ قَالُوا۟ لَا طَاقَةَ لَنَا ٱلْيَوْمَ بِجَالُوتَ وَجُنُودِهِۦ قَالَ ٱلَّذِينَ يَظُنُّونَ أَنَّهُم مُّلَٰقُوا۟ ٱللَّهِ كَم مِّن فِئَةٍ قَلِيلَةٍ غَلَبَتْ فِئَةً كَثِيرَةًۢ بِإِذْنِ ٱللَّهِ وَٱللَّهُ مَعَ ٱلصَّٰبِرِينَ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "إدغام المتقاربين الصغير",
+    "همزة الوصل وهمزة القطع",
+    "الإدغام الشفوي",
+    "المد المتصل"
+   ],
+   "answer": 2,
+   "explain": "ميم ساكنة بعدها ميم. إدغام الميم الساكنة في ميم متحركة بعدها، فتصيران ميماً واحدة مشددة مع الغنة. ويسمى أيضاً: إدغام المثلين الصغير",
+   "surah": 2,
+   "ayah": 249,
+   "word": "كَم مِّن فِئَةٍ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/meem-sakinah/meem-sakinah-3",
+   "id": "listen-meem-sakinah-3-0",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «كَم مِّن فِئَةٍ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإخفاء الشفوي",
+    "الإدغام الشفوي",
+    "المد العارض للسكون ومد اللين",
+    "الإخفاء الحقيقي"
+   ],
+   "answer": 1,
+   "explain": "ميم ساكنة بعدها ميم. إدغام الميم الساكنة في ميم متحركة بعدها، فتصيران ميماً واحدة مشددة مع الغنة. ويسمى أيضاً: إدغام المثلين الصغير",
+   "surah": 2,
+   "ayah": 134,
+   "word": "وَلَكُم مَّا كَسَبْتُمْ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/meem-sakinah/meem-sakinah-3",
+   "id": "rule-meem-sakinah-3-1",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «وَلَكُم مَّا كَسَبْتُمْ»؟",
+   "ayah_text": "تِلْكَ أُمَّةٌ قَدْ خَلَتْ لَهَا مَا كَسَبَتْ وَلَكُم مَّا كَسَبْتُمْ وَلَا تُسْـَٔلُونَ عَمَّا كَانُوا۟ يَعْمَلُونَ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإخفاء الشفوي",
+    "الإدغام الشفوي",
+    "المد العارض للسكون ومد اللين",
+    "الإخفاء الحقيقي"
+   ],
+   "answer": 1,
+   "explain": "ميم ساكنة بعدها ميم. إدغام الميم الساكنة في ميم متحركة بعدها، فتصيران ميماً واحدة مشددة مع الغنة. ويسمى أيضاً: إدغام المثلين الصغير",
+   "surah": 2,
+   "ayah": 134,
+   "word": "وَلَكُم مَّا كَسَبْتُمْ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/meem-sakinah/meem-sakinah-3",
+   "id": "listen-meem-sakinah-3-1",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «وَلَكُم مَّا كَسَبْتُمْ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد اللازم وأقسامه",
+    "الإدغام الشفوي",
+    "إدغام المتجانسين الصغير",
+    "إدغام المتقاربين الصغير"
+   ],
+   "answer": 1,
+   "explain": "ميم ساكنة بعدها ميم. إدغام الميم الساكنة في ميم متحركة بعدها، فتصيران ميماً واحدة مشددة مع الغنة. ويسمى أيضاً: إدغام المثلين الصغير",
+   "surah": 106,
+   "ayah": 4,
+   "word": "أَطْعَمَهُم مِّن جُوعٍ",
+   "surah_name": "قريش",
+   "link": "/ahkam/meem-sakinah/meem-sakinah-3",
+   "id": "rule-meem-sakinah-3-2",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «أَطْعَمَهُم مِّن جُوعٍ»؟",
+   "ayah_text": "ٱلَّذِىٓ أَطْعَمَهُم مِّن جُوعٍ وَءَامَنَهُم مِّنْ خَوْفٍۭ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد اللازم وأقسامه",
+    "الإدغام الشفوي",
+    "إدغام المتجانسين الصغير",
+    "إدغام المتقاربين الصغير"
+   ],
+   "answer": 1,
+   "explain": "ميم ساكنة بعدها ميم. إدغام الميم الساكنة في ميم متحركة بعدها، فتصيران ميماً واحدة مشددة مع الغنة. ويسمى أيضاً: إدغام المثلين الصغير",
+   "surah": 106,
+   "ayah": 4,
+   "word": "أَطْعَمَهُم مِّن جُوعٍ",
+   "surah_name": "قريش",
+   "link": "/ahkam/meem-sakinah/meem-sakinah-3",
+   "id": "listen-meem-sakinah-3-2",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «أَطْعَمَهُم مِّن جُوعٍ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "القلقلة ومراتبها",
+    "همزة الوصل وهمزة القطع",
+    "النون والميم المشددتان",
+    "الإقلاب"
+   ],
+   "answer": 2,
+   "explain": "نون مشددة. صوت أغنّ مجهور مركّب في جسم النون والميم، لا عمل للسان فيه",
+   "surah": 2,
+   "ayah": 6,
+   "word": "إِنَّ ٱلَّذِينَ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/ghunnah/ghunnah-1",
+   "id": "rule-ghunnah-1-0",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «إِنَّ ٱلَّذِينَ»؟",
+   "ayah_text": "إِنَّ ٱلَّذِينَ كَفَرُوا۟ سَوَآءٌ عَلَيْهِمْ ءَأَنذَرْتَهُمْ أَمْ لَمْ تُنذِرْهُمْ لَا يُؤْمِنُونَ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "القلقلة ومراتبها",
+    "همزة الوصل وهمزة القطع",
+    "النون والميم المشددتان",
+    "الإقلاب"
+   ],
+   "answer": 2,
+   "explain": "نون مشددة. صوت أغنّ مجهور مركّب في جسم النون والميم، لا عمل للسان فيه",
+   "surah": 2,
+   "ayah": 6,
+   "word": "إِنَّ ٱلَّذِينَ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/ghunnah/ghunnah-1",
+   "id": "listen-ghunnah-1-0",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «إِنَّ ٱلَّذِينَ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإدغام الشفوي",
+    "همزة الوصل وهمزة القطع",
+    "النون والميم المشددتان",
+    "الإقلاب"
+   ],
+   "answer": 2,
+   "explain": "ميم مشددة. صوت أغنّ مجهور مركّب في جسم النون والميم، لا عمل للسان فيه",
+   "surah": 2,
+   "ayah": 28,
+   "word": "ثُمَّ يُمِيتُكُمْ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/ghunnah/ghunnah-1",
+   "id": "rule-ghunnah-1-1",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «ثُمَّ يُمِيتُكُمْ»؟",
+   "ayah_text": "كَيْفَ تَكْفُرُونَ بِٱللَّهِ وَكُنتُمْ أَمْوَٰتًا فَأَحْيَٰكُمْ ثُمَّ يُمِيتُكُمْ ثُمَّ يُحْيِيكُمْ ثُمَّ إِلَيْهِ تُرْجَعُونَ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإدغام الشفوي",
+    "همزة الوصل وهمزة القطع",
+    "النون والميم المشددتان",
+    "الإقلاب"
+   ],
+   "answer": 2,
+   "explain": "ميم مشددة. صوت أغنّ مجهور مركّب في جسم النون والميم، لا عمل للسان فيه",
+   "surah": 2,
+   "ayah": 28,
+   "word": "ثُمَّ يُمِيتُكُمْ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/ghunnah/ghunnah-1",
+   "id": "listen-ghunnah-1-1",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «ثُمَّ يُمِيتُكُمْ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "همزة الوصل وهمزة القطع",
+    "الإدغام بغنة",
+    "النون والميم المشددتان",
+    "الإدغام الشفوي"
+   ],
+   "answer": 2,
+   "explain": "نون مشددة. صوت أغنّ مجهور مركّب في جسم النون والميم، لا عمل للسان فيه",
+   "surah": 114,
+   "ayah": 1,
+   "word": "ٱلنَّاسِ",
+   "surah_name": "الناس",
+   "link": "/ahkam/ghunnah/ghunnah-1",
+   "id": "rule-ghunnah-1-2",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «ٱلنَّاسِ»؟",
+   "ayah_text": "قُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "همزة الوصل وهمزة القطع",
+    "الإدغام بغنة",
+    "النون والميم المشددتان",
+    "الإدغام الشفوي"
+   ],
+   "answer": 2,
+   "explain": "نون مشددة. صوت أغنّ مجهور مركّب في جسم النون والميم، لا عمل للسان فيه",
+   "surah": 114,
+   "ayah": 1,
+   "word": "ٱلنَّاسِ",
+   "surah_name": "الناس",
+   "link": "/ahkam/ghunnah/ghunnah-1",
+   "id": "listen-ghunnah-1-2",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «ٱلنَّاسِ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "النون والميم المشددتان",
+    "إدغام المتقاربين الصغير",
+    "المد العارض للسكون ومد اللين",
+    "الإخفاء الشفوي"
+   ],
+   "answer": 0,
+   "explain": "ميم مشددة. صوت أغنّ مجهور مركّب في جسم النون والميم، لا عمل للسان فيه",
+   "surah": 78,
+   "ayah": 1,
+   "word": "عَمَّ",
+   "surah_name": "النبإ",
+   "link": "/ahkam/ghunnah/ghunnah-1",
+   "id": "rule-ghunnah-1-3",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «عَمَّ»؟",
+   "ayah_text": "عَمَّ يَتَسَآءَلُونَ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "النون والميم المشددتان",
+    "إدغام المتقاربين الصغير",
+    "المد العارض للسكون ومد اللين",
+    "الإخفاء الشفوي"
+   ],
+   "answer": 0,
+   "explain": "ميم مشددة. صوت أغنّ مجهور مركّب في جسم النون والميم، لا عمل للسان فيه",
+   "surah": 78,
+   "ayah": 1,
+   "word": "عَمَّ",
+   "surah_name": "النبإ",
+   "link": "/ahkam/ghunnah/ghunnah-1",
+   "id": "listen-ghunnah-1-3",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «عَمَّ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد اللازم وأقسامه",
+    "لام التعريف: القمرية والشمسية",
+    "المد المنفصل",
+    "إدغام المتجانسين الصغير"
+   ],
+   "answer": 3,
+   "explain": "تاء ساكنة في دال. أن يلتقي حرفان اتفقا مخرجاً واختلفا صفة، الأول ساكن والثاني متحرك",
+   "surah": 10,
+   "ayah": 89,
+   "word": "أُجِيبَت دَّعْوَتُكُمَا",
+   "surah_name": "يونس",
+   "link": "/ahkam/idgham/idgham-3",
+   "id": "rule-idgham-3-0",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «أُجِيبَت دَّعْوَتُكُمَا»؟",
+   "ayah_text": "قَالَ قَدْ أُجِيبَت دَّعْوَتُكُمَا فَٱسْتَقِيمَا وَلَا تَتَّبِعَآنِّ سَبِيلَ ٱلَّذِينَ لَا يَعْلَمُونَ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد اللازم وأقسامه",
+    "لام التعريف: القمرية والشمسية",
+    "المد المنفصل",
+    "إدغام المتجانسين الصغير"
+   ],
+   "answer": 3,
+   "explain": "تاء ساكنة في دال. أن يلتقي حرفان اتفقا مخرجاً واختلفا صفة، الأول ساكن والثاني متحرك",
+   "surah": 10,
+   "ayah": 89,
+   "word": "أُجِيبَت دَّعْوَتُكُمَا",
+   "surah_name": "يونس",
+   "link": "/ahkam/idgham/idgham-3",
+   "id": "listen-idgham-3-0",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «أُجِيبَت دَّعْوَتُكُمَا»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد الطبيعي",
+    "المد اللازم وأقسامه",
+    "الإقلاب",
+    "إدغام المتجانسين الصغير"
+   ],
+   "answer": 3,
+   "explain": "دال ساكنة في تاء. أن يلتقي حرفان اتفقا مخرجاً واختلفا صفة، الأول ساكن والثاني متحرك",
+   "surah": 2,
+   "ayah": 256,
+   "word": "قَد تَّبَيَّنَ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/idgham/idgham-3",
+   "id": "rule-idgham-3-1",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «قَد تَّبَيَّنَ»؟",
+   "ayah_text": "لَآ إِكْرَاهَ فِى ٱلدِّينِ قَد تَّبَيَّنَ ٱلرُّشْدُ مِنَ ٱلْغَىِّ فَمَن يَكْفُرْ بِٱلطَّٰغُوتِ وَيُؤْمِنۢ بِٱللَّهِ فَقَدِ ٱسْتَمْسَكَ بِٱلْعُرْوَةِ ٱلْوُثْقَىٰ لَا ٱنفِصَامَ لَهَا وَٱللَّهُ سَمِيعٌ عَلِيمٌ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد الطبيعي",
+    "المد اللازم وأقسامه",
+    "الإقلاب",
+    "إدغام المتجانسين الصغير"
+   ],
+   "answer": 3,
+   "explain": "دال ساكنة في تاء. أن يلتقي حرفان اتفقا مخرجاً واختلفا صفة، الأول ساكن والثاني متحرك",
+   "surah": 2,
+   "ayah": 256,
+   "word": "قَد تَّبَيَّنَ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/idgham/idgham-3",
+   "id": "listen-idgham-3-1",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «قَد تَّبَيَّنَ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "إدغام المتجانسين الصغير",
+    "الإدغام بغير غنة",
+    "إدغام المتقاربين الصغير",
+    "المد اللازم وأقسامه"
+   ],
+   "answer": 0,
+   "explain": "تاء ساكنة في طاء. أن يلتقي حرفان اتفقا مخرجاً واختلفا صفة، الأول ساكن والثاني متحرك",
+   "surah": 3,
+   "ayah": 69,
+   "word": "وَدَّت طَّآئِفَةٌ",
+   "surah_name": "آل عمران",
+   "link": "/ahkam/idgham/idgham-3",
+   "id": "rule-idgham-3-2",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «وَدَّت طَّآئِفَةٌ»؟",
+   "ayah_text": "وَدَّت طَّآئِفَةٌ مِّنْ أَهْلِ ٱلْكِتَٰبِ لَوْ يُضِلُّونَكُمْ وَمَا يُضِلُّونَ إِلَّآ أَنفُسَهُمْ وَمَا يَشْعُرُونَ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "إدغام المتجانسين الصغير",
+    "الإدغام بغير غنة",
+    "إدغام المتقاربين الصغير",
+    "المد اللازم وأقسامه"
+   ],
+   "answer": 0,
+   "explain": "تاء ساكنة في طاء. أن يلتقي حرفان اتفقا مخرجاً واختلفا صفة، الأول ساكن والثاني متحرك",
+   "surah": 3,
+   "ayah": 69,
+   "word": "وَدَّت طَّآئِفَةٌ",
+   "surah_name": "آل عمران",
+   "link": "/ahkam/idgham/idgham-3",
+   "id": "listen-idgham-3-2",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «وَدَّت طَّآئِفَةٌ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "لام التعريف: القمرية والشمسية",
+    "المد المنفصل",
+    "الإدغام بغنة",
+    "إدغام المتجانسين الصغير"
+   ],
+   "answer": 3,
+   "explain": "طاء ساكنة في تاء: إدغام ناقص. أن يلتقي حرفان اتفقا مخرجاً واختلفا صفة، الأول ساكن والثاني متحرك",
+   "surah": 5,
+   "ayah": 28,
+   "word": "بَسَطتَ",
+   "surah_name": "المائدة",
+   "link": "/ahkam/idgham/idgham-3",
+   "id": "rule-idgham-3-3",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «بَسَطتَ»؟",
+   "ayah_text": "لَئِنۢ بَسَطتَ إِلَىَّ يَدَكَ لِتَقْتُلَنِى مَآ أَنَا۠ بِبَاسِطٍ يَدِىَ إِلَيْكَ لِأَقْتُلَكَ إِنِّىٓ أَخَافُ ٱللَّهَ رَبَّ ٱلْعَٰلَمِينَ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "لام التعريف: القمرية والشمسية",
+    "المد المنفصل",
+    "الإدغام بغنة",
+    "إدغام المتجانسين الصغير"
+   ],
+   "answer": 3,
+   "explain": "طاء ساكنة في تاء: إدغام ناقص. أن يلتقي حرفان اتفقا مخرجاً واختلفا صفة، الأول ساكن والثاني متحرك",
+   "surah": 5,
+   "ayah": 28,
+   "word": "بَسَطتَ",
+   "surah_name": "المائدة",
+   "link": "/ahkam/idgham/idgham-3",
+   "id": "listen-idgham-3-3",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «بَسَطتَ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد المنفصل",
+    "إدغام المتقاربين الصغير",
+    "المد المتصل",
+    "إدغام المتجانسين الصغير"
+   ],
+   "answer": 1,
+   "explain": "لام ساكنة في راء. أن يلتقي حرفان تقاربا مخرجاً أو صفة، الأول ساكن والثاني متحرك",
+   "surah": 17,
+   "ayah": 24,
+   "word": "وَقُل رَّبِّ",
+   "surah_name": "الإسراء",
+   "link": "/ahkam/idgham/idgham-4",
+   "id": "rule-idgham-4-0",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «وَقُل رَّبِّ»؟",
+   "ayah_text": "وَٱخْفِضْ لَهُمَا جَنَاحَ ٱلذُّلِّ مِنَ ٱلرَّحْمَةِ وَقُل رَّبِّ ٱرْحَمْهُمَا كَمَا رَبَّيَانِى صَغِيرًا"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد المنفصل",
+    "إدغام المتقاربين الصغير",
+    "المد المتصل",
+    "إدغام المتجانسين الصغير"
+   ],
+   "answer": 1,
+   "explain": "لام ساكنة في راء. أن يلتقي حرفان تقاربا مخرجاً أو صفة، الأول ساكن والثاني متحرك",
+   "surah": 17,
+   "ayah": 24,
+   "word": "وَقُل رَّبِّ",
+   "surah_name": "الإسراء",
+   "link": "/ahkam/idgham/idgham-4",
+   "id": "listen-idgham-4-0",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «وَقُل رَّبِّ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإدغام بغنة",
+    "لام التعريف: القمرية والشمسية",
+    "إدغام المتقاربين الصغير",
+    "المد المنفصل"
+   ],
+   "answer": 2,
+   "explain": "لام ساكنة في راء. أن يلتقي حرفان تقاربا مخرجاً أو صفة، الأول ساكن والثاني متحرك",
+   "surah": 4,
+   "ayah": 158,
+   "word": "بَل رَّفَعَهُ",
+   "surah_name": "النساء",
+   "link": "/ahkam/idgham/idgham-4",
+   "id": "rule-idgham-4-1",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «بَل رَّفَعَهُ»؟",
+   "ayah_text": "بَل رَّفَعَهُ ٱللَّهُ إِلَيْهِ وَكَانَ ٱللَّهُ عَزِيزًا حَكِيمًا"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإدغام بغنة",
+    "لام التعريف: القمرية والشمسية",
+    "إدغام المتقاربين الصغير",
+    "المد المنفصل"
+   ],
+   "answer": 2,
+   "explain": "لام ساكنة في راء. أن يلتقي حرفان تقاربا مخرجاً أو صفة، الأول ساكن والثاني متحرك",
+   "surah": 4,
+   "ayah": 158,
+   "word": "بَل رَّفَعَهُ",
+   "surah_name": "النساء",
+   "link": "/ahkam/idgham/idgham-4",
+   "id": "listen-idgham-4-1",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «بَل رَّفَعَهُ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "إدغام المتجانسين الصغير",
+    "الإدغام الشفوي",
+    "لام التعريف: القمرية والشمسية",
+    "إدغام المتقاربين الصغير"
+   ],
+   "answer": 3,
+   "explain": "قاف ساكنة في كاف. أن يلتقي حرفان تقاربا مخرجاً أو صفة، الأول ساكن والثاني متحرك",
+   "surah": 77,
+   "ayah": 20,
+   "word": "نَخْلُقكُّم",
+   "surah_name": "المرسلات",
+   "link": "/ahkam/idgham/idgham-4",
+   "id": "rule-idgham-4-2",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «نَخْلُقكُّم»؟",
+   "ayah_text": "أَلَمْ نَخْلُقكُّم مِّن مَّآءٍ مَّهِينٍ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "إدغام المتجانسين الصغير",
+    "الإدغام الشفوي",
+    "لام التعريف: القمرية والشمسية",
+    "إدغام المتقاربين الصغير"
+   ],
+   "answer": 3,
+   "explain": "قاف ساكنة في كاف. أن يلتقي حرفان تقاربا مخرجاً أو صفة، الأول ساكن والثاني متحرك",
+   "surah": 77,
+   "ayah": 20,
+   "word": "نَخْلُقكُّم",
+   "surah_name": "المرسلات",
+   "link": "/ahkam/idgham/idgham-4",
+   "id": "listen-idgham-4-2",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «نَخْلُقكُّم»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد العارض للسكون ومد اللين",
+    "المد المنفصل",
+    "المد الطبيعي",
+    "المد المتصل"
+   ],
+   "answer": 2,
+   "explain": "ألف ساكنة بعد فتح. المد الذي لا تقوم ذات الحرف إلا به، ولا يتوقف على سبب من همز أو سكون",
+   "surah": 2,
+   "ayah": 30,
+   "word": "قَالَ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/mudood/mudood-2",
+   "id": "rule-mudood-2-0",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «قَالَ»؟",
+   "ayah_text": "وَإِذْ قَالَ رَبُّكَ لِلْمَلَٰٓئِكَةِ إِنِّى جَاعِلٌ فِى ٱلْأَرْضِ خَلِيفَةً قَالُوٓا۟ أَتَجْعَلُ فِيهَا مَن يُفْسِدُ فِيهَا وَيَسْفِكُ ٱلدِّمَآءَ وَنَحْنُ نُسَبِّحُ بِحَمْدِكَ وَنُقَدِّسُ لَكَ قَالَ إِنِّىٓ أَعْلَمُ مَا لَا تَعْلَمُونَ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد العارض للسكون ومد اللين",
+    "المد المنفصل",
+    "المد الطبيعي",
+    "المد المتصل"
+   ],
+   "answer": 2,
+   "explain": "ألف ساكنة بعد فتح. المد الذي لا تقوم ذات الحرف إلا به، ولا يتوقف على سبب من همز أو سكون",
+   "surah": 2,
+   "ayah": 30,
+   "word": "قَالَ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/mudood/mudood-2",
+   "id": "listen-mudood-2-0",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «قَالَ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد الطبيعي",
+    "المد المتصل",
+    "المد العارض للسكون ومد اللين",
+    "المد اللازم وأقسامه"
+   ],
+   "answer": 0,
+   "explain": "واو ساكنة بعد ضم. المد الذي لا تقوم ذات الحرف إلا به، ولا يتوقف على سبب من همز أو سكون",
+   "surah": 2,
+   "ayah": 8,
+   "word": "يَقُولُ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/mudood/mudood-2",
+   "id": "rule-mudood-2-1",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «يَقُولُ»؟",
+   "ayah_text": "وَمِنَ ٱلنَّاسِ مَن يَقُولُ ءَامَنَّا بِٱللَّهِ وَبِٱلْيَوْمِ ٱلْءَاخِرِ وَمَا هُم بِمُؤْمِنِينَ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد الطبيعي",
+    "المد المتصل",
+    "المد العارض للسكون ومد اللين",
+    "المد اللازم وأقسامه"
+   ],
+   "answer": 0,
+   "explain": "واو ساكنة بعد ضم. المد الذي لا تقوم ذات الحرف إلا به، ولا يتوقف على سبب من همز أو سكون",
+   "surah": 2,
+   "ayah": 8,
+   "word": "يَقُولُ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/mudood/mudood-2",
+   "id": "listen-mudood-2-1",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «يَقُولُ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد المنفصل",
+    "المد المتصل",
+    "المد اللازم وأقسامه",
+    "المد الطبيعي"
+   ],
+   "answer": 3,
+   "explain": "ياء ساكنة بعد كسر. المد الذي لا تقوم ذات الحرف إلا به، ولا يتوقف على سبب من همز أو سكون",
+   "surah": 2,
+   "ayah": 11,
+   "word": "قِيلَ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/mudood/mudood-2",
+   "id": "rule-mudood-2-2",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «قِيلَ»؟",
+   "ayah_text": "وَإِذَا قِيلَ لَهُمْ لَا تُفْسِدُوا۟ فِى ٱلْأَرْضِ قَالُوٓا۟ إِنَّمَا نَحْنُ مُصْلِحُونَ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد المنفصل",
+    "المد المتصل",
+    "المد اللازم وأقسامه",
+    "المد الطبيعي"
+   ],
+   "answer": 3,
+   "explain": "ياء ساكنة بعد كسر. المد الذي لا تقوم ذات الحرف إلا به، ولا يتوقف على سبب من همز أو سكون",
+   "surah": 2,
+   "ayah": 11,
+   "word": "قِيلَ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/mudood/mudood-2",
+   "id": "listen-mudood-2-2",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «قِيلَ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد الطبيعي",
+    "المد المنفصل",
+    "المد العارض للسكون ومد اللين",
+    "المد المتصل"
+   ],
+   "answer": 3,
+   "explain": "ألف بعدها همز في كلمة واحدة. أن يأتي بعد حرف المد همز في كلمة واحدة",
+   "surah": 4,
+   "ayah": 43,
+   "word": "جَآءَ",
+   "surah_name": "النساء",
+   "link": "/ahkam/mudood/mudood-3",
+   "id": "rule-mudood-3-0",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «جَآءَ»؟",
+   "ayah_text": "يَٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ لَا تَقْرَبُوا۟ ٱلصَّلَوٰةَ وَأَنتُمْ سُكَٰرَىٰ حَتَّىٰ تَعْلَمُوا۟ مَا تَقُولُونَ وَلَا جُنُبًا إِلَّا عَابِرِى سَبِيلٍ حَتَّىٰ تَغْتَسِلُوا۟ وَإِن كُنتُم مَّرْضَىٰٓ أَوْ عَلَىٰ سَفَرٍ أَوْ جَآءَ أَحَدٌ مِّنكُم مِّنَ ٱلْغَآئِطِ أَوْ لَٰمَسْتُمُ ٱلنِّسَآءَ فَلَمْ تَجِدُوا۟ مَآءً فَتَيَمَّمُوا۟ صَعِيدًا طَيِّبًا فَٱمْسَحُوا۟ بِوُجُوهِكُمْ وَأَيْدِيكُمْ إِنَّ ٱللَّهَ كَانَ عَفُوًّا غَفُورًا"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد الطبيعي",
+    "المد المنفصل",
+    "المد العارض للسكون ومد اللين",
+    "المد المتصل"
+   ],
+   "answer": 3,
+   "explain": "ألف بعدها همز في كلمة واحدة. أن يأتي بعد حرف المد همز في كلمة واحدة",
+   "surah": 4,
+   "ayah": 43,
+   "word": "جَآءَ",
+   "surah_name": "النساء",
+   "link": "/ahkam/mudood/mudood-3",
+   "id": "listen-mudood-3-0",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «جَآءَ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد الطبيعي",
+    "المد المنفصل",
+    "المد المتصل",
+    "المد اللازم وأقسامه"
+   ],
+   "answer": 2,
+   "explain": "ألف بعدها همز متطرف. أن يأتي بعد حرف المد همز في كلمة واحدة",
+   "surah": 2,
+   "ayah": 19,
+   "word": "ٱلسَّمَآءِ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/mudood/mudood-3",
+   "id": "rule-mudood-3-1",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «ٱلسَّمَآءِ»؟",
+   "ayah_text": "أَوْ كَصَيِّبٍ مِّنَ ٱلسَّمَآءِ فِيهِ ظُلُمَٰتٌ وَرَعْدٌ وَبَرْقٌ يَجْعَلُونَ أَصَٰبِعَهُمْ فِىٓ ءَاذَانِهِم مِّنَ ٱلصَّوَٰعِقِ حَذَرَ ٱلْمَوْتِ وَٱللَّهُ مُحِيطٌۢ بِٱلْكَٰفِرِينَ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد الطبيعي",
+    "المد المنفصل",
+    "المد المتصل",
+    "المد اللازم وأقسامه"
+   ],
+   "answer": 2,
+   "explain": "ألف بعدها همز متطرف. أن يأتي بعد حرف المد همز في كلمة واحدة",
+   "surah": 2,
+   "ayah": 19,
+   "word": "ٱلسَّمَآءِ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/mudood/mudood-3",
+   "id": "listen-mudood-3-1",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «ٱلسَّمَآءِ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد العارض للسكون ومد اللين",
+    "المد المتصل",
+    "المد اللازم وأقسامه",
+    "المد المنفصل"
+   ],
+   "answer": 1,
+   "explain": "واو بعدها همز. أن يأتي بعد حرف المد همز في كلمة واحدة",
+   "surah": 2,
+   "ayah": 49,
+   "word": "سُوٓءَ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/mudood/mudood-3",
+   "id": "rule-mudood-3-2",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «سُوٓءَ»؟",
+   "ayah_text": "وَإِذْ نَجَّيْنَٰكُم مِّنْ ءَالِ فِرْعَوْنَ يَسُومُونَكُمْ سُوٓءَ ٱلْعَذَابِ يُذَبِّحُونَ أَبْنَآءَكُمْ وَيَسْتَحْيُونَ نِسَآءَكُمْ وَفِى ذَٰلِكُم بَلَآءٌ مِّن رَّبِّكُمْ عَظِيمٌ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد العارض للسكون ومد اللين",
+    "المد المتصل",
+    "المد اللازم وأقسامه",
+    "المد المنفصل"
+   ],
+   "answer": 1,
+   "explain": "واو بعدها همز. أن يأتي بعد حرف المد همز في كلمة واحدة",
+   "surah": 2,
+   "ayah": 49,
+   "word": "سُوٓءَ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/mudood/mudood-3",
+   "id": "listen-mudood-3-2",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «سُوٓءَ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد الطبيعي",
+    "المد اللازم وأقسامه",
+    "المد المتصل",
+    "المد المنفصل"
+   ],
+   "answer": 2,
+   "explain": "ياء بعدها همز. أن يأتي بعد حرف المد همز في كلمة واحدة",
+   "surah": 67,
+   "ayah": 27,
+   "word": "سِيٓـَٔتْ",
+   "surah_name": "الملك",
+   "link": "/ahkam/mudood/mudood-3",
+   "id": "rule-mudood-3-3",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «سِيٓـَٔتْ»؟",
+   "ayah_text": "فَلَمَّا رَأَوْهُ زُلْفَةً سِيٓـَٔتْ وُجُوهُ ٱلَّذِينَ كَفَرُوا۟ وَقِيلَ هَٰذَا ٱلَّذِى كُنتُم بِهِۦ تَدَّعُونَ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد الطبيعي",
+    "المد اللازم وأقسامه",
+    "المد المتصل",
+    "المد المنفصل"
+   ],
+   "answer": 2,
+   "explain": "ياء بعدها همز. أن يأتي بعد حرف المد همز في كلمة واحدة",
+   "surah": 67,
+   "ayah": 27,
+   "word": "سِيٓـَٔتْ",
+   "surah_name": "الملك",
+   "link": "/ahkam/mudood/mudood-3",
+   "id": "listen-mudood-3-3",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «سِيٓـَٔتْ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد المتصل",
+    "المد المنفصل",
+    "المد اللازم وأقسامه",
+    "المد العارض للسكون ومد اللين"
+   ],
+   "answer": 1,
+   "explain": "ألف في آخر كلمة وبعدها همز. أن يأتي حرف المد في آخر كلمة والهمز في أول الكلمة التي تليها",
+   "surah": 2,
+   "ayah": 4,
+   "word": "بِمَآ أُنزِلَ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/mudood/mudood-4",
+   "id": "rule-mudood-4-0",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «بِمَآ أُنزِلَ»؟",
+   "ayah_text": "وَٱلَّذِينَ يُؤْمِنُونَ بِمَآ أُنزِلَ إِلَيْكَ وَمَآ أُنزِلَ مِن قَبْلِكَ وَبِٱلْءَاخِرَةِ هُمْ يُوقِنُونَ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد المتصل",
+    "المد المنفصل",
+    "المد اللازم وأقسامه",
+    "المد العارض للسكون ومد اللين"
+   ],
+   "answer": 1,
+   "explain": "ألف في آخر كلمة وبعدها همز. أن يأتي حرف المد في آخر كلمة والهمز في أول الكلمة التي تليها",
+   "surah": 2,
+   "ayah": 4,
+   "word": "بِمَآ أُنزِلَ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/mudood/mudood-4",
+   "id": "listen-mudood-4-0",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «بِمَآ أُنزِلَ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد اللازم وأقسامه",
+    "المد المنفصل",
+    "المد العارض للسكون ومد اللين",
+    "المد الطبيعي"
+   ],
+   "answer": 1,
+   "explain": "واو في آخر كلمة وبعدها همز. أن يأتي حرف المد في آخر كلمة والهمز في أول الكلمة التي تليها",
+   "surah": 66,
+   "ayah": 6,
+   "word": "قُوٓا۟ أَنفُسَكُمْ",
+   "surah_name": "التحريم",
+   "link": "/ahkam/mudood/mudood-4",
+   "id": "rule-mudood-4-1",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «قُوٓا۟ أَنفُسَكُمْ»؟",
+   "ayah_text": "يَٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ قُوٓا۟ أَنفُسَكُمْ وَأَهْلِيكُمْ نَارًا وَقُودُهَا ٱلنَّاسُ وَٱلْحِجَارَةُ عَلَيْهَا مَلَٰٓئِكَةٌ غِلَاظٌ شِدَادٌ لَّا يَعْصُونَ ٱللَّهَ مَآ أَمَرَهُمْ وَيَفْعَلُونَ مَا يُؤْمَرُونَ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد اللازم وأقسامه",
+    "المد المنفصل",
+    "المد العارض للسكون ومد اللين",
+    "المد الطبيعي"
+   ],
+   "answer": 1,
+   "explain": "واو في آخر كلمة وبعدها همز. أن يأتي حرف المد في آخر كلمة والهمز في أول الكلمة التي تليها",
+   "surah": 66,
+   "ayah": 6,
+   "word": "قُوٓا۟ أَنفُسَكُمْ",
+   "surah_name": "التحريم",
+   "link": "/ahkam/mudood/mudood-4",
+   "id": "listen-mudood-4-1",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «قُوٓا۟ أَنفُسَكُمْ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد الطبيعي",
+    "المد العارض للسكون ومد اللين",
+    "المد المنفصل",
+    "المد اللازم وأقسامه"
+   ],
+   "answer": 2,
+   "explain": "ياء في آخر كلمة وبعدها همز. أن يأتي حرف المد في آخر كلمة والهمز في أول الكلمة التي تليها",
+   "surah": 2,
+   "ayah": 235,
+   "word": "فِىٓ أَنفُسِكُمْ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/mudood/mudood-4",
+   "id": "rule-mudood-4-2",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «فِىٓ أَنفُسِكُمْ»؟",
+   "ayah_text": "وَلَا جُنَاحَ عَلَيْكُمْ فِيمَا عَرَّضْتُم بِهِۦ مِنْ خِطْبَةِ ٱلنِّسَآءِ أَوْ أَكْنَنتُمْ فِىٓ أَنفُسِكُمْ عَلِمَ ٱللَّهُ أَنَّكُمْ سَتَذْكُرُونَهُنَّ وَلَٰكِن لَّا تُوَاعِدُوهُنَّ سِرًّا إِلَّآ أَن تَقُولُوا۟ قَوْلًا مَّعْرُوفًا وَلَا تَعْزِمُوا۟ عُقْدَةَ ٱلنِّكَاحِ حَتَّىٰ يَبْلُغَ ٱلْكِتَٰبُ أَجَلَهُۥ وَٱعْلَمُوٓا۟ أَنَّ ٱللَّهَ يَعْلَمُ مَا فِىٓ أَنفُسِكُمْ فَٱحْذَرُوهُ وَٱعْلَمُوٓا۟ أَنَّ ٱللَّهَ غَفُورٌ حَلِيمٌ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد الطبيعي",
+    "المد العارض للسكون ومد اللين",
+    "المد المنفصل",
+    "المد اللازم وأقسامه"
+   ],
+   "answer": 2,
+   "explain": "ياء في آخر كلمة وبعدها همز. أن يأتي حرف المد في آخر كلمة والهمز في أول الكلمة التي تليها",
+   "surah": 2,
+   "ayah": 235,
+   "word": "فِىٓ أَنفُسِكُمْ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/mudood/mudood-4",
+   "id": "listen-mudood-4-2",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «فِىٓ أَنفُسِكُمْ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد الطبيعي",
+    "المد المنفصل",
+    "المد المتصل",
+    "المد اللازم وأقسامه"
+   ],
+   "answer": 1,
+   "explain": "منفصل حكمي: ياء النداء. أن يأتي حرف المد في آخر كلمة والهمز في أول الكلمة التي تليها",
+   "surah": 2,
+   "ayah": 21,
+   "word": "يَٰٓأَيُّهَا",
+   "surah_name": "البقرة",
+   "link": "/ahkam/mudood/mudood-4",
+   "id": "rule-mudood-4-3",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «يَٰٓأَيُّهَا»؟",
+   "ayah_text": "يَٰٓأَيُّهَا ٱلنَّاسُ ٱعْبُدُوا۟ رَبَّكُمُ ٱلَّذِى خَلَقَكُمْ وَٱلَّذِينَ مِن قَبْلِكُمْ لَعَلَّكُمْ تَتَّقُونَ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد الطبيعي",
+    "المد المنفصل",
+    "المد المتصل",
+    "المد اللازم وأقسامه"
+   ],
+   "answer": 1,
+   "explain": "منفصل حكمي: ياء النداء. أن يأتي حرف المد في آخر كلمة والهمز في أول الكلمة التي تليها",
+   "surah": 2,
+   "ayah": 21,
+   "word": "يَٰٓأَيُّهَا",
+   "surah_name": "البقرة",
+   "link": "/ahkam/mudood/mudood-4",
+   "id": "listen-mudood-4-3",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «يَٰٓأَيُّهَا»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد المتصل",
+    "المد اللازم وأقسامه",
+    "المد العارض للسكون ومد اللين",
+    "المد الطبيعي"
+   ],
+   "answer": 2,
+   "explain": "عارض للسكون عند الوقف. المد العارض للسكون: أن يأتي بعد حرف المد حرف متحرك يُسكَّن لأجل الوقف.\nمد اللين: أن يأتي بعد حرف اللين حرف يُسكَّن لأجل الوقف",
+   "surah": 1,
+   "ayah": 2,
+   "word": "ٱلْعَٰلَمِينَ",
+   "surah_name": "الفاتحة",
+   "link": "/ahkam/mudood/mudood-5",
+   "id": "rule-mudood-5-0",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «ٱلْعَٰلَمِينَ»؟",
+   "ayah_text": "ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَٰلَمِينَ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد المتصل",
+    "المد اللازم وأقسامه",
+    "المد العارض للسكون ومد اللين",
+    "المد الطبيعي"
+   ],
+   "answer": 2,
+   "explain": "عارض للسكون عند الوقف. المد العارض للسكون: أن يأتي بعد حرف المد حرف متحرك يُسكَّن لأجل الوقف.\nمد اللين: أن يأتي بعد حرف اللين حرف يُسكَّن لأجل الوقف",
+   "surah": 1,
+   "ayah": 2,
+   "word": "ٱلْعَٰلَمِينَ",
+   "surah_name": "الفاتحة",
+   "link": "/ahkam/mudood/mudood-5",
+   "id": "listen-mudood-5-0",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «ٱلْعَٰلَمِينَ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد المنفصل",
+    "المد العارض للسكون ومد اللين",
+    "المد اللازم وأقسامه",
+    "المد المتصل"
+   ],
+   "answer": 1,
+   "explain": "عارض للسكون عند الوقف. المد العارض للسكون: أن يأتي بعد حرف المد حرف متحرك يُسكَّن لأجل الوقف.\nمد اللين: أن يأتي بعد حرف اللين حرف يُسكَّن لأجل الوقف",
+   "surah": 1,
+   "ayah": 5,
+   "word": "نَسْتَعِينُ",
+   "surah_name": "الفاتحة",
+   "link": "/ahkam/mudood/mudood-5",
+   "id": "rule-mudood-5-1",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «نَسْتَعِينُ»؟",
+   "ayah_text": "إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد المنفصل",
+    "المد العارض للسكون ومد اللين",
+    "المد اللازم وأقسامه",
+    "المد المتصل"
+   ],
+   "answer": 1,
+   "explain": "عارض للسكون عند الوقف. المد العارض للسكون: أن يأتي بعد حرف المد حرف متحرك يُسكَّن لأجل الوقف.\nمد اللين: أن يأتي بعد حرف اللين حرف يُسكَّن لأجل الوقف",
+   "surah": 1,
+   "ayah": 5,
+   "word": "نَسْتَعِينُ",
+   "surah_name": "الفاتحة",
+   "link": "/ahkam/mudood/mudood-5",
+   "id": "listen-mudood-5-1",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «نَسْتَعِينُ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد المنفصل",
+    "المد العارض للسكون ومد اللين",
+    "المد اللازم وأقسامه",
+    "المد الطبيعي"
+   ],
+   "answer": 1,
+   "explain": "مد لين عند الوقف. المد العارض للسكون: أن يأتي بعد حرف المد حرف متحرك يُسكَّن لأجل الوقف.\nمد اللين: أن يأتي بعد حرف اللين حرف يُسكَّن لأجل الوقف",
+   "surah": 106,
+   "ayah": 4,
+   "word": "خَوْفٍۭ",
+   "surah_name": "قريش",
+   "link": "/ahkam/mudood/mudood-5",
+   "id": "rule-mudood-5-2",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «خَوْفٍۭ»؟",
+   "ayah_text": "ٱلَّذِىٓ أَطْعَمَهُم مِّن جُوعٍ وَءَامَنَهُم مِّنْ خَوْفٍۭ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد المنفصل",
+    "المد العارض للسكون ومد اللين",
+    "المد اللازم وأقسامه",
+    "المد الطبيعي"
+   ],
+   "answer": 1,
+   "explain": "مد لين عند الوقف. المد العارض للسكون: أن يأتي بعد حرف المد حرف متحرك يُسكَّن لأجل الوقف.\nمد اللين: أن يأتي بعد حرف اللين حرف يُسكَّن لأجل الوقف",
+   "surah": 106,
+   "ayah": 4,
+   "word": "خَوْفٍۭ",
+   "surah_name": "قريش",
+   "link": "/ahkam/mudood/mudood-5",
+   "id": "listen-mudood-5-2",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «خَوْفٍۭ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد اللازم وأقسامه",
+    "المد العارض للسكون ومد اللين",
+    "المد المنفصل",
+    "المد الطبيعي"
+   ],
+   "answer": 1,
+   "explain": "مد لين عند الوقف. المد العارض للسكون: أن يأتي بعد حرف المد حرف متحرك يُسكَّن لأجل الوقف.\nمد اللين: أن يأتي بعد حرف اللين حرف يُسكَّن لأجل الوقف",
+   "surah": 106,
+   "ayah": 3,
+   "word": "ٱلْبَيْتِ",
+   "surah_name": "قريش",
+   "link": "/ahkam/mudood/mudood-5",
+   "id": "rule-mudood-5-3",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «ٱلْبَيْتِ»؟",
+   "ayah_text": "فَلْيَعْبُدُوا۟ رَبَّ هَٰذَا ٱلْبَيْتِ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد اللازم وأقسامه",
+    "المد العارض للسكون ومد اللين",
+    "المد المنفصل",
+    "المد الطبيعي"
+   ],
+   "answer": 1,
+   "explain": "مد لين عند الوقف. المد العارض للسكون: أن يأتي بعد حرف المد حرف متحرك يُسكَّن لأجل الوقف.\nمد اللين: أن يأتي بعد حرف اللين حرف يُسكَّن لأجل الوقف",
+   "surah": 106,
+   "ayah": 3,
+   "word": "ٱلْبَيْتِ",
+   "surah_name": "قريش",
+   "link": "/ahkam/mudood/mudood-5",
+   "id": "listen-mudood-5-3",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «ٱلْبَيْتِ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد المنفصل",
+    "المد اللازم وأقسامه",
+    "المد العارض للسكون ومد اللين",
+    "المد المتصل"
+   ],
+   "answer": 1,
+   "explain": "كلمي مثقل. أن يأتي بعد حرف المد أو اللين سكون أصلي ثابت وصلاً ووقفاً",
+   "surah": 1,
+   "ayah": 7,
+   "word": "ٱلضَّآلِّينَ",
+   "surah_name": "الفاتحة",
+   "link": "/ahkam/mudood/mudood-8",
+   "id": "rule-mudood-8-0",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «ٱلضَّآلِّينَ»؟",
+   "ayah_text": "صِرَٰطَ ٱلَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ ٱلْمَغْضُوبِ عَلَيْهِمْ وَلَا ٱلضَّآلِّينَ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد المنفصل",
+    "المد اللازم وأقسامه",
+    "المد العارض للسكون ومد اللين",
+    "المد المتصل"
+   ],
+   "answer": 1,
+   "explain": "كلمي مثقل. أن يأتي بعد حرف المد أو اللين سكون أصلي ثابت وصلاً ووقفاً",
+   "surah": 1,
+   "ayah": 7,
+   "word": "ٱلضَّآلِّينَ",
+   "surah_name": "الفاتحة",
+   "link": "/ahkam/mudood/mudood-8",
+   "id": "listen-mudood-8-0",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «ٱلضَّآلِّينَ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد اللازم وأقسامه",
+    "المد المنفصل",
+    "المد العارض للسكون ومد اللين",
+    "المد المتصل"
+   ],
+   "answer": 0,
+   "explain": "كلمي مثقل. أن يأتي بعد حرف المد أو اللين سكون أصلي ثابت وصلاً ووقفاً",
+   "surah": 69,
+   "ayah": 1,
+   "word": "ٱلْحَآقَّةُ",
+   "surah_name": "الحاقة",
+   "link": "/ahkam/mudood/mudood-8",
+   "id": "rule-mudood-8-1",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «ٱلْحَآقَّةُ»؟",
+   "ayah_text": "ٱلْحَآقَّةُ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد اللازم وأقسامه",
+    "المد المنفصل",
+    "المد العارض للسكون ومد اللين",
+    "المد المتصل"
+   ],
+   "answer": 0,
+   "explain": "كلمي مثقل. أن يأتي بعد حرف المد أو اللين سكون أصلي ثابت وصلاً ووقفاً",
+   "surah": 69,
+   "ayah": 1,
+   "word": "ٱلْحَآقَّةُ",
+   "surah_name": "الحاقة",
+   "link": "/ahkam/mudood/mudood-8",
+   "id": "listen-mudood-8-1",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «ٱلْحَآقَّةُ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد العارض للسكون ومد اللين",
+    "المد المنفصل",
+    "المد الطبيعي",
+    "المد اللازم وأقسامه"
+   ],
+   "answer": 3,
+   "explain": "كلمي مثقل. أن يأتي بعد حرف المد أو اللين سكون أصلي ثابت وصلاً ووقفاً",
+   "surah": 2,
+   "ayah": 164,
+   "word": "دَآبَّةٍ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/mudood/mudood-8",
+   "id": "rule-mudood-8-2",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «دَآبَّةٍ»؟",
+   "ayah_text": "إِنَّ فِى خَلْقِ ٱلسَّمَٰوَٰتِ وَٱلْأَرْضِ وَٱخْتِلَٰفِ ٱلَّيْلِ وَٱلنَّهَارِ وَٱلْفُلْكِ ٱلَّتِى تَجْرِى فِى ٱلْبَحْرِ بِمَا يَنفَعُ ٱلنَّاسَ وَمَآ أَنزَلَ ٱللَّهُ مِنَ ٱلسَّمَآءِ مِن مَّآءٍ فَأَحْيَا بِهِ ٱلْأَرْضَ بَعْدَ مَوْتِهَا وَبَثَّ فِيهَا مِن كُلِّ دَآبَّةٍ وَتَصْرِيفِ ٱلرِّيَٰحِ وَٱلسَّحَابِ ٱلْمُسَخَّرِ بَيْنَ ٱلسَّمَآءِ وَٱلْأَرْضِ لَءَايَٰتٍ لِّقَوْمٍ يَعْقِلُونَ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد العارض للسكون ومد اللين",
+    "المد المنفصل",
+    "المد الطبيعي",
+    "المد اللازم وأقسامه"
+   ],
+   "answer": 3,
+   "explain": "كلمي مثقل. أن يأتي بعد حرف المد أو اللين سكون أصلي ثابت وصلاً ووقفاً",
+   "surah": 2,
+   "ayah": 164,
+   "word": "دَآبَّةٍ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/mudood/mudood-8",
+   "id": "listen-mudood-8-2",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «دَآبَّةٍ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد اللازم وأقسامه",
+    "المد العارض للسكون ومد اللين",
+    "المد الطبيعي",
+    "المد المتصل"
+   ],
+   "answer": 0,
+   "explain": "كلمي مخفف. أن يأتي بعد حرف المد أو اللين سكون أصلي ثابت وصلاً ووقفاً",
+   "surah": 10,
+   "ayah": 51,
+   "word": "ءَآلْـَٰٔنَ",
+   "surah_name": "يونس",
+   "link": "/ahkam/mudood/mudood-8",
+   "id": "rule-mudood-8-3",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «ءَآلْـَٰٔنَ»؟",
+   "ayah_text": "أَثُمَّ إِذَا مَا وَقَعَ ءَامَنتُم بِهِۦٓ ءَآلْـَٰٔنَ وَقَدْ كُنتُم بِهِۦ تَسْتَعْجِلُونَ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "المد اللازم وأقسامه",
+    "المد العارض للسكون ومد اللين",
+    "المد الطبيعي",
+    "المد المتصل"
+   ],
+   "answer": 0,
+   "explain": "كلمي مخفف. أن يأتي بعد حرف المد أو اللين سكون أصلي ثابت وصلاً ووقفاً",
+   "surah": 10,
+   "ayah": 51,
+   "word": "ءَآلْـَٰٔنَ",
+   "surah_name": "يونس",
+   "link": "/ahkam/mudood/mudood-8",
+   "id": "listen-mudood-8-3",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «ءَآلْـَٰٔنَ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإخفاء الحقيقي",
+    "القلقلة ومراتبها",
+    "الإقلاب",
+    "النون والميم المشددتان"
+   ],
+   "answer": 1,
+   "explain": "قلقلة كبرى عند الوقف. اضطراب الصوت في المخرج عند النطق بالحرف ساكناً حتى يُسمع له نبرة قوية",
+   "surah": 111,
+   "ayah": 1,
+   "word": "وَتَبَّ",
+   "surah_name": "المسد",
+   "link": "/ahkam/qalqalah/qalqalah-1",
+   "id": "rule-qalqalah-1-0",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «وَتَبَّ»؟",
+   "ayah_text": "تَبَّتْ يَدَآ أَبِى لَهَبٍ وَتَبَّ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإخفاء الحقيقي",
+    "القلقلة ومراتبها",
+    "الإقلاب",
+    "النون والميم المشددتان"
+   ],
+   "answer": 1,
+   "explain": "قلقلة كبرى عند الوقف. اضطراب الصوت في المخرج عند النطق بالحرف ساكناً حتى يُسمع له نبرة قوية",
+   "surah": 111,
+   "ayah": 1,
+   "word": "وَتَبَّ",
+   "surah_name": "المسد",
+   "link": "/ahkam/qalqalah/qalqalah-1",
+   "id": "listen-qalqalah-1-0",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «وَتَبَّ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "القلقلة ومراتبها",
+    "الإخفاء الحقيقي",
+    "إدغام المتجانسين الصغير",
+    "الإدغام الشفوي"
+   ],
+   "answer": 0,
+   "explain": "قلقلة وسطى عند الوقف. اضطراب الصوت في المخرج عند النطق بالحرف ساكناً حتى يُسمع له نبرة قوية",
+   "surah": 113,
+   "ayah": 1,
+   "word": "ٱلْفَلَقِ",
+   "surah_name": "الفلق",
+   "link": "/ahkam/qalqalah/qalqalah-1",
+   "id": "rule-qalqalah-1-1",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «ٱلْفَلَقِ»؟",
+   "ayah_text": "قُلْ أَعُوذُ بِرَبِّ ٱلْفَلَقِ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "القلقلة ومراتبها",
+    "الإخفاء الحقيقي",
+    "إدغام المتجانسين الصغير",
+    "الإدغام الشفوي"
+   ],
+   "answer": 0,
+   "explain": "قلقلة وسطى عند الوقف. اضطراب الصوت في المخرج عند النطق بالحرف ساكناً حتى يُسمع له نبرة قوية",
+   "surah": 113,
+   "ayah": 1,
+   "word": "ٱلْفَلَقِ",
+   "surah_name": "الفلق",
+   "link": "/ahkam/qalqalah/qalqalah-1",
+   "id": "listen-qalqalah-1-1",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «ٱلْفَلَقِ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "القلقلة ومراتبها",
+    "الإدغام بغير غنة",
+    "النون والميم المشددتان",
+    "همزة الوصل وهمزة القطع"
+   ],
+   "answer": 0,
+   "explain": "قلقلة وسطى عند الوقف. اضطراب الصوت في المخرج عند النطق بالحرف ساكناً حتى يُسمع له نبرة قوية",
+   "surah": 85,
+   "ayah": 20,
+   "word": "مُّحِيطٌۢ",
+   "surah_name": "البروج",
+   "link": "/ahkam/qalqalah/qalqalah-1",
+   "id": "rule-qalqalah-1-2",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «مُّحِيطٌۢ»؟",
+   "ayah_text": "وَٱللَّهُ مِن وَرَآئِهِم مُّحِيطٌۢ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "القلقلة ومراتبها",
+    "الإدغام بغير غنة",
+    "النون والميم المشددتان",
+    "همزة الوصل وهمزة القطع"
+   ],
+   "answer": 0,
+   "explain": "قلقلة وسطى عند الوقف. اضطراب الصوت في المخرج عند النطق بالحرف ساكناً حتى يُسمع له نبرة قوية",
+   "surah": 85,
+   "ayah": 20,
+   "word": "مُّحِيطٌۢ",
+   "surah_name": "البروج",
+   "link": "/ahkam/qalqalah/qalqalah-1",
+   "id": "listen-qalqalah-1-2",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «مُّحِيطٌۢ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإقلاب",
+    "المد العارض للسكون ومد اللين",
+    "المد اللازم وأقسامه",
+    "القلقلة ومراتبها"
+   ],
+   "answer": 3,
+   "explain": "قلقلة صغرى. اضطراب الصوت في المخرج عند النطق بالحرف ساكناً حتى يُسمع له نبرة قوية",
+   "surah": 2,
+   "ayah": 27,
+   "word": "وَيَقْطَعُونَ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/qalqalah/qalqalah-1",
+   "id": "rule-qalqalah-1-3",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «وَيَقْطَعُونَ»؟",
+   "ayah_text": "ٱلَّذِينَ يَنقُضُونَ عَهْدَ ٱللَّهِ مِنۢ بَعْدِ مِيثَٰقِهِۦ وَيَقْطَعُونَ مَآ أَمَرَ ٱللَّهُ بِهِۦٓ أَن يُوصَلَ وَيُفْسِدُونَ فِى ٱلْأَرْضِ أُو۟لَٰٓئِكَ هُمُ ٱلْخَٰسِرُونَ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإقلاب",
+    "المد العارض للسكون ومد اللين",
+    "المد اللازم وأقسامه",
+    "القلقلة ومراتبها"
+   ],
+   "answer": 3,
+   "explain": "قلقلة صغرى. اضطراب الصوت في المخرج عند النطق بالحرف ساكناً حتى يُسمع له نبرة قوية",
+   "surah": 2,
+   "ayah": 27,
+   "word": "وَيَقْطَعُونَ",
+   "surah_name": "البقرة",
+   "link": "/ahkam/qalqalah/qalqalah-1",
+   "id": "listen-qalqalah-1-3",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «وَيَقْطَعُونَ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإدغام بغير غنة",
+    "المد المنفصل",
+    "النون والميم المشددتان",
+    "لام التعريف: القمرية والشمسية"
+   ],
+   "answer": 3,
+   "explain": "لام قمرية. لام «ال» الزائدة على بنية الكلمة، ولها حالتان بحسب الحرف الذي بعدها",
+   "surah": 1,
+   "ayah": 2,
+   "word": "ٱلْحَمْدُ",
+   "surah_name": "الفاتحة",
+   "link": "/ahkam/lamat/lamat-1",
+   "id": "rule-lamat-1-0",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «ٱلْحَمْدُ»؟",
+   "ayah_text": "ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَٰلَمِينَ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإدغام بغير غنة",
+    "المد المنفصل",
+    "النون والميم المشددتان",
+    "لام التعريف: القمرية والشمسية"
+   ],
+   "answer": 3,
+   "explain": "لام قمرية. لام «ال» الزائدة على بنية الكلمة، ولها حالتان بحسب الحرف الذي بعدها",
+   "surah": 1,
+   "ayah": 2,
+   "word": "ٱلْحَمْدُ",
+   "surah_name": "الفاتحة",
+   "link": "/ahkam/lamat/lamat-1",
+   "id": "listen-lamat-1-0",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «ٱلْحَمْدُ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإدغام بغير غنة",
+    "المد العارض للسكون ومد اللين",
+    "المد اللازم وأقسامه",
+    "لام التعريف: القمرية والشمسية"
+   ],
+   "answer": 3,
+   "explain": "لام قمرية. لام «ال» الزائدة على بنية الكلمة، ولها حالتان بحسب الحرف الذي بعدها",
+   "surah": 91,
+   "ayah": 2,
+   "word": "وَٱلْقَمَرِ",
+   "surah_name": "الشمس",
+   "link": "/ahkam/lamat/lamat-1",
+   "id": "rule-lamat-1-1",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «وَٱلْقَمَرِ»؟",
+   "ayah_text": "وَٱلْقَمَرِ إِذَا تَلَىٰهَا"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإدغام بغير غنة",
+    "المد العارض للسكون ومد اللين",
+    "المد اللازم وأقسامه",
+    "لام التعريف: القمرية والشمسية"
+   ],
+   "answer": 3,
+   "explain": "لام قمرية. لام «ال» الزائدة على بنية الكلمة، ولها حالتان بحسب الحرف الذي بعدها",
+   "surah": 91,
+   "ayah": 2,
+   "word": "وَٱلْقَمَرِ",
+   "surah_name": "الشمس",
+   "link": "/ahkam/lamat/lamat-1",
+   "id": "listen-lamat-1-1",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «وَٱلْقَمَرِ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإخفاء الحقيقي",
+    "المد المتصل",
+    "القلقلة ومراتبها",
+    "لام التعريف: القمرية والشمسية"
+   ],
+   "answer": 3,
+   "explain": "لام شمسية. لام «ال» الزائدة على بنية الكلمة، ولها حالتان بحسب الحرف الذي بعدها",
+   "surah": 91,
+   "ayah": 1,
+   "word": "وَٱلشَّمْسِ",
+   "surah_name": "الشمس",
+   "link": "/ahkam/lamat/lamat-1",
+   "id": "rule-lamat-1-2",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «وَٱلشَّمْسِ»؟",
+   "ayah_text": "وَٱلشَّمْسِ وَضُحَىٰهَا"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإخفاء الحقيقي",
+    "المد المتصل",
+    "القلقلة ومراتبها",
+    "لام التعريف: القمرية والشمسية"
+   ],
+   "answer": 3,
+   "explain": "لام شمسية. لام «ال» الزائدة على بنية الكلمة، ولها حالتان بحسب الحرف الذي بعدها",
+   "surah": 91,
+   "ayah": 1,
+   "word": "وَٱلشَّمْسِ",
+   "surah_name": "الشمس",
+   "link": "/ahkam/lamat/lamat-1",
+   "id": "listen-lamat-1-2",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «وَٱلشَّمْسِ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "إدغام المتجانسين الصغير",
+    "لام التعريف: القمرية والشمسية",
+    "المد المتصل",
+    "النون والميم المشددتان"
+   ],
+   "answer": 1,
+   "explain": "لام شمسية. لام «ال» الزائدة على بنية الكلمة، ولها حالتان بحسب الحرف الذي بعدها",
+   "surah": 1,
+   "ayah": 3,
+   "word": "ٱلرَّحْمَٰنِ",
+   "surah_name": "الفاتحة",
+   "link": "/ahkam/lamat/lamat-1",
+   "id": "rule-lamat-1-3",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «ٱلرَّحْمَٰنِ»؟",
+   "ayah_text": "ٱلرَّحْمَٰنِ ٱلرَّحِيمِ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "إدغام المتجانسين الصغير",
+    "لام التعريف: القمرية والشمسية",
+    "المد المتصل",
+    "النون والميم المشددتان"
+   ],
+   "answer": 1,
+   "explain": "لام شمسية. لام «ال» الزائدة على بنية الكلمة، ولها حالتان بحسب الحرف الذي بعدها",
+   "surah": 1,
+   "ayah": 3,
+   "word": "ٱلرَّحْمَٰنِ",
+   "surah_name": "الفاتحة",
+   "link": "/ahkam/lamat/lamat-1",
+   "id": "listen-lamat-1-3",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «ٱلرَّحْمَٰنِ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "همزة الوصل وهمزة القطع",
+    "المد المنفصل",
+    "إدغام المتجانسين الصغير",
+    "لام التعريف: القمرية والشمسية"
+   ],
+   "answer": 0,
+   "explain": "فعل خماسي: يُبدأ بالكسر. همزة الوصل: همزة زائدة يُتوصل بها إلى النطق بالساكن، تثبت في الابتداء وتسقط في الوصل.\nهمزة القطع: همزة تثبت في الابتداء والوصل، وتُكتب على ألف أو واو أو ياء أو على السطر",
+   "surah": 68,
+   "ayah": 23,
+   "word": "فَٱنطَلَقُوا۟",
+   "surah_name": "القلم",
+   "link": "/ahkam/hamzah/hamzah-1",
+   "id": "rule-hamzah-1-0",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «فَٱنطَلَقُوا۟»؟",
+   "ayah_text": "فَٱنطَلَقُوا۟ وَهُمْ يَتَخَٰفَتُونَ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "همزة الوصل وهمزة القطع",
+    "المد المنفصل",
+    "إدغام المتجانسين الصغير",
+    "لام التعريف: القمرية والشمسية"
+   ],
+   "answer": 0,
+   "explain": "فعل خماسي: يُبدأ بالكسر. همزة الوصل: همزة زائدة يُتوصل بها إلى النطق بالساكن، تثبت في الابتداء وتسقط في الوصل.\nهمزة القطع: همزة تثبت في الابتداء والوصل، وتُكتب على ألف أو واو أو ياء أو على السطر",
+   "surah": 68,
+   "ayah": 23,
+   "word": "فَٱنطَلَقُوا۟",
+   "surah_name": "القلم",
+   "link": "/ahkam/hamzah/hamzah-1",
+   "id": "listen-hamzah-1-0",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «فَٱنطَلَقُوا۟»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإقلاب",
+    "لام التعريف: القمرية والشمسية",
+    "الإدغام الشفوي",
+    "همزة الوصل وهمزة القطع"
+   ],
+   "answer": 3,
+   "explain": "ثالثه مضموم: يُبدأ بالضم. همزة الوصل: همزة زائدة يُتوصل بها إلى النطق بالساكن، تثبت في الابتداء وتسقط في الوصل.\nهمزة القطع: همزة تثبت في الابتداء والوصل، وتُكتب على ألف أو واو أو ياء أو على السطر",
+   "surah": 16,
+   "ayah": 125,
+   "word": "ٱدْعُ",
+   "surah_name": "النحل",
+   "link": "/ahkam/hamzah/hamzah-1",
+   "id": "rule-hamzah-1-1",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «ٱدْعُ»؟",
+   "ayah_text": "ٱدْعُ إِلَىٰ سَبِيلِ رَبِّكَ بِٱلْحِكْمَةِ وَٱلْمَوْعِظَةِ ٱلْحَسَنَةِ وَجَٰدِلْهُم بِٱلَّتِى هِىَ أَحْسَنُ إِنَّ رَبَّكَ هُوَ أَعْلَمُ بِمَن ضَلَّ عَن سَبِيلِهِۦ وَهُوَ أَعْلَمُ بِٱلْمُهْتَدِينَ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإقلاب",
+    "لام التعريف: القمرية والشمسية",
+    "الإدغام الشفوي",
+    "همزة الوصل وهمزة القطع"
+   ],
+   "answer": 3,
+   "explain": "ثالثه مضموم: يُبدأ بالضم. همزة الوصل: همزة زائدة يُتوصل بها إلى النطق بالساكن، تثبت في الابتداء وتسقط في الوصل.\nهمزة القطع: همزة تثبت في الابتداء والوصل، وتُكتب على ألف أو واو أو ياء أو على السطر",
+   "surah": 16,
+   "ayah": 125,
+   "word": "ٱدْعُ",
+   "surah_name": "النحل",
+   "link": "/ahkam/hamzah/hamzah-1",
+   "id": "listen-hamzah-1-1",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «ٱدْعُ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإدغام بغنة",
+    "الإدغام بغير غنة",
+    "إدغام المتجانسين الصغير",
+    "همزة الوصل وهمزة القطع"
+   ],
+   "answer": 3,
+   "explain": "ثالثه مضموم: يُبدأ بالضم. همزة الوصل: همزة زائدة يُتوصل بها إلى النطق بالساكن، تثبت في الابتداء وتسقط في الوصل.\nهمزة القطع: همزة تثبت في الابتداء والوصل، وتُكتب على ألف أو واو أو ياء أو على السطر",
+   "surah": 4,
+   "ayah": 50,
+   "word": "ٱنظُرْ",
+   "surah_name": "النساء",
+   "link": "/ahkam/hamzah/hamzah-1",
+   "id": "rule-hamzah-1-2",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «ٱنظُرْ»؟",
+   "ayah_text": "ٱنظُرْ كَيْفَ يَفْتَرُونَ عَلَى ٱللَّهِ ٱلْكَذِبَ وَكَفَىٰ بِهِۦٓ إِثْمًا مُّبِينًا"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإدغام بغنة",
+    "الإدغام بغير غنة",
+    "إدغام المتجانسين الصغير",
+    "همزة الوصل وهمزة القطع"
+   ],
+   "answer": 3,
+   "explain": "ثالثه مضموم: يُبدأ بالضم. همزة الوصل: همزة زائدة يُتوصل بها إلى النطق بالساكن، تثبت في الابتداء وتسقط في الوصل.\nهمزة القطع: همزة تثبت في الابتداء والوصل، وتُكتب على ألف أو واو أو ياء أو على السطر",
+   "surah": 4,
+   "ayah": 50,
+   "word": "ٱنظُرْ",
+   "surah_name": "النساء",
+   "link": "/ahkam/hamzah/hamzah-1",
+   "id": "listen-hamzah-1-2",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «ٱنظُرْ»."
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإدغام الشفوي",
+    "الإخفاء الشفوي",
+    "الإدغام بغير غنة",
+    "همزة الوصل وهمزة القطع"
+   ],
+   "answer": 3,
+   "explain": "ثالثه مفتوح: يُبدأ بالكسر. همزة الوصل: همزة زائدة يُتوصل بها إلى النطق بالساكن، تثبت في الابتداء وتسقط في الوصل.\nهمزة القطع: همزة تثبت في الابتداء والوصل، وتُكتب على ألف أو واو أو ياء أو على السطر",
+   "surah": 20,
+   "ayah": 24,
+   "word": "ٱذْهَبْ",
+   "surah_name": "طه",
+   "link": "/ahkam/hamzah/hamzah-1",
+   "id": "rule-hamzah-1-3",
+   "level": 2,
+   "type": "mcq",
+   "question": "ما الحكم في «ٱذْهَبْ»؟",
+   "ayah_text": "ٱذْهَبْ إِلَىٰ فِرْعَوْنَ إِنَّهُۥ طَغَىٰ"
+  },
+  {
+   "topic": "الأحكام",
+   "options": [
+    "الإدغام الشفوي",
+    "الإخفاء الشفوي",
+    "الإدغام بغير غنة",
+    "همزة الوصل وهمزة القطع"
+   ],
+   "answer": 3,
+   "explain": "ثالثه مفتوح: يُبدأ بالكسر. همزة الوصل: همزة زائدة يُتوصل بها إلى النطق بالساكن، تثبت في الابتداء وتسقط في الوصل.\nهمزة القطع: همزة تثبت في الابتداء والوصل، وتُكتب على ألف أو واو أو ياء أو على السطر",
+   "surah": 20,
+   "ayah": 24,
+   "word": "ٱذْهَبْ",
+   "surah_name": "طه",
+   "link": "/ahkam/hamzah/hamzah-1",
+   "id": "listen-hamzah-1-3",
+   "level": 3,
+   "type": "listen",
+   "question": "استمع إلى الآية، ثم حدّد الحكم في «ٱذْهَبْ»."
+  },
+  {
+   "id": "extract-ikhfa-0",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «الإخفاء الحقيقي».",
+   "surah": 36,
+   "ayah": 64,
+   "rule": "ikhfa",
+   "explain": "المواضع الملوّنة هي مواضع الإخفاء الحقيقي في الآية.",
+   "link": "/mushaf/surah/36?rule=ikhfa&ayah=64"
+  },
+  {
+   "id": "extract-ikhfa-1",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «الإخفاء الحقيقي».",
+   "surah": 17,
+   "ayah": 49,
+   "rule": "ikhfa",
+   "explain": "المواضع الملوّنة هي مواضع الإخفاء الحقيقي في الآية.",
+   "link": "/mushaf/surah/17?rule=ikhfa&ayah=49"
+  },
+  {
+   "id": "extract-ikhfa-2",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «الإخفاء الحقيقي».",
+   "surah": 54,
+   "ayah": 15,
+   "rule": "ikhfa",
+   "explain": "المواضع الملوّنة هي مواضع الإخفاء الحقيقي في الآية.",
+   "link": "/mushaf/surah/54?rule=ikhfa&ayah=15"
+  },
+  {
+   "id": "extract-idghaam_ghunnah-0",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «الإدغام بغنة».",
+   "surah": 54,
+   "ayah": 31,
+   "rule": "idghaam_ghunnah",
+   "explain": "المواضع الملوّنة هي مواضع الإدغام بغنة في الآية.",
+   "link": "/mushaf/surah/54?rule=idghaam_ghunnah&ayah=31"
+  },
+  {
+   "id": "extract-idghaam_ghunnah-1",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «الإدغام بغنة».",
+   "surah": 68,
+   "ayah": 14,
+   "rule": "idghaam_ghunnah",
+   "explain": "المواضع الملوّنة هي مواضع الإدغام بغنة في الآية.",
+   "link": "/mushaf/surah/68?rule=idghaam_ghunnah&ayah=14"
+  },
+  {
+   "id": "extract-idghaam_ghunnah-2",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «الإدغام بغنة».",
+   "surah": 78,
+   "ayah": 24,
+   "rule": "idghaam_ghunnah",
+   "explain": "المواضع الملوّنة هي مواضع الإدغام بغنة في الآية.",
+   "link": "/mushaf/surah/78?rule=idghaam_ghunnah&ayah=24"
+  },
+  {
+   "id": "extract-idghaam_no_ghunnah-0",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «الإدغام بغير غنة».",
+   "surah": 15,
+   "ayah": 77,
+   "rule": "idghaam_no_ghunnah",
+   "explain": "المواضع الملوّنة هي مواضع الإدغام بغير غنة في الآية.",
+   "link": "/mushaf/surah/15?rule=idghaam_no_ghunnah&ayah=77"
+  },
+  {
+   "id": "extract-idghaam_no_ghunnah-1",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «الإدغام بغير غنة».",
+   "surah": 37,
+   "ayah": 46,
+   "rule": "idghaam_no_ghunnah",
+   "explain": "المواضع الملوّنة هي مواضع الإدغام بغير غنة في الآية.",
+   "link": "/mushaf/surah/37?rule=idghaam_no_ghunnah&ayah=46"
+  },
+  {
+   "id": "extract-idghaam_no_ghunnah-2",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «الإدغام بغير غنة».",
+   "surah": 47,
+   "ayah": 8,
+   "rule": "idghaam_no_ghunnah",
+   "explain": "المواضع الملوّنة هي مواضع الإدغام بغير غنة في الآية.",
+   "link": "/mushaf/surah/47?rule=idghaam_no_ghunnah&ayah=8"
+  },
+  {
+   "id": "extract-iqlab-0",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «الإقلاب».",
+   "surah": 46,
+   "ayah": 14,
+   "rule": "iqlab",
+   "explain": "المواضع الملوّنة هي مواضع الإقلاب في الآية.",
+   "link": "/mushaf/surah/46?rule=iqlab&ayah=14"
+  },
+  {
+   "id": "extract-iqlab-1",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «الإقلاب».",
+   "surah": 37,
+   "ayah": 146,
+   "rule": "iqlab",
+   "explain": "المواضع الملوّنة هي مواضع الإقلاب في الآية.",
+   "link": "/mushaf/surah/37?rule=iqlab&ayah=146"
+  },
+  {
+   "id": "extract-iqlab-2",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «الإقلاب».",
+   "surah": 55,
+   "ayah": 54,
+   "rule": "iqlab",
+   "explain": "المواضع الملوّنة هي مواضع الإقلاب في الآية.",
+   "link": "/mushaf/surah/55?rule=iqlab&ayah=54"
+  },
+  {
+   "id": "extract-ikhfa_shafawi-0",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «الإخفاء الشفوي».",
+   "surah": 26,
+   "ayah": 133,
+   "rule": "ikhfa_shafawi",
+   "explain": "المواضع الملوّنة هي مواضع الإخفاء الشفوي في الآية.",
+   "link": "/mushaf/surah/26?rule=ikhfa_shafawi&ayah=133"
+  },
+  {
+   "id": "extract-ikhfa_shafawi-1",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «الإخفاء الشفوي».",
+   "surah": 23,
+   "ayah": 15,
+   "rule": "ikhfa_shafawi",
+   "explain": "المواضع الملوّنة هي مواضع الإخفاء الشفوي في الآية.",
+   "link": "/mushaf/surah/23?rule=ikhfa_shafawi&ayah=15"
+  },
+  {
+   "id": "extract-ikhfa_shafawi-2",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «الإخفاء الشفوي».",
+   "surah": 79,
+   "ayah": 14,
+   "rule": "ikhfa_shafawi",
+   "explain": "المواضع الملوّنة هي مواضع الإخفاء الشفوي في الآية.",
+   "link": "/mushaf/surah/79?rule=ikhfa_shafawi&ayah=14"
+  },
+  {
+   "id": "extract-idghaam_shafawi-0",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «الإدغام الشفوي».",
+   "surah": 12,
+   "ayah": 89,
+   "rule": "idghaam_shafawi",
+   "explain": "المواضع الملوّنة هي مواضع الإدغام الشفوي في الآية.",
+   "link": "/mushaf/surah/12?rule=idghaam_shafawi&ayah=89"
+  },
+  {
+   "id": "extract-idghaam_shafawi-1",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «الإدغام الشفوي».",
+   "surah": 41,
+   "ayah": 48,
+   "rule": "idghaam_shafawi",
+   "explain": "المواضع الملوّنة هي مواضع الإدغام الشفوي في الآية.",
+   "link": "/mushaf/surah/41?rule=idghaam_shafawi&ayah=48"
+  },
+  {
+   "id": "extract-idghaam_shafawi-2",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «الإدغام الشفوي».",
+   "surah": 37,
+   "ayah": 30,
+   "rule": "idghaam_shafawi",
+   "explain": "المواضع الملوّنة هي مواضع الإدغام الشفوي في الآية.",
+   "link": "/mushaf/surah/37?rule=idghaam_shafawi&ayah=30"
+  },
+  {
+   "id": "extract-ghunnah-0",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «الغنة».",
+   "surah": 36,
+   "ayah": 16,
+   "rule": "ghunnah",
+   "explain": "المواضع الملوّنة هي مواضع الغنة في الآية.",
+   "link": "/mushaf/surah/36?rule=ghunnah&ayah=16"
+  },
+  {
+   "id": "extract-ghunnah-1",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «الغنة».",
+   "surah": 26,
+   "ayah": 103,
+   "rule": "ghunnah",
+   "explain": "المواضع الملوّنة هي مواضع الغنة في الآية.",
+   "link": "/mushaf/surah/26?rule=ghunnah&ayah=103"
+  },
+  {
+   "id": "extract-ghunnah-2",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «الغنة».",
+   "surah": 72,
+   "ayah": 5,
+   "rule": "ghunnah",
+   "explain": "المواضع الملوّنة هي مواضع الغنة في الآية.",
+   "link": "/mushaf/surah/72?rule=ghunnah&ayah=5"
+  },
+  {
+   "id": "extract-madd_2-0",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «المد الطبيعي».",
+   "surah": 22,
+   "ayah": 57,
+   "rule": "madd_2",
+   "explain": "المواضع الملوّنة هي مواضع المد الطبيعي في الآية.",
+   "link": "/mushaf/surah/22?rule=madd_2&ayah=57"
+  },
+  {
+   "id": "extract-madd_2-1",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «المد الطبيعي».",
+   "surah": 26,
+   "ayah": 109,
+   "rule": "madd_2",
+   "explain": "المواضع الملوّنة هي مواضع المد الطبيعي في الآية.",
+   "link": "/mushaf/surah/26?rule=madd_2&ayah=109"
+  },
+  {
+   "id": "extract-madd_2-2",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «المد الطبيعي».",
+   "surah": 23,
+   "ayah": 73,
+   "rule": "madd_2",
+   "explain": "المواضع الملوّنة هي مواضع المد الطبيعي في الآية.",
+   "link": "/mushaf/surah/23?rule=madd_2&ayah=73"
+  },
+  {
+   "id": "extract-madd_muttasil-0",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «المد المتصل».",
+   "surah": 4,
+   "ayah": 99,
+   "rule": "madd_muttasil",
+   "explain": "المواضع الملوّنة هي مواضع المد المتصل في الآية.",
+   "link": "/mushaf/surah/4?rule=madd_muttasil&ayah=99"
+  },
+  {
+   "id": "extract-madd_muttasil-1",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «المد المتصل».",
+   "surah": 55,
+   "ayah": 25,
+   "rule": "madd_muttasil",
+   "explain": "المواضع الملوّنة هي مواضع المد المتصل في الآية.",
+   "link": "/mushaf/surah/55?rule=madd_muttasil&ayah=25"
+  },
+  {
+   "id": "extract-madd_muttasil-2",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «المد المتصل».",
+   "surah": 55,
+   "ayah": 61,
+   "rule": "madd_muttasil",
+   "explain": "المواضع الملوّنة هي مواضع المد المتصل في الآية.",
+   "link": "/mushaf/surah/55?rule=madd_muttasil&ayah=61"
+  },
+  {
+   "id": "extract-madd_munfasil-0",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «المد المنفصل».",
+   "surah": 44,
+   "ayah": 39,
+   "rule": "madd_munfasil",
+   "explain": "المواضع الملوّنة هي مواضع المد المنفصل في الآية.",
+   "link": "/mushaf/surah/44?rule=madd_munfasil&ayah=39"
+  },
+  {
+   "id": "extract-madd_munfasil-1",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «المد المنفصل».",
+   "surah": 96,
+   "ayah": 6,
+   "rule": "madd_munfasil",
+   "explain": "المواضع الملوّنة هي مواضع المد المنفصل في الآية.",
+   "link": "/mushaf/surah/96?rule=madd_munfasil&ayah=6"
+  },
+  {
+   "id": "extract-madd_munfasil-2",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «المد المنفصل».",
+   "surah": 72,
+   "ayah": 5,
+   "rule": "madd_munfasil",
+   "explain": "المواضع الملوّنة هي مواضع المد المنفصل في الآية.",
+   "link": "/mushaf/surah/72?rule=madd_munfasil&ayah=5"
+  },
+  {
+   "id": "extract-madd_246-0",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «المد العارض للسكون ومد اللين».",
+   "surah": 26,
+   "ayah": 222,
+   "rule": "madd_246",
+   "explain": "المواضع الملوّنة هي مواضع المد العارض للسكون ومد اللين في الآية.",
+   "link": "/mushaf/surah/26?rule=madd_246&ayah=222"
+  },
+  {
+   "id": "extract-madd_246-1",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «المد العارض للسكون ومد اللين».",
+   "surah": 15,
+   "ayah": 36,
+   "rule": "madd_246",
+   "explain": "المواضع الملوّنة هي مواضع المد العارض للسكون ومد اللين في الآية.",
+   "link": "/mushaf/surah/15?rule=madd_246&ayah=36"
+  },
+  {
+   "id": "extract-madd_246-2",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «المد العارض للسكون ومد اللين».",
+   "surah": 81,
+   "ayah": 29,
+   "rule": "madd_246",
+   "explain": "المواضع الملوّنة هي مواضع المد العارض للسكون ومد اللين في الآية.",
+   "link": "/mushaf/surah/81?rule=madd_246&ayah=29"
+  },
+  {
+   "id": "extract-madd_6-0",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «المد اللازم».",
+   "surah": 38,
+   "ayah": 1,
+   "rule": "madd_6",
+   "explain": "المواضع الملوّنة هي مواضع المد اللازم في الآية.",
+   "link": "/mushaf/surah/38?rule=madd_6&ayah=1"
+  },
+  {
+   "id": "extract-madd_6-1",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «المد اللازم».",
+   "surah": 80,
+   "ayah": 33,
+   "rule": "madd_6",
+   "explain": "المواضع الملوّنة هي مواضع المد اللازم في الآية.",
+   "link": "/mushaf/surah/80?rule=madd_6&ayah=33"
+  },
+  {
+   "id": "extract-madd_6-2",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «المد اللازم».",
+   "surah": 15,
+   "ayah": 1,
+   "rule": "madd_6",
+   "explain": "المواضع الملوّنة هي مواضع المد اللازم في الآية.",
+   "link": "/mushaf/surah/15?rule=madd_6&ayah=1"
+  },
+  {
+   "id": "extract-qalqalah-0",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «القلقلة».",
+   "surah": 68,
+   "ayah": 30,
+   "rule": "qalqalah",
+   "explain": "المواضع الملوّنة هي مواضع القلقلة في الآية.",
+   "link": "/mushaf/surah/68?rule=qalqalah&ayah=30"
+  },
+  {
+   "id": "extract-qalqalah-1",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «القلقلة».",
+   "surah": 21,
+   "ayah": 32,
+   "rule": "qalqalah",
+   "explain": "المواضع الملوّنة هي مواضع القلقلة في الآية.",
+   "link": "/mushaf/surah/21?rule=qalqalah&ayah=32"
+  },
+  {
+   "id": "extract-qalqalah-2",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «القلقلة».",
+   "surah": 85,
+   "ayah": 9,
+   "rule": "qalqalah",
+   "explain": "المواضع الملوّنة هي مواضع القلقلة في الآية.",
+   "link": "/mushaf/surah/85?rule=qalqalah&ayah=9"
+  },
+  {
+   "id": "extract-hamzat_wasl-0",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «همزة الوصل».",
+   "surah": 28,
+   "ayah": 2,
+   "rule": "hamzat_wasl",
+   "explain": "المواضع الملوّنة هي مواضع همزة الوصل في الآية.",
+   "link": "/mushaf/surah/28?rule=hamzat_wasl&ayah=2"
+  },
+  {
+   "id": "extract-hamzat_wasl-1",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «همزة الوصل».",
+   "surah": 21,
+   "ayah": 68,
+   "rule": "hamzat_wasl",
+   "explain": "المواضع الملوّنة هي مواضع همزة الوصل في الآية.",
+   "link": "/mushaf/surah/21?rule=hamzat_wasl&ayah=68"
+  },
+  {
+   "id": "extract-hamzat_wasl-2",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «همزة الوصل».",
+   "surah": 18,
+   "ayah": 11,
+   "rule": "hamzat_wasl",
+   "explain": "المواضع الملوّنة هي مواضع همزة الوصل في الآية.",
+   "link": "/mushaf/surah/18?rule=hamzat_wasl&ayah=11"
+  },
+  {
+   "id": "extract-lam_shamsiyyah-0",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «اللام الشمسية».",
+   "surah": 3,
+   "ayah": 43,
+   "rule": "lam_shamsiyyah",
+   "explain": "المواضع الملوّنة هي مواضع اللام الشمسية في الآية.",
+   "link": "/mushaf/surah/3?rule=lam_shamsiyyah&ayah=43"
+  },
+  {
+   "id": "extract-lam_shamsiyyah-1",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «اللام الشمسية».",
+   "surah": 26,
+   "ayah": 159,
+   "rule": "lam_shamsiyyah",
+   "explain": "المواضع الملوّنة هي مواضع اللام الشمسية في الآية.",
+   "link": "/mushaf/surah/26?rule=lam_shamsiyyah&ayah=159"
+  },
+  {
+   "id": "extract-lam_shamsiyyah-2",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «اللام الشمسية».",
+   "surah": 79,
+   "ayah": 27,
+   "rule": "lam_shamsiyyah",
+   "explain": "المواضع الملوّنة هي مواضع اللام الشمسية في الآية.",
+   "link": "/mushaf/surah/79?rule=lam_shamsiyyah&ayah=27"
+  },
+  {
+   "id": "extract-idghaam_mutajanisayn-0",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «إدغام المتجانسين».",
+   "surah": 27,
+   "ayah": 23,
+   "rule": "idghaam_mutajanisayn",
+   "explain": "المواضع الملوّنة هي مواضع إدغام المتجانسين في الآية.",
+   "link": "/mushaf/surah/27?rule=idghaam_mutajanisayn&ayah=23"
+  },
+  {
+   "id": "extract-idghaam_mutajanisayn-1",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «إدغام المتجانسين».",
+   "surah": 11,
+   "ayah": 30,
+   "rule": "idghaam_mutajanisayn",
+   "explain": "المواضع الملوّنة هي مواضع إدغام المتجانسين في الآية.",
+   "link": "/mushaf/surah/11?rule=idghaam_mutajanisayn&ayah=30"
+  },
+  {
+   "id": "extract-idghaam_mutajanisayn-2",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «إدغام المتجانسين».",
+   "surah": 37,
+   "ayah": 56,
+   "rule": "idghaam_mutajanisayn",
+   "explain": "المواضع الملوّنة هي مواضع إدغام المتجانسين في الآية.",
+   "link": "/mushaf/surah/37?rule=idghaam_mutajanisayn&ayah=56"
+  },
+  {
+   "id": "extract-idghaam_mutaqaribayn-0",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «إدغام المتقاربين».",
+   "surah": 23,
+   "ayah": 29,
+   "rule": "idghaam_mutaqaribayn",
+   "explain": "المواضع الملوّنة هي مواضع إدغام المتقاربين في الآية.",
+   "link": "/mushaf/surah/23?rule=idghaam_mutaqaribayn&ayah=29"
+  },
+  {
+   "id": "extract-idghaam_mutaqaribayn-1",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «إدغام المتقاربين».",
+   "surah": 23,
+   "ayah": 97,
+   "rule": "idghaam_mutaqaribayn",
+   "explain": "المواضع الملوّنة هي مواضع إدغام المتقاربين في الآية.",
+   "link": "/mushaf/surah/23?rule=idghaam_mutaqaribayn&ayah=97"
+  },
+  {
+   "id": "extract-idghaam_mutaqaribayn-2",
+   "level": 3,
+   "type": "extract",
+   "topic": "الأحكام",
+   "question": "اضغط على كلمة فيها حكم «إدغام المتقاربين».",
+   "surah": 77,
+   "ayah": 20,
+   "rule": "idghaam_mutaqaribayn",
+   "explain": "المواضع الملوّنة هي مواضع إدغام المتقاربين في الآية.",
+   "link": "/mushaf/surah/77?rule=idghaam_mutaqaribayn&ayah=20"
+  }
+ ]
+}

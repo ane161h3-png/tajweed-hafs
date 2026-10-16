@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#f7f4ec" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#121719" media="(prefers-color-scheme: dark)" />
+    <meta name="description" content="برنامج تعليمي لأحكام التجويد ومخارج الحروف وصفاتها برواية حفص عن عاصم" />
+    <link rel="icon" href="%BASE_URL%icon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="%BASE_URL%manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="%BASE_URL%apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="التجويد" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <title>تعلّم التجويد</title>
+    <script>
+      // تطبيق الوضع الليلي قبل الرسم لتجنّب الوميض
+      try {
+        const s = JSON.parse(localStorage.getItem('tajweed.settings') || '{}')
+        const dark = s.theme === 'dark' || (s.theme !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches)
+        document.documentElement.classList.toggle('dark', dark)
+      } catch {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

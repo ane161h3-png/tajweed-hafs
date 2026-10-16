@@ -1,0 +1,1375 @@
+{
+ "version": 1,
+ "status": "draft",
+ "note": "مسودة على ما في المقدمة الجزرية؛ يراجعها مقرئ متخصص قبل الاعتماد.",
+ "general": [
+  {
+   "id": "jawf",
+   "name": "الجوف",
+   "desc": "الخلاء الداخل في الحلق والفم، ومنه تخرج حروف المد الثلاثة.",
+   "count": 1
+  },
+  {
+   "id": "halq",
+   "name": "الحلق",
+   "desc": "فيه ثلاثة مخارج لستة أحرف: أقصاه ووسطه وأدناه.",
+   "count": 3
+  },
+  {
+   "id": "lisan",
+   "name": "اللسان",
+   "desc": "أكثر المخارج حروفاً: فيه عشرة مخارج لثمانية عشر حرفاً.",
+   "count": 10
+  },
+  {
+   "id": "shafatan",
+   "name": "الشفتان",
+   "desc": "فيهما مخرجان: بطن الشفة السفلى مع أطراف الثنايا العليا للفاء، والشفتان معاً للباء والميم والواو.",
+   "count": 2
+  },
+  {
+   "id": "khayshum",
+   "name": "الخيشوم",
+   "desc": "خرق الأنف المنجذب إلى داخل الفم، وهو مخرج الغنة.",
+   "count": 1
+  }
+ ],
+ "makharij": [
+  {
+   "id": "jawf",
+   "general": "jawf",
+   "name": "الجوف",
+   "letters": "اوي",
+   "desc": "حروف المد الثلاثة: الألف الساكنة المفتوح ما قبلها، والواو الساكنة المضموم ما قبلها، والياء الساكنة المكسور ما قبلها. مخرجها مقدَّر ينتهي بانتهاء الهواء.",
+   "organs": [
+    "jawf"
+   ],
+   "order": 1,
+   "letter_ids": [
+    "alif",
+    "waw",
+    "ya"
+   ]
+  },
+  {
+   "id": "aqsa-halq",
+   "general": "halq",
+   "name": "أقصى الحلق",
+   "letters": "ءه",
+   "desc": "أبعد الحلق مما يلي الصدر: للهمزة والهاء.",
+   "organs": [
+    "halq-aqsa"
+   ],
+   "order": 2,
+   "letter_ids": [
+    "hamza",
+    "ha"
+   ]
+  },
+  {
+   "id": "wasat-halq",
+   "general": "halq",
+   "name": "وسط الحلق",
+   "letters": "عح",
+   "desc": "وسط الحلق: للعين والحاء.",
+   "organs": [
+    "halq-wasat"
+   ],
+   "order": 3,
+   "letter_ids": [
+    "ain",
+    "haa"
+   ]
+  },
+  {
+   "id": "adna-halq",
+   "general": "halq",
+   "name": "أدنى الحلق",
+   "letters": "غخ",
+   "desc": "أقرب الحلق إلى الفم: للغين والخاء.",
+   "organs": [
+    "halq-adna"
+   ],
+   "order": 4,
+   "letter_ids": [
+    "ghain",
+    "khaa"
+   ]
+  },
+  {
+   "id": "qaf",
+   "general": "lisan",
+   "name": "أقصى اللسان مع ما فوقه من الحنك",
+   "letters": "ق",
+   "desc": "أقصى اللسان مما يلي الحلق مع ما يحاذيه من الحنك الأعلى (اللحمي).",
+   "organs": [
+    "tongue-back",
+    "soft-palate"
+   ],
+   "order": 5,
+   "letter_ids": [
+    "qaf"
+   ]
+  },
+  {
+   "id": "kaf",
+   "general": "lisan",
+   "name": "أقصى اللسان أسفل مخرج القاف",
+   "letters": "ك",
+   "desc": "أقصى اللسان أسفل من مخرج القاف قليلاً مع ما يحاذيه من الحنك الأعلى.",
+   "organs": [
+    "tongue-back",
+    "hard-palate"
+   ],
+   "order": 6,
+   "letter_ids": [
+    "kaf"
+   ]
+  },
+  {
+   "id": "wasat-lisan",
+   "general": "lisan",
+   "name": "وسط اللسان",
+   "letters": "جشي",
+   "desc": "وسط اللسان مع ما يحاذيه من الحنك الأعلى: للجيم والشين والياء غير المدية.",
+   "organs": [
+    "tongue-middle",
+    "hard-palate"
+   ],
+   "order": 7,
+   "letter_ids": [
+    "jeem",
+    "sheen",
+    "ya"
+   ]
+  },
+  {
+   "id": "dad",
+   "general": "lisan",
+   "name": "إحدى حافتي اللسان",
+   "letters": "ض",
+   "desc": "إحدى حافتي اللسان أو كلتاهما مع ما يحاذيهما من الأضراس العليا، ومن اليسرى أيسر.",
+   "organs": [
+    "tongue-edge",
+    "molars"
+   ],
+   "order": 8,
+   "letter_ids": [
+    "dad"
+   ]
+  },
+  {
+   "id": "lam",
+   "general": "lisan",
+   "name": "أدنى حافتي اللسان إلى منتهى طرفه",
+   "letters": "ل",
+   "desc": "أدنى حافتي اللسان إلى منتهى طرفه مع ما يحاذيها من لثة الأسنان العليا.",
+   "organs": [
+    "tongue-tip",
+    "gum"
+   ],
+   "order": 9,
+   "letter_ids": [
+    "lam"
+   ]
+  },
+  {
+   "id": "noon",
+   "general": "lisan",
+   "name": "طرف اللسان تحت مخرج اللام",
+   "letters": "ن",
+   "desc": "طرف اللسان تحت مخرج اللام قليلاً مع ما يحاذيه من لثة الثنيتين العليين.",
+   "organs": [
+    "tongue-tip",
+    "gum"
+   ],
+   "order": 10,
+   "letter_ids": [
+    "noon"
+   ]
+  },
+  {
+   "id": "ra",
+   "general": "lisan",
+   "name": "طرف اللسان مع ظهره",
+   "letters": "ر",
+   "desc": "طرف اللسان مع ظهره قريباً من مخرج النون، وهو أدخل إلى ظهر اللسان قليلاً.",
+   "organs": [
+    "tongue-tip",
+    "gum"
+   ],
+   "order": 11,
+   "letter_ids": [
+    "ra"
+   ]
+  },
+  {
+   "id": "nit",
+   "general": "lisan",
+   "name": "طرف اللسان مع أصول الثنايا العليا",
+   "letters": "طدت",
+   "desc": "طرف اللسان مع أصول الثنيتين العليين: للطاء والدال والتاء.",
+   "organs": [
+    "tongue-tip",
+    "upper-teeth"
+   ],
+   "order": 12,
+   "letter_ids": [
+    "taa",
+    "dal",
+    "ta"
+   ]
+  },
+  {
+   "id": "asal",
+   "general": "lisan",
+   "name": "طرف اللسان فوق الثنايا السفلى",
+   "letters": "صسز",
+   "desc": "طرف اللسان مع ما بين الثنايا العليا والسفلى، قريباً إلى السفلى: حروف الصفير.",
+   "organs": [
+    "tongue-tip",
+    "lower-teeth"
+   ],
+   "order": 13,
+   "letter_ids": [
+    "sad",
+    "seen",
+    "zay"
+   ]
+  },
+  {
+   "id": "lithah",
+   "general": "lisan",
+   "name": "طرف اللسان مع أطراف الثنايا العليا",
+   "letters": "ظذث",
+   "desc": "ظهر طرف اللسان مع أطراف الثنيتين العليين.",
+   "organs": [
+    "tongue-tip",
+    "upper-teeth"
+   ],
+   "order": 14,
+   "letter_ids": [
+    "dhaa",
+    "thal",
+    "tha"
+   ]
+  },
+  {
+   "id": "fa",
+   "general": "shafatan",
+   "name": "بطن الشفة السفلى مع أطراف الثنايا العليا",
+   "letters": "ف",
+   "desc": "باطن الشفة السفلى مع أطراف الثنيتين العليين.",
+   "organs": [
+    "lower-lip",
+    "upper-teeth"
+   ],
+   "order": 15,
+   "letter_ids": [
+    "fa"
+   ]
+  },
+  {
+   "id": "shafatan",
+   "general": "shafatan",
+   "name": "الشفتان",
+   "letters": "بمو",
+   "desc": "بانطباق الشفتين للباء والميم (والباء أقوى انطباقاً)، وبانفتاحهما مع الاستدارة للواو غير المدية.",
+   "organs": [
+    "upper-lip",
+    "lower-lip"
+   ],
+   "order": 16,
+   "letter_ids": [
+    "ba",
+    "meem",
+    "waw"
+   ]
+  },
+  {
+   "id": "khayshum",
+   "general": "khayshum",
+   "name": "الخيشوم",
+   "letters": "نم",
+   "desc": "مخرج الغنة، وهي صفة النون والميم في أحوالهما، وأكمل ما تكون في المشدد والمدغم والمخفى.",
+   "organs": [
+    "khayshum",
+    "nasal"
+   ],
+   "order": 17,
+   "letter_ids": [
+    "noon",
+    "meem"
+   ]
+  }
+ ],
+ "makharij_verses": [
+  {
+   "source": "المقدمة الجزرية",
+   "first": "مَخَارِجُ الْحُرُوفِ سَبْعَةَ عَشَرْ",
+   "second": "عَلَى الَّذِي يَخْتَارُهُ مَنِ اخْتَبَرْ"
+  },
+  {
+   "source": "المقدمة الجزرية",
+   "first": "فَأَلِفُ الْجَوْفِ وَأُخْتَاهَا وَهِي",
+   "second": "حُرُوفُ مَدٍّ لِلْهَوَاءِ تَنْتَهِي"
+  },
+  {
+   "source": "المقدمة الجزرية",
+   "first": "ثُمَّ لأَقْصَى الْحَلْقِ هَمْزٌ هَاءُ",
+   "second": "ثُمَّ لِوَسْطِهِ فَعَيْنٌ حَاءُ"
+  },
+  {
+   "source": "المقدمة الجزرية",
+   "first": "أَدْنَاهُ غَيْنٌ خَاؤُهَا وَالْقَافُ",
+   "second": "أَقْصَى اللِّسَانِ فَوْقُ ثُمَّ الْكَافُ"
+  },
+  {
+   "source": "المقدمة الجزرية",
+   "first": "أَسْفَلُ وَالْوَسْطُ فَجِيمُ الشِّينُ يَا",
+   "second": "وَالضَّادُ مِنْ حَافَتِهِ إِذْ وَلِيَا"
+  },
+  {
+   "source": "المقدمة الجزرية",
+   "first": "الاضْرَاسَ مِنْ أَيْسَرَ أَوْ يُمْنَاهَا",
+   "second": "وَاللاَّمُ أَدْنَاهَا لِمُنْتَهَاهَا"
+  },
+  {
+   "source": "المقدمة الجزرية",
+   "first": "وَالنُّونُ مِنْ طَرَفِهِ تَحْتُ اجْعَلُوا",
+   "second": "وَالرَّا يُدَانِيهِ لِظَهْرٍ أَدْخَلُ"
+  },
+  {
+   "source": "المقدمة الجزرية",
+   "first": "وَالطَّاءُ وَالدَّالُ وَتَا مِنْهُ وَمِنْ",
+   "second": "عُلْيَا الثَّنَايَا وَالصَّفِيرُ مُسْتَكِنْ"
+  },
+  {
+   "source": "المقدمة الجزرية",
+   "first": "مِنْهُ وَمِنْ فَوْقِ الثَّنَايَا السُّفْلَى",
+   "second": "وَالظَّاءُ وَالذَّالُ وَثَا لِلْعُلْيَا"
+  },
+  {
+   "source": "المقدمة الجزرية",
+   "first": "مِنْ طَرَفَيْهِمَا وَمِنْ بَطْنِ الشَّفَهْ",
+   "second": "فَالْفَا مَعَ اطْرَافِ الثَّنَايَا الْمُشْرِفَهْ"
+  },
+  {
+   "source": "المقدمة الجزرية",
+   "first": "لِلشَّفَتَيْنِ الْوَاوُ بَاءٌ مِيمُ",
+   "second": "وَغُنَّةٌ مَخْرَجُهَا الْخَيْشُومُ"
+  }
+ ],
+ "opposite": [
+  {
+   "id": "hams-jahr",
+   "name": "الهمس والجهر",
+   "items": [
+    {
+     "id": "hams",
+     "name": "الهمس",
+     "strength": "weak",
+     "letters": "فحثهشخصسكت",
+     "code": "«فَحَثَّهُ شَخْصٌ سَكَتْ»",
+     "lugha": "الخفاء.",
+     "istilah": "جريان النَّفَس عند النطق بالحرف لضعف الاعتماد على المخرج."
+    },
+    {
+     "id": "jahr",
+     "name": "الجهر",
+     "strength": "strong",
+     "letters": null,
+     "lugha": "الإعلان والإظهار.",
+     "istilah": "انحباس جريان النَّفَس عند النطق بالحرف لقوة الاعتماد على المخرج."
+    }
+   ]
+  },
+  {
+   "id": "shidda-rikhwa",
+   "name": "الشدة والتوسط والرخاوة",
+   "items": [
+    {
+     "id": "shidda",
+     "name": "الشدة",
+     "strength": "strong",
+     "letters": "ءجدقطبكت",
+     "code": "«أَجِدْ قَطٍ بَكَتْ»",
+     "lugha": "القوة.",
+     "istilah": "انحباس جريان الصوت عند النطق بالحرف لكمال الاعتماد على المخرج."
+    },
+    {
+     "id": "tawassut",
+     "name": "التوسط",
+     "strength": "neutral",
+     "letters": "لنعمر",
+     "code": "«لِنْ عُمَرْ»",
+     "lugha": "الاعتدال.",
+     "istilah": "اعتدال الصوت عند النطق بالحرف، فلا يجري جرياً كاملاً ولا ينحبس انحباساً كاملاً."
+    },
+    {
+     "id": "rikhwa",
+     "name": "الرخاوة",
+     "strength": "weak",
+     "letters": null,
+     "lugha": "اللين.",
+     "istilah": "جريان الصوت عند النطق بالحرف لضعف الاعتماد على المخرج."
+    }
+   ]
+  },
+  {
+   "id": "istila-istifal",
+   "name": "الاستعلاء والاستفال",
+   "items": [
+    {
+     "id": "istila",
+     "name": "الاستعلاء",
+     "strength": "strong",
+     "letters": "خصضغطقظ",
+     "code": "«خُصَّ ضَغْطٍ قِظْ»",
+     "lugha": "العلو والارتفاع.",
+     "istilah": "ارتفاع أقصى اللسان إلى الحنك الأعلى عند النطق بالحرف."
+    },
+    {
+     "id": "istifal",
+     "name": "الاستفال",
+     "strength": "weak",
+     "letters": null,
+     "lugha": "الانخفاض.",
+     "istilah": "انخفاض أقصى اللسان عن الحنك الأعلى عند النطق بالحرف."
+    }
+   ]
+  },
+  {
+   "id": "itbaq-infitah",
+   "name": "الإطباق والانفتاح",
+   "items": [
+    {
+     "id": "itbaq",
+     "name": "الإطباق",
+     "strength": "strong",
+     "letters": "صضطظ",
+     "code": "ص ض ط ظ",
+     "lugha": "الإلصاق.",
+     "istilah": "تلاصق ما يحاذي اللسانَ من الحنك الأعلى على اللسان عند النطق بالحرف."
+    },
+    {
+     "id": "infitah",
+     "name": "الانفتاح",
+     "strength": "weak",
+     "letters": null,
+     "lugha": "الافتراق.",
+     "istilah": "تجافي اللسان عن الحنك الأعلى حتى يخرج الريح من بينهما عند النطق بالحرف."
+    }
+   ]
+  },
+  {
+   "id": "idhlaq-ismat",
+   "name": "الإذلاق والإصمات",
+   "items": [
+    {
+     "id": "idhlaq",
+     "name": "الإذلاق",
+     "strength": "neutral",
+     "letters": "فرمنلب",
+     "code": "«فِرَّ مِنْ لُبّ»",
+     "lugha": "حدة اللسان وطرفه.",
+     "istilah": "خفة الحرف وسرعة النطق به لخروجه من ذلق اللسان أو الشفة."
+    },
+    {
+     "id": "ismat",
+     "name": "الإصمات",
+     "strength": "neutral",
+     "letters": null,
+     "lugha": "المنع.",
+     "istilah": "ثقل الحرف وامتناع انفراده أصلاً في كلمة رباعية أو خماسية."
+    }
+   ]
+  }
+ ],
+ "non_opposite": [
+  {
+   "id": "safir",
+   "name": "الصفير",
+   "strength": "strong",
+   "letters": "صزس",
+   "lugha": "صوت يشبه صوت الطائر.",
+   "istilah": "صوت زائد يخرج من بين الشفتين عند النطق بحروفه."
+  },
+  {
+   "id": "qalqalah",
+   "name": "القلقلة",
+   "strength": "strong",
+   "letters": "قطبجد",
+   "lugha": "التحريك والاضطراب.",
+   "istilah": "اضطراب الصوت في المخرج عند النطق بالحرف ساكناً حتى يُسمع له نبرة قوية."
+  },
+  {
+   "id": "leen",
+   "name": "اللين",
+   "strength": "weak",
+   "letters": "وي",
+   "lugha": "السهولة.",
+   "istilah": "إخراج الحرف من مخرجه بسهولة وعدم كلفة، وهو في الواو والياء الساكنتين المفتوح ما قبلهما."
+  },
+  {
+   "id": "inhiraf",
+   "name": "الانحراف",
+   "strength": "strong",
+   "letters": "لر",
+   "lugha": "الميل.",
+   "istilah": "ميل الحرف بعد خروجه من مخرجه حتى يتصل بمخرج غيره."
+  },
+  {
+   "id": "takrir",
+   "name": "التكرير",
+   "strength": "strong",
+   "letters": "ر",
+   "lugha": "إعادة الشيء مرة أو أكثر.",
+   "istilah": "ارتعاد رأس اللسان عند النطق بالراء، وتُعرف لتُجتنب لا ليُعمل بها."
+  },
+  {
+   "id": "tafashi",
+   "name": "التفشي",
+   "strength": "strong",
+   "letters": "ش",
+   "lugha": "الانتشار.",
+   "istilah": "انتشار الريح في الفم عند النطق بالشين."
+  },
+  {
+   "id": "istitala",
+   "name": "الاستطالة",
+   "strength": "strong",
+   "letters": "ض",
+   "lugha": "الامتداد.",
+   "istilah": "امتداد الصوت من أول إحدى حافتي اللسان إلى آخرها عند النطق بالضاد."
+  },
+  {
+   "id": "ghunnah",
+   "name": "الغنة",
+   "strength": "strong",
+   "letters": "نم",
+   "lugha": "صوت له رنين في الخيشوم.",
+   "istilah": "صوت أغن مجهور مركب في جسم النون والميم."
+  },
+  {
+   "id": "khafa",
+   "name": "الخفاء",
+   "strength": "weak",
+   "letters": "هاوي",
+   "lugha": "الاستتار.",
+   "istilah": "خفاء صوت الحرف عند النطق به، وهو في الهاء وحروف المد."
+  }
+ ],
+ "sifat_verses": [
+  {
+   "source": "المقدمة الجزرية",
+   "first": "صِفَاتُهَا جَهْرٌ وَرِخْوٌ مُسْتَفِلْ",
+   "second": "مُنْفَتِحٌ مُصْمَتَةٌ وَالضِّدَّ قُلْ"
+  },
+  {
+   "source": "المقدمة الجزرية",
+   "first": "مَهْمُوسُهَا فَحَثَّهُ شَخْصٌ سَكَتْ",
+   "second": "شَدِيدُهَا لَفْظُ أَجِدْ قَطٍ بَكَتْ"
+  },
+  {
+   "source": "المقدمة الجزرية",
+   "first": "وَبَيْنَ رِخْوٍ وَالشَّدِيدِ لِنْ عُمَرْ",
+   "second": "وَسَبْعُ عُلْوٍ خُصَّ ضَغْطٍ قِظْ حَصَرْ"
+  },
+  {
+   "source": "المقدمة الجزرية",
+   "first": "وَصَادُ ضَادٌ طَاءُ ظَاءٌ مُطْبَقَهْ",
+   "second": "وَفِرَّ مِنْ لُبِّ الْحُرُوفِ الْمُذْلَقَهْ"
+  },
+  {
+   "source": "المقدمة الجزرية",
+   "first": "صَفِيرُهَا صَادٌ وَزَايٌ سِينُ",
+   "second": "قَلْقَلَةٌ قُطْبُ جَدٍّ وَاللِّينُ"
+  },
+  {
+   "source": "المقدمة الجزرية",
+   "first": "وَاوٌ وَيَاءٌ سَكَنَا وَانْفَتَحَا",
+   "second": "قَبْلَهُمَا وَالاِنْحِرَافُ صُحِّحَا"
+  },
+  {
+   "source": "المقدمة الجزرية",
+   "first": "فِي اللاَّمِ وَالرَّا وَبِتَكْرِيرٍ جُعِلْ",
+   "second": "وَلِلتَّفَشِّي الشِّينُ ضَادًا اسْتَطِلْ"
+  }
+ ],
+ "strength_levels": [
+  "أقوى",
+  "قوي",
+  "متوسط",
+  "ضعيف",
+  "أضعف"
+ ],
+ "letters": [
+  {
+   "id": "hamza",
+   "char": "ء",
+   "name": "الهمزة",
+   "makhraj": "aqsa-halq",
+   "madd_makhraj": null,
+   "laqab": "الحلقية",
+   "sifat": [
+    "jahr",
+    "shidda",
+    "istifal",
+    "infitah",
+    "ismat"
+   ],
+   "extra": [],
+   "score": 0,
+   "level": "متوسط",
+   "pronounce": "أَءْ",
+   "mistakes": "تسهيلها أو قلبها هاءً، أو الإفراط في الضغط عليها حتى تصير كالسعلة."
+  },
+  {
+   "id": "alif",
+   "char": "ا",
+   "name": "الألف",
+   "makhraj": "jawf",
+   "madd_makhraj": null,
+   "laqab": "الجوفية",
+   "sifat": [
+    "jahr",
+    "rikhwa",
+    "istifal",
+    "infitah",
+    "ismat"
+   ],
+   "extra": [
+    "khafa"
+   ],
+   "score": -3,
+   "level": "ضعيف",
+   "pronounce": "ا",
+   "mistakes": "تفخيمها بعد الحروف المرققة، أو إمالتها، أو قصر مدها."
+  },
+  {
+   "id": "ba",
+   "char": "ب",
+   "name": "الباء",
+   "makhraj": "shafatan",
+   "madd_makhraj": null,
+   "laqab": "الشفوية",
+   "sifat": [
+    "jahr",
+    "shidda",
+    "istifal",
+    "infitah",
+    "idhlaq"
+   ],
+   "extra": [
+    "qalqalah"
+   ],
+   "score": 1,
+   "level": "متوسط",
+   "pronounce": "أَبْ",
+   "mistakes": "ترك قلقلتها ساكنة، أو قلبها ميماً بالغنة."
+  },
+  {
+   "id": "ta",
+   "char": "ت",
+   "name": "التاء",
+   "makhraj": "nit",
+   "madd_makhraj": null,
+   "laqab": "النطعية",
+   "sifat": [
+    "hams",
+    "shidda",
+    "istifal",
+    "infitah",
+    "ismat"
+   ],
+   "extra": [],
+   "score": -2,
+   "level": "ضعيف",
+   "pronounce": "أَتْ",
+   "mistakes": "ترك الهمس فيها حتى تشبه الدال، أو تفخيمها."
+  },
+  {
+   "id": "tha",
+   "char": "ث",
+   "name": "الثاء",
+   "makhraj": "lithah",
+   "madd_makhraj": null,
+   "laqab": "اللثوية",
+   "sifat": [
+    "hams",
+    "rikhwa",
+    "istifal",
+    "infitah",
+    "ismat"
+   ],
+   "extra": [],
+   "score": -4,
+   "level": "أضعف",
+   "pronounce": "أَثْ",
+   "mistakes": "قلبها سيناً أو تاءً."
+  },
+  {
+   "id": "jeem",
+   "char": "ج",
+   "name": "الجيم",
+   "makhraj": "wasat-lisan",
+   "madd_makhraj": null,
+   "laqab": "الشجرية",
+   "sifat": [
+    "jahr",
+    "shidda",
+    "istifal",
+    "infitah",
+    "ismat"
+   ],
+   "extra": [
+    "qalqalah"
+   ],
+   "score": 1,
+   "level": "متوسط",
+   "pronounce": "أَجْ",
+   "mistakes": "نطقها مُعطّشة كالشين أو رخوة كالجيم الشامية، أو قلبها دالاً."
+  },
+  {
+   "id": "haa",
+   "char": "ح",
+   "name": "الحاء",
+   "makhraj": "wasat-halq",
+   "madd_makhraj": null,
+   "laqab": "الحلقية",
+   "sifat": [
+    "hams",
+    "rikhwa",
+    "istifal",
+    "infitah",
+    "ismat"
+   ],
+   "extra": [],
+   "score": -4,
+   "level": "أضعف",
+   "pronounce": "أَحْ",
+   "mistakes": "قلبها هاءً لضعف المخرج، أو إخراجها بخشونة تشبه الخاء."
+  },
+  {
+   "id": "khaa",
+   "char": "خ",
+   "name": "الخاء",
+   "makhraj": "adna-halq",
+   "madd_makhraj": null,
+   "laqab": "الحلقية",
+   "sifat": [
+    "hams",
+    "rikhwa",
+    "istila",
+    "infitah",
+    "ismat"
+   ],
+   "extra": [],
+   "score": -2,
+   "level": "ضعيف",
+   "pronounce": "أَخْ",
+   "mistakes": "ترقيقها، أو قلبها كافاً أو هاءً."
+  },
+  {
+   "id": "dal",
+   "char": "د",
+   "name": "الدال",
+   "makhraj": "nit",
+   "madd_makhraj": null,
+   "laqab": "النطعية",
+   "sifat": [
+    "jahr",
+    "shidda",
+    "istifal",
+    "infitah",
+    "ismat"
+   ],
+   "extra": [
+    "qalqalah"
+   ],
+   "score": 1,
+   "level": "متوسط",
+   "pronounce": "أَدْ",
+   "mistakes": "قلبها تاءً لترك الجهر، أو ترك قلقلتها ساكنة."
+  },
+  {
+   "id": "thal",
+   "char": "ذ",
+   "name": "الذال",
+   "makhraj": "lithah",
+   "madd_makhraj": null,
+   "laqab": "اللثوية",
+   "sifat": [
+    "jahr",
+    "rikhwa",
+    "istifal",
+    "infitah",
+    "ismat"
+   ],
+   "extra": [],
+   "score": -2,
+   "level": "ضعيف",
+   "pronounce": "أَذْ",
+   "mistakes": "قلبها زاياً أو دالاً."
+  },
+  {
+   "id": "ra",
+   "char": "ر",
+   "name": "الراء",
+   "makhraj": "ra",
+   "madd_makhraj": null,
+   "laqab": "الذلقية",
+   "sifat": [
+    "jahr",
+    "tawassut",
+    "istifal",
+    "infitah",
+    "idhlaq"
+   ],
+   "extra": [
+    "inhiraf",
+    "takrir"
+   ],
+   "score": 1,
+   "level": "متوسط",
+   "pronounce": "أَرْ",
+   "mistakes": "المبالغة في التكرير، أو تفخيمها في مواضع الترقيق والعكس."
+  },
+  {
+   "id": "zay",
+   "char": "ز",
+   "name": "الزاي",
+   "makhraj": "asal",
+   "madd_makhraj": null,
+   "laqab": "الأسلية",
+   "sifat": [
+    "jahr",
+    "rikhwa",
+    "istifal",
+    "infitah",
+    "ismat"
+   ],
+   "extra": [
+    "safir"
+   ],
+   "score": -1,
+   "level": "ضعيف",
+   "pronounce": "أَزْ",
+   "mistakes": "قلبها سيناً لترك الجهر، أو ظاءً بالتفخيم."
+  },
+  {
+   "id": "seen",
+   "char": "س",
+   "name": "السين",
+   "makhraj": "asal",
+   "madd_makhraj": null,
+   "laqab": "الأسلية",
+   "sifat": [
+    "hams",
+    "rikhwa",
+    "istifal",
+    "infitah",
+    "ismat"
+   ],
+   "extra": [
+    "safir"
+   ],
+   "score": -3,
+   "level": "ضعيف",
+   "pronounce": "أَسْ",
+   "mistakes": "تفخيمها قبل حروف الاستعلاء حتى تشبه الصاد."
+  },
+  {
+   "id": "sheen",
+   "char": "ش",
+   "name": "الشين",
+   "makhraj": "wasat-lisan",
+   "madd_makhraj": null,
+   "laqab": "الشجرية",
+   "sifat": [
+    "hams",
+    "rikhwa",
+    "istifal",
+    "infitah",
+    "ismat"
+   ],
+   "extra": [
+    "tafashi"
+   ],
+   "score": -3,
+   "level": "ضعيف",
+   "pronounce": "أَشْ",
+   "mistakes": "عدم إظهار التفشي، أو قلبها سيناً."
+  },
+  {
+   "id": "sad",
+   "char": "ص",
+   "name": "الصاد",
+   "makhraj": "asal",
+   "madd_makhraj": null,
+   "laqab": "الأسلية",
+   "sifat": [
+    "hams",
+    "rikhwa",
+    "istila",
+    "itbaq",
+    "ismat"
+   ],
+   "extra": [
+    "safir"
+   ],
+   "score": 1,
+   "level": "متوسط",
+   "pronounce": "أَصْ",
+   "mistakes": "قلبها سيناً لترك الإطباق."
+  },
+  {
+   "id": "dad",
+   "char": "ض",
+   "name": "الضاد",
+   "makhraj": "dad",
+   "madd_makhraj": null,
+   "laqab": "الشجرية",
+   "sifat": [
+    "jahr",
+    "rikhwa",
+    "istila",
+    "itbaq",
+    "ismat"
+   ],
+   "extra": [
+    "istitala"
+   ],
+   "score": 3,
+   "level": "قوي",
+   "pronounce": "أَضْ",
+   "mistakes": "قلبها ظاءً أو دالاً مفخمة، أو عدم إظهار الاستطالة."
+  },
+  {
+   "id": "taa",
+   "char": "ط",
+   "name": "الطاء",
+   "makhraj": "nit",
+   "madd_makhraj": null,
+   "laqab": "النطعية",
+   "sifat": [
+    "jahr",
+    "shidda",
+    "istila",
+    "itbaq",
+    "ismat"
+   ],
+   "extra": [
+    "qalqalah"
+   ],
+   "score": 5,
+   "level": "أقوى",
+   "pronounce": "أَطْ",
+   "mistakes": "قلبها تاءً لترك الإطباق والاستعلاء."
+  },
+  {
+   "id": "dhaa",
+   "char": "ظ",
+   "name": "الظاء",
+   "makhraj": "lithah",
+   "madd_makhraj": null,
+   "laqab": "اللثوية",
+   "sifat": [
+    "jahr",
+    "rikhwa",
+    "istila",
+    "itbaq",
+    "ismat"
+   ],
+   "extra": [],
+   "score": 2,
+   "level": "قوي",
+   "pronounce": "أَظْ",
+   "mistakes": "قلبها زاياً مفخمة أو ضاداً."
+  },
+  {
+   "id": "ain",
+   "char": "ع",
+   "name": "العين",
+   "makhraj": "wasat-halq",
+   "madd_makhraj": null,
+   "laqab": "الحلقية",
+   "sifat": [
+    "jahr",
+    "tawassut",
+    "istifal",
+    "infitah",
+    "ismat"
+   ],
+   "extra": [],
+   "score": -1,
+   "level": "ضعيف",
+   "pronounce": "أَعْ",
+   "mistakes": "قلبها همزة، أو إخراجها بشدة مع ضغط زائد على الحلق."
+  },
+  {
+   "id": "ghain",
+   "char": "غ",
+   "name": "الغين",
+   "makhraj": "adna-halq",
+   "madd_makhraj": null,
+   "laqab": "الحلقية",
+   "sifat": [
+    "jahr",
+    "rikhwa",
+    "istila",
+    "infitah",
+    "ismat"
+   ],
+   "extra": [],
+   "score": 0,
+   "level": "متوسط",
+   "pronounce": "أَغْ",
+   "mistakes": "قلبها قافاً أو خاءً، أو إخراجها من أقصى اللسان."
+  },
+  {
+   "id": "fa",
+   "char": "ف",
+   "name": "الفاء",
+   "makhraj": "fa",
+   "madd_makhraj": null,
+   "laqab": "الشفوية",
+   "sifat": [
+    "hams",
+    "rikhwa",
+    "istifal",
+    "infitah",
+    "idhlaq"
+   ],
+   "extra": [],
+   "score": -4,
+   "level": "أضعف",
+   "pronounce": "أَفْ",
+   "mistakes": "إخراجها بالشفتين معاً دون الأسنان، أو تفخيمها."
+  },
+  {
+   "id": "qaf",
+   "char": "ق",
+   "name": "القاف",
+   "makhraj": "qaf",
+   "madd_makhraj": null,
+   "laqab": "اللهوية",
+   "sifat": [
+    "jahr",
+    "shidda",
+    "istila",
+    "infitah",
+    "ismat"
+   ],
+   "extra": [
+    "qalqalah"
+   ],
+   "score": 3,
+   "level": "قوي",
+   "pronounce": "أَقْ",
+   "mistakes": "قلبها كافاً أو همزة أو غيناً بحسب اللهجات، أو ترقيقها."
+  },
+  {
+   "id": "kaf",
+   "char": "ك",
+   "name": "الكاف",
+   "makhraj": "kaf",
+   "madd_makhraj": null,
+   "laqab": "اللهوية",
+   "sifat": [
+    "hams",
+    "shidda",
+    "istifal",
+    "infitah",
+    "ismat"
+   ],
+   "extra": [],
+   "score": -2,
+   "level": "ضعيف",
+   "pronounce": "أَكْ",
+   "mistakes": "إخراجها بهمس زائد كالنفخ، أو تفخيمها قبل الألف."
+  },
+  {
+   "id": "lam",
+   "char": "ل",
+   "name": "اللام",
+   "makhraj": "lam",
+   "madd_makhraj": null,
+   "laqab": "الذلقية",
+   "sifat": [
+    "jahr",
+    "tawassut",
+    "istifal",
+    "infitah",
+    "idhlaq"
+   ],
+   "extra": [
+    "inhiraf"
+   ],
+   "score": 0,
+   "level": "متوسط",
+   "pronounce": "أَلْ",
+   "mistakes": "تفخيمها في غير لفظ الجلالة، خاصة بعد حروف الاستعلاء."
+  },
+  {
+   "id": "meem",
+   "char": "م",
+   "name": "الميم",
+   "makhraj": "shafatan",
+   "madd_makhraj": null,
+   "laqab": "الشفوية",
+   "sifat": [
+    "jahr",
+    "tawassut",
+    "istifal",
+    "infitah",
+    "idhlaq"
+   ],
+   "extra": [
+    "ghunnah"
+   ],
+   "score": 0,
+   "level": "متوسط",
+   "pronounce": "أَمْ",
+   "mistakes": "ترك الغنة في المشددة، أو إخفاؤها عند الواو والفاء."
+  },
+  {
+   "id": "noon",
+   "char": "ن",
+   "name": "النون",
+   "makhraj": "noon",
+   "madd_makhraj": null,
+   "laqab": "الذلقية",
+   "sifat": [
+    "jahr",
+    "tawassut",
+    "istifal",
+    "infitah",
+    "idhlaq"
+   ],
+   "extra": [
+    "ghunnah"
+   ],
+   "score": 0,
+   "level": "متوسط",
+   "pronounce": "أَنْ",
+   "mistakes": "إطالة الغنة في غير موضعها أو إخفاؤها عند الإظهار."
+  },
+  {
+   "id": "ha",
+   "char": "ه",
+   "name": "الهاء",
+   "makhraj": "aqsa-halq",
+   "madd_makhraj": null,
+   "laqab": "الحلقية",
+   "sifat": [
+    "hams",
+    "rikhwa",
+    "istifal",
+    "infitah",
+    "ismat"
+   ],
+   "extra": [
+    "khafa"
+   ],
+   "score": -5,
+   "level": "أضعف",
+   "pronounce": "أَهْ",
+   "mistakes": "إخفاؤها حتى لا تُسمع، خاصة في آخر الكلمة أو بعد الألف (مثل «وُجُوهٌ»)."
+  },
+  {
+   "id": "waw",
+   "char": "و",
+   "name": "الواو",
+   "makhraj": "shafatan",
+   "madd_makhraj": "jawf",
+   "laqab": "الشفوية",
+   "sifat": [
+    "jahr",
+    "rikhwa",
+    "istifal",
+    "infitah",
+    "ismat"
+   ],
+   "extra": [
+    "leen",
+    "khafa"
+   ],
+   "score": -4,
+   "level": "أضعف",
+   "pronounce": "أَوْ",
+   "mistakes": "ضم الشفتين ضماً ناقصاً، أو قلبها ياءً."
+  },
+  {
+   "id": "ya",
+   "char": "ي",
+   "name": "الياء",
+   "makhraj": "wasat-lisan",
+   "madd_makhraj": "jawf",
+   "laqab": "الشجرية",
+   "sifat": [
+    "jahr",
+    "rikhwa",
+    "istifal",
+    "infitah",
+    "ismat"
+   ],
+   "extra": [
+    "leen",
+    "khafa"
+   ],
+   "score": -4,
+   "level": "أضعف",
+   "pronounce": "أَيْ",
+   "mistakes": "تشديدها أو قصر مدها إذا كانت مدية."
+  }
+ ],
+ "alqab": [
+  {
+   "name": "الجوفية (الهوائية)",
+   "letters": "اوي",
+   "why": "لخروجها من الجوف وانتهائها بانتهاء الهواء."
+  },
+  {
+   "name": "الحلقية",
+   "letters": "ءهعحغخ",
+   "why": "لخروجها من الحلق."
+  },
+  {
+   "name": "اللهوية",
+   "letters": "قك",
+   "why": "لخروجها من قرب اللهاة."
+  },
+  {
+   "name": "الشجرية",
+   "letters": "جشيض",
+   "why": "لخروجها من شجر الفم، وهو منفتح ما بين اللحيين. وألحق بعضهم الضاد بها."
+  },
+  {
+   "name": "الأسلية",
+   "letters": "صسز",
+   "why": "لخروجها من أسلة اللسان، وهي مستدقّ طرفه."
+  },
+  {
+   "name": "النطعية",
+   "letters": "طدت",
+   "why": "لخروجها قرب نطع الغار الأعلى، وهو سقفه."
+  },
+  {
+   "name": "اللثوية",
+   "letters": "ظذث",
+   "why": "لخروجها قرب اللثة."
+  },
+  {
+   "name": "الذلقية",
+   "letters": "لنر",
+   "why": "لخروجها من ذلق اللسان، أي طرفه."
+  },
+  {
+   "name": "الشفوية",
+   "letters": "فبمو",
+   "why": "لخروجها من الشفتين."
+  }
+ ],
+ "teeth": [
+  {
+   "id": "thanaya",
+   "name": "الثنايا",
+   "count": 4,
+   "desc": "الأربع المتقدمة: ثنيتان في الأعلى وثنيتان في الأسفل."
+  },
+  {
+   "id": "rubaiyat",
+   "name": "الرباعيات",
+   "count": 4,
+   "desc": "تلي الثنايا من كل جهة: اثنتان فوق واثنتان تحت."
+  },
+  {
+   "id": "anyab",
+   "name": "الأنياب",
+   "count": 4,
+   "desc": "تلي الرباعيات، وهي المدببة."
+  },
+  {
+   "id": "dawahik",
+   "name": "الضواحك",
+   "count": 4,
+   "desc": "تلي الأنياب، سُمّيت بذلك لظهورها عند الضحك."
+  },
+  {
+   "id": "tawahin",
+   "name": "الطواحن",
+   "count": 12,
+   "desc": "ثلاثة من كل جهة في الأعلى والأسفل، تطحن الطعام."
+  },
+  {
+   "id": "nawajidh",
+   "name": "النواجذ",
+   "count": 4,
+   "desc": "آخر الأضراس من كل جهة (ضرس العقل)."
+  }
+ ],
+ "comparisons": [
+  {
+   "id": "ta-dal-taa",
+   "letters": [
+    "ta",
+    "dal",
+    "taa"
+   ],
+   "note": "من مخرج واحد؛ الطاء بالإطباق والاستعلاء، والدال بالجهر والقلقلة، والتاء بالهمس."
+  },
+  {
+   "id": "dad-dhaa-dal",
+   "letters": [
+    "dad",
+    "dhaa",
+    "dal"
+   ],
+   "note": "الضاد بالاستطالة من حافة اللسان، والظاء من أطراف الثنايا العليا، والدال من أصولها بلا إطباق."
+  },
+  {
+   "id": "seen-sad-zay",
+   "letters": [
+    "seen",
+    "sad",
+    "zay"
+   ],
+   "note": "حروف الصفير من مخرج واحد؛ الصاد بالإطباق، والزاي بالجهر، والسين بالهمس."
+  },
+  {
+   "id": "thal-tha-dhaa",
+   "letters": [
+    "thal",
+    "tha",
+    "dhaa"
+   ],
+   "note": "من مخرج واحد؛ الظاء بالإطباق والاستعلاء، والذال بالجهر، والثاء بالهمس."
+  },
+  {
+   "id": "haa-ha",
+   "letters": [
+    "haa",
+    "ha"
+   ],
+   "note": "الحاء من وسط الحلق، والهاء من أقصاه وفيها الخفاء."
+  },
+  {
+   "id": "ain-hamza",
+   "letters": [
+    "ain",
+    "hamza"
+   ],
+   "note": "العين من وسط الحلق متوسطة، والهمزة من أقصاه شديدة."
+  },
+  {
+   "id": "qaf-kaf",
+   "letters": [
+    "qaf",
+    "kaf"
+   ],
+   "note": "القاف أعمق مخرجاً مع الاستعلاء والقلقلة، والكاف أسفل منه قليلاً مع الهمس والاستفال."
+  }
+ ]
+}

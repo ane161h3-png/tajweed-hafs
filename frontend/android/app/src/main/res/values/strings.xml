@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">تعلّم التجويد</string>
+    <string name="title_activity_main">تعلّم التجويد</string>
+    <string name="package_name">app.tajweed.hafs</string>
+    <string name="custom_url_scheme">app.tajweed.hafs</string>
+</resources>
