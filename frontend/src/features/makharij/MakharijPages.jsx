@@ -12,7 +12,7 @@ import { LEVEL_COLORS, letterSifat, useLetters } from './letters'
 // ---------- عناصر مشتركة ----------
 
 export function LetterChip({ letter, to, active, size = 'md' }) {
-  const cls = `inline-grid place-items-center rounded-lg border font-quran leading-none transition ${
+  const cls = `glyph rounded-lg border transition ${
     size === 'lg' ? 'size-14 text-3xl' : 'size-10 text-2xl'
   } ${active ? 'border-accent bg-accent-soft text-accent' : 'border-line bg-surface hover:border-accent'}`
   const label = `${letter.name}`
@@ -185,7 +185,7 @@ export function LettersGrid({ base = '/makharij/letters', title = 'الحروف 
                   to={`${base}/${l.id}`}
                   className="flex flex-col items-center rounded-xl border border-line bg-surface py-2 hover:border-accent hover:bg-accent-soft"
                 >
-                  <span className="font-quran text-3xl leading-tight">{l.char}</span>
+                  <span className="glyph h-14 text-3xl">{l.char}</span>
                   <span className="text-[11px] text-muted">{l.name}</span>
                 </Link>
               </li>
@@ -232,7 +232,7 @@ export function LetterPage() {
   return (
     <article>
       <header className="mb-4 flex items-center gap-4">
-        <span className="grid size-16 place-items-center rounded-2xl bg-accent-soft font-quran text-5xl text-accent">{letter.char}</span>
+        <span className="glyph size-16 rounded-2xl bg-accent-soft text-5xl text-accent">{letter.char}</span>
         <div>
           <h1 className="text-2xl font-bold">{letter.name}</h1>
           <p className="text-muted">
@@ -420,7 +420,7 @@ export function CommonMistakes() {
         {list.map((l) => (
           <li key={l.id}>
             <Link to={`/makharij/letters/${l.id}`} className={`${card} flex gap-3 hover:border-accent/50`}>
-              <span className="font-quran text-3xl leading-none text-accent">{l.char}</span>
+              <span className="glyph size-10 shrink-0 text-3xl text-accent">{l.char}</span>
               <span className="text-sm leading-relaxed text-muted">{l.mistakes}</span>
             </Link>
           </li>

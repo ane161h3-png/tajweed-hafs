@@ -124,7 +124,7 @@ export function LetterCards() {
         {d.letters.map((l) => (
           <li key={l.id} className={card}>
             <div className="mb-2 flex items-center gap-3">
-              <Link to={`/makharij/letters/${l.id}`} className="grid size-12 shrink-0 place-items-center rounded-xl bg-accent-soft font-quran text-3xl text-accent">
+              <Link to={`/makharij/letters/${l.id}`} className="glyph size-12 shrink-0 rounded-xl bg-accent-soft text-3xl text-accent">
                 {l.char}
               </Link>
               <div className="min-w-0 flex-1">
@@ -204,7 +204,7 @@ export function SifatMatrix() {
                       setSifa(null)
                     }}
                     aria-pressed={letter === l.id}
-                    className="w-10 bg-surface py-0.5 font-quran text-xl hover:text-accent"
+                    className="glyph h-8 w-10 bg-surface text-xl hover:text-accent"
                     aria-label={l.name}
                   >
                     {l.char}
@@ -259,7 +259,7 @@ export function LetterStrength() {
           const width = ((l.score - min) / (max - min || 1)) * 85 + 15
           return (
             <li key={l.id} className="flex items-center gap-2">
-              <Link to={`/makharij/letters/${l.id}`} className="w-8 text-center font-quran text-2xl hover:text-accent" aria-label={l.name}>
+              <Link to={`/makharij/letters/${l.id}`} className="glyph h-8 w-8 text-2xl hover:text-accent" aria-label={l.name}>
                 {l.char}
               </Link>
               <div className="h-6 flex-1 rounded-full bg-surface-2">
@@ -321,7 +321,7 @@ export function SimilarLetters() {
               </th>
               {letters.map((l) => (
                 <th key={l.id} scope="col" className="p-2">
-                  <Link to={`/makharij/letters/${l.id}`} className="font-quran text-3xl hover:text-accent">
+                  <Link to={`/makharij/letters/${l.id}`} className="glyph h-12 w-12 text-3xl hover:text-accent">
                     {l.char}
                   </Link>
                 </th>

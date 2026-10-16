@@ -129,7 +129,7 @@ export function Classify({ q, done, onAnswer }) {
         onDragStart={(e) => e.dataTransfer.setData('text/plain', l.id)}
         onClick={() => !done && (inBin ? setPlaced(({ [l.id]: _, ...rest }) => rest) : setSelected(selected === l.id ? null : l.id))}
         aria-pressed={selected === l.id}
-        className={`grid size-12 place-items-center rounded-xl border font-quran text-3xl ${
+        className={`glyph size-12 rounded-xl border text-3xl ${
           wrong ? 'border-[var(--pen-red)] text-[var(--pen-red)]' : done ? 'border-accent text-accent' : selected === l.id ? 'border-accent bg-accent-soft' : 'border-line bg-surface'
         }`}
       >

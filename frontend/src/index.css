@@ -68,11 +68,24 @@ body {
   border-radius: 6px;
 }
 
-.font-quran {
-  font-family: var(--font-quran);
-  font-size: calc(1.75rem * var(--quran-scale));
-  line-height: 2.3;
-  word-spacing: 0.08em;
+/* في طبقة components: أصناف الحجم والسطر (text-*, leading-*) على العنصر نفسه تتقدّم عليها */
+@layer components {
+  .font-quran {
+    font-family: var(--font-quran);
+    font-size: calc(1.75rem * var(--quran-scale));
+    line-height: 2.3;
+    word-spacing: 0.08em;
+  }
+  /* حرف مفرد داخل مربع: خط المصحف بلا مسافات سطر، في وسط المربع تماماً */
+  .glyph {
+    font-family: var(--font-quran);
+    line-height: 1;
+    display: inline-grid;
+    place-items: center;
+    /* خط Amiri Quran يترك فوق الحروف مساحة كبيرة (صعوده 1.82em ونزوله 0.63em)، فمركز الحرف المرئي
+       يقع تحت منتصف السطر بنحو نصف em؛ هذه الحشوة ترفعه إلى منتصف المربع (قيست بـ measureText) */
+    padding-bottom: 1em;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
