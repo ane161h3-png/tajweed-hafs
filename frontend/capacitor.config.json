@@ -3,7 +3,10 @@
   "appName": "تعلّم التجويد",
   "webDir": "dist",
   "server": {
-    "androidScheme": "https"
+    "url": "https://ane161h3-png.github.io/tajweed-hafs/",
+    "errorPath": "index.html",
+    "androidScheme": "https",
+    "allowNavigation": ["ane161h3-png.github.io"]
   },
   "android": {
     "backgroundColor": "#f7f4ec"

@@ -3,9 +3,13 @@ import { api, STATIC } from './lib/api'
 
 const BASE = import.meta.env.BASE_URL ?? '/'
 
-/** تسجيل عامل الخدمة في نسخة الإنتاج على الويب (تطبيق أندرويد يحمل ملفاته معه فلا يحتاجه). */
+/**
+ * تسجيل عامل الخدمة في نسخة الإنتاج. تطبيق أندرويد يفتح الموقع المنشور نفسه فيسجّله أيضاً ليعمل دون إنترنت،
+ * إلا النسخة الاحتياطية المحمولة داخل التطبيق (localhost) فلا تحتاجه.
+ */
 export function registerServiceWorker() {
-  if (!import.meta.env.PROD || Capacitor.isNativePlatform() || !('serviceWorker' in navigator)) return
+  const bundled = Capacitor.isNativePlatform() && window.location.hostname === 'localhost'
+  if (!import.meta.env.PROD || bundled || !('serviceWorker' in navigator)) return
   window.addEventListener('load', () => {
     navigator.serviceWorker.register(`${BASE}sw.js`, { scope: BASE }).catch(() => {})
   })

@@ -7,6 +7,7 @@ import { rememberVisit } from '../features/progress/progress'
 import Breadcrumb, { CrumbProvider, useCrumbs } from './Breadcrumb'
 import Icon from './Icon'
 import PlayerBar from '../features/player/PlayerBar'
+import UpdateWatcher from './UpdateWatcher'
 import { usePlayer } from '../features/player/PlayerContext'
 
 function ThemeToggle() {
@@ -255,6 +256,7 @@ export default function Layout() {
       </div>
       <PlayerBar />
       <BottomNav />
+      <UpdateWatcher />
     </CrumbProvider>
   )
 }

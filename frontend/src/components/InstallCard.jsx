@@ -35,8 +35,11 @@ export default function InstallCard() {
     return () => window.removeEventListener('tajweed:installable', on)
   }, [])
 
-  if (!STATIC || Capacitor.isNativePlatform() || hidden || !import.meta.env.PROD) return null
-  const standalone = isStandalone()
+  const native = Capacitor.isNativePlatform()
+  // النسخة المحمولة داخل تطبيق أندرويد (localhost) تحمل كل البيانات معها
+  if (!STATIC || hidden || !import.meta.env.PROD || (native && window.location.hostname === 'localhost')) return null
+  // داخل التطبيق لا حاجة إلى «ثبّت»، ويبقى «احفظه للعمل دون إنترنت»
+  const standalone = native || isStandalone()
   if (standalone && cached) return null
 
   const install = async () => {

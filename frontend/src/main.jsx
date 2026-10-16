@@ -13,6 +13,11 @@ import App from './App'
 import { registerServiceWorker } from './pwa'
 import { setupNative } from './native'
 
+// صفحة الخطأ في تطبيق أندرويد تُفتح على /index.html؛ نحوّلها إلى الرئيسية
+if (window.location.pathname.endsWith('/index.html')) {
+  window.history.replaceState(null, '', window.location.pathname.replace(/index\.html$/, ''))
+}
+
 registerServiceWorker()
 setupNative()
 

@@ -4,9 +4,9 @@
 // - بيانات الخادم (api/، نسخة الخادم): من الشبكة أولاً، ومن التخزين عند انقطاعها.
 // - الصفحات: من الشبكة، وعند الانقطاع الصفحة الرئيسية المخزّنة (التطبيق يتولى التنقل).
 // التلاوات المنزّلة تُحفظ في IndexedDB لا هنا.
-const VERSION = 'v2'
+const VERSION = 'v3'
 const SHELL = `tajweed-shell-${VERSION}`
-const DATA = 'tajweed-data-v1' // لا يُمسح عند تحديث الواجهة
+const DATA = 'tajweed-data-v1' // يُمسح عند نشر نسخة جديدة (UpdateWatcher) ثم يُعاد حفظه
 const API = 'tajweed-api-v1'
 const SCOPE = new URL(self.registration.scope).pathname // '/' أو '/مجلد/' حسب مكان الاستضافة
 const SHELL_FILES = [SCOPE, `${SCOPE}manifest.webmanifest`, `${SCOPE}icon.svg`, `${SCOPE}icon-192.png`]
@@ -27,7 +27,8 @@ self.addEventListener('activate', (event) => {
 async function networkFirst(request, cacheName) {
   const cache = await caches.open(cacheName)
   try {
-    const res = await fetch(request)
+    // no-cache: نتحقق من الخادم دائماً فتصل النسخة الجديدة فوراً بعد النشر
+    const res = await fetch(request, { cache: 'no-cache' })
     if (res.ok) cache.put(request, res.clone())
     return res
   } catch (e) {
@@ -69,6 +70,7 @@ self.addEventListener('fetch', (event) => {
   if (url.origin !== self.location.origin || !url.pathname.startsWith(SCOPE)) return
   const rel = url.pathname.slice(SCOPE.length)
 
+  if (rel === 'version.json') return // يُطلب دائماً من الشبكة لمعرفة التحديثات
   if (rel.startsWith('data/')) {
     event.respondWith(staleWhileRevalidate(request, DATA, event))
   } else if (rel.startsWith('api/')) {
@@ -82,7 +84,17 @@ self.addEventListener('fetch', (event) => {
       ),
     )
   } else if (request.mode === 'navigate') {
-    event.respondWith(networkFirst(request, SHELL).catch(() => caches.match(SCOPE, { cacheName: SHELL })))
+    event.respondWith(
+      networkFirst(request, SHELL)
+        .then(async (res) => {
+          // GitHub Pages يرسل التطبيق للروابط العميقة بحالة 404 (صفحة 404.html)؛ نعيده صفحةً عادية 200
+          // حتى لا يظنها المتصفح أو تطبيق أندرويد خطأً
+          if (res.status !== 404) return res
+          const index = (await fetch(SCOPE, { cache: 'no-cache' }).catch(() => null)) ?? (await caches.match(SCOPE, { cacheName: SHELL }))
+          return index ? new Response(await index.blob(), { status: 200, headers: { 'Content-Type': 'text/html; charset=utf-8' } }) : res
+        })
+        .catch(() => caches.match(SCOPE, { cacheName: SHELL })),
+    )
   } else if (rel.startsWith('assets/') || rel.startsWith('audio/') || /\.(svg|png|webmanifest)$/.test(rel)) {
     event.respondWith(cacheFirst(request, SHELL))
   }

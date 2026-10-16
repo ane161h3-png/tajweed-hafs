@@ -52,7 +52,7 @@ export function DisplaySettings() {
         </p>
       </section>
       <LessonEditsSection />
-      {STATIC && Capacitor.isNativePlatform() ? (
+      {STATIC && Capacitor.isNativePlatform() && window.location.hostname === 'localhost' ? (
         <section className={card}>
           <h2 className="mb-1 font-semibold">العمل دون إنترنت</h2>
           <p className="text-sm text-muted">المصحف والدروس والمخارج والأسئلة مضمّنة في التطبيق وتعمل دون اتصال. التلاوات تُنزَّل من «الاستماع».</p>
