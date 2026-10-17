@@ -64,6 +64,113 @@ export function listen({ onInterim } = {}) {
   return { promise, stop: () => stopFn() }
 }
 
+/**
+ * استماع متواصل للتسميع: يرسل كل كلمة جديدة ثبتت في التعرّف (onWords) دون انتظار نهاية الجملة،
+ * ويعيد تشغيل التعرّف تلقائياً كلما توقف (السكوت يوقفه في أغلب الأجهزة) حتى يُستدعى stop().
+ * onError(SpeechError) عند رفض الإذن أو انقطاع الخدمة.
+ */
+export function listenContinuous({ onWords, onError, toWords }) {
+  let active = true
+  let cleanup = () => {}
+  // لكل مقطع مسموع: كم كلمة منه أُرسلت. آخر كلمة في النتيجة الجزئية قد تتغير فلا تُرسل حتى تثبت.
+  const utterance = () => {
+    let sent = 0
+    return (transcript, final) => {
+      const words = toWords(transcript)
+      const stable = final ? words.length : words.length - 1
+      if (stable > sent) onWords(words.slice(sent, stable))
+      sent = Math.max(sent, stable)
+    }
+  }
+  const fail = (code) => {
+    if (!active) return
+    active = false
+    cleanup()
+    onError?.(new SpeechError(code))
+  }
+
+  ;(async () => {
+    const plugin = await nativePlugin()
+    if (plugin) {
+      const perm = await plugin.checkPermissions().catch(() => ({ speechRecognition: 'prompt' }))
+      if (perm.speechRecognition !== 'granted' && (await plugin.requestPermissions()).speechRecognition !== 'granted') return fail('denied')
+      let current = utterance()
+      let last = ''
+      const partial = await plugin.addListener('partialResults', (d) => {
+        last = d.matches?.[0] ?? last
+        current(last, false)
+      })
+      const state = await plugin.addListener('listeningState', (d) => {
+        if (d.status !== 'stopped') return
+        current(last, true)
+        current = utterance()
+        last = ''
+        if (active) setTimeout(start, 150)
+      })
+      const start = () => {
+        if (!active) return
+        plugin
+          .start({ language: LANG, maxResults: 1, partialResults: true, popup: false })
+          .then((res) => res?.matches?.[0] && current(res.matches[0], true))
+          .catch(() => active && setTimeout(start, 500))
+      }
+      cleanup = () => {
+        plugin.stop().catch(() => {})
+        partial.remove()
+        state.remove()
+      }
+      if (!active) return cleanup()
+      start()
+      return
+    }
+
+    const Recognition = webRecognition()
+    if (!Recognition) return fail('unsupported')
+    let rec
+    const start = () => {
+      if (!active) return
+      rec = new Recognition()
+      rec.lang = LANG
+      rec.continuous = true
+      rec.interimResults = true
+      rec.maxAlternatives = 1
+      const parts = []
+      rec.onresult = (e) => {
+        for (let i = e.resultIndex; i < e.results.length; i++) {
+          parts[i] ??= utterance()
+          parts[i](e.results[i][0].transcript, e.results[i].isFinal)
+        }
+      }
+      rec.onerror = (e) => {
+        if (e.error === 'not-allowed' || e.error === 'service-not-allowed') fail('denied')
+        else if (e.error === 'network') fail('network')
+        // no-speech و aborted: يعاد التشغيل عند onend
+      }
+      rec.onend = () => active && setTimeout(start, 150)
+      try {
+        rec.start()
+      } catch {
+        setTimeout(start, 500)
+      }
+    }
+    cleanup = () => {
+      if (rec) {
+        rec.onend = null
+        rec.abort?.()
+      }
+    }
+    start()
+  })()
+
+  return {
+    stop() {
+      if (!active) return
+      active = false
+      cleanup()
+    },
+  }
+}
+
 export class SpeechError extends Error {
   constructor(code) {
     super(

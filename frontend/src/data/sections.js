@@ -94,6 +94,7 @@ export const SECTIONS = [
       { id: 'level-2', title: 'المستوى الثاني' },
       { id: 'level-3', title: 'المستوى الثالث' },
       { id: 'recite', title: 'اقرأ بصوتك (الميكروفون)', description: 'اقرأ المثال فيتحقق البرنامج من قراءتك' },
+      { id: 'tasmee', title: 'التسميع: اقرأ سورة كاملة', description: 'يتابع قراءتك وينبّهك عند كل خطأ ويصحّحه' },
       { id: 'review', title: 'مراجعة الأخطاء' },
     ],
   },

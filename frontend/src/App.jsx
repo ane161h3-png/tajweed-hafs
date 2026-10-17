@@ -20,6 +20,7 @@ import {
 import { OfflineAudio, ReciterLibrary } from './features/listen/ListenPages'
 import { QuizLevel, QuizReview } from './features/quiz/QuizPages'
 import { RecitePractice } from './features/quiz/Recite'
+import { TasmeePage } from './features/quiz/Tasmee'
 import { AttendanceCard, AttendancePage, PrintCards, ShareProgress, StudentDetail, Subscription, TeacherDashboard } from './features/teacher/TeacherPages'
 import { AudioSettings, ColorSettings, DisplaySettings, ProgressSettings } from './features/settings/SettingsPages'
 
@@ -58,6 +59,7 @@ export function AppRoutes() {
         <Route path="listen/offline" element={<OfflineAudio />} />
         <Route path="quiz/review" element={<QuizReview />} />
         <Route path="quiz/recite" element={<RecitePractice />} />
+        <Route path="quiz/tasmee" element={<TasmeePage />} />
         <Route path="quiz/:subId" element={<QuizLevel />} />
         <Route path="teacher/share" element={<ShareProgress />} />
         <Route path="teacher/students" element={<TeacherDashboard />} />

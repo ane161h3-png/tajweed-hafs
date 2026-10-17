@@ -8,7 +8,7 @@ import { itemUrl } from '../player/queue'
 import { DataState } from '../mushaf/MushafLists'
 import { record, shuffle } from './srs'
 
-function MicIcon({ active }) {
+export function MicIcon({ active }) {
   return (
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
       {active ? <rect x="7" y="7" width="10" height="10" rx="2" fill="currentColor" /> : <path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3zM5 11a7 7 0 0 0 14 0M12 18v3" />}
