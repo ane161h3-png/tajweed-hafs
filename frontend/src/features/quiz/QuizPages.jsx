@@ -115,13 +115,14 @@ export function QuizLevel() {
   const level = Number(subId.replace('level-', ''))
   const { data, loading, error } = useApi(`/quiz?level=${level}`)
   const [round, setRound] = useState(0)
-  const questions = useMemo(() => (data ? pickSession(data.questions, loadSrs()) : []), [data, round]) // eslint-disable-line react-hooks/exhaustive-deps
+  // «اقرأ بصوتك» في صفحتها الخاصة (تحتاج ميكروفوناً)، فلا تدخل الجلسات العادية
+  const questions = useMemo(() => (data ? pickSession(data.questions.filter((q) => q.type !== 'recite'), loadSrs()) : []), [data, round]) // eslint-disable-line react-hooks/exhaustive-deps
   if (!data) return <DataState loading={loading} error={error} />
   return (
     <div>
       <h1 className="mb-1 text-2xl font-bold">{LEVEL_NAMES[level]}</h1>
       <p className="mb-4 text-sm text-muted">
-        {arabicNumber(data.questions.length)} سؤالاً في هذا المستوى؛ كل جلسة {arabicNumber(SESSION)} أسئلة منوّعة.
+        {arabicNumber(data.questions.filter((q) => q.type !== 'recite').length)} سؤالاً في هذا المستوى؛ كل جلسة {arabicNumber(SESSION)} أسئلة منوّعة.
       </p>
       <Session key={round} questions={questions} title={`جلسة ${arabicNumber(round + 1)}`} onRestart={() => setRound((r) => r + 1)} />
     </div>
@@ -136,7 +137,7 @@ export function QuizReview() {
   const questions = useMemo(() => {
     if (!data) return []
     const byId = Object.fromEntries(data.questions.map((q) => [q.id, q]))
-    return dueForReview(srs).map((id) => byId[id]).filter(Boolean).slice(0, SESSION)
+    return dueForReview(srs).map((id) => byId[id]).filter((q) => q && q.type !== 'recite').slice(0, SESSION)
   }, [data, round]) // eslint-disable-line react-hooks/exhaustive-deps
   if (!data) return <DataState loading={loading} error={error} />
   return (

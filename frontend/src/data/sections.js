@@ -93,6 +93,7 @@ export const SECTIONS = [
       { id: 'level-1', title: 'المستوى الأول' },
       { id: 'level-2', title: 'المستوى الثاني' },
       { id: 'level-3', title: 'المستوى الثالث' },
+      { id: 'recite', title: 'اقرأ بصوتك (الميكروفون)', description: 'اقرأ المثال فيتحقق البرنامج من قراءتك' },
       { id: 'review', title: 'مراجعة الأخطاء' },
     ],
   },

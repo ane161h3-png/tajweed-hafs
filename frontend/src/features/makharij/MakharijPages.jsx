@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Link, useParams } from 'react-router'
 import { usePageCrumb } from '../../components/Breadcrumb'
 import { arabicNumber } from '../../lib/api'
@@ -11,11 +11,17 @@ import { LEVEL_COLORS, letterSifat, useLetters } from './letters'
 
 // ---------- عناصر مشتركة ----------
 
-export function LetterChip({ letter, to, active, size = 'md' }) {
+export function LetterChip({ letter, to, active, size = 'md', onClick }) {
   const cls = `glyph rounded-lg border transition ${
-    size === 'lg' ? 'size-14 text-3xl' : 'size-10 text-2xl'
-  } ${active ? 'border-accent bg-accent-soft text-accent' : 'border-line bg-surface hover:border-accent'}`
+    size === 'lg' ? 'size-14 text-3xl' : 'size-11 text-2xl'
+  } ${active ? 'border-accent bg-accent-soft text-accent ring-2 ring-accent/40' : 'border-line bg-surface hover:border-accent'}`
   const label = `${letter.name}`
+  if (onClick)
+    return (
+      <button type="button" onClick={onClick} className={cls} aria-label={label} aria-pressed={!!active} title={label}>
+        {letter.char}
+      </button>
+    )
   return to ? (
     <Link to={to} className={cls} aria-label={label} title={label}>
       {letter.char}
@@ -24,6 +30,47 @@ export function LetterChip({ letter, to, active, size = 'md' }) {
     <span className={cls} aria-label={label} title={label}>
       {letter.char}
     </span>
+  )
+}
+
+/** شاشة واسعة (حاسوب): الرسم ثابت بجانب القائمة؛ وفي الموبايل يظهر تحت العنصر المختار مباشرة. */
+export function useIsDesktop() {
+  const query = '(min-width: 1024px)'
+  const [desktop, setDesktop] = useState(() => typeof window !== 'undefined' && !!window.matchMedia?.(query).matches)
+  useEffect(() => {
+    const mq = window.matchMedia?.(query)
+    if (!mq?.addEventListener) return
+    const on = () => setDesktop(mq.matches)
+    mq.addEventListener('change', on)
+    return () => mq.removeEventListener('change', on)
+  }, [])
+  return desktop
+}
+
+/** بعد الاختيار في الموبايل: يُظهر العنصر المختار ورسمه تحته في الشاشة. */
+function revealOnMobile(id, desktop) {
+  if (desktop) return
+  requestAnimationFrame(() => document.getElementById(id)?.scrollIntoView?.({ block: 'start', behavior: 'smooth' }))
+}
+
+/** الرسم مع بطاقة الحرف المختار. */
+function DiagramPanel({ d, makhraj, letter, organs }) {
+  return (
+    <div className="space-y-2">
+      <HeadDiagram makhraj={makhraj} art={letter ? articulation(letter) : null} phase="contact" highlight={organs ?? []} />
+      {letter && (
+        <div className="flex flex-wrap items-center gap-3 rounded-xl border border-accent/40 bg-accent-soft px-3 py-2 text-sm">
+          <span className="glyph size-10 rounded-lg bg-surface text-2xl text-accent">{letter.char}</span>
+          <span className="min-w-0 flex-1">
+            <span className="block font-semibold">{letter.name}</span>
+            <span className="block text-muted">{d.makhrajById[letter.makhraj].name}</span>
+          </span>
+          <Link to={`/makharij/letters/${letter.id}`} className="rounded-lg bg-accent px-3 py-1.5 font-medium text-accent-ink">
+            انطقه متحركاً ←
+          </Link>
+        </div>
+      )}
+    </div>
   )
 }
 
@@ -63,48 +110,68 @@ const card = 'rounded-2xl border border-line bg-surface p-4'
 
 export function GeneralMakharij() {
   const [active, setActive] = useState('lisan')
+  const [letterId, setLetterId] = useState(null)
+  const desktop = useIsDesktop()
   return (
     <WithLetters>
       {(d) => {
-        const specific = d.makharij.filter((m) => m.general === active)
-        const organs = specific.flatMap((m) => m.organs)
+        const letter = letterId ? d.letterById[letterId] : null
+        const organs = letter ? [] : d.makharij.filter((m) => m.general === active).flatMap((m) => m.organs)
+        const panel = <DiagramPanel d={d} letter={letter} makhraj={letter ? d.makhrajById[letter.makhraj] : null} organs={organs} />
         return (
           <div>
             <h1 className="mb-1 text-2xl font-bold">المخارج العامة الخمسة</h1>
+            <p className="mb-2 text-sm text-muted">اضغط اسم المخرج لتظليله على الرسم، أو اضغط حرفاً لترى مخرجه.</p>
             <DraftNote />
             <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
               <ul className="space-y-2">
-                {d.general.map((g) => (
-                  <li key={g.id}>
-                    <button
-                      type="button"
-                      onClick={() => setActive(g.id)}
-                      aria-pressed={active === g.id}
-                      className={`${card} w-full text-start ${active === g.id ? 'border-accent ring-1 ring-accent' : 'hover:border-accent/50'}`}
-                    >
-                      <span className="flex items-baseline justify-between gap-2">
-                        <span className="text-lg font-semibold">{g.name}</span>
-                        <span className="text-xs text-muted">
-                          {g.count === 1 ? 'مخرج واحد' : g.count === 2 ? 'مخرجان' : `${arabicNumber(g.count)} مخارج`}
+                {d.general.map((g) => {
+                  const on = active === g.id
+                  const ids = d.makharij
+                    .filter((m) => m.general === g.id)
+                    .flatMap((m) => m.letter_ids)
+                    .filter((id, i, a) => a.indexOf(id) === i)
+                  return (
+                    <li key={g.id} id={`general-${g.id}`} className={`${card} scroll-mt-20 ${on ? 'border-accent ring-1 ring-accent' : ''}`}>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setActive(g.id)
+                          setLetterId(null)
+                          revealOnMobile(`general-${g.id}`, desktop)
+                        }}
+                        aria-pressed={on && !letter}
+                        className="block w-full text-start"
+                      >
+                        <span className="flex items-baseline justify-between gap-2">
+                          <span className="text-lg font-semibold">{g.name}</span>
+                          <span className="text-xs text-muted">
+                            {g.count === 1 ? 'مخرج واحد' : g.count === 2 ? 'مخرجان' : `${arabicNumber(g.count)} مخارج`}
+                          </span>
                         </span>
-                      </span>
-                      <span className="mt-1 block text-sm text-muted">{g.desc}</span>
-                      <span className="mt-2 flex flex-wrap gap-1.5">
-                        {d.makharij
-                          .filter((m) => m.general === g.id)
-                          .flatMap((m) => m.letter_ids)
-                          .filter((id, i, a) => a.indexOf(id) === i)
-                          .map((id) => (
-                            <LetterChip key={id} letter={d.letterById[id]} />
-                          ))}
-                      </span>
-                    </button>
-                  </li>
-                ))}
+                        <span className="mt-1 block text-sm text-muted">{g.desc}</span>
+                      </button>
+                      <div className="mt-2 flex flex-wrap gap-2" role="group" aria-label={`حروف ${g.name}`}>
+                        {ids.map((id) => (
+                          <LetterChip
+                            key={id}
+                            letter={d.letterById[id]}
+                            active={letterId === id}
+                            onClick={() => {
+                              setActive(g.id)
+                              setLetterId(letterId === id ? null : id)
+                              revealOnMobile(`general-${g.id}`, desktop)
+                            }}
+                          />
+                        ))}
+                      </div>
+                      {/* الموبايل: الرسم تحت المخرج المختار مباشرة */}
+                      {!desktop && on && <div className="mt-3 border-t border-line pt-3">{panel}</div>}
+                    </li>
+                  )
+                })}
               </ul>
-              <div className="lg:sticky lg:top-4 lg:self-start">
-                <HeadDiagram highlight={organs} art={null} />
-              </div>
+              {desktop && <div className="sticky top-4 self-start">{panel}</div>}
             </div>
             <Verses verses={d.makharij_verses.slice(0, 2)} />
           </div>
@@ -118,48 +185,64 @@ export function GeneralMakharij() {
 
 export function SpecificMakharij() {
   const [active, setActive] = useState('qaf')
+  const [letterId, setLetterId] = useState(null)
+  const desktop = useIsDesktop()
   return (
     <WithLetters>
       {(d) => {
         const m = d.makhrajById[active]
-        const first = d.letterById[m.letter_ids[0]]
+        const letter = d.letterById[letterId && m.letter_ids.includes(letterId) ? letterId : m.letter_ids[0]]
+        const details = (
+          <div className="space-y-3">
+            <DiagramPanel d={d} makhraj={m} letter={letter} />
+            <div className={card}>
+              <p className="font-semibold">
+                {arabicNumber(m.order)}. {m.name}
+              </p>
+              <p className="mt-1 text-sm leading-relaxed text-muted">{m.desc}</p>
+              {m.letter_ids.length > 1 && (
+                <div className="mt-2 flex flex-wrap gap-2" role="group" aria-label="حروف هذا المخرج">
+                  {m.letter_ids.map((id) => (
+                    <LetterChip key={id} letter={d.letterById[id]} active={letter.id === id} onClick={() => setLetterId(id)} />
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        )
         return (
           <div>
             <h1 className="mb-1 text-2xl font-bold">المخارج الخاصة السبعة عشر</h1>
+            <p className="mb-2 text-sm text-muted">اضغط مخرجاً لترى موضعه وحركة النطق على الرسم.</p>
             <DraftNote />
-            <div className="grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
-              <div className="lg:sticky lg:top-4 lg:self-start">
-                <HeadDiagram makhraj={m} art={articulation(first)} phase="contact" />
-                <div className={`${card} mt-3`}>
-                  <p className="font-semibold">
-                    {arabicNumber(m.order)}. {m.name}
-                  </p>
-                  <p className="mt-1 text-sm leading-relaxed text-muted">{m.desc}</p>
-                  <p className="mt-2 flex flex-wrap gap-1.5">
-                    {m.letter_ids.map((id) => (
-                      <LetterChip key={id} letter={d.letterById[id]} to={`/makharij/letters/${id}`} />
-                    ))}
-                  </p>
-                </div>
-              </div>
+            <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
               <ol className="space-y-1.5">
-                {d.makharij.map((x) => (
-                  <li key={x.id}>
-                    <button
-                      type="button"
-                      onClick={() => setActive(x.id)}
-                      aria-pressed={active === x.id}
-                      className={`flex w-full items-center gap-3 rounded-xl border px-3 py-2 text-start ${
-                        active === x.id ? 'border-accent bg-accent-soft' : 'border-line bg-surface hover:border-accent/50'
-                      }`}
-                    >
-                      <span className="w-7 shrink-0 text-center text-sm font-semibold text-muted">{arabicNumber(x.order)}</span>
-                      <span className="min-w-0 flex-1 text-sm font-medium">{x.name}</span>
-                      <span className="font-quran text-xl tracking-widest">{x.letters.split('').join(' ')}</span>
-                    </button>
-                  </li>
-                ))}
+                {d.makharij.map((x) => {
+                  const on = active === x.id
+                  return (
+                    <li key={x.id} id={`makhraj-${x.id}`} className="scroll-mt-20">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setActive(x.id)
+                          setLetterId(null)
+                          revealOnMobile(`makhraj-${x.id}`, desktop)
+                        }}
+                        aria-pressed={on}
+                        className={`flex w-full items-center gap-3 rounded-xl border px-3 py-2.5 text-start ${
+                          on ? 'border-accent bg-accent-soft' : 'border-line bg-surface hover:border-accent/50'
+                        }`}
+                      >
+                        <span className="w-7 shrink-0 text-center text-sm font-semibold text-muted">{arabicNumber(x.order)}</span>
+                        <span className="min-w-0 flex-1 text-sm font-medium">{x.name}</span>
+                        <span className="font-quran !text-xl !leading-none tracking-widest">{x.letters.split('').join(' ')}</span>
+                      </button>
+                      {!desktop && on && <div className="mt-2">{details}</div>}
+                    </li>
+                  )
+                })}
               </ol>
+              {desktop && <div className="sticky top-4 self-start">{details}</div>}
             </div>
             <Verses verses={d.makharij_verses} />
           </div>
@@ -364,6 +447,7 @@ export function Teeth() {
 
 export function FindingMakhraj() {
   const [id, setId] = useState('ba')
+  const desktop = useIsDesktop()
   return (
     <WithLetters>
       {(d) => {
@@ -378,17 +462,25 @@ export function FindingMakhraj() {
               </p>
               <p className="text-sm text-muted">مثال: أَبْ ، أَتْ ، أَثْ … اختر حرفاً وجرّب:</p>
             </div>
-            <div className="mb-4 flex flex-wrap gap-1.5">
-              {d.letters
-                .filter((l) => l.id !== 'alif')
-                .map((l) => (
-                  <button key={l.id} type="button" onClick={() => setId(l.id)} aria-pressed={id === l.id} className="contents">
-                    <LetterChip letter={l} active={id === l.id} />
-                  </button>
-                ))}
-            </div>
-            <div className="max-w-3xl">
-              <LetterPlayer key={id} letter={letter} makhraj={d.makhrajById[letter.makhraj]} />
+            <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)]">
+              <div className="flex flex-wrap content-start gap-2" role="group" aria-label="اختر حرفاً">
+                {d.letters
+                  .filter((l) => l.id !== 'alif')
+                  .map((l) => (
+                    <LetterChip
+                      key={l.id}
+                      letter={l}
+                      active={id === l.id}
+                      onClick={() => {
+                        setId(l.id)
+                        revealOnMobile('finding-player', desktop)
+                      }}
+                    />
+                  ))}
+              </div>
+              <div id="finding-player" className="scroll-mt-20 lg:sticky lg:top-4 lg:self-start">
+                <LetterPlayer key={id} letter={letter} makhraj={d.makhrajById[letter.makhraj]} />
+              </div>
             </div>
           </div>
         )

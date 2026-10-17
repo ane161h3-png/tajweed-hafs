@@ -19,6 +19,7 @@ import {
 } from './features/sifat/SifatPages'
 import { OfflineAudio, ReciterLibrary } from './features/listen/ListenPages'
 import { QuizLevel, QuizReview } from './features/quiz/QuizPages'
+import { RecitePractice } from './features/quiz/Recite'
 import { AudioSettings, ColorSettings, DisplaySettings, ProgressSettings } from './features/settings/SettingsPages'
 
 // المسارات المحددة (المصحف، عن البرنامج) قبل المسار العام للأقسام الفرعية.
@@ -55,6 +56,7 @@ export function AppRoutes() {
         <Route path="listen/reciters" element={<ReciterLibrary />} />
         <Route path="listen/offline" element={<OfflineAudio />} />
         <Route path="quiz/review" element={<QuizReview />} />
+        <Route path="quiz/recite" element={<RecitePractice />} />
         <Route path="quiz/:subId" element={<QuizLevel />} />
         <Route path="settings/display" element={<DisplaySettings />} />
         <Route path="settings/colors" element={<ColorSettings />} />

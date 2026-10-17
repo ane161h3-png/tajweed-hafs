@@ -316,3 +316,13 @@ input.notebook-field {
     display: none;
   }
 }
+
+/* الموبايل: تسميات الرسم صغيرة جداً إن ظهرت كلها؛ نُظهر تسمية الجزء المظلَّل فقط وبخط أكبر */
+@media (max-width: 640px) {
+  .mk .label:not(.on) {
+    display: none;
+  }
+  .mk .label text {
+    font-size: 17px;
+  }
+}

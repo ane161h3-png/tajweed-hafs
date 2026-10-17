@@ -127,6 +127,37 @@ def lesson_questions(lessons: list[dict], con) -> list[dict]:
     return qs
 
 
+def recite_questions(lessons: list[dict], con) -> list[dict]:
+    """«اقرأ بصوتك»: مقطع قصير من الآية حول كلمة الشاهد، كما هو في المصحف حرفاً بحرف (بلا تعديل)."""
+    sys.path.insert(0, str(ROOT / "backend"))
+    from app.matching import find_word, tokens
+    qs = []
+    for x in lessons:
+        for j, ex in enumerate(x.get("examples", [])):
+            text = con.execute("SELECT text FROM ayahs WHERE surah=? AND ayah=?", (ex["surah"], ex["ayah"])).fetchone()[0]
+            name = con.execute("SELECT name FROM surahs WHERE number=?", (ex["surah"],)).fetchone()[0]
+            span = find_word(text, ex["word"])
+            if not span:
+                continue
+            toks = tokens(text)
+            first = next(i for i, t in enumerate(toks) if t["end"] > span[0])
+            last = max(i for i, t in enumerate(toks) if t["start"] < span[1])
+            if len(toks) > 8:  # الآية الطويلة: ثلاث كلمات قبل الشاهد وثلاث بعده
+                lo, hi = max(0, first - 3), min(len(toks) - 1, last + 3)
+            else:
+                lo, hi = 0, len(toks) - 1
+            a, b = toks[lo]["start"], toks[hi]["end"]
+            qs.append({
+                "id": f"recite-{x['id']}-{j}", "level": 3, "type": "recite", "topic": "التلاوة",
+                "question": f"اقرأ بصوتك مراعياً حكم «{x['title']}» في «{ex['word']}».",
+                "text": text[a:b], "match": [span[0] - a, span[1] - a], "whole": lo == 0 and hi == len(toks) - 1,
+                "surah": ex["surah"], "ayah": ex["ayah"], "surah_name": name, "word": ex["word"],
+                "rule_title": x["title"], "explain": ex.get("note") or "", "method": x.get("method", ""),
+                "link": f"/ahkam/{x['section']}/{x['id']}",
+            })
+    return qs
+
+
 def extract_questions(con, rules: dict[str, str]) -> list[dict]:
     qs = []
     for rule, name in rules.items():
@@ -145,7 +176,7 @@ def main() -> int:
     lessons = json.loads((CONTENT / "ahkam.json").read_text(encoding="utf-8"))["lessons"]
     con = sqlite3.connect(DB)
     rules = dict(con.execute("SELECT id, name FROM rules WHERE id NOT IN ('silent')"))
-    qs = letter_questions(L) + lesson_questions(lessons, con) + extract_questions(con, rules)
+    qs = letter_questions(L) + lesson_questions(lessons, con) + extract_questions(con, rules) + recite_questions(lessons, con)
     ids = [q["id"] for q in qs]
     assert len(ids) == len(set(ids)), "معرّفات مكررة"
     out = {"version": 1, "status": "draft", "questions": qs}
