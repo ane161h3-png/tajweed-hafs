@@ -7,7 +7,7 @@ import { DataState } from '../mushaf/MushafLists'
 import { completedLessons } from '../progress/progress'
 import { loadSrs } from '../quiz/srs'
 import { accuracy, analyzeReport, buildReport, decodeReport, encodeReport, reportLink, saveStudentProfile, studentProfile } from './report'
-import { FREE_STUDENTS, addReport, loadRoster, removeStudent, rosterCsv } from './roster'
+import { ATTENDANCE, FREE_STUDENTS, addManualStudent, addReport, attendanceCsv, attendanceStats, loadRoster, localDay, removeStudent, rosterCsv, setAttendance } from './roster'
 import { CONTACT_EMAIL, PLAY_PLANS, activateCode, buyPlan, deactivate, isNative, playProducts, refreshPlay, usePremium } from './premium'
 
 const card = 'rounded-2xl border border-line bg-surface p-4'
@@ -32,6 +32,15 @@ function Stat({ label, value }) {
       <p className="text-xs text-muted">{label}</p>
     </div>
   )
+}
+
+function downloadCsv(text, name) {
+  const blob = new Blob([text], { type: 'text/csv;charset=utf-8' })
+  const a = document.createElement('a')
+  a.href = URL.createObjectURL(blob)
+  a.download = `${name}-${localDay()}.csv`
+  a.click()
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000)
 }
 
 /* ———————————— الطالب: أرسل تقدّمي ———————————— */
@@ -109,9 +118,11 @@ function useQuizBank() {
 }
 
 function studentRows(roster, questions) {
-  return Object.values(roster.students).map(({ report, receivedAt }) => {
+  return Object.values(roster.students).map(({ report, receivedAt, manual }) => {
     const a = analyzeReport(report, questions)
     return {
+      manual: !!manual,
+      attendance: attendanceStats(roster, report.id).rate,
       id: report.id,
       name: report.n || 'بلا اسم',
       group: report.g,
@@ -131,6 +142,7 @@ function studentRows(roster, questions) {
 const IMPORT_MESSAGES = {
   added: (n) => `أُضيف الطالب «${n}» ✓`,
   updated: (n) => `حُدّث تقدّم «${n}» ✓`,
+  linked: (n) => `رُبط تقرير «${n}» بالطالب المسجّل في الحضور ✓`,
   same: (n) => `تقرير «${n}» هذا مضاف من قبل ✓`,
   older: (n) => `لدى اللوحة تقرير أحدث لـ«${n}».`,
   limit: () => `الخطة المجانية تتسع لـ${arabicNumber(FREE_STUDENTS)} طلاب. اشترك لإضافة عدد غير محدود.`,
@@ -173,14 +185,7 @@ export function TeacherDashboard() {
   const shown = rows.filter((r) => !group || r.group === group).sort((a, b) => (b.lastActive ?? 0) - (a.lastActive ?? 0))
   const count = rows.length
 
-  const exportCsv = () => {
-    const blob = new Blob([rosterCsv(shown)], { type: 'text/csv;charset=utf-8' })
-    const a = document.createElement('a')
-    a.href = URL.createObjectURL(blob)
-    a.download = `طلاب-التجويد-${new Date().toISOString().slice(0, 10)}.csv`
-    a.click()
-    setTimeout(() => URL.revokeObjectURL(a.href), 1000)
-  }
+  const exportCsv = () => downloadCsv(rosterCsv(shown), 'طلاب-التجويد')
 
   return (
     <div className="space-y-4">
@@ -222,7 +227,11 @@ export function TeacherDashboard() {
         <DataState loading={loading} error={error} />
       ) : count === 0 ? (
         <p className="rounded-xl border border-dashed border-line bg-surface p-6 text-center text-muted">
-          لا طلاب بعد. اطلب من طلابك فتح «المعلّم والطلاب ← أرسل تقدّمي للمعلّم» وإرسال الرابط لك.
+          لا طلاب بعد. اطلب من طلابك فتح «المعلّم والطلاب ← أرسل تقدّمي للمعلّم» وإرسال الرابط لك، أو أضفهم بأسمائهم من{' '}
+          <Link to="/teacher/attendance" className="text-accent">
+            تسجيل الحضور
+          </Link>
+          .
         </p>
       ) : (
         <>
@@ -235,6 +244,9 @@ export function TeacherDashboard() {
                 ))}
               </select>
             )}
+            <Link to="/teacher/attendance" className="rounded-lg border border-accent bg-surface px-3 py-2 text-sm font-medium text-accent">
+              تسجيل الحضور
+            </Link>
             <button
               type="button"
               className="rounded-lg border border-line bg-surface px-3 py-2 text-sm hover:border-accent disabled:opacity-50"
@@ -252,7 +264,10 @@ export function TeacherDashboard() {
                     <p className="text-lg font-semibold">{r.name}</p>
                     {r.group && <span className="rounded-full bg-accent-soft px-2 py-0.5 text-xs">{r.group}</span>}
                   </div>
-                  <p className="mt-1 text-sm text-muted">آخر نشاط: {ago(r.lastActive)}</p>
+                  <p className="mt-1 text-sm text-muted">
+                    {r.manual ? 'لم يرسل تقريره بعد' : `آخر نشاط: ${ago(r.lastActive)}`}
+                    {r.attendance != null && ` · الحضور ${pct(r.attendance)}`}
+                  </p>
                   <dl className="mt-3 grid grid-cols-3 gap-2 text-center text-sm">
                     <div>
                       <dt className="text-xs text-muted">دروس</dt>
@@ -294,6 +309,7 @@ export function StudentDetail() {
   if (!questions) return <DataState loading={loading} error={error} />
   const { report } = entry
   const a = analyzeReport(report, questions)
+  const att = attendanceStats(loadRoster(), id)
   const titles = new Map((lessons.data?.lessons ?? []).map((l) => [l.id, l.title]))
   const LEVELS = { 1: 'المستوى الأول', 2: 'المستوى الثاني', 3: 'المستوى الثالث' }
 
@@ -308,10 +324,41 @@ export function StudentDetail() {
       <div>
         <h1 className="text-2xl font-bold">{report.n || 'بلا اسم'}</h1>
         <p className="text-sm text-muted">
-          {report.g && `${report.g} · `}آخر نشاط: {ago(report.a)} · التقرير بتاريخ {new Date(report.t).toLocaleDateString('ar')}
+          {report.g && `${report.g} · `}
+          {entry.manual ? 'أُضيف للحضور ولم يرسل تقريره بعد' : `آخر نشاط: ${ago(report.a)} · التقرير بتاريخ ${new Date(report.t).toLocaleDateString('ar-u-nu-arab')}`}
         </p>
       </div>
 
+      <section className={card}>
+        <div className="mb-2 flex items-baseline justify-between gap-2">
+          <h2 className="font-semibold">الحضور</h2>
+          <Link to="/teacher/attendance" className="text-sm text-accent">
+            تسجيل الحضور ←
+          </Link>
+        </div>
+        {att.days.length === 0 ? (
+          <p className="text-sm text-muted">لم يُسجَّل حضوره بعد.</p>
+        ) : (
+          <>
+            <p className="mb-3 text-sm">
+              نسبة الحضور <b className="text-accent">{pct(att.rate)}</b> ·{' '}
+              {Object.entries(ATTENDANCE)
+                .map(([k, v]) => `${v.label} ${arabicNumber(att[k])}`)
+                .join(' · ')}
+            </p>
+            <ul className="flex flex-wrap gap-1.5 text-xs">
+              {att.days.slice(0, 30).map((d) => (
+                <li key={d.day} className={`rounded-md border px-2 py-1 ${STATUS_STYLE[d.status]}`} title={ATTENDANCE[d.status].label}>
+                  {new Date(`${d.day}T12:00`).toLocaleDateString('ar-u-nu-arab', { day: 'numeric', month: 'short' })} · {ATTENDANCE[d.status].label}
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+      </section>
+
+      {!entry.manual && (
+        <>
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         <Stat label="دروس قرأها" value={arabicNumber(a.lessons)} />
         <Stat label="أسئلة جرّبها" value={arabicNumber(a.seen)} />
@@ -390,9 +437,191 @@ export function StudentDetail() {
         )}
       </section>
 
+        </>
+      )}
+
       <button type="button" onClick={remove} className="rounded-lg border border-[var(--pen-red)] px-4 py-2 text-sm text-[var(--pen-red)]">
         حذف الطالب من اللوحة
       </button>
+    </div>
+  )
+}
+
+/* ———————————— المعلّم: تسجيل الحضور ———————————— */
+
+const STATUS_STYLE = {
+  present: 'border-accent bg-accent-soft text-accent',
+  late: 'border-amber-500 bg-amber-500/10 text-amber-700 dark:text-amber-400',
+  absent: 'border-[var(--pen-red)] bg-[var(--pen-red)]/10 text-[var(--pen-red)]',
+  excused: 'border-sky-500 bg-sky-500/10 text-sky-700 dark:text-sky-400',
+}
+
+function shiftDay(day, n) {
+  const d = new Date(`${day}T12:00`)
+  d.setDate(d.getDate() + n)
+  return localDay(d)
+}
+
+export function AttendancePage() {
+  const premium = usePremium()
+  const navigate = useNavigate()
+  const [roster, setRoster] = useState(loadRoster)
+  const [day, setDay] = useState(localDay)
+  const [group, setGroup] = useState('')
+  const [name, setName] = useState('')
+  const [newGroup, setNewGroup] = useState('')
+  const [message, setMessage] = useState(null)
+
+  const students = Object.values(roster.students)
+    .map((s) => s.report)
+    .sort((a, b) => a.n.localeCompare(b.n, 'ar'))
+  const groups = [...new Set(students.map((s) => s.g).filter(Boolean))].sort()
+  const shown = students.filter((s) => !group || s.g === group)
+  const marks = roster.attendance[day] ?? {}
+  const counts = Object.fromEntries(Object.keys(ATTENDANCE).map((k) => [k, shown.filter((s) => marks[s.id] === k).length]))
+  const unmarked = shown.filter((s) => !marks[s.id])
+  const isToday = day === localDay()
+
+  const mark = (id, status) => setRoster(setAttendance(day, id, marks[id] === status ? null : status))
+  const addStudent = (e) => {
+    e.preventDefault()
+    const res = addManualStudent(name, newGroup || group, { premium: premium.active })
+    setRoster(res.roster)
+    setMessage(
+      {
+        added: { ok: true, text: `أُضيف «${name.trim()}» ✓` },
+        exists: { ok: false, text: 'هذا الطالب موجود في القائمة.' },
+        limit: { ok: false, text: `الخطة المجانية تتسع لـ${arabicNumber(FREE_STUDENTS)} طلاب. اشترك لإضافة عدد غير محدود.`, limit: true },
+        empty: null,
+      }[res.status],
+    )
+    if (res.status === 'added') setName('')
+  }
+
+  return (
+    <div className="max-w-3xl space-y-4">
+      <h1 className="text-2xl font-bold">تسجيل الحضور</h1>
+
+      <div className={`${card} flex flex-wrap items-center gap-2`}>
+        <button type="button" className="rounded-lg border border-line px-3 py-2" onClick={() => setDay(shiftDay(day, -1))} aria-label="اليوم السابق">
+          →
+        </button>
+        <input
+          type="date"
+          className="rounded-lg border border-line bg-bg px-3 py-2"
+          value={day}
+          max={localDay()}
+          onChange={(e) => e.target.value && setDay(e.target.value)}
+          aria-label="التاريخ"
+        />
+        <button type="button" className="rounded-lg border border-line px-3 py-2 disabled:opacity-40" disabled={isToday} onClick={() => setDay(shiftDay(day, 1))} aria-label="اليوم التالي">
+          ←
+        </button>
+        <span className="text-sm text-muted">
+          {isToday ? 'اليوم، ' : ''}
+          {new Date(`${day}T12:00`).toLocaleDateString('ar-u-nu-arab', { weekday: 'long', day: 'numeric', month: 'long' })}
+        </span>
+        {!isToday && (
+          <button type="button" className="text-sm text-accent underline" onClick={() => setDay(localDay())}>
+            اليوم
+          </button>
+        )}
+      </div>
+
+      {students.length > 0 && (
+        <>
+          <div className="flex flex-wrap items-center gap-2">
+            {groups.length > 0 && (
+              <select className="rounded-lg border border-line bg-surface px-3 py-2 text-sm" value={group} onChange={(e) => setGroup(e.target.value)} aria-label="الحلقة">
+                <option value="">كل الحلقات</option>
+                {groups.map((g) => (
+                  <option key={g}>{g}</option>
+                ))}
+              </select>
+            )}
+            <button
+              type="button"
+              className="rounded-lg border border-accent bg-surface px-3 py-2 text-sm font-medium text-accent disabled:opacity-40"
+              disabled={!unmarked.length}
+              onClick={() => setRoster(setAttendance(day, unmarked.map((s) => s.id), 'present'))}
+            >
+              الباقون حاضرون ({arabicNumber(unmarked.length)})
+            </button>
+            <button
+              type="button"
+              className="rounded-lg border border-line bg-surface px-3 py-2 text-sm hover:border-accent"
+              onClick={() => (premium.active ? downloadCsv(attendanceCsv(roster, shown.map((s) => s.id)), 'سجل-الحضور') : navigate('/teacher/subscription'))}
+            >
+              تصدير سجل الحضور (CSV){premium.active ? '' : ' 🔒'}
+            </button>
+          </div>
+          <p className="text-sm text-muted" aria-live="polite">
+            {Object.entries(ATTENDANCE)
+              .map(([k, v]) => `${v.label}: ${arabicNumber(counts[k])}`)
+              .join(' · ')}{' '}
+            · لم يُسجَّل: {arabicNumber(unmarked.length)}
+          </p>
+        </>
+      )}
+
+      <ul className="space-y-2">
+        {shown.map((s) => (
+          <li key={s.id} className={`${card} flex flex-wrap items-center justify-between gap-2 py-3`}>
+            <Link to={`/teacher/students/${s.id}`} className="min-w-0 font-medium hover:text-accent">
+              {s.n}
+              {s.g && !group && <span className="ms-2 text-xs text-muted">{s.g}</span>}
+            </Link>
+            <div className="flex gap-1.5" role="group" aria-label={`حضور ${s.n}`}>
+              {Object.entries(ATTENDANCE).map(([k, v]) => (
+                <button
+                  key={k}
+                  type="button"
+                  aria-pressed={marks[s.id] === k}
+                  onClick={() => mark(s.id, k)}
+                  className={`min-w-14 rounded-lg border px-2.5 py-1.5 text-sm ${marks[s.id] === k ? `${STATUS_STYLE[k]} font-semibold` : 'border-line text-muted hover:border-accent'}`}
+                >
+                  {v.label}
+                </button>
+              ))}
+            </div>
+          </li>
+        ))}
+      </ul>
+
+      <form onSubmit={addStudent} className={`${card} space-y-2`}>
+        <h2 className="font-semibold">إضافة طالب باسمه</h2>
+        <p className="text-sm text-muted">لتسجيل حضوره قبل أن يرسل تقريره. عندما يرسل تقريراً بالاسم نفسه يُربط به تلقائياً.</p>
+        <div className="flex flex-col gap-2 sm:flex-row">
+          <input className={input} value={name} onChange={(e) => setName(e.target.value)} placeholder="اسم الطالب" aria-label="اسم الطالب" maxLength={60} />
+          <input
+            className={input}
+            value={newGroup}
+            onChange={(e) => setNewGroup(e.target.value)}
+            placeholder={group || 'الحلقة (اختياري)'}
+            aria-label="الحلقة"
+            list="groups-list"
+            maxLength={60}
+          />
+          <datalist id="groups-list">
+            {groups.map((g) => (
+              <option key={g} value={g} />
+            ))}
+          </datalist>
+          <button type="submit" className={`${btn} shrink-0`} disabled={!name.trim()}>
+            إضافة
+          </button>
+        </div>
+        {message && (
+          <p role="status" className={`text-sm ${message.ok ? 'text-accent' : 'text-[var(--pen-red)]'}`}>
+            {message.text}{' '}
+            {message.limit && (
+              <Link to="/teacher/subscription" className="font-medium underline">
+                الاشتراك
+              </Link>
+            )}
+          </p>
+        )}
+      </form>
     </div>
   )
 }
@@ -445,7 +674,7 @@ export function Subscription() {
           <p className="text-lg font-semibold text-accent">اشتراكك فعّال ✓</p>
           <p className="mt-1 text-sm text-muted">
             {premium.source === 'code'
-              ? `بكود تفعيل${premium.name ? ` باسم ${premium.name}` : ''}، صالح حتى ${new Date(premium.until).toLocaleDateString('ar')}.`
+              ? `بكود تفعيل${premium.name ? ` باسم ${premium.name}` : ''}، صالح حتى ${new Date(premium.until).toLocaleDateString('ar-u-nu-arab')}.`
               : 'عبر Google Play؛ يُجدَّد تلقائياً، وتُديره أو تلغيه من Google Play ← الدفعات والاشتراكات.'}
           </p>
           {premium.source === 'code' && (
@@ -459,7 +688,7 @@ export function Subscription() {
       )}
 
       <ul className={`${card} space-y-2`}>
-        {['عدد غير محدود من الطلاب', 'تنظيمهم في حلقات وتصفيتهم', 'تصدير تقدّم الطلاب إلى Excel', 'دعم استمرار تطوير البرنامج'].map((f) => (
+        {['عدد غير محدود من الطلاب', 'تنظيمهم في حلقات وتصفيتهم', 'تصدير التقدّم وسجل الحضور إلى Excel', 'دعم استمرار تطوير البرنامج'].map((f) => (
           <li key={f} className="flex gap-2">
             <span className="text-accent">✓</span>
             {f}

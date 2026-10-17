@@ -107,7 +107,8 @@ export const SECTIONS = [
     subsections: [
       { id: 'share', title: 'أرسل تقدّمي للمعلّم', description: 'للطالب: رابط بتقدّمك ترسله لمعلّمك' },
       { id: 'students', title: 'لوحة المعلّم', description: 'تابع تقدّم طلابك ومواضع ضعفهم' },
-      { id: 'subscription', title: 'الاشتراك', description: 'طلاب بلا حدود وتصدير إلى Excel' },
+      { id: 'attendance', title: 'تسجيل الحضور', description: 'حضور الطلاب وغيابهم يوماً بيوم' },
+      { id: 'subscription', title: 'الاشتراك', description: 'طلاب بلا حدود وتصدير التقدّم والحضور إلى Excel' },
     ],
   },
   {

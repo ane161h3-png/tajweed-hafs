@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 import { verifyLicense } from '../../frontend/src/lib/license'
 import { analyzeReport, buildReport, decodeReport, encodeReport } from '../../frontend/src/features/teacher/report'
-import { FREE_STUDENTS, addReport, loadRoster, removeStudent, rosterCsv } from '../../frontend/src/features/teacher/roster'
+import { FREE_STUDENTS, addManualStudent, addReport, attendanceCsv, attendanceStats, loadRoster, localDay, removeStudent, rosterCsv, setAttendance } from '../../frontend/src/features/teacher/roster'
 
 // كود حقيقي من scripts/make_license.py (باسم «اختبار»، صالح حتى 2026-11-16)
 const CODE =
@@ -108,5 +108,66 @@ describe('طلاب المعلّم', () => {
     expect(csv.startsWith('﻿')).toBe(true)
     expect(csv).toContain('"أحمد ""الصغير"""')
     expect(csv).toContain('"2026-10-17"')
+  })
+})
+
+describe('الحضور', () => {
+  beforeEach(() => localStorage.clear())
+
+  it('يسجّل ويغيّر ويمسح، ويحسب النسبة دون أيام الاستئذان', () => {
+    addReport(report(), { premium: false })
+    setAttendance('2026-10-01', 's1', 'present')
+    setAttendance('2026-10-02', 's1', 'late')
+    setAttendance('2026-10-03', 's1', 'absent')
+    setAttendance('2026-10-04', 's1', 'excused')
+    setAttendance('2026-10-05', 's1', 'absent')
+    setAttendance('2026-10-05', 's1', null)
+    const s = attendanceStats(loadRoster(), 's1')
+    expect(s).toMatchObject({ present: 1, late: 1, absent: 1, excused: 1, rate: 67 })
+    expect(s.days.map((d) => d.day)).toEqual(['2026-10-04', '2026-10-03', '2026-10-02', '2026-10-01'])
+    expect(loadRoster().attendance['2026-10-05']).toBeUndefined()
+  })
+
+  it('طالب بلا تسجيل: النسبة غير معروفة', () => {
+    expect(attendanceStats(loadRoster(), 'x').rate).toBeNull()
+  })
+
+  it('إضافة طالب باسمه، ثم ربط تقريره به مع بقاء حضوره', () => {
+    const { id, status } = addManualStudent('  أحمد  ', 'حلقة الفجر', { premium: false })
+    expect(status).toBe('added')
+    expect(addManualStudent('أحمد', 'حلقة الفجر', { premium: false }).status).toBe('exists')
+    setAttendance('2026-10-01', id, 'present')
+    expect(addReport(report(), { premium: false }).status).toBe('linked')
+    const r = loadRoster()
+    expect(Object.keys(r.students)).toEqual(['s1'])
+    expect(r.students.s1.manual).toBeUndefined()
+    expect(r.attendance['2026-10-01']).toEqual({ s1: 'present' })
+  })
+
+  it('الإضافة بالاسم تخضع لحد الخطة المجانية', () => {
+    for (let i = 0; i < FREE_STUDENTS; i++) addManualStudent(`طالب ${i}`, '', { premium: false })
+    expect(addManualStudent('زائد', '', { premium: false }).status).toBe('limit')
+    expect(addManualStudent('زائد', '', { premium: true }).status).toBe('added')
+  })
+
+  it('حذف الطالب يحذف حضوره، والتسجيل الجماعي يعمل', () => {
+    addReport(report(), { premium: false })
+    addReport(report({ id: 's2', n: 'علي' }), { premium: false })
+    setAttendance('2026-10-01', ['s1', 's2'], 'present')
+    removeStudent('s1')
+    expect(loadRoster().attendance['2026-10-01']).toEqual({ s2: 'present' })
+  })
+
+  it('سجل الحضور CSV: عمود لكل يوم', () => {
+    addReport(report(), { premium: false })
+    setAttendance('2026-10-01', 's1', 'present')
+    setAttendance('2026-10-02', 's1', 'absent')
+    const lines = attendanceCsv(loadRoster(), ['s1']).replace('﻿', '').split('\r\n')
+    expect(lines[0]).toContain('"2026-10-01","2026-10-02"')
+    expect(lines[1]).toBe('"أحمد","حلقة الفجر","حاضر","غائب","1","0","1","0","50"')
+  })
+
+  it('localDay بتوقيت الجهاز', () => {
+    expect(localDay(new Date(2026, 0, 5, 23, 30))).toBe('2026-01-05')
   })
 })

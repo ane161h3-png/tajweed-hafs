@@ -20,7 +20,7 @@ import {
 import { OfflineAudio, ReciterLibrary } from './features/listen/ListenPages'
 import { QuizLevel, QuizReview } from './features/quiz/QuizPages'
 import { RecitePractice } from './features/quiz/Recite'
-import { ShareProgress, StudentDetail, Subscription, TeacherDashboard } from './features/teacher/TeacherPages'
+import { AttendancePage, ShareProgress, StudentDetail, Subscription, TeacherDashboard } from './features/teacher/TeacherPages'
 import { AudioSettings, ColorSettings, DisplaySettings, ProgressSettings } from './features/settings/SettingsPages'
 
 // المسارات المحددة (المصحف، عن البرنامج) قبل المسار العام للأقسام الفرعية.
@@ -62,6 +62,7 @@ export function AppRoutes() {
         <Route path="teacher/share" element={<ShareProgress />} />
         <Route path="teacher/students" element={<TeacherDashboard />} />
         <Route path="teacher/students/:id" element={<StudentDetail />} />
+        <Route path="teacher/attendance" element={<AttendancePage />} />
         <Route path="teacher/subscription" element={<Subscription />} />
         <Route path="settings/display" element={<DisplaySettings />} />
         <Route path="settings/colors" element={<ColorSettings />} />
