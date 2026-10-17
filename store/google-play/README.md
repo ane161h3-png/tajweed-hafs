@@ -16,7 +16,7 @@
 
 ## الخطوة 1: حساب المطوّر (مرة واحدة)
 
-1. ادخل https://play.google.com/console/signup بحساب **Hydryd83@gmail.com** (سيكون مالك التطبيق).
+1. ادخل https://play.google.com/console/signup بحساب **hydrzyd83@gmail.com** (سيكون مالك التطبيق).
 2. اختر **Personal** (حساب شخصي).
 3. ادفع رسوم التسجيل (25 دولاراً مرة واحدة) وأكمل **إثبات الهوية** (صورة الهوية أو الجواز). قد تستغرق المراجعة من يوم إلى أيام.
 4. سيُطلب منك التحقق من رقم الهاتف وتحديد عنوان، وهذا من جهتك فقط.
@@ -36,7 +36,7 @@
 | Privacy policy | `https://ane161h3-png.github.io/tajweed-hafs/privacy.html` |
 | App access | All functionality is available without special access (لا يوجد تسجيل دخول) |
 | Ads | No, my app does not contain ads |
-| Content rating | املأ الاستبيان: البريد `Hydryd83@gmail.com` ثم الفئة **Reference, News, or Educational**، وأجب **No** عن كل الأسئلة (لا عنف، لا محتوى جنسي، لا مقامرة، لا تفاعل بين المستخدمين، لا مشاركة موقع). النتيجة المتوقعة: **مناسب للجميع** |
+| Content rating | املأ الاستبيان: البريد `hydrzyd83@gmail.com` ثم الفئة **Reference, News, or Educational**، وأجب **No** عن كل الأسئلة (لا عنف، لا محتوى جنسي، لا مقامرة، لا تفاعل بين المستخدمين، لا مشاركة موقع). النتيجة المتوقعة: **مناسب للجميع** |
 | Target audience | **13–15، 16–17، 18+** (اختيار أقل من 13 يُدخل التطبيق في سياسة العائلات وله متطلبات إضافية؛ يمكن إضافتها لاحقاً) |
 | News app | No |
 | Data safety | انظر الجدول أدناه |
@@ -44,7 +44,7 @@
 | Financial features | My app doesn't provide any financial features |
 | Health | My app does not have any health features |
 | App category | **Education** (تعليم) |
-| Contact details | `Hydryd83@gmail.com` |
+| Contact details | `hydrzyd83@gmail.com` |
 
 ### نموذج أمان البيانات (Data safety)
 
