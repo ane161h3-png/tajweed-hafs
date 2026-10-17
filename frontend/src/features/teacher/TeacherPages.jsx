@@ -7,7 +7,9 @@ import { DataState } from '../mushaf/MushafLists'
 import { completedLessons } from '../progress/progress'
 import { loadSrs } from '../quiz/srs'
 import { accuracy, analyzeReport, buildReport, decodeReport, encodeReport, reportLink, saveStudentProfile, studentProfile } from './report'
-import { ATTENDANCE, FREE_STUDENTS, addManualStudent, addReport, attendanceCsv, attendanceStats, loadRoster, localDay, removeStudent, rosterCsv, setAttendance } from './roster'
+import { ATTENDANCE, FREE_STUDENTS, addManualStudent, checkIn, addReport, attendanceCsv, attendanceStats, loadRoster, localDay, removeStudent, rosterCsv, setAttendance } from './roster'
+import { encodeCard, parseCard } from './card'
+import { QrCode, QrScannerView } from './Qr'
 import { CONTACT_EMAIL, PLAY_PLANS, activateCode, buyPlan, deactivate, isNative, playProducts, refreshPlay, usePremium } from './premium'
 
 const card = 'rounded-2xl border border-line bg-surface p-4'
@@ -72,16 +74,7 @@ export function ShareProgress() {
         «لوحة المعلّم» ويتابعك. أرسل رابطاً جديداً كل مدة ليتحدّث تقدّمك عنده.
       </p>
 
-      <section className={`${card} space-y-3`}>
-        <label className="block">
-          <span className="mb-1 block text-sm font-medium">اسمك</span>
-          <input className={input} value={profile.name} onChange={(e) => update({ name: e.target.value })} placeholder="مثلاً: أحمد علي" maxLength={60} />
-        </label>
-        <label className="block">
-          <span className="mb-1 block text-sm font-medium">الحلقة أو الصف (اختياري)</span>
-          <input className={input} value={profile.group} onChange={(e) => update({ group: e.target.value })} placeholder="مثلاً: حلقة الفجر" maxLength={60} />
-        </label>
-      </section>
+      <ProfileFields profile={profile} onChange={update} />
 
       <div className="grid grid-cols-2 gap-3">
         <Stat label="دروس قرأتها" value={arabicNumber(Object.keys(completed).length)} />
@@ -107,6 +100,160 @@ export function ShareProgress() {
       {!profile.name.trim() && <p className="text-sm text-muted">اكتب اسمك أولاً ليعرفك المعلّم.</p>}
       <p className="text-xs text-muted">يحتوي التقرير اسمك وتقدّمك فقط، ولا يُرسل إلى أي خادم؛ يصل إلى من ترسل له الرابط وحده.</p>
     </div>
+  )
+}
+
+/* ———————————— الطالب: بطاقة الحضور ———————————— */
+
+function ProfileFields({ profile, onChange }) {
+  return (
+    <section className={`${card} space-y-3`}>
+      <label className="block">
+        <span className="mb-1 block text-sm font-medium">اسمك</span>
+        <input className={input} value={profile.name} onChange={(e) => onChange({ name: e.target.value })} placeholder="مثلاً: أحمد علي" maxLength={60} />
+      </label>
+      <label className="block">
+        <span className="mb-1 block text-sm font-medium">الحلقة أو الصف (اختياري)</span>
+        <input className={input} value={profile.group} onChange={(e) => onChange({ group: e.target.value })} placeholder="مثلاً: حلقة الفجر" maxLength={60} />
+      </label>
+    </section>
+  )
+}
+
+export function AttendanceCard() {
+  const [profile, setProfile] = useState(studentProfile)
+  const named = profile.name.trim()
+  return (
+    <div className="max-w-2xl space-y-4">
+      <h1 className="no-print text-2xl font-bold">بطاقة الحضور</h1>
+      <p className="no-print text-muted">اعرض هذا الباركود على معلّمك عند دخول الحلقة، فيمسحه بجهازه ويُسجَّل حضورك. يمكنك أيضاً طباعته.</p>
+      <div className="no-print">
+        <ProfileFields profile={profile} onChange={(patch) => setProfile(saveStudentProfile(patch))} />
+      </div>
+      {named ? (
+        <>
+          <StudentCard id={profile.id} name={named} group={profile.group.trim()} size={240} />
+          <div className="no-print flex justify-center">
+            <button type="button" className={btnOutline} onClick={() => window.print()}>
+              طباعة البطاقة
+            </button>
+          </div>
+        </>
+      ) : (
+        <p className="no-print text-sm text-muted">اكتب اسمك أولاً ليظهر الباركود.</p>
+      )}
+    </div>
+  )
+}
+
+function StudentCard({ id, name, group, size = 160 }) {
+  return (
+    <figure className="mx-auto flex w-fit break-inside-avoid flex-col items-center gap-2 rounded-2xl border border-line bg-white p-4 text-center text-black">
+      <QrCode text={encodeCard({ id, name, group })} size={size} />
+      <figcaption>
+        <p className="text-lg font-bold">{name}</p>
+        {group && <p className="text-sm">{group}</p>}
+        <p className="text-xs opacity-60">تعلّم التجويد · بطاقة الحضور</p>
+      </figcaption>
+    </figure>
+  )
+}
+
+/* ———————————— المعلّم: طباعة بطاقات الباركود ———————————— */
+
+export function PrintCards() {
+  const roster = loadRoster()
+  const [group, setGroup] = useState('')
+  const students = Object.values(roster.students)
+    .map((s) => s.report)
+    .sort((a, b) => a.n.localeCompare(b.n, 'ar'))
+  const groups = [...new Set(students.map((s) => s.g).filter(Boolean))].sort()
+  const shown = students.filter((s) => !group || s.g === group)
+  return (
+    <div className="space-y-4">
+      <div className="no-print space-y-3">
+        <h1 className="text-2xl font-bold">بطاقات الباركود</h1>
+        <p className="text-muted">
+          اطبع بطاقة لكل طالب (مفيدة لمن ليس لديه هاتف)، ثم امسحها من «تسجيل الحضور». الطالب الذي لديه البرنامج يجد بطاقته في «المعلّم والطلاب ← بطاقة الحضور».
+        </p>
+        <div className="flex flex-wrap items-center gap-2">
+          {groups.length > 0 && (
+            <select className="rounded-lg border border-line bg-surface px-3 py-2 text-sm" value={group} onChange={(e) => setGroup(e.target.value)} aria-label="الحلقة">
+              <option value="">كل الحلقات</option>
+              {groups.map((g) => (
+                <option key={g}>{g}</option>
+              ))}
+            </select>
+          )}
+          <button type="button" className={btn} disabled={!shown.length} onClick={() => window.print()}>
+            طباعة ({arabicNumber(shown.length)} بطاقة)
+          </button>
+        </div>
+      </div>
+      {shown.length === 0 ? (
+        <p className="rounded-xl border border-dashed border-line bg-surface p-6 text-center text-muted">
+          لا طلاب بعد. أضفهم من <Link to="/teacher/attendance" className="text-accent">تسجيل الحضور</Link>.
+        </p>
+      ) : (
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 print:grid-cols-3">
+          {shown.map((s) => (
+            <StudentCard key={s.id} id={s.id} name={s.n} group={s.g} />
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
+/* ———————————— المعلّم: مسح الباركود في صفحة الحضور ———————————— */
+
+const SCAN_MESSAGES = {
+  present: (n) => ({ ok: true, text: `✓ ${n}: حاضر` }),
+  joined: (n) => ({ ok: true, text: `✓ ${n}: أُضيف وسُجّل حاضراً` }),
+  already: (n) => ({ ok: true, text: `${n}: مسجّل حاضراً من قبل` }),
+  limit: () => ({ ok: false, text: `الخطة المجانية تتسع لـ${arabicNumber(FREE_STUDENTS)} طلاب. اشترك لإضافة عدد غير محدود.`, limit: true }),
+}
+
+function AttendanceScanner({ day, premium, onRoster }) {
+  const [open, setOpen] = useState(false)
+  const [log, setLog] = useState([])
+  const onScan = (text) => {
+    const c = parseCard(text)
+    const res = c ? checkIn(day, c, { premium }) : null
+    const msg = c ? SCAN_MESSAGES[res.status](c.name) : { ok: false, text: 'هذا الباركود ليس بطاقة حضور من البرنامج.' }
+    if (res) onRoster(res.roster)
+    navigator.vibrate?.(msg.ok ? 80 : [60, 60, 60])
+    setLog((l) => [{ ...msg, at: Date.now() }, ...l].slice(0, 6))
+  }
+  return (
+    <section className={`${card} space-y-3`}>
+      {!open ? (
+        <div className="flex flex-wrap items-center gap-2">
+          <button type="button" className={btn} onClick={() => setOpen(true)}>
+            📷 مسح باركود الحضور
+          </button>
+          <Link to="/teacher/cards" className="text-sm text-accent underline-offset-4 hover:underline">
+            طباعة بطاقات الباركود
+          </Link>
+        </div>
+      ) : (
+        <QrScannerView onScan={onScan} onClose={() => setOpen(false)} />
+      )}
+      {log.length > 0 && (
+        <ul className="space-y-1 text-sm" aria-live="polite">
+          {log.map((m) => (
+            <li key={m.at} className={m.ok ? 'text-accent' : 'text-[var(--pen-red)]'}>
+              {m.text}
+              {m.limit && (
+                <Link to="/teacher/subscription" className="ms-1 font-medium underline">
+                  الاشتراك
+                </Link>
+              )}
+            </li>
+          ))}
+        </ul>
+      )}
+    </section>
   )
 }
 
@@ -527,6 +674,8 @@ export function AttendancePage() {
           </button>
         )}
       </div>
+
+      <AttendanceScanner day={day} premium={premium.active} onRoster={setRoster} />
 
       {students.length > 0 && (
         <>

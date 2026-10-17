@@ -1,7 +1,8 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 import { verifyLicense } from '../../frontend/src/lib/license'
 import { analyzeReport, buildReport, decodeReport, encodeReport } from '../../frontend/src/features/teacher/report'
-import { FREE_STUDENTS, addManualStudent, addReport, attendanceCsv, attendanceStats, loadRoster, localDay, removeStudent, rosterCsv, setAttendance } from '../../frontend/src/features/teacher/roster'
+import { encodeCard, parseCard } from '../../frontend/src/features/teacher/card'
+import { FREE_STUDENTS, addManualStudent, addReport, checkIn, attendanceCsv, attendanceStats, loadRoster, localDay, removeStudent, rosterCsv, setAttendance } from '../../frontend/src/features/teacher/roster'
 
 // كود حقيقي من scripts/make_license.py (باسم «اختبار»، صالح حتى 2026-11-16)
 const CODE =
@@ -169,5 +170,46 @@ describe('الحضور', () => {
 
   it('localDay بتوقيت الجهاز', () => {
     expect(localDay(new Date(2026, 0, 5, 23, 30))).toBe('2026-01-05')
+  })
+})
+
+describe('باركود الحضور', () => {
+  beforeEach(() => localStorage.clear())
+  const card = { id: 's1', name: 'أحمد', group: 'حلقة الفجر' }
+
+  it('يُرمَّز ويُقرأ، ويرفض الباركودات الأخرى', () => {
+    expect(parseCard(encodeCard({ id: 's1', name: ' أحمد ', group: 'حلقة الفجر' }))).toEqual(card)
+    expect(parseCard('https://example.com')).toBeNull()
+    expect(parseCard('{"t":"other","i":"x","n":"y"}')).toBeNull()
+    expect(parseCard('{"t":"tjw-s","i":"x","n":"  "}')).toBeNull()
+  })
+
+  it('المسح يضيف الطالب الجديد ويسجّله حاضراً، والمسح الثاني لا يكرر', () => {
+    expect(checkIn('2026-10-01', card, { premium: false }).status).toBe('joined')
+    expect(checkIn('2026-10-01', card, { premium: false }).status).toBe('already')
+    expect(loadRoster().students.s1.report.n).toBe('أحمد')
+    expect(loadRoster().attendance['2026-10-01']).toEqual({ s1: 'present' })
+  })
+
+  it('يغيّر «غائب» إلى «حاضر» عند المسح', () => {
+    addReport(report(), { premium: false })
+    setAttendance('2026-10-01', 's1', 'absent')
+    expect(checkIn('2026-10-01', card, { premium: false }).status).toBe('present')
+    expect(loadRoster().attendance['2026-10-01'].s1).toBe('present')
+  })
+
+  it('معرّف الباركود هو معرّف التقرير، فيُحدَّث الطالب نفسه عند وصول تقريره', () => {
+    checkIn('2026-10-01', card, { premium: false })
+    expect(addReport(report(), { premium: false }).status).toBe('updated')
+    const r = loadRoster()
+    expect(Object.keys(r.students)).toEqual(['s1'])
+    expect(r.students.s1.manual).toBeUndefined()
+    expect(r.attendance['2026-10-01']).toEqual({ s1: 'present' })
+  })
+
+  it('حد الخطة المجانية عند مسح طالب جديد', () => {
+    for (let i = 0; i < FREE_STUDENTS; i++) checkIn('2026-10-01', { ...card, id: `s${i}`, name: `طالب ${i}` }, { premium: false })
+    expect(checkIn('2026-10-01', { ...card, id: 'new', name: 'جديد' }, { premium: false }).status).toBe('limit')
+    expect(loadRoster().students.new).toBeUndefined()
   })
 })

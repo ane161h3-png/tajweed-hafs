@@ -48,14 +48,17 @@ function renameStudent(roster, from, to, entry) {
   return { students, attendance }
 }
 
-/** يضيف طالباً باسمه فقط (لتسجيل حضوره قبل أن يرسل تقريره). */
-export function addManualStudent(name, group, { premium, now = Date.now(), roster = loadRoster() }) {
+/**
+ * يضيف طالباً باسمه فقط (لتسجيل حضوره قبل أن يرسل تقريره).
+ * id: معرّف الطالب من باركوده، فيُربط تقريره به لاحقاً.
+ */
+export function addManualStudent(name, group, { premium, id: given, now = Date.now(), roster = loadRoster() }) {
   const n = name.replace(/\s+/g, ' ').trim()
   if (!n) return { status: 'empty', roster }
-  if (Object.values(roster.students).some((s) => sameName(s.report.n, n) && (s.report.g ?? '') === (group ?? '').trim()))
+  if (given ? roster.students[given] : Object.values(roster.students).some((s) => sameName(s.report.n, n) && (s.report.g ?? '') === (group ?? '').trim()))
     return { status: 'exists', roster }
   if (!premium && Object.keys(roster.students).length >= FREE_STUDENTS) return { status: 'limit', roster }
-  const id = `m-${now.toString(36)}${Math.random().toString(36).slice(2, 6)}`
+  const id = given ?? `m-${now.toString(36)}${Math.random().toString(36).slice(2, 6)}`
   const report = { v: 1, id, n, g: (group ?? '').trim(), t: 0, a: 0, l: [], q: [] }
   return { status: 'added', id, roster: save({ ...roster, students: { ...roster.students, [id]: { report, receivedAt: now, manual: true } } }) }
 }
@@ -97,6 +100,23 @@ export function setAttendance(day, ids, status, roster = loadRoster()) {
   const attendance = { ...roster.attendance, [day]: marks }
   if (!Object.keys(marks).length) delete attendance[day]
   return save({ ...roster, attendance })
+}
+
+/**
+ * تسجيل الحضور بمسح باركود الطالب: يُضاف الطالب إن لم يكن في القائمة، ويُسجَّل «حاضر».
+ * يرجع { status: 'present' | 'already' | 'joined' | 'limit', roster }
+ */
+export function checkIn(day, card, { premium, now = Date.now(), roster = loadRoster() }) {
+  let r = roster
+  let joined = false
+  if (!r.students[card.id]) {
+    const res = addManualStudent(card.name, card.group, { premium, id: card.id, now, roster: r })
+    if (res.status === 'limit') return { status: 'limit', roster: r }
+    r = res.roster
+    joined = true
+  }
+  if (r.attendance[day]?.[card.id] === 'present') return { status: 'already', roster: r }
+  return { status: joined ? 'joined' : 'present', roster: setAttendance(day, card.id, 'present', r) }
 }
 
 /** إحصاء حضور طالب: النسبة = (حاضر + متأخر) ÷ (الأيام المسجّلة عدا المستأذن). */

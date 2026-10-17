@@ -106,8 +106,10 @@ export const SECTIONS = [
     phase: 6,
     subsections: [
       { id: 'share', title: 'أرسل تقدّمي للمعلّم', description: 'للطالب: رابط بتقدّمك ترسله لمعلّمك' },
+      { id: 'card', title: 'بطاقة الحضور (باركود)', description: 'للطالب: باركود يمسحه المعلّم لتسجيل حضورك' },
       { id: 'students', title: 'لوحة المعلّم', description: 'تابع تقدّم طلابك ومواضع ضعفهم' },
-      { id: 'attendance', title: 'تسجيل الحضور', description: 'حضور الطلاب وغيابهم يوماً بيوم' },
+      { id: 'attendance', title: 'تسجيل الحضور', description: 'بمسح باركود الطالب أو يدوياً' },
+      { id: 'cards', title: 'طباعة بطاقات الباركود', description: 'بطاقة حضور مطبوعة لكل طالب' },
       { id: 'subscription', title: 'الاشتراك', description: 'طلاب بلا حدود وتصدير التقدّم والحضور إلى Excel' },
     ],
   },

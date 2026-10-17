@@ -40,6 +40,9 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- الميكروفون: «اقرأ بصوتك» في الاختبارات -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- مسح باركود الحضور في لوحة المعلّم -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
     <!-- خدمة التعرّف على الكلام في أندرويد 11 فأحدث -->
     <queries>
         <intent>
