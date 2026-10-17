@@ -98,6 +98,19 @@ export const SECTIONS = [
     ],
   },
   {
+    id: 'teacher',
+    title: 'المعلّم والطلاب',
+    short: 'المعلّم',
+    icon: 'teacher',
+    description: 'أرسل تقدّمك لمعلّمك، وتابع طلابك في لوحة المعلّم',
+    phase: 6,
+    subsections: [
+      { id: 'share', title: 'أرسل تقدّمي للمعلّم', description: 'للطالب: رابط بتقدّمك ترسله لمعلّمك' },
+      { id: 'students', title: 'لوحة المعلّم', description: 'تابع تقدّم طلابك ومواضع ضعفهم' },
+      { id: 'subscription', title: 'الاشتراك', description: 'طلاب بلا حدود وتصدير إلى Excel' },
+    ],
+  },
+  {
     id: 'settings',
     title: 'الإعدادات',
     icon: 'settings',

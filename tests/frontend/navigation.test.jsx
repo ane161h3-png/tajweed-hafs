@@ -20,8 +20,8 @@ function renderAt(path) {
 }
 
 describe('شجرة الأقسام', () => {
-  it('فيها الأقسام السبعة بعد الرئيسية ولكل قسم أقسام فرعية', () => {
-    expect(SECTIONS.map((s) => s.id)).toEqual(['mushaf', 'ahkam', 'makharij', 'sifat', 'listen', 'quiz', 'settings'])
+  it('فيها الأقسام الثمانية بعد الرئيسية ولكل قسم أقسام فرعية', () => {
+    expect(SECTIONS.map((s) => s.id)).toEqual(['mushaf', 'ahkam', 'makharij', 'sifat', 'listen', 'quiz', 'teacher', 'settings'])
     for (const s of SECTIONS) expect(s.subsections.length).toBeGreaterThan(0)
   })
 

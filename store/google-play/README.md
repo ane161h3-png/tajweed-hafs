@@ -89,6 +89,10 @@
 • أسئلة متدرجة من المبتدئ إلى المتقدم، ومراجعة ذكية للأخطاء.
 • «اقرأ بصوتك»: افتح الميكروفون واقرأ المقطع، فيتحقق التطبيق من قراءتك كلمةً كلمة، ويشرح لك النطق الصحيح إن أخطأت.
 
+👨‍🏫 المعلّم والطلاب
+• يرسل الطالب رابطاً بتقدّمه لمعلّمه عبر واتساب أو غيره.
+• لوحة المعلّم: تقدّم كل طالب، ونتائجه في كل مستوى، ومواضع ضعفه مع روابط دروسها، وتنظيم الطلاب في حلقات.
+
 🔒 الخصوصية
 لا يجمع التطبيق أي بيانات شخصية، وكل تقدّمك محفوظ على جهازك فقط.
 
@@ -110,12 +114,39 @@ A free app for learning the rules of Quran recitation (tajweed) according to the
 • Sifat: the characteristics of every letter, comparison tables and similar-letter drills.
 • Listening: renowned reciters, downloadable for offline listening.
 • Quizzes: graded questions with smart review, plus "Read aloud" — recite into the microphone and the app checks your reading word by word.
+• Teacher dashboard: students share a progress link; teachers track each student's results and weak points, organized by class.
 
 Privacy: no personal data is collected; all progress stays on your device.
 The app is a learning aid and does not replace learning from a qualified teacher.
 ```
 
 ثم ارفع: `icon-512.png`، و`feature-graphic.png`، والصور الست من `screenshots/`.
+
+## الخطوة 4ب: اشتراك لوحة المعلّم (بعد ربط حساب الدفع)
+
+التطبيق جاهز للاشتراك عبر Google Play، ويبحث عن خطتين بهذه المعرّفات بالضبط:
+
+1. **Settings → Payments profile**: أنشئ ملف التاجر (Merchant). يجب أن تكون دولتك مدعومة لاستلام الأرباح.
+2. **Monetize → Subscriptions → Create subscription**:
+   - Product ID: `teacher_monthly`، الاسم: «لوحة المعلّم - شهري»، ثم **Add base plan** بمعرّف `monthly`، تجديد تلقائي كل شهر، وحدد السعر، ثم **Activate**.
+   - Product ID: `teacher_yearly`، الاسم: «لوحة المعلّم - سنوي»، وخطة أساسية بمعرّف `yearly`، تجديد كل سنة، ثم **Activate**.
+3. للتجربة دون دفع حقيقي: **Settings → License testing** وأضف بريدك.
+
+ما يفتحه الاشتراك: عدد غير محدود من الطلاب (المجاني 3)، وتصفية الحلقات، والتصدير إلى Excel.
+بعد ربط الدفع أضف إلى وصف المتجر سطراً: «لوحة المعلّم مجانية حتى 3 طلاب، وباشتراك لعدد غير محدود».
+
+### أكواد التفعيل (للموقع: الحاسوب والآيفون)
+
+في الموقع لا يوجد Google Play؛ يراسلك المعلّم على البريد، فتستلم المبلغ بالطريقة التي تناسبك، ثم تُصدر له كوداً على هذا الحاسوب:
+
+```
+cd E:\tajweed-app
+.venv\Scripts\python.exe scripts\make_license.py --name "اسم المعلّم" --months 12
+```
+
+يطبع كوداً يبدأ بـ `TJW-`؛ أرسله له فيلصقه في «المعلّم والطلاب ← الاشتراك». المفتاح الذي يُصدر الأكواد في `signing/license-private.key` على هذا الجهاز فقط؛ **انسخه احتياطياً** مع مفتاح الرفع، فلو ضاع لا يمكن إصدار أكواد جديدة.
+
+> لا تذكر داخل تطبيق Google Play طريقة الدفع خارج المتجر: التطبيق يُخفي التفعيل بالكود ورابط البريد في نسخة أندرويد، ويعرض اشتراك Google Play فقط، التزاماً بسياسة المتجر.
 
 ## الخطوة 5: الاختبار المغلق (إلزامي للحسابات الشخصية الجديدة)
 

@@ -15,3 +15,6 @@ dist-web/
 # مفتاح رفع Google Play: سرّي، لا يُرفع أبداً
 signing/upload*
 signing/*.txt
+
+# مفتاح إصدار أكواد التفعيل: سرّي
+signing/license*
