@@ -66,11 +66,26 @@ jobs:
 
       - run: cp frontend/android/app/build/outputs/apk/debug/app-debug.apk tajweed-hafs.apk
 
+      # نسخة Google Play: حزمة AAB موقّعة بمفتاح الرفع (من أسرار المستودع)
+      - name: بناء AAB لـ Google Play
+        env:
+          ANDROID_UPLOAD_KEYSTORE_B64: ${{ secrets.ANDROID_UPLOAD_KEYSTORE }}
+          ANDROID_UPLOAD_PASSWORD: ${{ secrets.ANDROID_UPLOAD_PASSWORD }}
+        working-directory: frontend/android
+        run: |
+          if [ -z "$ANDROID_UPLOAD_KEYSTORE_B64" ]; then echo "لا مفتاح رفع؛ تخطّي AAB"; exit 0; fi
+          echo "$ANDROID_UPLOAD_KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/upload.p12"
+          ANDROID_UPLOAD_KEYSTORE_PATH="$RUNNER_TEMP/upload.p12" ./gradlew bundleRelease --no-daemon
+          cp app/build/outputs/bundle/release/app-release.aab "$GITHUB_WORKSPACE/tajweed-hafs.aab"
+          rm "$RUNNER_TEMP/upload.p12"
+
       - name: نشر الإصدار
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          FILES="tajweed-hafs.apk"
+          [ -f tajweed-hafs.aab ] && FILES="$FILES tajweed-hafs.aab"
           gh release delete app-latest --yes --cleanup-tag || true
-          gh release create app-latest tajweed-hafs.apk --target "${{ github.sha }}" --latest \
+          gh release create app-latest $FILES --target "${{ github.sha }}" --latest \
             --title "تعلّم التجويد 1.0.${{ github.run_number }}" \
-            --notes "حمّل tajweed-hafs.apk وثبّته على هاتف الأندرويد. للتحديث ثبّته فوق النسخة القديمة."
+            --notes "tajweed-hafs.apk: للتثبيت المباشر على هاتف الأندرويد (ثبّته فوق النسخة القديمة للتحديث). tajweed-hafs.aab: للرفع إلى Google Play Console."

@@ -11,3 +11,7 @@ frontend/public/data/
 frontend/android/app/src/main/assets/public/
 dist-web/
 *.zip
+
+# مفتاح رفع Google Play: سرّي، لا يُرفع أبداً
+signing/upload*
+signing/*.txt

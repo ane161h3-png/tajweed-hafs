@@ -58,6 +58,14 @@ export default function About() {
         خط الواجهة IBM Plex Sans Arabic، وخط المصحف Amiri Quran، وكلاهما برخصة SIL Open Font License 1.1، ومضمَّنان في
         البرنامج ليعملا دون إنترنت.
       </p>
+
+      <h2 className="mb-3 mt-8 text-lg font-semibold">الخصوصية</h2>
+      <p className="text-sm text-muted">
+        لا يجمع البرنامج أي بيانات شخصية، وكل تقدّمك محفوظ على جهازك فقط.{' '}
+        <a href={`${import.meta.env.BASE_URL}privacy.html`} className="text-accent underline-offset-4 hover:underline">
+          سياسة الخصوصية
+        </a>
+      </p>
     </article>
   )
 }
