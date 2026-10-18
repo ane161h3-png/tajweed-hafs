@@ -14,6 +14,7 @@ if (typeof window !== 'undefined') {
   })
 }
 
+const isMobile = () => /android|iphone|ipad|ipod|mobile/i.test(navigator.userAgent)
 const isIos = () => /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
 const isStandalone = () => window.matchMedia?.('(display-mode: standalone)').matches || navigator.standalone === true
 
@@ -30,9 +31,14 @@ export default function InstallCard() {
 
   useEffect(() => {
     const on = () => setInstallable(true)
+    const off = () => setInstallable(false)
     window.addEventListener('tajweed:installable', on)
+    window.addEventListener('appinstalled', off)
     isFullyCached().then(setCached)
-    return () => window.removeEventListener('tajweed:installable', on)
+    return () => {
+      window.removeEventListener('tajweed:installable', on)
+      window.removeEventListener('appinstalled', off)
+    }
   }, [])
 
   const native = Capacitor.isNativePlatform()
@@ -42,11 +48,13 @@ export default function InstallCard() {
   const standalone = native || isStandalone()
   if (standalone && cached) return null
 
+  // نافذة التثبيت تُعرض مرة واحدة؛ إن أُغلقت تظهر خطوات قائمة المتصفح بدل زر لا يعمل
   const install = async () => {
-    deferredPrompt?.prompt()
-    const { outcome } = (await deferredPrompt?.userChoice) ?? {}
-    if (outcome === 'accepted') setInstallable(false)
+    if (!deferredPrompt) return setInstallable(false)
+    deferredPrompt.prompt()
+    await deferredPrompt.userChoice.catch(() => null)
     deferredPrompt = null
+    setInstallable(false)
   }
   const save = async () => {
     setError(null)
@@ -77,7 +85,11 @@ export default function InstallCard() {
                   في Safari: اضغط زر المشاركة <span aria-hidden="true">⎙</span> ثم «إضافة إلى الشاشة الرئيسية».
                 </p>
               ) : (
-                <p className="mt-1 text-sm text-muted">من قائمة المتصفح اختر «تثبيت التطبيق» أو «إضافة إلى الشاشة الرئيسية».</p>
+                <p className="mt-1 text-sm text-muted">
+                  {isMobile()
+                    ? 'من قائمة المتصفح ⋮ اختر «تثبيت التطبيق» أو «إضافة إلى الشاشة الرئيسية».'
+                    : 'في Chrome أو Edge: اضغط أيقونة التثبيت ⊕ في نهاية شريط العنوان، أو من القائمة ⋮ اختر «الإرسال والحفظ والمشاركة» ← «تثبيت الصفحة كتطبيق».'}
+                </p>
               )}
             </div>
           )}
