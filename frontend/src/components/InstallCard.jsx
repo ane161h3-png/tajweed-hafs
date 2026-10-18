@@ -5,9 +5,14 @@ import { cacheAllTexts, isFullyCached } from '../pwa'
 import { readJSON, writeJSON } from '../lib/storage'
 
 const HIDE_KEY = 'tajweed.installCard.hidden'
+// التطبيق المثبّت يشارك الموقع تخزينه: يُسجَّل التثبيت عند حدوثه أو عند فتح التطبيق المثبّت
+const INSTALLED_KEY = 'tajweed.installed'
 let deferredPrompt = null
 if (typeof window !== 'undefined') {
+  window.addEventListener('appinstalled', () => writeJSON(INSTALLED_KEY, true))
   window.addEventListener('beforeinstallprompt', (e) => {
+    // Chrome يعرض نافذة التثبيت فقط لغير المثبّت؛ وصولها يعني أن التطبيق حُذف
+    writeJSON(INSTALLED_KEY, false)
     e.preventDefault()
     deferredPrompt = e
     window.dispatchEvent(new Event('tajweed:installable'))
@@ -28,10 +33,17 @@ export default function InstallCard() {
   const [progress, setProgress] = useState(null)
   const [error, setError] = useState(null)
   const [hidden, setHidden] = useState(() => readJSON(HIDE_KEY, false))
+  const [installed, setInstalled] = useState(() => readJSON(INSTALLED_KEY, false))
 
   useEffect(() => {
-    const on = () => setInstallable(true)
-    const off = () => setInstallable(false)
+    const on = () => {
+      setInstallable(true)
+      setInstalled(false)
+    }
+    const off = () => {
+      setInstallable(false)
+      setInstalled(true)
+    }
     window.addEventListener('tajweed:installable', on)
     window.addEventListener('appinstalled', off)
     isFullyCached().then(setCached)
@@ -46,7 +58,8 @@ export default function InstallCard() {
   if (!STATIC || hidden || !import.meta.env.PROD || (native && window.location.hostname === 'localhost')) return null
   // داخل التطبيق لا حاجة إلى «ثبّت»، ويبقى «احفظه للعمل دون إنترنت»
   const standalone = native || isStandalone()
-  if (standalone && cached) return null
+  if (standalone && !native && !installed) writeJSON(INSTALLED_KEY, true)
+  if ((standalone || installed) && cached) return null
 
   // نافذة التثبيت تُعرض مرة واحدة؛ إن أُغلقت تظهر خطوات قائمة المتصفح بدل زر لا يعمل
   const install = async () => {
@@ -73,7 +86,7 @@ export default function InstallCard() {
     <section className="mb-6 rounded-2xl border border-accent/40 bg-accent-soft p-4" aria-label="التثبيت والعمل دون إنترنت">
       <div className="flex items-start gap-3">
         <div className="min-w-0 flex-1 space-y-3">
-          {!standalone && (
+          {!standalone && !installed && (
             <div>
               <p className="font-semibold">ثبّت البرنامج على جهازك</p>
               {installable ? (
