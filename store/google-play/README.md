@@ -88,10 +88,12 @@
 ✅ الاختبارات
 • أسئلة متدرجة من المبتدئ إلى المتقدم، ومراجعة ذكية للأخطاء.
 • «اقرأ بصوتك»: افتح الميكروفون واقرأ المقطع، فيتحقق التطبيق من قراءتك كلمةً كلمة، ويشرح لك النطق الصحيح إن أخطأت.
+• التسميع: اختر سورة واقرأها من حفظك، فيتابعك التطبيق وينبّهك عند كل كلمة خاطئة أو منسية ويعرض لك الصواب.
 
 👨‍🏫 المعلّم والطلاب
 • يرسل الطالب رابطاً بتقدّمه لمعلّمه عبر واتساب أو غيره.
 • لوحة المعلّم: تقدّم كل طالب، ونتائجه في كل مستوى، ومواضع ضعفه مع روابط دروسها، وتنظيم الطلاب في حلقات.
+• تسجيل الحضور بمسح باركود الطالب بالكاميرا، أو يدوياً، مع بطاقات حضور قابلة للطباعة.
 
 🔒 الخصوصية
 لا يجمع التطبيق أي بيانات شخصية، وكل تقدّمك محفوظ على جهازك فقط.
@@ -114,7 +116,9 @@ A free app for learning the rules of Quran recitation (tajweed) according to the
 • Sifat: the characteristics of every letter, comparison tables and similar-letter drills.
 • Listening: renowned reciters, downloadable for offline listening.
 • Quizzes: graded questions with smart review, plus "Read aloud" — recite into the microphone and the app checks your reading word by word.
+• Tasmee: pick a surah and recite from memory; the app follows along and alerts you on every wrong or missed word.
 • Teacher dashboard: students share a progress link; teachers track each student's results and weak points, organized by class.
+• Attendance by scanning each student's QR card, or manually, with printable cards.
 
 Privacy: no personal data is collected; all progress stays on your device.
 The app is a learning aid and does not replace learning from a qualified teacher.
