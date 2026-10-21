@@ -22,6 +22,7 @@ import { QuizLevel, QuizReview } from './features/quiz/QuizPages'
 import { RecitePractice } from './features/quiz/Recite'
 import { TasmeePage } from './features/quiz/Tasmee'
 import { AttendanceCard, AttendancePage, PrintCards, ShareProgress, StudentDetail, Subscription, TeacherDashboard } from './features/teacher/TeacherPages'
+import NotebookPage from './features/settings/NotebookPage'
 import { AudioSettings, ColorSettings, DisplaySettings, ProgressSettings } from './features/settings/SettingsPages'
 
 // المسارات المحددة (المصحف، عن البرنامج) قبل المسار العام للأقسام الفرعية.
@@ -72,6 +73,7 @@ export function AppRoutes() {
         <Route path="settings/colors" element={<ColorSettings />} />
         <Route path="settings/audio" element={<AudioSettings />} />
         <Route path="settings/progress" element={<ProgressSettings />} />
+        <Route path="settings/notebook" element={<NotebookPage />} />
         <Route path="settings/about" element={<About />} />
         <Route path=":sectionId" element={<SectionPage />} />
         <Route path=":sectionId/:subId" element={<SubsectionPage />} />

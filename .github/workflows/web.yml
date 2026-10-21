@@ -42,6 +42,9 @@ jobs:
         run: |
           npm ci
           npx vite build --mode web --outDir dist-web
+      # دفتر التجويد (PDF): يُبنى من بيانات البرنامج بمتصفح Chrome الموجود في الجهاز
+      - name: بناء دفتر التجويد PDF
+        run: python scripts/build_notebook.py --out frontend/dist-web/notebook.pdf
       - uses: actions/upload-pages-artifact@v3
         with:
           path: frontend/dist-web

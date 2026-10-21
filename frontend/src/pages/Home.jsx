@@ -78,6 +78,18 @@ export default function Home() {
       </section>
 
       <InstallCard />
+      <Link
+        to="/settings/notebook"
+        className="mb-6 flex items-center gap-4 rounded-2xl border border-line bg-surface px-5 py-4 transition hover:border-accent/50 hover:shadow-md"
+      >
+        <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-accent-soft text-accent">
+          <Icon name="ahkam" />
+        </span>
+        <span className="min-w-0">
+          <span className="block font-semibold">دفتر التجويد (PDF)</span>
+          <span className="block text-sm text-muted">حمّل دفتراً منسّقاً بكل الأحكام والمخارج والصفات، لتراجعه أو تطبعه</span>
+        </span>
+      </Link>
       <h2 className="sr-only">الأقسام</h2>
       <ul className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         {SECTIONS.map((s, i) => (
