@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams, useSearchParams } from 'react-router'
 import { AnimatePresence, motion } from 'framer-motion'
 import { usePageCrumb } from '../../components/Breadcrumb'
 import Popover from '../../components/Popover'
+import { toAsciiDigits } from '../../lib/arabic'
 import { arabicNumber, useApi } from '../../lib/api'
 import { useSettings } from '../settings/SettingsContext'
 import { usePlayer, usePlayingAyah } from '../player/PlayerContext'
@@ -11,6 +12,7 @@ import { SurahBlock } from './MushafView'
 import ColorKey from './ColorKey'
 import SearchBar from './SearchBar'
 import { setLastRead, toggleBookmark, useBookmarks } from './reading'
+import { pageOf, pageRange } from './pages'
 import { countRules, rulesCss } from './tajweed'
 import { useRules } from './useRules'
 
@@ -23,20 +25,54 @@ function RuleStyles({ rules }) {
   return <style>{css}</style>
 }
 
+// أنواع القراءة: سورة، أو جزء، أو صفحة من مصحف المدينة
+const KINDS = {
+  surah: { max: 114, base: '/mushaf/surah', prev: 'السورة السابقة', next: 'السورة التالية' },
+  juz: { max: 30, base: '/mushaf/juz', prev: 'الجزء السابق', next: 'الجزء التالي' },
+  page: { max: 604, base: '/mushaf/page', prev: 'الصفحة السابقة', next: 'الصفحة التالية' },
+}
+
+/** رقم الصفحة: يكتب القارئ رقماً ويضغط Enter فينتقل. */
+function PageJump({ n }) {
+  const navigate = useNavigate()
+  const [v, setV] = useState('')
+  useEffect(() => setV(''), [n])
+  const go = (e) => {
+    e.preventDefault()
+    const p = Number(toAsciiDigits(v))
+    if (p >= 1 && p <= 604) navigate(`/mushaf/page/${p}`)
+  }
+  return (
+    <form onSubmit={go} className="flex items-center gap-1">
+      <label className="sr-only" htmlFor="page-jump">انتقل إلى صفحة</label>
+      <span className="text-sm text-muted">صفحة</span>
+      <input
+        id="page-jump"
+        inputMode="numeric"
+        value={v}
+        onChange={(e) => setV(e.target.value)}
+        placeholder={arabicNumber(n)}
+        className="h-9 w-16 rounded-lg border border-line bg-surface px-2 text-center text-sm"
+        aria-label="رقم الصفحة (١–٦٠٤)"
+      />
+      <span className="text-xs text-muted">/ {arabicNumber(604)}</span>
+    </form>
+  )
+}
+
 const tbBtn = 'grid h-9 min-w-9 place-items-center rounded-lg border border-line bg-surface px-2 text-sm hover:border-accent disabled:opacity-40'
 
-function Toolbar({ kind, n, surahs, onListen, onListenSurah, canSurah, onOpenKey }) {
+function Toolbar({ kind, n, surahs, onListen, onListenSurah, canSurah, onOpenKey, range }) {
   const { settings, update } = useSettings()
   const navigate = useNavigate()
   const [searching, setSearching] = useState(false)
-  const max = kind === 'surah' ? 114 : 30
-  const base = kind === 'surah' ? '/mushaf/surah' : '/mushaf/juz'
+  const { max, base, prev, next } = KINDS[kind]
   const scale = settings.quranScale
   const setScale = (v) => update({ quranScale: Math.round(Math.min(SCALE_MAX, Math.max(SCALE_MIN, v)) * 10) / 10 })
   return (
     <div className="sticky top-0 z-20 -mx-4 mb-4 border-b border-line bg-bg/95 px-4 py-2 backdrop-blur sm:-mx-6 sm:px-6 lg:-mx-10 lg:px-10">
       <div className="flex flex-wrap items-center gap-1.5">
-        <Link to={`${base}/${n - 1}`} aria-disabled={n <= 1} className={`${tbBtn} ${n <= 1 ? 'pointer-events-none opacity-40' : ''}`} aria-label={kind === 'surah' ? 'السورة السابقة' : 'الجزء السابق'}>
+        <Link to={`${base}/${n - 1}`} aria-disabled={n <= 1} className={`${tbBtn} ${n <= 1 ? 'pointer-events-none opacity-40' : ''}`} aria-label={prev}>
           →
         </Link>
         {kind === 'surah' ? (
@@ -52,6 +88,8 @@ function Toolbar({ kind, n, surahs, onListen, onListenSurah, canSurah, onOpenKey
               </option>
             ))}
           </select>
+        ) : kind === 'page' ? (
+          <PageJump n={n} />
         ) : (
           <select aria-label="انتقل إلى جزء" className="h-9 rounded-lg border border-line bg-surface px-2 text-sm" value={n} onChange={(e) => navigate(`/mushaf/juz/${e.target.value}`)}>
             {Array.from({ length: 30 }, (_, i) => i + 1).map((j) => (
@@ -61,10 +99,18 @@ function Toolbar({ kind, n, surahs, onListen, onListenSurah, canSurah, onOpenKey
             ))}
           </select>
         )}
-        <Link to={`${base}/${n + 1}`} aria-disabled={n >= max} className={`${tbBtn} ${n >= max ? 'pointer-events-none opacity-40' : ''}`} aria-label={kind === 'surah' ? 'السورة التالية' : 'الجزء التالي'}>
+        <Link to={`${base}/${n + 1}`} aria-disabled={n >= max} className={`${tbBtn} ${n >= max ? 'pointer-events-none opacity-40' : ''}`} aria-label={next}>
           ←
         </Link>
 
+        {range && (
+          <Link to={`/mushaf/page/${range[0]}`} className={`${tbBtn} text-xs`} title="افتح هذا الموضع بصفحات المصحف">
+            {range[0] === range[1] ? `ص ${arabicNumber(range[0])}` : `ص ${arabicNumber(range[0])}–${arabicNumber(range[1])}`}
+          </Link>
+        )}
+        <Link to="/mushaf/pages" className={`${tbBtn} hidden text-xs sm:grid`}>
+          الصفحات
+        </Link>
         <span className="mx-1 hidden h-6 w-px bg-line sm:block" />
         <button type="button" className={tbBtn} onClick={() => setScale(scale - 0.1)} disabled={scale <= SCALE_MIN} aria-label="تصغير خط المصحف">
           أ−
@@ -115,8 +161,9 @@ function Toolbar({ kind, n, surahs, onListen, onListenSurah, canSurah, onOpenKey
 }
 
 /** خيارات الآية: التشغيل والتكرار والعلامة المرجعية والنسخ. */
-function AyahMenu({ target, onClose, onPlay, onRepeat, surahName, bookmarked }) {
+function AyahMenu({ target, onClose, onPlay, onRepeat, surahName, bookmarked, pageStarts }) {
   const [copied, setCopied] = useState(false)
+  const navigate = useNavigate()
   if (!target) return null
   const { surah, ayah, text } = target
   const item = 'flex w-full items-center gap-2 rounded-lg px-2 py-2 text-start hover:bg-surface-2'
@@ -143,6 +190,11 @@ function AyahMenu({ target, onClose, onPlay, onRepeat, surahName, bookmarked }) 
       <button type="button" className={item} onClick={() => (toggleBookmark({ surah, ayah, surahName }), onClose())}>
         {bookmarked ? '✕ إزالة العلامة المرجعية' : '🔖 إضافة علامة مرجعية'}
       </button>
+      {pageOf(pageStarts, surah, ayah) && (
+        <button type="button" className={item} onClick={() => (navigate(`/mushaf/page/${pageOf(pageStarts, surah, ayah)}?s=${surah}&at=${ayah}`), onClose())}>
+          📄 افتح في الصفحة {arabicNumber(pageOf(pageStarts, surah, ayah))}
+        </button>
+      )}
       <button type="button" className={item} onClick={copy}>
         {copied ? '✓ نُسخت' : '⧉ نسخ الآية'}
       </button>
@@ -209,8 +261,9 @@ function useNextSurahWithRule(rule, after) {
 export default function MushafReader({ kind }) {
   const n = Number(useParams().n)
   const [params, setParams] = useSearchParams()
-  const { data, loading, error } = useApi(kind === 'surah' ? `/surah/${n}` : `/juz/${n}`)
+  const { data, loading, error } = useApi(`/${kind}/${n}`)
   const { data: surahs } = useApi('/surahs')
+  const { data: pageStarts } = useApi('/pages')
   const { data: lessonIndex } = useApi('/lessons')
   const { rules, byId, groups } = useRules()
   const { settings } = useSettings()
@@ -238,7 +291,14 @@ export default function MushafReader({ kind }) {
   const lastSurah = blocks.at(-1)?.surah.number ?? n
   const nextWithRule = useNextSurahWithRule(focus, lastSurah)
 
-  usePageCrumb(data ? (kind === 'surah' ? `سورة ${data.surah.name}` : `الجزء ${arabicNumber(n)}`) : null)
+  const range = useMemo(() => {
+    if (kind === 'page' || !blocks.length) return null
+    const first = blocks[0]
+    const last = blocks.at(-1)
+    return pageRange(pageStarts, { surah: first.surah.number, ayah: first.ayahs[0].ayah }, { surah: last.surah.number, ayah: last.ayahs.at(-1).ayah })
+  }, [kind, blocks, pageStarts])
+
+  usePageCrumb(data ? (kind === 'surah' ? `سورة ${data.surah.name}` : kind === 'page' ? `الصفحة ${arabicNumber(n)}` : `الجزء ${arabicNumber(n)}`) : null)
 
   const setFocus = useCallback(
     (id) => {
@@ -380,6 +440,7 @@ export default function MushafReader({ kind }) {
         onListenSurah={() => player.playSurah(n, names[n])}
         canSurah={kind === 'surah' && !!player.reciter?.surah_url}
         onOpenKey={() => setKeyOpen(true)}
+        range={range}
       />
       <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_15rem] lg:gap-8">
         <div
@@ -406,14 +467,14 @@ export default function MushafReader({ kind }) {
           <nav aria-label="السابق والتالي" className="mt-4 flex justify-between text-sm">
             {n > 1 ? (
               <Link to={`/mushaf/${kind}/${n - 1}`} className="rounded-lg border border-line bg-surface px-4 py-2 hover:border-accent">
-                → {kind === 'surah' ? `سورة ${surahs?.[n - 2]?.name ?? ''}` : `الجزء ${arabicNumber(n - 1)}`}
+                → {kind === 'surah' ? `سورة ${surahs?.[n - 2]?.name ?? ''}` : kind === 'page' ? `الصفحة ${arabicNumber(n - 1)}` : `الجزء ${arabicNumber(n - 1)}`}
               </Link>
             ) : (
               <span />
             )}
-            {n < (kind === 'surah' ? 114 : 30) && (
+            {n < KINDS[kind].max && (
               <Link to={`/mushaf/${kind}/${n + 1}`} className="rounded-lg border border-line bg-surface px-4 py-2 hover:border-accent">
-                {kind === 'surah' ? `سورة ${surahs?.[n]?.name ?? ''}` : `الجزء ${arabicNumber(n + 1)}`} ←
+                {kind === 'surah' ? `سورة ${surahs?.[n]?.name ?? ''}` : kind === 'page' ? `الصفحة ${arabicNumber(n + 1)}` : `الجزء ${arabicNumber(n + 1)}`} ←
               </Link>
             )}
           </nav>
@@ -468,6 +529,7 @@ export default function MushafReader({ kind }) {
         onRepeat={repeatAyah}
         surahName={ayahMenu ? names[ayahMenu.surah] : ''}
         bookmarked={ayahMenu ? bookmarkSet.has(`${ayahMenu.surah}:${ayahMenu.ayah}`) : false}
+        pageStarts={pageStarts}
       />
     </div>
   )

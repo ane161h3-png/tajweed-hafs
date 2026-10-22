@@ -11,6 +11,7 @@ export const SECTIONS = [
     subsections: [
       { id: 'surahs', title: 'السور', description: 'فهرس السور المئة والأربع عشرة' },
       { id: 'juz', title: 'الأجزاء', description: 'الأجزاء الثلاثون وبداية كل جزء' },
+      { id: 'pages', title: 'الصفحات', description: 'صفحات المصحف الـ ٦٠٤: انتقل إلى أي صفحة برقمها' },
       { id: 'search', title: 'البحث', description: 'باسم السورة أو رقمها أو الجزء أو نص الآية' },
       { id: 'bookmarks', title: 'العلامات المرجعية', description: 'المواضع التي حفظتها' },
     ],

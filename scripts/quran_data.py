@@ -107,6 +107,14 @@ def load_surahs(path: Path | None = None) -> list[dict]:
     return sorted(out, key=lambda s: s["number"])
 
 
+def load_pages(path: Path | None = None) -> list[dict]:
+    """أول آية في كل صفحة من صفحات المصحف الـ ٦٠٤."""
+    raw = read_json(path or SOURCE_DIR / "pages.json")
+    out = [{"page": int(p["page"]), "surah": int(p["surah"]), "ayah": int(p["ayah"])} for p in raw]
+    out.sort(key=lambda p: p["page"])
+    return out
+
+
 def load_juz_starts(path: Path | None = None) -> list[dict]:
     raw = read_json(path or SOURCE_DIR / "juz-starts.json")
     if isinstance(raw, dict):

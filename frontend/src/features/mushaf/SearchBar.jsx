@@ -1,11 +1,13 @@
 import { useEffect, useId, useRef, useState } from 'react'
 import { useNavigate } from 'react-router'
 import { api, arabicNumber } from '../../lib/api'
+import { parsePageQuery } from './pages'
 
 /** وجهة كل نتيجة. */
 export function resultPath(r) {
   if (r.type === 'surah') return `/mushaf/surah/${r.surah}`
   if (r.type === 'juz') return `/mushaf/juz/${r.juz}`
+  if (r.type === 'page') return `/mushaf/page/${r.page}`
   return `/mushaf/surah/${r.surah}?ayah=${r.ayah}`
 }
 
@@ -35,6 +37,13 @@ function ResultLine({ r }) {
         <span className="text-xs text-muted">
           {r.revelation} · {arabicNumber(r.ayah_count)} آية
         </span>
+      </>
+    )
+  if (r.type === 'page')
+    return (
+      <>
+        <span className="font-medium">الصفحة {arabicNumber(r.page)}</span>
+        <span className="text-xs text-muted">من {arabicNumber(604)} صفحة في مصحف المدينة</span>
       </>
     )
   if (r.type === 'juz')
@@ -67,6 +76,12 @@ export function useSearch(q, delay = 180) {
       setState({ results: [], total: 0, loading: false, error: null, query: '' })
       return
     }
+    // «صفحة ٢٥٥» تُفهم محلياً ولا تحتاج الخادم
+    const page = parsePageQuery(query)
+    if (page) {
+      setState({ results: [{ type: 'page', page, surah: 0 }], total: 0, loading: false, error: null, query })
+      return
+    }
     const ctrl = new AbortController()
     setState((s) => ({ ...s, loading: true }))
     const t = setTimeout(() => {
@@ -83,7 +98,7 @@ export function useSearch(q, delay = 180) {
   return state
 }
 
-export const SEARCH_HINT = 'اسم السورة، أو 2:255، أو «البقرة 255»، أو «جزء 30»، أو نص من الآية'
+export const SEARCH_HINT = 'اسم السورة، أو 2:255، أو «البقرة 255»، أو «جزء 30»، أو «صفحة 255»، أو نص من الآية'
 
 /**
  * شريط البحث الذكي بقائمة نتائج منسدلة (combobox): الأسهم للتنقل، Enter للفتح، Escape للإغلاق.
@@ -170,7 +185,7 @@ export default function SearchBar({ autoFocus = false, onNavigate, compact = fal
             <ul id={listId} role="listbox" aria-label="نتائج البحث">
               {results.map((r, i) => (
                 <li
-                  key={`${r.type}-${r.surah}-${r.ayah ?? ''}-${r.juz ?? ''}`}
+                  key={`${r.type}-${r.surah}-${r.ayah ?? ''}-${r.juz ?? ''}-${r.page ?? ''}`}
                   id={`${listId}-${i}`}
                   role="option"
                   aria-selected={i === active}

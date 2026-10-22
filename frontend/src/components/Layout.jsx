@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router'
 import { AnimatePresence, motion } from 'framer-motion'
 import { BOTTOM_NAV, HOME, SECTIONS, findSection, sectionPath, subsectionPath } from '../data/sections'
@@ -9,6 +9,7 @@ import Icon from './Icon'
 import PlayerBar from '../features/player/PlayerBar'
 import UpdateWatcher from './UpdateWatcher'
 import Onboarding from '../features/guide/Onboarding'
+import GlobalSearch, { openGlobalSearch } from '../features/search/GlobalSearch'
 import { usePlayer } from '../features/player/PlayerContext'
 
 function ThemeToggle() {
@@ -22,6 +23,27 @@ function ThemeToggle() {
       title={dark ? 'الوضع النهاري' : 'الوضع الليلي'}
     >
       <Icon name={dark ? 'sun' : 'moon'} />
+    </button>
+  )
+}
+
+/** زر البحث الشامل: حقل مختصر في الحاسوب، وأيقونة في الهاتف. */
+function SearchButton({ wide = false }) {
+  return wide ? (
+    <button
+      type="button"
+      onClick={openGlobalSearch}
+      className="mx-3 mb-3 flex h-11 items-center gap-2 rounded-xl border border-line bg-bg px-3 text-start text-sm text-muted hover:border-accent"
+      aria-label="ابحث في البرنامج"
+      aria-keyshortcuts="Control+K"
+    >
+      <Icon name="search" size={18} />
+      <span className="flex-1">ابحث في البرنامج…</span>
+      <kbd className="rounded border border-line px-1.5 text-xs" dir="ltr">Ctrl K</kbd>
+    </button>
+  ) : (
+    <button type="button" onClick={openGlobalSearch} className="grid size-10 place-items-center rounded-full text-muted hover:bg-surface-2 hover:text-ink" aria-label="ابحث في البرنامج" title="بحث">
+      <Icon name="search" />
     </button>
   )
 }
@@ -52,6 +74,7 @@ function Sidebar() {
         <Brand />
         <ThemeToggle />
       </div>
+      <SearchButton wide />
       <nav aria-label="الأقسام الرئيسية" className="flex-1 overflow-y-auto px-3 pb-6">
         <ul className="space-y-0.5">
           <li>
@@ -224,6 +247,8 @@ function VisitTracker() {
   useEffect(() => {
     rememberVisit(pathname, crumbs)
     window.scrollTo?.(0, 0)
+    // عنوان التبويب والسجل: اسم الصفحة الحالية ثم اسم البرنامج
+    document.title = crumbs.length > 1 ? `${crumbs.at(-1).title} · تعلّم التجويد` : 'تعلّم التجويد'
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname, key])
   return null
@@ -245,11 +270,16 @@ export default function Layout() {
         <div className="flex min-w-0 flex-1 flex-col">
           <header className="flex items-center justify-between border-b border-line bg-surface px-4 py-3 lg:hidden">
             <Brand />
-            <ThemeToggle />
+            <div className="flex items-center">
+              <SearchButton />
+              <ThemeToggle />
+            </div>
           </header>
           <main id="main" tabIndex={-1} className="mx-auto w-full max-w-5xl flex-1 px-4 pb-28 pt-5 sm:px-6 lg:px-10 lg:pb-12 lg:pt-8">
             <Breadcrumb />
-            <Outlet />
+            <Suspense fallback={<p className="py-10 text-center text-muted">جارٍ التحميل…</p>}>
+              <Outlet />
+            </Suspense>
             {/* مساحة لمشغّل التلاوة حتى لا يغطي آخر الصفحة */}
             {active && <div className="h-20" aria-hidden="true" />}
           </main>
@@ -259,6 +289,7 @@ export default function Layout() {
       <BottomNav />
       <UpdateWatcher />
       <Onboarding />
+      <GlobalSearch />
     </CrumbProvider>
   )
 }

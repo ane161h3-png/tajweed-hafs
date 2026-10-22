@@ -1,14 +1,16 @@
 import { useMemo, useState } from 'react'
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 import { findSection } from '../../data/sections'
 import { arabicNumber, useApi } from '../../lib/api'
-import { normalize } from '../../lib/arabic'
+import { makeMatcher } from '../../lib/filter'
+import { openGlobalSearch } from '../search/GlobalSearch'
 import Icon from '../../components/Icon'
 import { completedLessons, lastVisit } from '../progress/progress'
 
 /** الصفحة الرئيسية لقسم الأحكام: الأبواب بتقدّمها، والبحث في كل الدروس، وأكمل من آخر درس. */
 export default function AhkamHome() {
   const section = findSection('ahkam')
+  const navigate = useNavigate()
   const { data } = useApi('/lessons')
   const [q, setQ] = useState('')
   const done = completedLessons()
@@ -17,10 +19,11 @@ export default function AhkamHome() {
   const lastLesson = last?.path?.startsWith('/ahkam/') && last.path.split('/').length === 4 ? last : null
 
   const results = useMemo(() => {
-    const n = normalize(q)
-    if (n.length < 2) return []
-    return lessons.filter((l) => normalize(l.title).includes(n)).slice(0, 12)
-  }, [q, lessons])
+    if (!q.trim()) return []
+    const match = makeMatcher(q)
+    const bab = (l) => section.subsections.find((s) => s.id === l.section)?.title
+    return lessons.filter((l) => match(l.title, bab(l))).slice(0, 20)
+  }, [q, lessons, section])
 
   const total = lessons.length
   const doneCount = lessons.filter((l) => done[l.id]).length
@@ -47,11 +50,24 @@ export default function AhkamHome() {
             type="search"
             value={q}
             onChange={(e) => setQ(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'Escape') setQ('')
+              if (e.key === 'Enter' && results[0]) navigate(`/ahkam/${results[0].section}/${results[0].id}`)
+            }}
+            autoComplete="off"
             placeholder="ابحث عن درس: الإخفاء، المد اللازم، القلقلة…"
             className="w-full rounded-xl border border-line bg-surface px-4 py-3 outline-none focus:border-accent"
           />
+          {q.trim() && results.length === 0 && (
+            <div className="absolute inset-x-0 top-full z-20 mt-1 rounded-xl border border-line bg-surface p-3 text-sm text-muted shadow-xl">
+              لا درس بهذا الاسم.{' '}
+              <button type="button" onClick={openGlobalSearch} className="font-medium text-accent underline-offset-4 hover:underline">
+                ابحث في نصوص الدروس وكل البرنامج
+              </button>
+            </div>
+          )}
           {results.length > 0 && (
-            <ul className="absolute inset-x-0 top-full z-20 mt-1 rounded-xl border border-line bg-surface shadow-xl">
+            <ul className="absolute inset-x-0 top-full z-20 mt-1 max-h-[60vh] overflow-y-auto rounded-xl border border-line bg-surface shadow-xl">
               {results.map((l) => (
                 <li key={l.id}>
                   <Link to={`/ahkam/${l.section}/${l.id}`} className="block border-b border-line/60 px-4 py-2 last:border-0 hover:bg-accent-soft">

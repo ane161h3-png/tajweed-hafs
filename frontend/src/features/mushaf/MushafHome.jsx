@@ -4,6 +4,8 @@ import { arabicNumber } from '../../lib/api'
 import Icon from '../../components/Icon'
 import SearchBar, { SEARCH_HINT, useSearch, Snippet, resultPath } from './SearchBar'
 import { useState } from 'react'
+import FilterBox from '../../components/FilterBox'
+import { makeMatcher } from '../../lib/filter'
 import { removeBookmark, useBookmarks, useLastRead } from './reading'
 
 function ContinueReading() {
@@ -122,13 +124,16 @@ export function SearchPage() {
 
 export function BookmarksPage() {
   const bookmarks = useBookmarks()
-  const sorted = [...bookmarks].sort((a, b) => a.surah - b.surah || a.ayah - b.ayah)
+  const [q, setQ] = useState('')
+  const match = makeMatcher(q)
+  const sorted = [...bookmarks].sort((a, b) => a.surah - b.surah || a.ayah - b.ayah).filter((b) => match(`سورة ${b.surahName}`, String(b.ayah)))
   return (
     <div>
       <h1 className="mb-1 text-2xl font-bold">العلامات المرجعية</h1>
       <p className="mb-4 text-sm text-muted">لإضافة علامة: اضغط رقم الآية ﴿ ﴾ في المصحف ثم «إضافة علامة مرجعية».</p>
+      {bookmarks.length > 5 && <FilterBox className="mb-3" value={q} onChange={setQ} placeholder="ابحث في علاماتك باسم السورة…" label="تصفية العلامات" count={sorted.length} total={bookmarks.length} />}
       {sorted.length === 0 ? (
-        <p className="rounded-xl border border-dashed border-line bg-surface p-6 text-center text-muted">لا علامات بعد.</p>
+        <p className="rounded-xl border border-dashed border-line bg-surface p-6 text-center text-muted">{bookmarks.length ? 'لا علامة مطابقة.' : 'لا علامات بعد.'}</p>
       ) : (
         <ul className="space-y-2">
           {sorted.map((b) => (

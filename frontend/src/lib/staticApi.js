@@ -111,11 +111,42 @@ export async function writeLesson(method, path, body) {
 
 // ---------- القراءة ----------
 
+/** صفحة من مصحف المدينة: تُجمع آياتها من ملفات السور بالشكل نفسه الذي يرجعه الخادم (/api/page/{n}). */
+async function staticPage(n) {
+  const pages = await file('pages.json')
+  if (!(n >= 1 && n <= pages.length)) throw new ApiError(404, 'رقم الصفحة من 1 إلى 604')
+  const start = pages[n - 1]
+  const next = pages[n]
+  const lo = start.surah * 1000 + start.ayah
+  const hi = next ? next.surah * 1000 + next.ayah : Infinity
+  const last = next ? next.surah : 114
+  const surahs = []
+  const ayahs = []
+  let bismillah = null
+  for (let s = start.surah; s <= last; s++) {
+    const f = await file(`surah/${s}.json`)
+    bismillah ??= f.bismillah_text ?? null
+    const part = f.ayahs.filter((a) => s * 1000 + a.ayah >= lo && s * 1000 + a.ayah < hi)
+    if (!part.length) continue
+    surahs.push(f.surah)
+    ayahs.push(...part.map((a) => ({ ...a, surah: s })))
+  }
+  return {
+    page: n,
+    start: { surah: ayahs[0].surah, ayah: ayahs[0].ayah },
+    end: { surah: ayahs.at(-1).surah, ayah: ayahs.at(-1).ayah },
+    surahs,
+    bismillah_text: bismillah,
+    ayahs,
+  }
+}
+
 export async function staticApi(path) {
   const url = new URL(path, 'http://x')
   const p = url.pathname.replace(/\/+$/, '')
   let m
-  if ((m = p.match(/^\/(surahs|juz|rules|reciters|minshawi|letters|health)$/))) return file(`${m[1]}.json`)
+  if ((m = p.match(/^\/(surahs|juz|pages|rules|reciters|minshawi|letters|health)$/))) return file(`${m[1]}.json`)
+  if ((m = p.match(/^\/page\/(\d+)$/))) return staticPage(Number(m[1]))
   if ((m = p.match(/^\/surah\/(\d+)$/))) return file(`surah/${m[1]}.json`).catch(() => {
     throw new ApiError(404, 'لا توجد سورة بهذا الرقم (1–114)')
   })

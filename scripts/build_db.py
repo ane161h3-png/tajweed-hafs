@@ -12,7 +12,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from quran_data import (
-    ROOT, SOURCE_DIR, assign_juz, load_juz_starts, load_quran, load_rules, load_surahs,
+    ROOT, SOURCE_DIR, assign_juz, load_juz_starts, load_pages, load_quran, load_rules, load_surahs,
     normalize, prepare_ayahs,
 )
 
@@ -38,6 +38,7 @@ CREATE TABLE ayahs (
 );
 CREATE INDEX ayahs_juz ON ayahs(juz);
 CREATE TABLE juz (number INTEGER PRIMARY KEY, surah INTEGER NOT NULL, ayah INTEGER NOT NULL);
+CREATE TABLE pages (page INTEGER PRIMARY KEY, surah INTEGER NOT NULL, ayah INTEGER NOT NULL);
 CREATE TABLE rules (
     id TEXT PRIMARY KEY, name TEXT, color TEXT, description TEXT, count INTEGER, raw TEXT
 );
@@ -53,6 +54,8 @@ def build(source: Path, out: Path) -> dict:
     surahs = load_surahs(source / "surahs.json")
     ayahs = load_quran(source / "quran-tajweed-hafs.json")
     juz_starts = load_juz_starts(source / "juz-starts.json")
+    # الصفحات اختيارية (ملف المصدر قد لا يتوفر في بيئات الاختبار المصغّرة)
+    pages = load_pages(source / "pages.json") if (source / "pages.json").exists() else []
     rules = load_rules(source / "tajweed-rules.json")
 
     split, bismillah = prepare_ayahs(ayahs)
@@ -85,13 +88,14 @@ def build(source: Path, out: Path) -> dict:
             counts[(t["rule"], a.surah, a.ayah)] = counts.get((t["rule"], a.surah, a.ayah), 0) + 1
     con.executemany("INSERT INTO rule_ayahs VALUES (?,?,?,?)", [(*k, v) for k, v in counts.items()])
     con.executemany("INSERT INTO juz VALUES (?,?,?)", [(j["juz"], j["surah"], j["ayah"]) for j in juz_starts])
+    con.executemany("INSERT INTO pages VALUES (?,?,?)", [(p["page"], p["surah"], p["ayah"]) for p in pages])
     con.executemany(
         "INSERT INTO rules VALUES (?,?,?,?,?,?)",
         [(r["id"], r["name"], r["color"], r["description"], r["count"], json.dumps(r["raw"], ensure_ascii=False))
          for r in rules],
     )
     stats = {
-        "surahs": len(surahs), "ayahs": len(ayahs), "juz": len(juz_starts), "rules": len(rules),
+        "surahs": len(surahs), "ayahs": len(ayahs), "juz": len(juz_starts), "pages": len(pages), "rules": len(rules),
         "bismillah_split": split, "tajweed_marks": sum(len(a.tajweed) for a in ayahs),
         "built_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
     }

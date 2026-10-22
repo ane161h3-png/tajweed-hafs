@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useSearchParams } from 'react-router'
 import { GUIDE } from './guideContent'
 import { openTour } from './Onboarding'
 
@@ -6,7 +7,8 @@ const card = 'rounded-2xl border border-line bg-surface'
 
 /** دليل الاستخدام (الإعدادات ← دليل الاستخدام): أقسام قابلة للطيّ، وزر لإعادة الجولة. */
 export default function GuidePage() {
-  const [q, setQ] = useState('')
+  const [params] = useSearchParams()
+  const [q, setQ] = useState(() => params.get('q') ?? '')
   const needle = q.trim()
   const sections = GUIDE.map((s) => ({
     ...s,

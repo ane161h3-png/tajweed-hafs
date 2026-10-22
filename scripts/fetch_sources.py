@@ -171,6 +171,9 @@ def build_meta() -> None:
     ])
     juz = js_array(src, "Juz")[:30]
     write_lines(OUT / "juz-starts.json", [{"juz": i, "surah": s, "ayah": a} for i, (s, a) in enumerate(juz, start=1)])
+    # صفحات مصحف المدينة (٦٠٤): أول آية في كل صفحة. الصف الأخير علامة نهاية
+    pages = js_array(src, "Page")[:604]
+    write_lines(OUT / "pages.json", [{"page": i, "surah": s, "ayah": a} for i, (s, a) in enumerate(pages, start=1)])
 
 
 def dark_variant(hex_color: str) -> str:

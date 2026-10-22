@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useParams } from 'react-router'
 import { usePageCrumb } from '../../components/Breadcrumb'
+import FilterBox from '../../components/FilterBox'
 import { arabicNumber } from '../../lib/api'
+import { makeMatcher } from '../../lib/filter'
 import { DataState } from '../mushaf/MushafLists'
 import HeadDiagram from './HeadDiagram'
 import LetterPlayer from './LetterPlayer'
@@ -254,15 +256,19 @@ export function SpecificMakharij() {
 
 // ---------- الحروف ----------
 
-export function LettersGrid({ base = '/makharij/letters', title = 'الحروف واحداً واحداً' }) {
+function LettersGridBody({ d, base, title }) {
+  const [q, setQ] = useState('')
+  const mk = Object.fromEntries(d.makharij.map((m) => [m.id, m.name]))
+  const match = makeMatcher(q)
+  const shown = d.letters.filter((l) => match(l.char, l.name, l.laqab, mk[l.makhraj]))
   return (
-    <WithLetters>
-      {(d) => (
-        <div>
-          <h1 className="mb-1 text-2xl font-bold">{title}</h1>
-          <p className="mb-4 text-sm text-muted">اضغط حرفاً لترى مخرجه متحركاً وصفاته.</p>
-          <ul className="grid grid-cols-4 gap-2 sm:grid-cols-6 lg:grid-cols-8">
-            {d.letters.map((l) => (
+    <div>
+      <h1 className="mb-1 text-2xl font-bold">{title}</h1>
+      <p className="mb-3 text-sm text-muted">اضغط حرفاً لترى مخرجه متحركاً وصفاته.</p>
+      <FilterBox className="mb-4" value={q} onChange={setQ} placeholder="ابحث عن حرف: ض، الصاد، الحلقية، الشفتان…" label="تصفية الحروف" count={shown.length} total={d.letters.length} />
+      {shown.length === 0 && <p className="rounded-xl border border-dashed border-line p-6 text-center text-muted">لا حرف مطابق.</p>}
+      <ul className="grid grid-cols-4 gap-2 sm:grid-cols-6 lg:grid-cols-8">
+        {shown.map((l) => (
               <li key={l.id}>
                 <Link
                   to={`${base}/${l.id}`}
@@ -273,11 +279,13 @@ export function LettersGrid({ base = '/makharij/letters', title = 'الحروف 
                 </Link>
               </li>
             ))}
-          </ul>
-        </div>
-      )}
-    </WithLetters>
+      </ul>
+    </div>
   )
+}
+
+export function LettersGrid({ base = '/makharij/letters', title = 'الحروف واحداً واحداً' }) {
+  return <WithLetters>{(d) => <LettersGridBody d={d} base={base} title={title} />}</WithLetters>
 }
 
 export function SifaBadges({ letter, sifat }) {

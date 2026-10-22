@@ -108,6 +108,39 @@ def juz(n: int, con=Depends(get_conn)):
     }
 
 
+@app.get("/api/pages")
+def pages_list(con=Depends(get_conn)):
+    rows = con.execute("SELECT p.page, p.surah, p.ayah, s.name FROM pages p "
+                       "LEFT JOIN surahs s ON s.number = p.surah ORDER BY p.page").fetchall()
+    return [{"page": r[0], "surah": r[1], "ayah": r[2], "surah_name": r[3]} for r in rows]
+
+
+@app.get("/api/page/{n}")
+def page(n: int, con=Depends(get_conn)):
+    """صفحة من مصحف المدينة (١–٦٠٤): آياتها بالشكل نفسه الذي يرجعه /api/juz/{n}."""
+    if not 1 <= n <= 604:
+        raise HTTPException(404, "رقم الصفحة من 1 إلى 604")
+    start = con.execute("SELECT surah, ayah FROM pages WHERE page = ?", (n,)).fetchone()
+    if start is None:
+        raise HTTPException(404, "بيانات الصفحات غير متوفرة")
+    nxt = con.execute("SELECT surah, ayah FROM pages WHERE page = ?", (n + 1,)).fetchone()
+    lo = start["surah"] * 1000 + start["ayah"]
+    hi = nxt["surah"] * 1000 + nxt["ayah"] if nxt else 10 ** 9
+    ayahs = con.execute("SELECT * FROM ayahs WHERE surah * 1000 + ayah >= ? AND surah * 1000 + ayah < ? ORDER BY id",
+                        (lo, hi)).fetchall()
+    numbers = sorted({a["surah"] for a in ayahs})
+    marks = ",".join("?" * len(numbers))
+    surah_rows = con.execute(f"SELECT * FROM surahs WHERE number IN ({marks}) ORDER BY number", numbers).fetchall()
+    return {
+        "page": n,
+        "start": {"surah": ayahs[0]["surah"], "ayah": ayahs[0]["ayah"]},
+        "end": {"surah": ayahs[-1]["surah"], "ayah": ayahs[-1]["ayah"]},
+        "surahs": [_surah(s) for s in surah_rows],
+        "bismillah_text": _bismillah_text(con),
+        "ayahs": [_ayah(a, with_surah=True) for a in ayahs],
+    }
+
+
 @app.get("/api/search")
 def search(q: str = Query(..., min_length=1, max_length=200), limit: int = Query(20, ge=1, le=100),
            con=Depends(get_conn)):

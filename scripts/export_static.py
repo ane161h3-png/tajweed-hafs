@@ -45,7 +45,7 @@ def main() -> int:
 
     size = 0
     files = 0
-    for name, path in [("surahs", "/api/surahs"), ("juz", "/api/juz"), ("rules", "/api/rules"),
+    for name, path in [("surahs", "/api/surahs"), ("juz", "/api/juz"), ("pages", "/api/pages"), ("rules", "/api/rules"),
                        ("reciters", "/api/reciters"), ("minshawi", "/api/minshawi"), ("letters", "/api/letters"),
                        ("quiz", "/api/quiz"), ("lessons", "/api/lessons"), ("health", "/api/health")]:
         size += write(f"{name}.json", get(path))
