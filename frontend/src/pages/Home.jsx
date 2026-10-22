@@ -86,8 +86,8 @@ export default function Home() {
           <Icon name="ahkam" />
         </span>
         <span className="min-w-0">
-          <span className="block font-semibold">دفتر التجويد (PDF)</span>
-          <span className="block text-sm text-muted">حمّل دفتراً منسّقاً بكل الأحكام والمخارج والصفات، لتراجعه أو تطبعه</span>
+          <span className="block font-semibold">دفتري (PDF)</span>
+          <span className="block text-sm text-muted">دفتر مسطّر خاص بك: تعديلاتك وملاحظاتك ورسوم المخارج، وتحفظه PDF</span>
         </span>
       </Link>
       <h2 className="sr-only">الأقسام</h2>

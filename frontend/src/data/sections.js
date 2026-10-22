@@ -125,7 +125,7 @@ export const SECTIONS = [
       { id: 'colors', title: 'ألوان الأحكام' },
       { id: 'audio', title: 'القارئ الافتراضي' },
       { id: 'progress', title: 'التقدّم' },
-      { id: 'notebook', title: 'دفتر التجويد (PDF)', description: 'حمّل دفتراً منسّقاً بكل الأحكام والمخارج والصفات' },
+      { id: 'notebook', title: 'دفتري (PDF)', description: 'دفتر مسطّر خاص بك بتعديلاتك ورسوم المخارج والفهرس' },
       { id: 'about', title: 'عن البرنامج والمصادر', phase: 1 },
     ],
   },

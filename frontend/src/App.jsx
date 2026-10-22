@@ -22,7 +22,8 @@ import { QuizLevel, QuizReview } from './features/quiz/QuizPages'
 import { RecitePractice } from './features/quiz/Recite'
 import { TasmeePage } from './features/quiz/Tasmee'
 import { AttendanceCard, AttendancePage, PrintCards, ShareProgress, StudentDetail, Subscription, TeacherDashboard } from './features/teacher/TeacherPages'
-import NotebookPage from './features/settings/NotebookPage'
+import NotebookPage from './features/notebook/NotebookPage'
+import NotebookBook from './features/notebook/NotebookBook'
 import { AudioSettings, ColorSettings, DisplaySettings, ProgressSettings } from './features/settings/SettingsPages'
 
 // المسارات المحددة (المصحف، عن البرنامج) قبل المسار العام للأقسام الفرعية.
@@ -30,6 +31,7 @@ import { AudioSettings, ColorSettings, DisplaySettings, ProgressSettings } from 
 export function AppRoutes() {
   return (
     <Routes>
+      <Route path="notebook/book" element={<NotebookBook />} />
       <Route element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="mushaf" element={<MushafHome />} />
