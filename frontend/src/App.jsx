@@ -24,6 +24,7 @@ import { TasmeePage } from './features/quiz/Tasmee'
 import { AttendanceCard, AttendancePage, PrintCards, ShareProgress, StudentDetail, Subscription, TeacherDashboard } from './features/teacher/TeacherPages'
 import NotebookPage from './features/notebook/NotebookPage'
 import NotebookBook from './features/notebook/NotebookBook'
+import GuidePage from './features/guide/GuidePage'
 import { AudioSettings, ColorSettings, DisplaySettings, ProgressSettings } from './features/settings/SettingsPages'
 
 // المسارات المحددة (المصحف، عن البرنامج) قبل المسار العام للأقسام الفرعية.
@@ -71,6 +72,7 @@ export function AppRoutes() {
         <Route path="teacher/attendance" element={<AttendancePage />} />
         <Route path="teacher/cards" element={<PrintCards />} />
         <Route path="teacher/subscription" element={<Subscription />} />
+        <Route path="settings/guide" element={<GuidePage />} />
         <Route path="settings/display" element={<DisplaySettings />} />
         <Route path="settings/colors" element={<ColorSettings />} />
         <Route path="settings/audio" element={<AudioSettings />} />

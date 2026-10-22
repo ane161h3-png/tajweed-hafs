@@ -8,6 +8,7 @@ import Breadcrumb, { CrumbProvider, useCrumbs } from './Breadcrumb'
 import Icon from './Icon'
 import PlayerBar from '../features/player/PlayerBar'
 import UpdateWatcher from './UpdateWatcher'
+import Onboarding from '../features/guide/Onboarding'
 import { usePlayer } from '../features/player/PlayerContext'
 
 function ThemeToggle() {
@@ -257,6 +258,7 @@ export default function Layout() {
       <PlayerBar />
       <BottomNav />
       <UpdateWatcher />
+      <Onboarding />
     </CrumbProvider>
   )
 }

@@ -25,7 +25,12 @@ export default function Home() {
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div>
             <h1 className="text-2xl font-bold sm:text-3xl">تعلّم أحكام التجويد</h1>
-            <p className="mt-1 text-muted">برواية حفص عن عاصم من طريق الشاطبية: الأحكام، ومخارج الحروف، وصفاتها.</p>
+            <p className="mt-1 text-muted">
+              برواية حفص عن عاصم من طريق الشاطبية: الأحكام، ومخارج الحروف، وصفاتها.{' '}
+              <Link to="/settings/guide" className="whitespace-nowrap text-accent underline-offset-4 hover:underline">
+                كيف أستعمل البرنامج؟
+              </Link>
+            </p>
           </div>
           <ShareButton
             url={`${window.location.origin}${import.meta.env.BASE_URL}`}

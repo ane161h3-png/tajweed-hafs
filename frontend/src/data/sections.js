@@ -121,6 +121,7 @@ export const SECTIONS = [
     description: 'القارئ والخط والألوان والوضع الليلي',
     phase: 6,
     subsections: [
+      { id: 'guide', title: 'دليل الاستخدام', description: 'شرح كل أقسام البرنامج وإعادة الجولة التعريفية' },
       { id: 'display', title: 'العرض والخط' },
       { id: 'colors', title: 'ألوان الأحكام' },
       { id: 'audio', title: 'القارئ الافتراضي' },
