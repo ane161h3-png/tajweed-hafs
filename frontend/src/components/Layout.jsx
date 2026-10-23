@@ -8,6 +8,7 @@ import Breadcrumb, { CrumbProvider, useCrumbs } from './Breadcrumb'
 import Icon from './Icon'
 import PlayerBar from '../features/player/PlayerBar'
 import UpdateWatcher from './UpdateWatcher'
+import ErrorBoundary from './ErrorBoundary'
 import Onboarding from '../features/guide/Onboarding'
 import GlobalSearch, { openGlobalSearch } from '../features/search/GlobalSearch'
 import { usePlayer } from '../features/player/PlayerContext'
@@ -256,6 +257,7 @@ function VisitTracker() {
 
 export default function Layout() {
   const { active } = usePlayer()
+  const { pathname } = useLocation()
   return (
     <CrumbProvider>
       <VisitTracker />
@@ -277,9 +279,11 @@ export default function Layout() {
           </header>
           <main id="main" tabIndex={-1} className="mx-auto w-full max-w-5xl flex-1 px-4 pb-28 pt-5 sm:px-6 lg:px-10 lg:pb-12 lg:pt-8">
             <Breadcrumb />
-            <Suspense fallback={<p className="py-10 text-center text-muted">جارٍ التحميل…</p>}>
-              <Outlet />
-            </Suspense>
+            <ErrorBoundary resetKey={pathname}>
+              <Suspense fallback={<p className="py-10 text-center text-muted">جارٍ التحميل…</p>}>
+                <Outlet />
+              </Suspense>
+            </ErrorBoundary>
             {/* مساحة لمشغّل التلاوة حتى لا يغطي آخر الصفحة */}
             {active && <div className="h-20" aria-hidden="true" />}
           </main>

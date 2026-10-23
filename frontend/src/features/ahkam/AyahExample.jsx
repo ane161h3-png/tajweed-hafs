@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
+import { tokens } from '../../lib/matching'
 import { arabicNumber, useApi } from '../../lib/api'
 import { useSettings } from '../settings/SettingsContext'
 
@@ -58,10 +59,21 @@ function PlayButton({ url, label }) {
 export default function AyahExample({ example, reciter }) {
   const { ayah_text: text, match, surah, ayah, surah_name: name, note } = example
   const ref = `${name ?? ''} ${arabicNumber(ayah)}`
+  const navigate = useNavigate()
+  // الضغط على الآية يفتح صفحة تحليلها (الأحكام والمخارج والصفات)، وكلمة الشاهد محدَّدة سلفاً
+  const word = text && match ? tokens(text).findIndex((t) => t.end > match[0] && t.start < match[1]) : -1
+  const analysis = `/ayah/${surah}/${ayah}${word >= 0 ? `?w=${word}` : ''}`
   return (
     <figure className="my-[calc(var(--rule)*0.5)] rounded-lg border border-line/70 bg-surface/80 px-4 py-[calc(var(--rule)*0.25)]">
       {text ? (
-        <blockquote className="font-quran text-[1.55rem]">
+        <blockquote
+          className="font-quran cursor-pointer rounded text-[1.55rem] hover:bg-accent-soft/40"
+          role="link"
+          tabIndex={0}
+          title="اضغط لتحليل الآية: أحكامها ومخارجها وصفاتها"
+          onClick={() => navigate(analysis)}
+          onKeyDown={(e) => e.key === 'Enter' && navigate(analysis)}
+        >
           {match ? (
             <>
               {text.slice(0, match[0])}
@@ -91,6 +103,9 @@ export default function AyahExample({ example, reciter }) {
             {ref}
           </Link>
           <PlayButton url={ayahAudioUrl(reciter, surah, ayah)} label={ref} />
+          <Link to={analysis} className="no-print inline-flex items-center gap-1.5 rounded-full border border-accent bg-surface px-3 text-sm leading-8 text-accent hover:bg-accent-soft">
+            🔍 تحليل الآية
+          </Link>
         </span>
       </figcaption>
     </figure>

@@ -12,6 +12,7 @@ import { SurahBlock } from './MushafView'
 import ColorKey from './ColorKey'
 import SearchBar from './SearchBar'
 import { setLastRead, toggleBookmark, useBookmarks } from './reading'
+import AyahSheet from './AyahSheet'
 import { pageOf, pageRange } from './pages'
 import { countRules, rulesCss } from './tajweed'
 import { useRules } from './useRules'
@@ -202,43 +203,6 @@ function AyahMenu({ target, onClose, onPlay, onRepeat, surahName, bookmarked, pa
   )
 }
 
-/** بطاقة الحكم عند الضغط على حرف ملوّن. */
-function RuleCard({ target, onClose, byId, lessonFor, onFocus }) {
-  const { settings, dark } = useSettings()
-  if (!target) return null
-  return (
-    <Popover anchor={target.rect} onClose={onClose} label="حكم التجويد" width={300}>
-      <ul className="space-y-3">
-        {target.rules.map((id) => {
-          const r = byId[id]
-          if (!r) return null
-          const lesson = lessonFor(id)
-          const color = settings.ruleColors?.[id] ?? (dark ? r.color_dark : r.color)
-          return (
-            <li key={id}>
-              <p className="flex items-center gap-2 font-semibold">
-                <span className="size-3 rounded-full" style={{ background: color }} aria-hidden="true" />
-                {r.name}
-              </p>
-              <p className="mt-0.5 leading-relaxed text-muted">{r.description}</p>
-              <p className="mt-1.5 flex flex-wrap gap-3">
-                {lesson && (
-                  <Link to={`/ahkam/${lesson.section}/${lesson.id}`} className="text-accent underline-offset-4 hover:underline" onClick={onClose}>
-                    درس: {lesson.title}
-                  </Link>
-                )}
-                <button type="button" className="text-accent underline-offset-4 hover:underline" onClick={() => (onFocus(id), onClose())}>
-                  أبرز مواضعه
-                </button>
-              </p>
-            </li>
-          )
-        })}
-      </ul>
-    </Popover>
-  )
-}
-
 /** مجموعات مواضع الحكم في الصفحة (المقاطع المتجاورة لموضع واحد تُعد موضعاً واحداً). */
 function occurrenceGroups(root, rule) {
   if (!root || !rule) return []
@@ -258,6 +222,7 @@ function useNextSurahWithRule(rule, after) {
   return data.find((s) => s.surah > after) ?? null
 }
 
+
 export default function MushafReader({ kind }) {
   const n = Number(useParams().n)
   const [params, setParams] = useSearchParams()
@@ -266,12 +231,12 @@ export default function MushafReader({ kind }) {
   const { data: pageStarts } = useApi('/pages')
   const { data: lessonIndex } = useApi('/lessons')
   const { rules, byId, groups } = useRules()
-  const { settings } = useSettings()
+  const { settings, dark } = useSettings()
   const player = usePlayer()
   const playing = usePlayingAyah()
   const bookmarks = useBookmarks()
   const root = useRef(null)
-  const [ruleCard, setRuleCard] = useState(null)
+  const [sheet, setSheet] = useState(null) // { surah, ayah, rule }: الآية المضغوطة
   const [ayahMenu, setAyahMenu] = useState(null)
   const [keyOpen, setKeyOpen] = useState(false)
   const [occurrence, setOccurrence] = useState(0)
@@ -376,6 +341,17 @@ export default function MushafReader({ kind }) {
     [lessonIndex],
   )
 
+  const flat = useMemo(() => blocks.flatMap((b) => b.ayahs.map((a) => ({ ...a, surah: b.surah.number, surahName: b.surah.name }))), [blocks])
+  const sheetIndex = sheet ? flat.findIndex((a) => a.surah === sheet.surah && a.ayah === sheet.ayah) : -1
+  const sheetAyah = sheetIndex >= 0 ? flat[sheetIndex] : null
+  const colorOf = (id) => settings.ruleColors?.[id] ?? (dark ? byId[id]?.color_dark : byId[id]?.color)
+  const goNeighbor = (d) => {
+    const next = flat[sheetIndex + d]
+    if (!next) return
+    setSheet({ surah: next.surah, ayah: next.ayah, rule: null })
+    document.getElementById(`ayah-${next.surah}-${next.ayah}`)?.scrollIntoView({ block: 'center', behavior: 'smooth' })
+  }
+
   const onClick = (e) => {
     const menu = e.target.closest('[data-ayah-menu]')
     if (menu) {
@@ -386,8 +362,16 @@ export default function MushafReader({ kind }) {
       setAyahMenu({ rect: menu.getBoundingClientRect(), surah, ayah, text: a?.text ?? '' })
       return
     }
-    const tj = e.target.closest('.tj')
-    if (tj && settings.tajweedColors) setRuleCard({ rect: tj.getBoundingClientRect(), rules: tj.dataset.rules.split(' ') })
+    // الضغط على أي موضع من الآية (ملوّناً أو لا) يفتح لوحتها: نصها وسماعها وأحكامها وتحليلها
+    const ayahEl = e.target.closest('.ayah')
+    if (ayahEl) {
+      const tj = e.target.closest('.tj')
+      setSheet({
+        surah: Number(ayahEl.dataset.surah),
+        ayah: Number(ayahEl.dataset.ayah),
+        rule: tj && settings.tajweedColors ? tj.dataset.rules.split(' ')[0] : null,
+      })
+    }
   }
 
   const queueBlocks = () => blocks.map((b) => ({ surah: b.surah.number, ayahs: b.ayahs }))
@@ -457,9 +441,11 @@ export default function MushafReader({ kind }) {
               bismillah={data.bismillah_text}
               playing={playing}
               highlight={
-                highlightAyah && (kind === 'surah' || b.surah.number === Number(params.get('s')))
-                  ? { surah: b.surah.number, ayah: highlightAyah }
-                  : null
+                sheet && sheet.surah === b.surah.number
+                  ? { surah: b.surah.number, ayah: sheet.ayah }
+                  : highlightAyah && (kind === 'surah' || b.surah.number === Number(params.get('s')))
+                    ? { surah: b.surah.number, ayah: highlightAyah }
+                    : null
               }
               bookmarks={bookmarkSet}
             />
@@ -521,7 +507,25 @@ export default function MushafReader({ kind }) {
         </button>
       )}
 
-      <RuleCard target={ruleCard} onClose={() => setRuleCard(null)} byId={byId} lessonFor={lessonFor} onFocus={setFocus} />
+      {sheetAyah && (
+        <AyahSheet
+          target={sheetAyah}
+          rule={sheet.rule}
+          onClose={() => setSheet(null)}
+          hasPrev={sheetIndex > 0}
+          hasNext={sheetIndex < flat.length - 1}
+          onNeighbor={goNeighbor}
+          onPlay={playFrom}
+          onRepeat={repeatAyah}
+          bookmarked={bookmarkSet.has(`${sheetAyah.surah}:${sheetAyah.ayah}`)}
+          onBookmark={() => toggleBookmark({ surah: sheetAyah.surah, ayah: sheetAyah.ayah, surahName: sheetAyah.surahName })}
+          pageNo={pageOf(pageStarts, sheetAyah.surah, sheetAyah.ayah)}
+          byId={byId}
+          lessonFor={lessonFor}
+          colorOf={colorOf}
+          onFocusRule={setFocus}
+        />
+      )}
       <AyahMenu
         target={ayahMenu}
         onClose={() => setAyahMenu(null)}

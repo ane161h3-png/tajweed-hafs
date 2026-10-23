@@ -1,6 +1,7 @@
 import { Suspense, lazy } from 'react'
 import { Route, Routes } from 'react-router'
 import Layout from './components/Layout'
+import ErrorBoundary from './components/ErrorBoundary'
 import Home from './pages/Home'
 import SectionPage from './pages/SectionPage'
 import SubsectionPage from './pages/SubsectionPage'
@@ -36,6 +37,7 @@ const TeacherDashboard = named(teacher, 'TeacherDashboard')
 const NotebookPage = lazy(() => import('./features/notebook/NotebookPage'))
 const NotebookBook = lazy(() => import('./features/notebook/NotebookBook'))
 const GuidePage = lazy(() => import('./features/guide/GuidePage'))
+const AyahAnalysis = lazy(() => import('./features/ayah/AyahAnalysis'))
 import { AudioSettings, ColorSettings, DisplaySettings, ProgressSettings } from './features/settings/SettingsPages'
 
 // المسارات المحددة (المصحف، عن البرنامج) قبل المسار العام للأقسام الفرعية.
@@ -43,7 +45,7 @@ import { AudioSettings, ColorSettings, DisplaySettings, ProgressSettings } from 
 export function AppRoutes() {
   return (
     <Routes>
-      <Route path="notebook/book" element={<Suspense fallback={<p className="p-8 text-center text-muted">جارٍ تحميل الدفتر…</p>}><NotebookBook /></Suspense>} />
+      <Route path="notebook/book" element={<ErrorBoundary><Suspense fallback={<p className="p-8 text-center text-muted">جارٍ تحميل الدفتر…</p>}><NotebookBook /></Suspense></ErrorBoundary>} />
       <Route element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="mushaf" element={<MushafHome />} />
@@ -55,6 +57,7 @@ export function AppRoutes() {
         <Route path="mushaf/juz/:n" element={<MushafReader key="juz" kind="juz" />} />
         <Route path="mushaf/page/:n" element={<MushafReader key="page" kind="page" />} />
         <Route path="mushaf/pages" element={<PageList />} />
+        <Route path="ayah/:surah/:ayah" element={<AyahAnalysis />} />
         <Route path="ahkam" element={<AhkamHome />} />
         <Route path="ahkam/:subId" element={<AhkamSection />} />
         <Route path="ahkam/:subId/:lessonId" element={<LessonPage />} />
