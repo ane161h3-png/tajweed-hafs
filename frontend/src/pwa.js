@@ -12,7 +12,36 @@ export function registerServiceWorker() {
   if (!import.meta.env.PROD || bundled || !('serviceWorker' in navigator)) return
   window.addEventListener('load', () => {
     navigator.serviceWorker.register(`${BASE}sw.js`, { scope: BASE }).catch(() => {})
+    // بعد التحميل بقليل: احفظ كل النصوص تلقائياً ليعمل البرنامج كله دون إنترنت، بلا حاجة إلى ضغط زر
+    setTimeout(ensureOfflineData, 4000)
+    window.addEventListener('online', () => setTimeout(ensureOfflineData, 1500))
   })
+}
+
+const CURRENT = typeof __BUILD_ID__ === 'undefined' ? 'dev' : __BUILD_ID__ // eslint-disable-line no-undef
+const DONE_KEY = 'tajweed.offlineBuild'
+let running = null
+
+/**
+ * يحفظ كل بيانات البرنامج في الخلفية إن لم تكن محفوظة لهذه النسخة (مرة واحدة بعد كل تحديث).
+ * لا يعمل مع «توفير البيانات»، ولا دون اتصال، ولا يُشغَّل مرتين معاً.
+ */
+export function ensureOfflineData() {
+  if (running) return running
+  if (!STATIC || !('caches' in window) || !navigator.onLine || navigator.connection?.saveData) return Promise.resolve(false)
+  running = (async () => {
+    try {
+      if (await isFullyCached()) return true
+      await cacheAllTexts((done, total) => window.dispatchEvent(new CustomEvent('tajweed:cache-progress', { detail: { done, total } })))
+      window.dispatchEvent(new Event('tajweed:cached'))
+      return true
+    } catch {
+      return false // تُعاد المحاولة عند الاتصال التالي
+    } finally {
+      running = null
+    }
+  })()
+  return running
 }
 
 const DATA_CACHE = 'tajweed-data-v1'
@@ -55,6 +84,11 @@ export async function cacheAllTexts(onProgress) {
     }
   }
   await Promise.all(Array.from({ length: 6 }, worker))
+  try {
+    localStorage.setItem(DONE_KEY, CURRENT) // اكتمل الحفظ لهذه النسخة
+  } catch {
+    /* لا تخزين */
+  }
   return urls.length
 }
 
@@ -63,7 +97,8 @@ export async function isFullyCached() {
   if (!STATIC || !('caches' in window)) return false
   try {
     const cache = await caches.open(DATA_CACHE)
-    return !!(await cache.match(`${BASE}data/search-index.json`)) && !!(await cache.match(`${BASE}data/surah/114.json`))
+    // محفوظة كاملة لهذه النسخة فقط (بعد كل تحديث تُحفظ من جديد)
+    return localStorage.getItem(DONE_KEY) === CURRENT && !!(await cache.match(`${BASE}data/search-index.json`)) && !!(await cache.match(`${BASE}data/surah/114.json`))
   } catch {
     return false
   }

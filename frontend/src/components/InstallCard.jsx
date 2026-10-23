@@ -44,12 +44,18 @@ export default function InstallCard() {
       setInstallable(false)
       setInstalled(true)
     }
+    const prog = (e) => setProgress(e.detail.done / e.detail.total)
+    const done = () => (setCached(true), setProgress(null))
     window.addEventListener('tajweed:installable', on)
     window.addEventListener('appinstalled', off)
+    window.addEventListener('tajweed:cache-progress', prog)
+    window.addEventListener('tajweed:cached', done)
     isFullyCached().then(setCached)
     return () => {
       window.removeEventListener('tajweed:installable', on)
       window.removeEventListener('appinstalled', off)
+      window.removeEventListener('tajweed:cache-progress', prog)
+      window.removeEventListener('tajweed:cached', done)
     }
   }, [])
 

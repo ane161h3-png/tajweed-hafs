@@ -115,6 +115,14 @@ def load_pages(path: Path | None = None) -> list[dict]:
     return out
 
 
+def load_hizb(path: Path | None = None) -> list[dict]:
+    """أول آية في كل ربع حزب (٢٤٠ ربعاً)."""
+    raw = read_json(path or SOURCE_DIR / "hizb.json")
+    out = [{"quarter": int(h["quarter"]), "surah": int(h["surah"]), "ayah": int(h["ayah"])} for h in raw]
+    out.sort(key=lambda h: h["quarter"])
+    return out
+
+
 def load_juz_starts(path: Path | None = None) -> list[dict]:
     raw = read_json(path or SOURCE_DIR / "juz-starts.json")
     if isinstance(raw, dict):

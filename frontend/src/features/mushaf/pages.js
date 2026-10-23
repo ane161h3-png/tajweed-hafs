@@ -35,3 +35,29 @@ export function parsePageQuery(q) {
   const n = m ? Number(m[1] ?? m[2]) : NaN
   return n >= 1 && n <= PAGE_COUNT ? n : null
 }
+
+/**
+ * الحزب وربعه لآية. hizb: [{quarter, surah, ayah}] مرتبة (٢٤٠ ربعاً، كل حزب أربعة أرباع).
+ * يرجع { hizb: ١–٦٠، quarter: ١–٤، index: ١–٢٤٠ } أو null.
+ */
+export function hizbOf(hizb, surah, ayah) {
+  if (!hizb?.length) return null
+  const key = surah * 1000 + ayah
+  if (key < hizb[0].surah * 1000 + hizb[0].ayah) return null
+  let lo = 0
+  let hi = hizb.length - 1
+  while (lo < hi) {
+    const mid = (lo + hi + 1) >> 1
+    if (hizb[mid].surah * 1000 + hizb[mid].ayah <= key) lo = mid
+    else hi = mid - 1
+  }
+  return { hizb: Math.floor(lo / 4) + 1, quarter: (lo % 4) + 1, index: lo + 1 }
+}
+
+/** هل يبدأ ربع حزب جديد داخل هذه الآيات؟ يرجع رقم الربع (١–٢٤٠) أو null. */
+export function quarterStartingIn(hizb, ayahs) {
+  if (!hizb?.length) return null
+  const keys = new Set(ayahs.map((a) => a.surah * 1000 + a.ayah))
+  const q = hizb.find((h) => keys.has(h.surah * 1000 + h.ayah))
+  return q?.quarter ?? null
+}

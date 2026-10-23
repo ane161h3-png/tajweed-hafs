@@ -1,4 +1,4 @@
-import { copyFileSync, existsSync, writeFileSync } from 'node:fs'
+import { copyFileSync, existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
@@ -11,6 +11,22 @@ const here = (p) => fileURLToPath(new URL(p, import.meta.url))
 // يُضمَّن في التطبيق ويُكتب في version.json، فيعرف كل جهاز أن نسخة أحدث نُشرت فيتحدّث.
 const BUILD_ID = (process.env.GITHUB_SHA ?? '').slice(0, 12) || `local-${Date.now()}`
 
+function swVersion() {
+  let outDir = 'dist'
+  return {
+    name: 'sw-version',
+    apply: 'build',
+    configResolved: (c) => (outDir = c.build.outDir),
+    closeBundle() {
+      const sw = join(outDir, 'sw.js')
+      if (!existsSync(sw)) return
+      const text = readFileSync(sw, 'utf-8')
+      if (!/const VERSION = '[^']*'/.test(text)) throw new Error('sw.js: لم أجد سطر VERSION')
+      writeFileSync(sw, text.replace(/const VERSION = '([^']*)'/, `const VERSION = '$1-${BUILD_ID}'`))
+    },
+  }
+}
+
 function versionFile() {
   let outDir = 'dist'
   return {
@@ -19,6 +35,19 @@ function versionFile() {
     configResolved: (c) => (outDir = c.build.outDir),
     closeBundle() {
       writeFileSync(join(outDir, 'version.json'), JSON.stringify({ build: BUILD_ID, at: new Date().toISOString() }))
+    },
+  }
+}
+
+// قائمة ملفات الواجهة (js، css، خطوط، صور…) ليحفظها عامل الخدمة كلها عند أول زيارة،
+// فتعمل الميزات المُحمَّلة عند الطلب (الدفتر، لوحة المعلّم، التحليل…) دون إنترنت حتى لو لم تُفتح من قبل.
+function precacheList() {
+  return {
+    name: 'precache-list',
+    apply: 'build',
+    generateBundle(_, bundle) {
+      const files = Object.keys(bundle).filter((f) => !f.endsWith('.map') && !f.endsWith('.html'))
+      this.emitFile({ type: 'asset', fileName: 'precache.json', source: JSON.stringify(files) })
     },
   }
 }
@@ -40,7 +69,7 @@ function spaFallback() {
 export default defineConfig({
   // مسار الاستضافة: '/' للنطاق الرئيسي، أو '/اسم-المستودع/' في GitHub Pages
   base: process.env.VITE_BASE || '/',
-  plugins: [react(), tailwindcss(), spaFallback(), versionFile()],
+  plugins: [react(), tailwindcss(), precacheList(), spaFallback(), swVersion(), versionFile()],
   define: { __BUILD_ID__: JSON.stringify(BUILD_ID) },
   server: {
     port: 5173,

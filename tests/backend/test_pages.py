@@ -38,3 +38,15 @@ def test_known_pages():
 def test_out_of_range():
     assert client.get("/api/page/0").status_code == 404
     assert client.get("/api/page/605").status_code == 404
+
+
+def test_hizb_quarters_align_with_juz():
+    hizb = client.get("/api/hizb").json()
+    assert [h["quarter"] for h in hizb] == list(range(1, 241))
+    keys = [(h["surah"], h["ayah"]) for h in hizb]
+    assert keys == sorted(keys)
+    juz = client.get("/api/juz").json()
+    # كل جزء ثمانية أرباع: بداية كل جزء هي بداية الربع (٨ن+١)
+    for j in juz:
+        q = hizb[(j["juz"] - 1) * 8]
+        assert (q["surah"], q["ayah"]) == (j["surah"], j["ayah"]), j["juz"]

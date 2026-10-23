@@ -4,15 +4,47 @@
 // - بيانات الخادم (api/، نسخة الخادم): من الشبكة أولاً، ومن التخزين عند انقطاعها.
 // - الصفحات: من الشبكة، وعند الانقطاع الصفحة الرئيسية المخزّنة (التطبيق يتولى التنقل).
 // التلاوات المنزّلة تُحفظ في IndexedDB لا هنا.
-const VERSION = 'v3'
+const VERSION = 'v4'
 const SHELL = `tajweed-shell-${VERSION}`
 const DATA = 'tajweed-data-v1' // يُمسح عند نشر نسخة جديدة (UpdateWatcher) ثم يُعاد حفظه
 const API = 'tajweed-api-v1'
 const SCOPE = new URL(self.registration.scope).pathname // '/' أو '/مجلد/' حسب مكان الاستضافة
 const SHELL_FILES = [SCOPE, `${SCOPE}manifest.webmanifest`, `${SCOPE}icon.svg`, `${SCOPE}icon-192.png`]
 
+// يحفظ كل ملفات الواجهة المذكورة في precache.json (يُنتجها البناء). فشل ملف لا يُفشل التثبيت.
+async function precacheAssets(cache) {
+  try {
+    const res = await fetch(`${SCOPE}precache.json`, { cache: 'no-cache' })
+    if (!res.ok) return
+    const files = await res.json()
+    const queue = [...files]
+    const worker = async () => {
+      while (queue.length) {
+        const f = queue.shift()
+        try {
+          const r = await fetch(`${SCOPE}${f}`)
+          if (r.ok) await cache.put(`${SCOPE}${f}`, r)
+        } catch {
+          /* يُحفظ لاحقاً عند أول طلب */
+        }
+      }
+    }
+    await Promise.all(Array.from({ length: 6 }, worker))
+  } catch {
+    /* دون precache.json (بيئة تطوير): يُحفظ كل ملف عند أول طلب */
+  }
+}
+
 self.addEventListener('install', (event) => {
-  event.waitUntil(caches.open(SHELL).then((c) => c.addAll(SHELL_FILES)).then(() => self.skipWaiting()))
+  event.waitUntil(
+    caches
+      .open(SHELL)
+      .then(async (c) => {
+        await c.addAll(SHELL_FILES)
+        await precacheAssets(c)
+      })
+      .then(() => self.skipWaiting()),
+  )
 })
 
 self.addEventListener('activate', (event) => {

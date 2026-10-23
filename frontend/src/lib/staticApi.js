@@ -145,7 +145,7 @@ export async function staticApi(path) {
   const url = new URL(path, 'http://x')
   const p = url.pathname.replace(/\/+$/, '')
   let m
-  if ((m = p.match(/^\/(surahs|juz|pages|rules|reciters|minshawi|letters|health)$/))) return file(`${m[1]}.json`)
+  if ((m = p.match(/^\/(surahs|juz|pages|hizb|rules|reciters|minshawi|letters|health)$/))) return file(`${m[1]}.json`)
   if ((m = p.match(/^\/page\/(\d+)$/))) return staticPage(Number(m[1]))
   if ((m = p.match(/^\/surah\/(\d+)$/))) return file(`surah/${m[1]}.json`).catch(() => {
     throw new ApiError(404, 'لا توجد سورة بهذا الرقم (1–114)')

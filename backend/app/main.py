@@ -115,6 +115,13 @@ def pages_list(con=Depends(get_conn)):
     return [{"page": r[0], "surah": r[1], "ayah": r[2], "surah_name": r[3]} for r in rows]
 
 
+@app.get("/api/hizb")
+def hizb_list(con=Depends(get_conn)):
+    """أرباع الأحزاب الـ٢٤٠: أول آية في كل ربع (الحزب = ٤ أرباع، والجزء = حزبان)."""
+    rows = con.execute("SELECT quarter, surah, ayah FROM hizb ORDER BY quarter").fetchall()
+    return [{"quarter": r[0], "surah": r[1], "ayah": r[2]} for r in rows]
+
+
 @app.get("/api/page/{n}")
 def page(n: int, con=Depends(get_conn)):
     """صفحة من مصحف المدينة (١–٦٠٤): آياتها بالشكل نفسه الذي يرجعه /api/juz/{n}."""

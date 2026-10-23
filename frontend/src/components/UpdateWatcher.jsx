@@ -41,6 +41,17 @@ function markTried(build) {
 /** هل يكتب المستخدم الآن في محرّر الدرس؟ لا نقطع عليه عمله. */
 const busy = () => !!document.querySelector('.notebook-field')
 
+/** ينتظر اكتمال تثبيت عامل الخدمة الجديد (حفظ ملفات النسخة الجديدة للعمل دون إنترنت)، وإلا ينتهي بعد عشرين ثانية. */
+function waitForWorker(reg) {
+  const sw = reg?.installing ?? reg?.waiting
+  if (!sw || sw.state === 'activated') return Promise.resolve()
+  return new Promise((resolve) => {
+    const done = () => sw.state === 'activated' && resolve()
+    sw.addEventListener('statechange', done)
+    setTimeout(resolve, 20000)
+  })
+}
+
 async function applyUpdate() {
   // البيانات القديمة (الدروس، الأسئلة…) تُمسح لتُحمَّل الجديدة، ثم تُحفظ ثانيةً للعمل دون إنترنت
   try {
@@ -52,6 +63,7 @@ async function applyUpdate() {
     }
     const reg = await navigator.serviceWorker?.getRegistration()
     await reg?.update()
+    await waitForWorker(reg)
   } catch {
     /* نكمل التحديث على أي حال */
   }

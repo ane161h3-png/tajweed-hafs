@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { usePageCrumb } from '../../components/Breadcrumb'
 import Popover from '../../components/Popover'
 import { toAsciiDigits } from '../../lib/arabic'
-import { arabicNumber, useApi } from '../../lib/api'
+import { api, arabicNumber, useApi } from '../../lib/api'
 import { useSettings } from '../settings/SettingsContext'
 import { usePlayer, usePlayingAyah } from '../player/PlayerContext'
 import { DataState } from './MushafLists'
@@ -13,7 +13,8 @@ import ColorKey from './ColorKey'
 import SearchBar from './SearchBar'
 import { setLastRead, toggleBookmark, useBookmarks } from './reading'
 import AyahSheet from './AyahSheet'
-import { pageOf, pageRange } from './pages'
+import PageSheet from './PageSheet'
+import { hizbOf, pageOf, pageRange, quarterStartingIn } from './pages'
 import { countRules, rulesCss } from './tajweed'
 import { useRules } from './useRules'
 
@@ -229,6 +230,7 @@ export default function MushafReader({ kind }) {
   const { data, loading, error } = useApi(`/${kind}/${n}`)
   const { data: surahs } = useApi('/surahs')
   const { data: pageStarts } = useApi('/pages')
+  const { data: hizbStarts } = useApi('/hizb')
   const { data: lessonIndex } = useApi('/lessons')
   const { rules, byId, groups } = useRules()
   const { settings, dark } = useSettings()
@@ -240,20 +242,122 @@ export default function MushafReader({ kind }) {
   const [ayahMenu, setAyahMenu] = useState(null)
   const [keyOpen, setKeyOpen] = useState(false)
   const [occurrence, setOccurrence] = useState(0)
+  const [extra, setExtra] = useState([]) // صفحات إضافية تُحمَّل أثناء التمرير (عرض الصفحات)
+  const [current, setCurrent] = useState(n)
+  const [moreError, setMoreError] = useState(false)
+  const busy = useRef(false)
+  const sentinel = useRef(null)
 
   const focus = params.get('rule')
   const highlightAyah = Number(params.get('ayah')) || null
 
+  // عرض «الصفحات»: الصفحة المطلوبة ثم التالية فالتي بعدها كلما نزل القارئ
+  const stream = useMemo(() => (kind === 'page' && data ? [data, ...extra] : null), [kind, data, extra])
+  const lastPage = stream ? stream.at(-1).page : n
+
   const blocks = useMemo(() => {
     if (!data) return []
     if (kind === 'surah') return [{ surah: data.surah, ayahs: data.ayahs }]
-    return data.surahs.map((s) => ({ surah: s, ayahs: data.ayahs.filter((a) => a.surah === s.number) }))
-  }, [data, kind])
+    const out = []
+    for (const d of stream ?? [data]) {
+      for (const s of d.surahs) {
+        const ayahs = d.ayahs.filter((a) => a.surah === s.number)
+        const last = out.at(-1)
+        if (last && last.surah.number === s.number) last.ayahs = last.ayahs.concat(ayahs)
+        else out.push({ surah: s, ayahs })
+      }
+    }
+    return out
+  }, [data, kind, stream])
+
+  // المصحف على هيئة صفحات: كل صفحة بإطارها ورأسها وتذييلها. بلا بيانات الصفحات يُعرض النص متصلاً كما كان.
+  const sheets = useMemo(() => {
+    if (!data || !pageStarts) return null
+    const out = []
+    const add = (page, surah, ayahs) => {
+      let sheet = out.at(-1)
+      if (!sheet || sheet.page !== page) {
+        sheet = { page, groups: [], juz: ayahs[0].juz }
+        out.push(sheet)
+      }
+      sheet.groups.push({ surah, ayahs })
+    }
+    if (stream) {
+      for (const d of stream) for (const s of d.surahs) add(d.page, s, d.ayahs.filter((a) => a.surah === s.number))
+    } else {
+      for (const b of blocks) {
+        let run = []
+        let runPage = null
+        for (const a of b.ayahs) {
+          const p = pageOf(pageStarts, b.surah.number, a.ayah)
+          if (runPage !== null && p !== runPage) {
+            add(runPage, b.surah, run)
+            run = []
+          }
+          run.push(a)
+          runPage = p
+        }
+        if (run.length) add(runPage, b.surah, run)
+      }
+    }
+    return out.map((s) => {
+      const first = s.groups[0]
+      const all = s.groups.flatMap((g) => g.ayahs.map((a) => ({ surah: g.surah.number, ayah: a.ayah })))
+      return { ...s, hizb: hizbOf(hizbStarts, first.surah.number, first.ayahs[0].ayah), quarterStart: quarterStartingIn(hizbStarts, all) != null }
+    })
+  }, [data, pageStarts, hizbStarts, stream, blocks])
+
+  useEffect(() => {
+    setExtra([])
+    setCurrent(n)
+    setMoreError(false)
+  }, [n, kind])
+
+  const loadMore = useCallback(async () => {
+    if (busy.current || kind !== 'page' || lastPage >= 604) return
+    busy.current = true
+    try {
+      const d = await api(`/page/${lastPage + 1}`)
+      setExtra((e) => (e.at(-1)?.page === d.page - 1 || (e.length === 0 && d.page === n + 1) ? [...e, d] : e))
+    } catch {
+      setMoreError(true)
+    } finally {
+      busy.current = false
+    }
+  }, [kind, lastPage, n])
+
+  // الصفحة التالية تُحمَّل قبل الوصول إليها بمسافة، فيبدو المصحف متصلاً
+  useEffect(() => {
+    if (kind !== 'page' || !sentinel.current || moreError || !('IntersectionObserver' in window)) return
+    const io = new IntersectionObserver((es) => es.some((e) => e.isIntersecting) && loadMore(), { rootMargin: '1600px 0px' })
+    io.observe(sentinel.current)
+    return () => io.disconnect()
+  }, [kind, loadMore, moreError, sheets?.length])
+
+  // رقم الصفحة الظاهرة حالياً: يُحدَّث في الشريط والرابط (لمشاركته) دون إعادة تحميل
+  useEffect(() => {
+    if (kind !== 'page' || !sheets || !('IntersectionObserver' in window)) return
+    const els = [...(root.current?.querySelectorAll('.mushaf-page') ?? [])]
+    const seen = new Map()
+    const io = new IntersectionObserver(
+      (es) => {
+        for (const e of es) seen.set(Number(e.target.dataset.page), e.isIntersecting ? e.intersectionRatio : 0)
+        const best = [...seen.entries()].filter(([, r]) => r > 0).sort((a, b) => b[1] - a[1] || a[0] - b[0])[0]
+        if (best && best[0] !== current) {
+          setCurrent(best[0])
+          window.history.replaceState(window.history.state, '', `${import.meta.env.BASE_URL}mushaf/page/${best[0]}`)
+        }
+      },
+      { threshold: [0, 0.25, 0.5, 0.75, 1], rootMargin: '-90px 0px 0px 0px' },
+    )
+    els.forEach((el) => io.observe(el))
+    return () => io.disconnect()
+  }, [kind, sheets?.length]) // eslint-disable-line react-hooks/exhaustive-deps
   const allAyahs = useMemo(() => blocks.flatMap((b) => b.ayahs), [blocks])
   const counts = useMemo(() => countRules(allAyahs), [allAyahs])
   const names = useMemo(() => Object.fromEntries(blocks.map((b) => [b.surah.number, b.surah.name])), [blocks])
   const bookmarkSet = useMemo(() => new Set(bookmarks.map((b) => `${b.surah}:${b.ayah}`)), [bookmarks])
-  const lastSurah = blocks.at(-1)?.surah.number ?? n
+  const lastSurah = kind === 'page' ? (blocks.at(-1)?.surah.number ?? 1) : (blocks.at(-1)?.surah.number ?? n)
   const nextWithRule = useNextSurahWithRule(focus, lastSurah)
 
   const range = useMemo(() => {
@@ -352,6 +456,14 @@ export default function MushafReader({ kind }) {
     document.getElementById(`ayah-${next.surah}-${next.ayah}`)?.scrollIntoView({ block: 'center', behavior: 'smooth' })
   }
 
+  // إبراز الآية: المختارة في اللوحة، ثم القادمة من رابط البحث
+  const highlightFor = (surah) =>
+    sheet && sheet.surah === surah
+      ? { surah, ayah: sheet.ayah }
+      : highlightAyah && (kind === 'surah' || surah === Number(params.get('s')))
+        ? { surah, ayah: highlightAyah }
+        : null
+
   const onClick = (e) => {
     const menu = e.target.closest('[data-ayah-menu]')
     if (menu) {
@@ -418,7 +530,7 @@ export default function MushafReader({ kind }) {
       <RuleStyles rules={rules} />
       <Toolbar
         kind={kind}
-        n={n}
+        n={kind === 'page' ? current : n}
         surahs={surahs}
         onListen={listen}
         onListenSurah={() => player.playSurah(n, names[n])}
@@ -433,23 +545,26 @@ export default function MushafReader({ kind }) {
           data-focus={focus ?? undefined}
           className={`mushaf ${settings.tajweedColors || focus ? 'colors-on' : ''} ${settings.colorBlind ? 'cb' : ''}`}
         >
-          {blocks.map((b) => (
-            <SurahBlock
-              key={b.surah.number}
-              surah={b.surah}
-              ayahs={b.ayahs}
-              bismillah={data.bismillah_text}
-              playing={playing}
-              highlight={
-                sheet && sheet.surah === b.surah.number
-                  ? { surah: b.surah.number, ayah: sheet.ayah }
-                  : highlightAyah && (kind === 'surah' || b.surah.number === Number(params.get('s')))
-                    ? { surah: b.surah.number, ayah: highlightAyah }
-                    : null
-              }
-              bookmarks={bookmarkSet}
-            />
-          ))}
+          {sheets
+            ? sheets.map((sh) => (
+                <PageSheet key={sh.page} page={sh.page} groups={sh.groups} juz={sh.juz} hizb={sh.hizb} quarterStart={sh.quarterStart}>
+                  {sh.groups.map((g) => (
+                    <SurahBlock key={g.surah.number} pageMode surah={g.surah} ayahs={g.ayahs} bismillah={data.bismillah_text} playing={playing} highlight={highlightFor(g.surah.number)} bookmarks={bookmarkSet} />
+                  ))}
+                </PageSheet>
+              ))
+            : blocks.map((b) => <SurahBlock key={b.surah.number} surah={b.surah} ayahs={b.ayahs} bismillah={data.bismillah_text} playing={playing} highlight={highlightFor(b.surah.number)} bookmarks={bookmarkSet} />)}
+          {kind === 'page' && (
+            <div ref={sentinel} className="py-4 text-center text-sm text-muted" aria-live="polite">
+              {lastPage >= 604 ? 'خاتمة المصحف — صدق الله العظيم' : moreError ? (
+                <button type="button" onClick={() => (setMoreError(false), loadMore())} className="rounded-lg border border-line px-4 py-2">
+                  تعذّر تحميل الصفحة التالية، أعد المحاولة
+                </button>
+              ) : (
+                'جارٍ تحميل الصفحات التالية…'
+              )}
+            </div>
+          )}
           <nav aria-label="السابق والتالي" className="mt-4 flex justify-between text-sm">
             {n > 1 ? (
               <Link to={`/mushaf/${kind}/${n - 1}`} className="rounded-lg border border-line bg-surface px-4 py-2 hover:border-accent">
@@ -458,7 +573,7 @@ export default function MushafReader({ kind }) {
             ) : (
               <span />
             )}
-            {n < KINDS[kind].max && (
+            {kind !== 'page' && n < KINDS[kind].max && (
               <Link to={`/mushaf/${kind}/${n + 1}`} className="rounded-lg border border-line bg-surface px-4 py-2 hover:border-accent">
                 {kind === 'surah' ? `سورة ${surahs?.[n]?.name ?? ''}` : kind === 'page' ? `الصفحة ${arabicNumber(n + 1)}` : `الجزء ${arabicNumber(n + 1)}`} ←
               </Link>

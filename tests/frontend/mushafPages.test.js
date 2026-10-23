@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { PAGE_COUNT, pageOf, pageRange, parsePageQuery } from '../../frontend/src/features/mushaf/pages'
+import { PAGE_COUNT, hizbOf, pageOf, pageRange, parsePageQuery, quarterStartingIn } from '../../frontend/src/features/mushaf/pages'
 import { highlightParts, makeMatcher } from '../../frontend/src/lib/filter'
 
 const PAGES = [
@@ -64,5 +64,29 @@ describe('تصفية القوائم', () => {
   })
   it('بلا استعلام: النص كما هو', () => {
     expect(highlightParts('نص', '')).toEqual([{ text: 'نص', hit: false }])
+  })
+})
+
+describe('الحزب وربع الحزب', () => {
+  const HIZB = [
+    { quarter: 1, surah: 1, ayah: 1 },
+    { quarter: 2, surah: 2, ayah: 26 },
+    { quarter: 3, surah: 2, ayah: 44 },
+    { quarter: 4, surah: 2, ayah: 60 },
+    { quarter: 5, surah: 2, ayah: 75 },
+  ]
+  it('الحزب والربع بحسب أول آية في الربع', () => {
+    expect(hizbOf(HIZB, 1, 1)).toEqual({ hizb: 1, quarter: 1, index: 1 })
+    expect(hizbOf(HIZB, 2, 25)).toEqual({ hizb: 1, quarter: 1, index: 1 })
+    expect(hizbOf(HIZB, 2, 26)).toEqual({ hizb: 1, quarter: 2, index: 2 })
+    expect(hizbOf(HIZB, 2, 60)).toEqual({ hizb: 1, quarter: 4, index: 4 })
+    expect(hizbOf(HIZB, 2, 80)).toEqual({ hizb: 2, quarter: 1, index: 5 })
+  })
+  it('بلا بيانات: null', () => {
+    expect(hizbOf(null, 1, 1)).toBeNull()
+  })
+  it('بداية ربع داخل الصفحة', () => {
+    expect(quarterStartingIn(HIZB, [{ surah: 2, ayah: 25 }, { surah: 2, ayah: 26 }])).toBe(2)
+    expect(quarterStartingIn(HIZB, [{ surah: 2, ayah: 27 }])).toBeNull()
   })
 })

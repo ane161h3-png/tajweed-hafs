@@ -174,6 +174,9 @@ def build_meta() -> None:
     # صفحات مصحف المدينة (٦٠٤): أول آية في كل صفحة. الصف الأخير علامة نهاية
     pages = js_array(src, "Page")[:604]
     write_lines(OUT / "pages.json", [{"page": i, "surah": s, "ayah": a} for i, (s, a) in enumerate(pages, start=1)])
+    # أرباع الأحزاب (٢٤٠): كل حزب أربعة أرباع. الصف الأخير علامة نهاية
+    hizb = js_array(src, "HizbQaurter")[:240]
+    write_lines(OUT / "hizb.json", [{"quarter": i, "surah": s, "ayah": a} for i, (s, a) in enumerate(hizb, start=1)])
 
 
 def dark_variant(hex_color: str) -> str:

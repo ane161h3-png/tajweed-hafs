@@ -42,10 +42,11 @@ export const AyahText = memo(function AyahText({ surah, ayah, playing, highlight
 })
 
 /** سورة (أو جزء منها في عرض الجزء) بعنوانها وبسملتها. */
-export function SurahBlock({ surah, ayahs, bismillah, playing, highlight, bookmarks }) {
+export function SurahBlock({ surah, ayahs, bismillah, playing, highlight, bookmarks, pageMode = false }) {
   const startsAtOne = ayahs[0]?.ayah === 1
   return (
-    <section aria-label={`سورة ${surah.name}`} className="mb-10">
+    <section aria-label={`سورة ${surah.name}`} className={pageMode ? 'mb-3' : 'mb-10'}>
+      {(!pageMode || startsAtOne) && (
       <header className="relative mb-5 overflow-hidden rounded-2xl border-2 border-double border-gold/50 bg-surface px-4 py-3 text-center">
         <div className="absolute inset-y-0 start-0 hidden w-24 bg-[radial-gradient(circle,var(--gold)_1px,transparent_1.5px)] bg-[size:10px_10px] opacity-20 sm:block" />
         <div className="absolute inset-y-0 end-0 hidden w-24 bg-[radial-gradient(circle,var(--gold)_1px,transparent_1.5px)] bg-[size:10px_10px] opacity-20 sm:block" />
@@ -56,6 +57,7 @@ export function SurahBlock({ surah, ayahs, bismillah, playing, highlight, bookma
           {surah.revelation} · آياتها {arabicNumber(surah.ayah_count)} · ترتيبها {arabicNumber(surah.number)}
         </p>
       </header>
+      )}
       {surah.bismillah && bismillah && startsAtOne && (
         <p className="font-quran mb-1 text-center" aria-label="البسملة">
           {bismillah}
