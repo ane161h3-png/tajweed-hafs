@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto'
 import { copyFileSync, existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -23,6 +24,34 @@ function swVersion() {
       const text = readFileSync(sw, 'utf-8')
       if (!/const VERSION = '[^']*'/.test(text)) throw new Error('sw.js: لم أجد سطر VERSION')
       writeFileSync(sw, text.replace(/const VERSION = '([^']*)'/, `const VERSION = '$1-${BUILD_ID}'`))
+    },
+  }
+}
+
+/** سياسة أمان المحتوى: لا سكربت إلا من الموقع نفسه والسكربت الداخلي المعروف (بتجزئته)، ولا إضافات (object)، ولا نماذج خارجية. */
+function cspMeta() {
+  return {
+    name: 'csp-meta',
+    apply: 'build',
+    transformIndexHtml: {
+      order: 'post',
+      handler(html) {
+        const inline = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map((m) => `'sha256-${createHash('sha256').update(m[1]).digest('base64')}'`)
+        const csp = [
+          "default-src 'self'",
+          `script-src 'self' ${inline.join(' ')}`,
+          "style-src 'self' 'unsafe-inline'",
+          "img-src 'self' data: blob:",
+          "font-src 'self' data:",
+          "media-src 'self' https: blob: data:",
+          "connect-src 'self' https:",
+          "worker-src 'self' blob:",
+          "object-src 'none'",
+          "base-uri 'self'",
+          "form-action 'self'",
+        ].join('; ')
+        return html.replace('<meta charset="UTF-8" />', `<meta charset="UTF-8" />\n    <meta http-equiv="Content-Security-Policy" content="${csp}" />`)
+      },
     },
   }
 }
@@ -69,7 +98,7 @@ function spaFallback() {
 export default defineConfig({
   // مسار الاستضافة: '/' للنطاق الرئيسي، أو '/اسم-المستودع/' في GitHub Pages
   base: process.env.VITE_BASE || '/',
-  plugins: [react(), tailwindcss(), precacheList(), spaFallback(), swVersion(), versionFile()],
+  plugins: [react(), tailwindcss(), precacheList(), spaFallback(), swVersion(), cspMeta(), versionFile()],
   define: { __BUILD_ID__: JSON.stringify(BUILD_ID) },
   server: {
     port: 5173,
