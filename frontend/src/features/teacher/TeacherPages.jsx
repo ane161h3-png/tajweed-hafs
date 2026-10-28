@@ -7,10 +7,9 @@ import { DataState } from '../mushaf/MushafLists'
 import { completedLessons } from '../progress/progress'
 import { loadSrs } from '../quiz/srs'
 import { accuracy, analyzeReport, buildReport, decodeReport, encodeReport, reportLink, saveStudentProfile, studentProfile } from './report'
-import { ATTENDANCE, FREE_STUDENTS, addManualStudent, checkIn, addReport, attendanceCsv, attendanceStats, loadRoster, localDay, removeStudent, rosterCsv, setAttendance } from './roster'
+import { ATTENDANCE, addManualStudent, checkIn, addReport, attendanceCsv, attendanceStats, loadRoster, localDay, removeStudent, rosterCsv, setAttendance } from './roster'
 import { encodeCard, parseCard } from './card'
 import { QrCode, QrScannerView } from './Qr'
-import { CONTACT_EMAIL, PLAY_PLANS, activateCode, buyPlan, deactivate, isNative, playProducts, refreshPlay, usePremium } from './premium'
 
 const card = 'rounded-2xl border border-line bg-surface p-4'
 const input = 'w-full rounded-lg border border-line bg-bg px-3 py-2 focus:border-accent focus:outline-none'
@@ -211,15 +210,14 @@ const SCAN_MESSAGES = {
   present: (n) => ({ ok: true, text: `✓ ${n}: حاضر` }),
   joined: (n) => ({ ok: true, text: `✓ ${n}: أُضيف وسُجّل حاضراً` }),
   already: (n) => ({ ok: true, text: `${n}: مسجّل حاضراً من قبل` }),
-  limit: () => ({ ok: false, text: `الخطة المجانية تتسع لـ${arabicNumber(FREE_STUDENTS)} طلاب. اشترك لإضافة عدد غير محدود.`, limit: true }),
 }
 
-function AttendanceScanner({ day, premium, onRoster }) {
+function AttendanceScanner({ day, onRoster }) {
   const [open, setOpen] = useState(false)
   const [log, setLog] = useState([])
   const onScan = (text) => {
     const c = parseCard(text)
-    const res = c ? checkIn(day, c, { premium }) : null
+    const res = c ? checkIn(day, c) : null
     const msg = c ? SCAN_MESSAGES[res.status](c.name) : { ok: false, text: 'هذا الباركود ليس بطاقة حضور من البرنامج.' }
     if (res) onRoster(res.roster)
     navigator.vibrate?.(msg.ok ? 80 : [60, 60, 60])
@@ -244,11 +242,6 @@ function AttendanceScanner({ day, premium, onRoster }) {
           {log.map((m) => (
             <li key={m.at} className={m.ok ? 'text-accent' : 'text-[var(--pen-red)]'}>
               {m.text}
-              {m.limit && (
-                <Link to="/teacher/subscription" className="ms-1 font-medium underline">
-                  الاشتراك
-                </Link>
-              )}
             </li>
           ))}
         </ul>
@@ -292,11 +285,9 @@ const IMPORT_MESSAGES = {
   linked: (n) => `رُبط تقرير «${n}» بالطالب المسجّل في الحضور ✓`,
   same: (n) => `تقرير «${n}» هذا مضاف من قبل ✓`,
   older: (n) => `لدى اللوحة تقرير أحدث لـ«${n}».`,
-  limit: () => `الخطة المجانية تتسع لـ${arabicNumber(FREE_STUDENTS)} طلاب. اشترك لإضافة عدد غير محدود.`,
 }
 
 export function TeacherDashboard() {
-  const premium = usePremium()
   const { questions, loading, error } = useQuizBank()
   const [roster, setRoster] = useState(loadRoster)
   const [code, setCode] = useState('')
@@ -308,10 +299,10 @@ export function TeacherDashboard() {
   const importCode = async (raw) => {
     try {
       const report = await decodeReport(raw)
-      const res = addReport(report, { premium: premium.active })
+      const res = addReport(report, {})
       setRoster(res.roster)
-      setMessage({ ok: res.status !== 'limit', text: IMPORT_MESSAGES[res.status](report.n || 'بلا اسم'), limit: res.status === 'limit' })
-      if (res.status !== 'limit') setCode('')
+      setMessage({ ok: true, text: IMPORT_MESSAGES[res.status](report.n || 'بلا اسم') })
+      setCode('')
     } catch (e) {
       setMessage({ ok: false, text: e.message })
     }
@@ -338,9 +329,7 @@ export function TeacherDashboard() {
     <div className="space-y-4">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <h1 className="text-2xl font-bold">لوحة المعلّم</h1>
-        <Link to="/teacher/subscription" className="text-sm text-accent underline-offset-4 hover:underline">
-          {premium.active ? 'مشترك ✓' : `الخطة المجانية: ${arabicNumber(count)} من ${arabicNumber(FREE_STUDENTS)} طلاب`}
-        </Link>
+        {count > 0 && <span className="text-sm text-muted">{arabicNumber(count)} طالب</span>}
       </div>
       <p className="text-muted">
         يرسل كل طالب رابط تقريره من «أرسل تقدّمي للمعلّم»، فتفتحه هنا أو تلصقه في الخانة أدناه. يُحفظ طلابك على هذا الجهاز فقط.
@@ -361,12 +350,7 @@ export function TeacherDashboard() {
 
       {message && (
         <p role="status" className={`rounded-xl border p-3 text-sm ${message.ok ? 'border-accent bg-accent-soft' : 'border-[var(--pen-red)] text-[var(--pen-red)]'}`}>
-          {message.text}{' '}
-          {message.limit && (
-            <Link to="/teacher/subscription" className="font-medium underline">
-              الاشتراك
-            </Link>
-          )}
+          {message.text}
         </p>
       )}
 
@@ -397,10 +381,9 @@ export function TeacherDashboard() {
             <button
               type="button"
               className="rounded-lg border border-line bg-surface px-3 py-2 text-sm hover:border-accent disabled:opacity-50"
-              onClick={premium.active ? exportCsv : () => navigate('/teacher/subscription')}
-              title={premium.active ? '' : 'متاح للمشتركين'}
+              onClick={exportCsv}
             >
-              تصدير Excel (CSV){premium.active ? '' : ' 🔒'}
+              تصدير Excel (CSV)
             </button>
           </div>
           <ul className="grid gap-3 sm:grid-cols-2">
@@ -610,8 +593,6 @@ function shiftDay(day, n) {
 }
 
 export function AttendancePage() {
-  const premium = usePremium()
-  const navigate = useNavigate()
   const [roster, setRoster] = useState(loadRoster)
   const [day, setDay] = useState(localDay)
   const [group, setGroup] = useState('')
@@ -632,13 +613,12 @@ export function AttendancePage() {
   const mark = (id, status) => setRoster(setAttendance(day, id, marks[id] === status ? null : status))
   const addStudent = (e) => {
     e.preventDefault()
-    const res = addManualStudent(name, newGroup || group, { premium: premium.active })
+    const res = addManualStudent(name, newGroup || group)
     setRoster(res.roster)
     setMessage(
       {
         added: { ok: true, text: `أُضيف «${name.trim()}» ✓` },
         exists: { ok: false, text: 'هذا الطالب موجود في القائمة.' },
-        limit: { ok: false, text: `الخطة المجانية تتسع لـ${arabicNumber(FREE_STUDENTS)} طلاب. اشترك لإضافة عدد غير محدود.`, limit: true },
         empty: null,
       }[res.status],
     )
@@ -675,7 +655,7 @@ export function AttendancePage() {
         )}
       </div>
 
-      <AttendanceScanner day={day} premium={premium.active} onRoster={setRoster} />
+      <AttendanceScanner day={day} onRoster={setRoster} />
 
       {students.length > 0 && (
         <>
@@ -699,9 +679,9 @@ export function AttendancePage() {
             <button
               type="button"
               className="rounded-lg border border-line bg-surface px-3 py-2 text-sm hover:border-accent"
-              onClick={() => (premium.active ? downloadCsv(attendanceCsv(roster, shown.map((s) => s.id)), 'سجل-الحضور') : navigate('/teacher/subscription'))}
+              onClick={() => downloadCsv(attendanceCsv(roster, shown.map((s) => s.id)), 'سجل-الحضور')}
             >
-              تصدير سجل الحضور (CSV){premium.active ? '' : ' 🔒'}
+              تصدير سجل الحضور (CSV)
             </button>
           </div>
           <p className="text-sm text-muted" aria-live="polite">
@@ -762,143 +742,10 @@ export function AttendancePage() {
         </div>
         {message && (
           <p role="status" className={`text-sm ${message.ok ? 'text-accent' : 'text-[var(--pen-red)]'}`}>
-            {message.text}{' '}
-            {message.limit && (
-              <Link to="/teacher/subscription" className="font-medium underline">
-                الاشتراك
-              </Link>
-            )}
+            {message.text}
           </p>
         )}
       </form>
-    </div>
-  )
-}
-
-/* ———————————— الاشتراك ———————————— */
-
-const REASONS = {
-  format: 'صيغة الكود غير صحيحة؛ انسخه كاملاً كما وصلك.',
-  signature: 'الكود غير صالح.',
-  expired: 'انتهت صلاحية هذا الكود.',
-}
-
-export function Subscription() {
-  const premium = usePremium()
-  const native = isNative()
-  const [code, setCode] = useState('')
-  const [msg, setMsg] = useState(null)
-  const [busy, setBusy] = useState(false)
-  const [products, setProducts] = useState(null)
-
-  useEffect(() => {
-    if (native) playProducts().then(setProducts)
-  }, [native])
-
-  const activate = async (e) => {
-    e.preventDefault()
-    setBusy(true)
-    const res = await activateCode(code)
-    setBusy(false)
-    setMsg(res.ok ? { ok: true, text: 'فُعّل الاشتراك ✓' } : { ok: false, text: REASONS[res.reason] })
-    if (res.ok) setCode('')
-  }
-  const buy = async (id) => {
-    setBusy(true)
-    setMsg(null)
-    try {
-      await buyPlan(id)
-    } catch (e) {
-      if (!/cancel/i.test(e.message)) setMsg({ ok: false, text: e.message || 'لم يكتمل الشراء.' })
-    }
-    setBusy(false)
-  }
-
-  return (
-    <div className="max-w-2xl space-y-4">
-      <h1 className="text-2xl font-bold">اشتراك لوحة المعلّم</h1>
-
-      {premium.active ? (
-        <section className={`${card} border-accent`}>
-          <p className="text-lg font-semibold text-accent">اشتراكك فعّال ✓</p>
-          <p className="mt-1 text-sm text-muted">
-            {premium.source === 'code'
-              ? `بكود تفعيل${premium.name ? ` باسم ${premium.name}` : ''}، صالح حتى ${new Date(premium.until).toLocaleDateString('ar-u-nu-arab')}.`
-              : 'عبر Google Play؛ يُجدَّد تلقائياً، وتُديره أو تلغيه من Google Play ← الدفعات والاشتراكات.'}
-          </p>
-          {premium.source === 'code' && (
-            <button type="button" className="mt-3 text-sm text-muted underline" onClick={() => window.confirm('إزالة كود التفعيل من هذا الجهاز؟') && deactivate()}>
-              إزالة الكود من هذا الجهاز
-            </button>
-          )}
-        </section>
-      ) : (
-        <p className="text-muted">لوحة المعلّم مجانية حتى {arabicNumber(FREE_STUDENTS)} طلاب. الاشتراك يفتح:</p>
-      )}
-
-      <ul className={`${card} space-y-2`}>
-        {['عدد غير محدود من الطلاب', 'تنظيمهم في حلقات وتصفيتهم', 'تصدير التقدّم وسجل الحضور إلى Excel', 'دعم استمرار تطوير البرنامج'].map((f) => (
-          <li key={f} className="flex gap-2">
-            <span className="text-accent">✓</span>
-            {f}
-          </li>
-        ))}
-      </ul>
-
-      {!premium.active && native && (
-        <section className={`${card} space-y-3`}>
-          <h2 className="font-semibold">الاشتراك عبر Google Play</h2>
-          {products === null ? (
-            <p className="text-sm text-muted">جارٍ جلب الأسعار…</p>
-          ) : products.length === 0 ? (
-            <p className="text-sm text-muted">الاشتراك غير متاح في هذه النسخة بعد. ثبّت التطبيق من Google Play، أو حاول لاحقاً.</p>
-          ) : (
-            <div className="flex flex-wrap gap-2">
-              {PLAY_PLANS.map((p) => {
-                const prod = products.find((x) => x.identifier === p.id)
-                return (
-                  prod && (
-                    <button key={p.id} type="button" className={btn} disabled={busy} onClick={() => buy(p.id)}>
-                      {p.title} · {prod.priceString}
-                    </button>
-                  )
-                )
-              })}
-            </div>
-          )}
-          <button type="button" className="text-sm text-accent underline" onClick={() => refreshPlay({ restore: true })}>
-            استعادة اشتراك سابق
-          </button>
-        </section>
-      )}
-
-      {!premium.active && !native && (
-        <section className={`${card} space-y-3`}>
-          <h2 className="font-semibold">التفعيل بكود</h2>
-          <p className="text-sm text-muted">
-            للحصول على كود اشتراك راسلنا على{' '}
-            <a href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('اشتراك لوحة المعلّم')}`} className="text-accent" dir="ltr">
-              {CONTACT_EMAIL}
-            </a>
-            ، ثم الصقه هنا.
-          </p>
-          <form onSubmit={activate} className="flex flex-col gap-2 sm:flex-row">
-            <input className={input} dir="ltr" value={code} onChange={(e) => setCode(e.target.value)} placeholder="TJW-…" aria-label="كود التفعيل" />
-            <button type="submit" className={`${btnOutline} shrink-0`} disabled={!code.trim() || busy}>
-              تفعيل
-            </button>
-          </form>
-        </section>
-      )}
-
-      {msg && (
-        <p role="status" className={`text-sm ${msg.ok ? 'text-accent' : 'text-[var(--pen-red)]'}`}>
-          {msg.text}
-        </p>
-      )}
-      <Link to="/teacher/students" className="inline-block text-accent underline-offset-4 hover:underline">
-        لوحة المعلّم ←
-      </Link>
     </div>
   )
 }

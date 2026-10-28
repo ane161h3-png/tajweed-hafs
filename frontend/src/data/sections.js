@@ -112,7 +112,6 @@ export const SECTIONS = [
       { id: 'students', title: 'لوحة المعلّم', description: 'تابع تقدّم طلابك ومواضع ضعفهم' },
       { id: 'attendance', title: 'تسجيل الحضور', description: 'بمسح باركود الطالب أو يدوياً' },
       { id: 'cards', title: 'طباعة بطاقات الباركود', description: 'بطاقة حضور مطبوعة لكل طالب' },
-      { id: 'subscription', title: 'الاشتراك', description: 'طلاب بلا حدود وتصدير التقدّم والحضور إلى Excel' },
     ],
   },
   {

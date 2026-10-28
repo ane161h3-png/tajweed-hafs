@@ -2,7 +2,6 @@
 import { readJSON, writeJSON } from '../../lib/storage'
 
 const KEY = 'tajweed.teacher'
-export const FREE_STUDENTS = 3
 
 // roster = { students: { id: { report, receivedAt, manual? } }, attendance: { 'YYYY-MM-DD': { id: status } } }
 export function loadRoster() {
@@ -14,11 +13,11 @@ const save = (next) => (writeJSON(KEY, next), next)
 const sameName = (a, b) => a.replace(/\s+/g, ' ').trim() === b.replace(/\s+/g, ' ').trim()
 
 /**
- * يضيف تقرير طالب أو يحدّثه. الطالب الموجود يُحدَّث دائماً؛ الطالب الجديد يحتاج اشتراكاً بعد الحد المجاني.
+ * يضيف تقرير طالب أو يحدّثه. الطالب الموجود يُحدَّث دائماً، والجديد يُضاف.
  * إن كان المعلّم أضاف الطالب باسمه للحضور، يُربط التقرير به ويبقى سجل حضوره.
- * يرجع { status: 'added' | 'linked' | 'updated' | 'same' | 'older' | 'limit', roster }
+ * يرجع { status: 'added' | 'linked' | 'updated' | 'same' | 'older', roster }
  */
-export function addReport(report, { premium, now = Date.now(), roster = loadRoster() }) {
+export function addReport(report, { now = Date.now(), roster = loadRoster() } = {}) {
   const prev = roster.students[report.id]
   if (prev && prev.report.t === report.t) return { status: 'same', roster }
   if (prev && prev.report.t > report.t) return { status: 'older', roster }
@@ -27,7 +26,6 @@ export function addReport(report, { premium, now = Date.now(), roster = loadRost
     const manual = Object.entries(roster.students).find(([, s]) => s.manual && sameName(s.report.n, report.n))
     if (manual) return { status: 'linked', roster: save(renameStudent(roster, manual[0], report.id, entry)) }
   }
-  if (!prev && !premium && Object.keys(roster.students).length >= FREE_STUDENTS) return { status: 'limit', roster }
   return { status: prev ? 'updated' : 'added', roster: save({ ...roster, students: { ...roster.students, [report.id]: entry } }) }
 }
 
@@ -52,12 +50,11 @@ function renameStudent(roster, from, to, entry) {
  * يضيف طالباً باسمه فقط (لتسجيل حضوره قبل أن يرسل تقريره).
  * id: معرّف الطالب من باركوده، فيُربط تقريره به لاحقاً.
  */
-export function addManualStudent(name, group, { premium, id: given, now = Date.now(), roster = loadRoster() }) {
+export function addManualStudent(name, group, { id: given, now = Date.now(), roster = loadRoster() } = {}) {
   const n = name.replace(/\s+/g, ' ').trim()
   if (!n) return { status: 'empty', roster }
   if (given ? roster.students[given] : Object.values(roster.students).some((s) => sameName(s.report.n, n) && (s.report.g ?? '') === (group ?? '').trim()))
     return { status: 'exists', roster }
-  if (!premium && Object.keys(roster.students).length >= FREE_STUDENTS) return { status: 'limit', roster }
   const id = given ?? `m-${now.toString(36)}${Math.random().toString(36).slice(2, 6)}`
   const report = { v: 1, id, n, g: (group ?? '').trim(), t: 0, a: 0, l: [], q: [] }
   return { status: 'added', id, roster: save({ ...roster, students: { ...roster.students, [id]: { report, receivedAt: now, manual: true } } }) }
@@ -104,14 +101,13 @@ export function setAttendance(day, ids, status, roster = loadRoster()) {
 
 /**
  * تسجيل الحضور بمسح باركود الطالب: يُضاف الطالب إن لم يكن في القائمة، ويُسجَّل «حاضر».
- * يرجع { status: 'present' | 'already' | 'joined' | 'limit', roster }
+ * يرجع { status: 'present' | 'already' | 'joined', roster }
  */
-export function checkIn(day, card, { premium, now = Date.now(), roster = loadRoster() }) {
+export function checkIn(day, card, { now = Date.now(), roster = loadRoster() } = {}) {
   let r = roster
   let joined = false
   if (!r.students[card.id]) {
-    const res = addManualStudent(card.name, card.group, { premium, id: card.id, now, roster: r })
-    if (res.status === 'limit') return { status: 'limit', roster: r }
+    const res = addManualStudent(card.name, card.group, { id: card.id, now, roster: r })
     r = res.roster
     joined = true
   }

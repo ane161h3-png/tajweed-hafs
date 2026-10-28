@@ -1,43 +1,7 @@
 import { beforeEach, describe, expect, it } from 'vitest'
-import { verifyLicense } from '../../frontend/src/lib/license'
 import { analyzeReport, buildReport, decodeReport, encodeReport } from '../../frontend/src/features/teacher/report'
 import { encodeCard, parseCard } from '../../frontend/src/features/teacher/card'
-import { FREE_STUDENTS, addManualStudent, addReport, checkIn, attendanceCsv, attendanceStats, loadRoster, localDay, removeStudent, rosterCsv, setAttendance } from '../../frontend/src/features/teacher/roster'
-
-// كود حقيقي من scripts/make_license.py (باسم «اختبار»، صالح حتى 2026-11-16)
-const CODE =
-  'TJW-eyJwIjoidGVhY2hlciIsImUiOiIyMDI2LTExLTE2IiwibiI6Itin2K7Yqtio2KfYsSIsImkiOiIzNWM1YWM3YSJ9.2aRItoWBbrpKFkkwqMzuf18AwDr8yWtZ-ZLzz0wclhhZusvT3cAU91XkdHeHr2AgoYLc-zRcqblt4elgQiesAw'
-const BEFORE = new Date('2026-10-20T12:00:00Z')
-
-describe('كود تفعيل الاشتراك', () => {
-  it('يقبل كوداً موقّعاً صالحاً', async () => {
-    const r = await verifyLicense(CODE, BEFORE)
-    expect(r).toMatchObject({ ok: true, until: '2026-11-16', name: 'اختبار' })
-  })
-
-  it('يتجاهل المسافات وفواصل الأسطر عند اللصق', async () => {
-    const r = await verifyLicense(`  ${CODE.slice(0, 40)}\n${CODE.slice(40)} `, BEFORE)
-    expect(r.ok).toBe(true)
-  })
-
-  it('يرفض الكود بعد انتهاء صلاحيته', async () => {
-    expect(await verifyLicense(CODE, new Date('2026-11-17T00:00:00Z'))).toMatchObject({ ok: false, reason: 'expired' })
-  })
-
-  it('يرفض كوداً عُدّل تاريخه (التوقيع لا يطابق)', async () => {
-    const [, payload, sig] = /^TJW-([^.]+)\.(.+)$/.exec(CODE)
-    const json = new TextDecoder().decode(Uint8Array.from(atob(payload.replace(/-/g, '+').replace(/_/g, '/')), (c) => c.charCodeAt(0)))
-    const forged = btoa(String.fromCharCode(...new TextEncoder().encode(json.replace('2026-11-16', '2099-11-16'))))
-      .replace(/\+/g, '-')
-      .replace(/\//g, '_')
-      .replace(/=+$/, '')
-    expect(await verifyLicense(`TJW-${forged}.${sig}`, BEFORE)).toMatchObject({ ok: false, reason: 'signature' })
-  })
-
-  it('يرفض النص العشوائي', async () => {
-    expect(await verifyLicense('hello', BEFORE)).toMatchObject({ ok: false, reason: 'format' })
-  })
-})
+import { addManualStudent, addReport, checkIn, attendanceCsv, attendanceStats, loadRoster, localDay, removeStudent, rosterCsv, setAttendance } from '../../frontend/src/features/teacher/roster'
 
 const QUESTIONS = [
   { id: 'a', level: 1, type: 'mcq', topic: 'المخارج', question: 'س١' },
@@ -88,20 +52,18 @@ describe('طلاب المعلّم', () => {
   beforeEach(() => localStorage.clear())
 
   it('يضيف ويحدّث ويتجاهل التقرير الأقدم', () => {
-    expect(addReport(report(), { premium: false }).status).toBe('added')
-    expect(addReport(report({ t: 1_700_002_000_000 }), { premium: false }).status).toBe('updated')
-    expect(addReport(report({ t: 1_700_002_000_000 }), { premium: false }).status).toBe('same')
-    expect(addReport(report({ t: 1_600_000_000_000 }), { premium: false }).status).toBe('older')
+    expect(addReport(report()).status).toBe('added')
+    expect(addReport(report({ t: 1_700_002_000_000 })).status).toBe('updated')
+    expect(addReport(report({ t: 1_700_002_000_000 })).status).toBe('same')
+    expect(addReport(report({ t: 1_600_000_000_000 })).status).toBe('older')
     expect(Object.keys(loadRoster().students)).toEqual(['s1'])
   })
 
-  it(`الخطة المجانية ${FREE_STUDENTS} طلاب، والاشتراك بلا حد، وتحديث الطالب الموجود مسموح دائماً`, () => {
-    for (let i = 0; i < FREE_STUDENTS; i++) addReport(report({ id: `s${i}` }), { premium: false })
-    expect(addReport(report({ id: 'new' }), { premium: false }).status).toBe('limit')
-    expect(addReport(report({ id: 's0', t: 1_800_000_000_000 }), { premium: false }).status).toBe('updated')
-    expect(addReport(report({ id: 'new' }), { premium: true }).status).toBe('added')
-    removeStudent('new')
-    expect(Object.keys(loadRoster().students)).toHaveLength(FREE_STUDENTS)
+  it('لا حد لعدد الطلاب، وتحديث الطالب الموجود مسموح دائماً', () => {
+    for (let i = 0; i < 10; i++) expect(addReport(report({ id: `s${i}` })).status).toBe('added')
+    expect(addReport(report({ id: 's0', t: 1_800_000_000_000 })).status).toBe('updated')
+    removeStudent('s9')
+    expect(Object.keys(loadRoster().students)).toHaveLength(9)
   })
 
   it('CSV بالعربية يفتح في Excel', () => {
@@ -116,7 +78,7 @@ describe('الحضور', () => {
   beforeEach(() => localStorage.clear())
 
   it('يسجّل ويغيّر ويمسح، ويحسب النسبة دون أيام الاستئذان', () => {
-    addReport(report(), { premium: false })
+    addReport(report())
     setAttendance('2026-10-01', 's1', 'present')
     setAttendance('2026-10-02', 's1', 'late')
     setAttendance('2026-10-03', 's1', 'absent')
@@ -134,33 +96,32 @@ describe('الحضور', () => {
   })
 
   it('إضافة طالب باسمه، ثم ربط تقريره به مع بقاء حضوره', () => {
-    const { id, status } = addManualStudent('  أحمد  ', 'حلقة الفجر', { premium: false })
+    const { id, status } = addManualStudent('  أحمد  ', 'حلقة الفجر')
     expect(status).toBe('added')
-    expect(addManualStudent('أحمد', 'حلقة الفجر', { premium: false }).status).toBe('exists')
+    expect(addManualStudent('أحمد', 'حلقة الفجر').status).toBe('exists')
     setAttendance('2026-10-01', id, 'present')
-    expect(addReport(report(), { premium: false }).status).toBe('linked')
+    expect(addReport(report()).status).toBe('linked')
     const r = loadRoster()
     expect(Object.keys(r.students)).toEqual(['s1'])
     expect(r.students.s1.manual).toBeUndefined()
     expect(r.attendance['2026-10-01']).toEqual({ s1: 'present' })
   })
 
-  it('الإضافة بالاسم تخضع لحد الخطة المجانية', () => {
-    for (let i = 0; i < FREE_STUDENTS; i++) addManualStudent(`طالب ${i}`, '', { premium: false })
-    expect(addManualStudent('زائد', '', { premium: false }).status).toBe('limit')
-    expect(addManualStudent('زائد', '', { premium: true }).status).toBe('added')
+  it('الإضافة بالاسم بلا حد', () => {
+    for (let i = 0; i < 10; i++) expect(addManualStudent(`طالب ${i}`, '').status).toBe('added')
+    expect(addManualStudent('زائد', '').status).toBe('added')
   })
 
   it('حذف الطالب يحذف حضوره، والتسجيل الجماعي يعمل', () => {
-    addReport(report(), { premium: false })
-    addReport(report({ id: 's2', n: 'علي' }), { premium: false })
+    addReport(report())
+    addReport(report({ id: 's2', n: 'علي' }))
     setAttendance('2026-10-01', ['s1', 's2'], 'present')
     removeStudent('s1')
     expect(loadRoster().attendance['2026-10-01']).toEqual({ s2: 'present' })
   })
 
   it('سجل الحضور CSV: عمود لكل يوم', () => {
-    addReport(report(), { premium: false })
+    addReport(report())
     setAttendance('2026-10-01', 's1', 'present')
     setAttendance('2026-10-02', 's1', 'absent')
     const lines = attendanceCsv(loadRoster(), ['s1']).replace('﻿', '').split('\r\n')
@@ -185,31 +146,31 @@ describe('باركود الحضور', () => {
   })
 
   it('المسح يضيف الطالب الجديد ويسجّله حاضراً، والمسح الثاني لا يكرر', () => {
-    expect(checkIn('2026-10-01', card, { premium: false }).status).toBe('joined')
-    expect(checkIn('2026-10-01', card, { premium: false }).status).toBe('already')
+    expect(checkIn('2026-10-01', card).status).toBe('joined')
+    expect(checkIn('2026-10-01', card).status).toBe('already')
     expect(loadRoster().students.s1.report.n).toBe('أحمد')
     expect(loadRoster().attendance['2026-10-01']).toEqual({ s1: 'present' })
   })
 
   it('يغيّر «غائب» إلى «حاضر» عند المسح', () => {
-    addReport(report(), { premium: false })
+    addReport(report())
     setAttendance('2026-10-01', 's1', 'absent')
-    expect(checkIn('2026-10-01', card, { premium: false }).status).toBe('present')
+    expect(checkIn('2026-10-01', card).status).toBe('present')
     expect(loadRoster().attendance['2026-10-01'].s1).toBe('present')
   })
 
   it('معرّف الباركود هو معرّف التقرير، فيُحدَّث الطالب نفسه عند وصول تقريره', () => {
-    checkIn('2026-10-01', card, { premium: false })
-    expect(addReport(report(), { premium: false }).status).toBe('updated')
+    checkIn('2026-10-01', card)
+    expect(addReport(report()).status).toBe('updated')
     const r = loadRoster()
     expect(Object.keys(r.students)).toEqual(['s1'])
     expect(r.students.s1.manual).toBeUndefined()
     expect(r.attendance['2026-10-01']).toEqual({ s1: 'present' })
   })
 
-  it('حد الخطة المجانية عند مسح طالب جديد', () => {
-    for (let i = 0; i < FREE_STUDENTS; i++) checkIn('2026-10-01', { ...card, id: `s${i}`, name: `طالب ${i}` }, { premium: false })
-    expect(checkIn('2026-10-01', { ...card, id: 'new', name: 'جديد' }, { premium: false }).status).toBe('limit')
-    expect(loadRoster().students.new).toBeUndefined()
+  it('مسح باركود طالب جديد يضيفه بلا حد', () => {
+    for (let i = 0; i < 10; i++) expect(checkIn('2026-10-01', { ...card, id: `s${i}`, name: `طالب ${i}` }).status).toBe('joined')
+    expect(checkIn('2026-10-01', { ...card, id: 'new', name: 'جديد' }).status).toBe('joined')
+    expect(loadRoster().students.new).toBeDefined()
   })
 })

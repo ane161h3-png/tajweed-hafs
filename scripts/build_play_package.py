@@ -97,7 +97,6 @@ DATA_SAFETY = """نموذج «أمان البيانات» (Data safety) لتطب
   • الميكروفون: يحوّل خدمة التعرّف على الكلام في نظام أندرويد (Google) الصوت إلى نص. التطبيق نفسه
     لا يسجّل الصوت ولا يحفظه ولا يرسله إلى أي جهة.
   • الكاميرا (لمسح باركود الحضور): تُقرأ الصورة على الجهاز نفسه ولا تُحفظ ولا تُرسل.
-  • الاشتراك (للمعلّم): تتولاه Google Play ولا يرى التطبيق بيانات الدفع.
 
 إن سألك النموذج بالتفصيل عن الصوت: Voice or sound recordings → Collected: No، Shared: No.
 
@@ -310,16 +309,6 @@ def chapters():
     "<b>Next ← Save ← Send changes for review</b>. تراجع Google التطبيق (من يوم إلى بضعة أيام، وللتطبيقات الجديدة قد يطول).",
     "عند الموافقة ينشر Play Console التطبيق، ويظهر رابطه في <b>Store presence ← Store listing ← View on Google Play</b>.",
 ])}
-<h3>الاشتراكات داخل التطبيق (اختياري)</h3>
-<p>تطبيق «تعلّم التجويد» جاهز لاشتراك «لوحة المعلّم». لتفعيله:</p>
-{steps([
-    "اربط ملف الدفع: <b>Setup ← Payments profile</b> (يتطلب أن تكون دولتك مدعومة لاستلام الأرباح، تحقق من قائمة الدول في مساعدة Google).",
-    "<b>Monetize with Play ← Products ← Subscriptions ← Create subscription</b>.",
-    "<b>Product ID:</b> <span dir='ltr'>teacher_monthly</span>، ثم <b>Add base plan</b> بمعرّف <span dir='ltr'>monthly</span> (تجديد شهري) وسعر، ثم <b>Activate</b>.",
-    "كرّر بـ <span dir='ltr'>teacher_yearly</span> وخطة <span dir='ltr'>yearly</span> (تجديد سنوي).",
-    "للتجربة دون دفع حقيقي: <b>Settings ← License testing</b> وأضف بريدك.",
-])}
-{box("note", "المعرّفات يجب أن تطابق الكود", "التطبيق يبحث عن <span dir='ltr'>teacher_monthly</span> و<span dir='ltr'>teacher_yearly</span> بهذه الأسماء بالضبط. إن غيّرتها فغيّرها أيضاً في ملف <span dir='ltr'>frontend/src/features/teacher/premium.js</span>.")}
 """))
 
     c.append(("٩", "التحديثات بعد النشر", f"""

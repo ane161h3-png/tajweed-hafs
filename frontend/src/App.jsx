@@ -1,5 +1,5 @@
 import { Suspense, lazy } from 'react'
-import { Route, Routes } from 'react-router'
+import { Navigate, Route, Routes } from 'react-router'
 import Layout from './components/Layout'
 import ErrorBoundary from './components/ErrorBoundary'
 import Home from './pages/Home'
@@ -32,7 +32,6 @@ const AttendancePage = named(teacher, 'AttendancePage')
 const PrintCards = named(teacher, 'PrintCards')
 const ShareProgress = named(teacher, 'ShareProgress')
 const StudentDetail = named(teacher, 'StudentDetail')
-const Subscription = named(teacher, 'Subscription')
 const TeacherDashboard = named(teacher, 'TeacherDashboard')
 const NotebookPage = lazy(() => import('./features/notebook/NotebookPage'))
 const NotebookBook = lazy(() => import('./features/notebook/NotebookBook'))
@@ -87,7 +86,7 @@ export function AppRoutes() {
         <Route path="teacher/card" element={<AttendanceCard />} />
         <Route path="teacher/attendance" element={<AttendancePage />} />
         <Route path="teacher/cards" element={<PrintCards />} />
-        <Route path="teacher/subscription" element={<Subscription />} />
+        <Route path="teacher/subscription" element={<Navigate to="/teacher/students" replace />} />
         <Route path="settings/guide" element={<GuidePage />} />
         <Route path="settings/display" element={<DisplaySettings />} />
         <Route path="settings/colors" element={<ColorSettings />} />

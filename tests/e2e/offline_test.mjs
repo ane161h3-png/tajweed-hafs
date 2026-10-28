@@ -102,7 +102,6 @@ const routes = [
   ['المعلّم: اللوحة', 'teacher/students', `document.querySelector('h1')?.innerText.includes('لوحة المعلّم')`],
   ['المعلّم: الحضور', 'teacher/attendance', `document.querySelector('h1')?.innerText.includes('الحضور')`],
   ['المعلّم: بطاقة الباركود', 'teacher/card', `document.querySelector('h1')?.innerText.includes('بطاقة')`],
-  ['المعلّم: الاشتراك', 'teacher/subscription', `document.querySelector('h1')?.innerText.includes('اشتراك')`],
   ['الإعدادات', 'settings/display', `document.querySelector('h1')!==null`],
   ['البحث الشامل (Ctrl+K)', '', `(async()=>{window.dispatchEvent(new KeyboardEvent('keydown',{key:'k',ctrlKey:true,bubbles:true}));await new Promise(r=>setTimeout(r,800));const i=document.querySelector('[role=dialog] input');const set=Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set;set.call(i,'الاخفاء');i.dispatchEvent(new Event('input',{bubbles:true}));for(let k=0;k<20;k++){await new Promise(r=>setTimeout(r,500));if(document.querySelectorAll('[role=option]').length>=3)return true}return false})()`],
   ['البحث في المصحف', 'mushaf/search', `(async()=>{const i=document.querySelector('input[type=search]');if(!i)return false;const set=Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set;set.call(i,'الله نور');i.dispatchEvent(new Event('input',{bubbles:true}));for(let k=0;k<20;k++){await new Promise(r=>setTimeout(r,500));if(document.querySelectorAll('[role=option]').length>=1)return true}return false})()`],
