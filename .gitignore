@@ -18,3 +18,4 @@ signing/*.txt
 
 # مفتاح إصدار أكواد التفعيل: سرّي
 signing/license*
+google-play-package/
