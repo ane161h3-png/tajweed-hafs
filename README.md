@@ -242,7 +242,7 @@ npm run build:android
 - **على GitHub دون تثبيت شيء:** ارفع المشروع إلى مستودع على GitHub، فيبني `.github/workflows/android.yml` ملف APK تلقائياً.
   تجده في صفحة التشغيل تحت Artifacts باسم `tajweed-apk`.
 
-الأيقونات وشاشة البداية مولّدة بـ `scripts/make_android_assets.py`. معرّف التطبيق `app.tajweed.hafs`
+الأيقونات وشاشة البداية مولّدة بـ `scripts/make_android_assets.py`. معرّف التطبيق `com.Hussein.tajweed` (الشيفرة تبقى في الحزمة app.tajweed.hafs)
 في `frontend/capacitor.config.json`؛ غيّره قبل النشر على متجر Google Play، ولا تغيّره بعد النشر.
 
 ## التغليف لاحقاً

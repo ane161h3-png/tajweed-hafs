@@ -26,7 +26,7 @@ SITE = "https://ane161h3-png.github.io/tajweed-hafs/"
 RELEASE = f"https://github.com/{REPO}/releases/download/app-latest"
 PRIVACY = SITE + "privacy.html"
 EMAIL = "hydrzyd83@gmail.com"
-APP_ID = "app.tajweed.hafs"
+APP_ID = "com.Hussein.tajweed"
 FONTS = ROOT / "frontend" / "node_modules" / "@fontsource"
 
 # ————————————————————————— نصوص المتجر —————————————————————————
