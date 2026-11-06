@@ -113,9 +113,10 @@ describe('الصفحات', () => {
     expect(isBookmarked('/adiya/sahifa/20')).toBe(true)
   })
 
-  it('المسائل الشرعية: الأبواب واسم المرجع', async () => {
+  it('المسائل الشرعية: الأبواب ومواضيعها واسم المرجع', async () => {
     renderAt('/masail/salat')
     expect(await screen.findByRole('heading', { level: 1, name: 'الصلاة' })).toBeInTheDocument()
+    expect(await screen.findByRole('link', { name: /أحكام المسافر/ }, { timeout: 8000 })).toHaveAttribute('href', '/masail/salat/0320')
     expect(screen.getAllByText(/السيستاني/).length).toBeGreaterThan(0)
   })
 })
