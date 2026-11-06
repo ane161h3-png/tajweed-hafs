@@ -25,8 +25,8 @@ describe('شجرة الأقسام', () => {
     for (const s of SECTIONS) expect(s.subsections.length).toBeGreaterThan(0)
   })
 
-  it('أبواب الأحكام الأربعة عشر', () => {
-    expect(SECTIONS.find((s) => s.id === 'ahkam').subsections).toHaveLength(14)
+  it('أبواب الأحكام الستة عشر', () => {
+    expect(SECTIONS.find((s) => s.id === 'ahkam').subsections).toHaveLength(16)
   })
 
   it('معرّفات الأقسام الفرعية فريدة داخل كل قسم', () => {

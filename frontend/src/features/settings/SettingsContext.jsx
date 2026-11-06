@@ -1,6 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { readJSON, writeJSON } from '../../lib/storage'
-import { STATIC } from '../../lib/api'
 
 const KEY = 'tajweed.settings'
 export const DEFAULT_SETTINGS = {
@@ -11,8 +10,6 @@ export const DEFAULT_SETTINGS = {
   colorBlind: false,
   ruleColors: {}, // تعديلات المستخدم على ألوان الأحكام: { ruleId: '#hex' }
   playbackRate: 1,
-  // تعديل الدروس: مفعّل في نسخة الخادم (للمعلّم)، ومخفي افتراضياً عن زوار الموقع والتطبيق
-  editMode: !STATIC,
 }
 
 const SettingsContext = createContext(null)

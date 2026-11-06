@@ -1,5 +1,6 @@
 import { api, STATIC } from '../../lib/api'
 import { writeLesson } from '../../lib/staticApi'
+export { hasLocalEdit, resetLocalEdit } from '../../lib/staticApi'
 
 const BASE = import.meta.env.VITE_API_BASE ?? ''
 
@@ -46,6 +47,7 @@ export function toPayload(lesson) {
     verses: lesson.verses ?? [],
     table: lesson.table?.headers?.length ? lesson.table : null,
     rules: lesson.rules ?? [],
+    source: lesson.source ?? '',
   }
 }
 
@@ -62,4 +64,5 @@ export const EMPTY_LESSON = {
   verses: [],
   table: null,
   rules: [],
+  source: 'app',
 }

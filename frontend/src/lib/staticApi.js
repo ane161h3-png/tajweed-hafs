@@ -49,8 +49,19 @@ async function resolveExamples(lesson) {
 
 const summary = (l) => ({
   id: l.id, section: l.section, order: l.order, title: l.title, status: l.status, updated_at: l.updated_at,
-  examples: Array.isArray(l.examples) ? l.examples.length : l.examples, rules: l.rules ?? [],
+  examples: Array.isArray(l.examples) ? l.examples.length : l.examples, rules: l.rules ?? [], source: l.source ?? '',
 })
+
+/** هل لهذا الدرس تعديل محفوظ على هذا الجهاز (نسخة الموقع والتطبيق)؟ */
+export const hasLocalEdit = (id) => Boolean(edits().lessons[id])
+
+/** يحذف تعديل الجهاز فيعود الدرس إلى نص الدفتر الأصلي. */
+export function resetLocalEdit(id) {
+  const e = edits()
+  delete e.lessons[id]
+  e.deleted = e.deleted.filter((x) => x !== id)
+  saveEdits(e)
+}
 
 async function lessonsIndex() {
   const base = await file('lessons.json')

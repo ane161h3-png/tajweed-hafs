@@ -5,7 +5,7 @@ import { arabicNumber, useApi } from '../../lib/api'
 import { DataState } from '../mushaf/MushafLists'
 import { createLesson, EMPTY_LESSON } from './lessonsApi'
 import NotFound from '../../pages/NotFound'
-import { useSettings } from '../settings/SettingsContext'
+import { SourceBadge } from './SourceBadge'
 
 /** العدد مع المعدود: مثال، مثالان، ٣–١٠ أمثلة، ١١ فأكثر مثالاً */
 function examplesLabel(n) {
@@ -23,7 +23,6 @@ export default function AhkamSection() {
   const sub = findSubsection('ahkam', subId)
   const { data, loading, error } = useApi('/lessons')
   const [creating, setCreating] = useState(false)
-  const { settings } = useSettings()
   if (!sub) return <NotFound />
 
   const lessons = (data?.lessons ?? []).filter((l) => l.section === subId)
@@ -44,11 +43,9 @@ export default function AhkamSection() {
     <div>
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
         <h1 className="text-2xl font-bold">{sub.title}</h1>
-        {settings.editMode && (
-          <button type="button" onClick={add} disabled={creating} className="rounded-lg bg-accent px-4 text-sm font-medium leading-10 text-accent-ink disabled:opacity-50">
-            + درس جديد
-          </button>
-        )}
+        <button type="button" onClick={add} disabled={creating} className="rounded-lg bg-accent px-4 text-sm font-medium leading-10 text-accent-ink disabled:opacity-50">
+          + درس جديد
+        </button>
       </div>
 
       {!data ? (
@@ -57,7 +54,7 @@ export default function AhkamSection() {
         <div className="notebook">
           <h2 className="notebook-title">فهرس الدروس</h2>
           {lessons.length === 0 ? (
-            <p className="text-muted">لا دروس في هذا الباب بعد.{settings.editMode ? ' اضغط «درس جديد» لكتابة أول درس.' : ''}</p>
+            <p className="text-muted">لا دروس في هذا الباب بعد.{' اضغط «درس جديد» لكتابة أول درس.'}</p>
           ) : (
             <ol>
               {lessons.map((l, i) => (
@@ -65,6 +62,7 @@ export default function AhkamSection() {
                   <Link to={`/ahkam/${subId}/${l.id}`} className="group flex items-baseline gap-3 hover:text-[var(--pen-blue)]">
                     <span className="notebook-label w-8 shrink-0">{arabicNumber(i + 1)}.</span>
                     <span className="font-medium group-hover:underline underline-offset-4">{l.title}</span>
+                    <SourceBadge source={l.source} compact />
                     <span className="flex-1 border-b border-dotted border-muted/40" aria-hidden="true" />
                     <span className="text-xs text-muted">
                       {examplesLabel(l.examples)}
