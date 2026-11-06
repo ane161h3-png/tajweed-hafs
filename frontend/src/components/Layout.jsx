@@ -3,7 +3,7 @@ import { Link, NavLink, Outlet, useLocation } from 'react-router'
 import { AnimatePresence, motion } from 'framer-motion'
 import { BOTTOM_NAV, HOME, SECTIONS, findSection, sectionPath, subsectionPath } from '../data/sections'
 import { useSettings } from '../features/settings/SettingsContext'
-import { rememberVisit } from '../features/progress/progress'
+import { logActivity, rememberVisit } from '../features/progress/progress'
 import Breadcrumb, { CrumbProvider, useCrumbs } from './Breadcrumb'
 import Icon from './Icon'
 import PlayerBar from '../features/player/PlayerBar'
@@ -241,6 +241,18 @@ function BottomNav() {
   )
 }
 
+/** يحسب وقت الاستعمال الفعلي: كل ٣٠ ثانية والصفحة ظاهرة تُضاف إلى نشاط اليوم (للسلسلة ودقائق الأسبوع). */
+function ActivityTracker() {
+  useEffect(() => {
+    logActivity(1) // فتح البرنامج يكفي لاحتساب اليوم في السلسلة
+    const id = setInterval(() => {
+      if (document.visibilityState === 'visible') logActivity(30)
+    }, 30000)
+    return () => clearInterval(id)
+  }, [])
+  return null
+}
+
 function VisitTracker() {
   const { pathname } = useLocation()
   const crumbs = useCrumbs()
@@ -260,6 +272,7 @@ export default function Layout() {
   return (
     <CrumbProvider>
       <VisitTracker />
+      <ActivityTracker />
       <a
         href="#main"
         className="fixed start-3 top-3 z-50 -translate-y-20 rounded-lg bg-accent px-4 py-2 text-accent-ink focus:translate-y-0"

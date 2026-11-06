@@ -1,3 +1,5 @@
+import { Link } from 'react-router'
+
 const SOURCES = [
   {
     title: 'نص المصحف العثماني',
@@ -57,6 +59,15 @@ export default function About() {
       <p className="text-sm text-muted">
         خط الواجهة IBM Plex Sans Arabic، وخط المصحف Amiri Quran، وكلاهما برخصة SIL Open Font License 1.1، ومضمَّنان في
         البرنامج ليعملا دون إنترنت.
+      </p>
+
+      <h2 className="mb-3 mt-8 text-lg font-semibold">شكوى أو اقتراح</h2>
+      <p className="text-sm text-muted">
+        واجهت مشكلة أو عندك فكرة لإضافة جديدة؟{' '}
+        <Link to="/settings/feedback" className="text-accent underline-offset-4 hover:underline">
+          اكتب لنا
+        </Link>
+        ، وتصل رسالتك إلى صاحب البرنامج وحده.
       </p>
 
       <h2 className="mb-3 mt-8 text-lg font-semibold">الخصوصية</h2>

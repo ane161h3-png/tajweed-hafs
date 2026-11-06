@@ -37,6 +37,7 @@ const NotebookPage = lazy(() => import('./features/notebook/NotebookPage'))
 const NotebookBook = lazy(() => import('./features/notebook/NotebookBook'))
 const GuidePage = lazy(() => import('./features/guide/GuidePage'))
 const AyahAnalysis = lazy(() => import('./features/ayah/AyahAnalysis'))
+const FeedbackPage = lazy(() => import('./features/feedback/FeedbackPage'))
 import { AudioSettings, ColorSettings, DisplaySettings, ProgressSettings } from './features/settings/SettingsPages'
 
 // المسارات المحددة (المصحف، عن البرنامج) قبل المسار العام للأقسام الفرعية.
@@ -93,6 +94,7 @@ export function AppRoutes() {
         <Route path="settings/audio" element={<AudioSettings />} />
         <Route path="settings/progress" element={<ProgressSettings />} />
         <Route path="settings/notebook" element={<NotebookPage />} />
+        <Route path="settings/feedback" element={<FeedbackPage />} />
         <Route path="settings/about" element={<About />} />
         <Route path=":sectionId" element={<SectionPage />} />
         <Route path=":sectionId/:subId" element={<SubsectionPage />} />
