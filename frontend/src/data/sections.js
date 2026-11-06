@@ -127,6 +127,7 @@ export const SECTIONS = [
       { id: 'audio', title: 'القارئ الافتراضي' },
       { id: 'progress', title: 'التقدّم' },
       { id: 'notebook', title: 'دفتري (PDF)', description: 'دفتر مسطّر خاص بك بتعديلاتك ورسوم المخارج والفهرس' },
+      { id: 'feedback', title: 'الشكاوى والاقتراحات', description: 'اكتب شكواك أو اقتراحك، وتصل إلى صاحب البرنامج وحده' },
       { id: 'about', title: 'عن البرنامج والمصادر', phase: 1 },
     ],
   },
