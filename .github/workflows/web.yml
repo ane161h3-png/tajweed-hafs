@@ -39,6 +39,9 @@ jobs:
         env:
           # الموقع يكون على https://<المستخدم>.github.io/<المستودع>/
           VITE_BASE: /${{ github.event.repository.name }}/
+          # صندوق الشكاوى: عنوان النموذج من متغيرات المستودع (Settings ← Variables)، وإلا يُرسل بالبريد
+          VITE_FEEDBACK_URL: ${{ vars.FEEDBACK_URL }}
+          VITE_FEEDBACK_KEY: ${{ vars.FEEDBACK_KEY }}
         run: |
           npm ci
           npx vite build --mode web --outDir dist-web

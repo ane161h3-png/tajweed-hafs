@@ -43,6 +43,9 @@ jobs:
 
       - name: بناء الواجهة ومزامنة أندرويد
         working-directory: frontend
+        env:
+          VITE_FEEDBACK_URL: ${{ vars.FEEDBACK_URL }}
+          VITE_FEEDBACK_KEY: ${{ vars.FEEDBACK_KEY }}
         run: |
           npm ci
           npx vite build --mode android
