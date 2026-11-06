@@ -25,6 +25,8 @@ num = lambda n: str(n).translate(AR)
 esc = lambda s: html.escape(str(s or ""), quote=False)
 
 SECTIONS = [
+    ("isti-adha", "الاستعاذة والبسملة"),
+    ("makharij-sifat", "المخارج والصفات (ملخص الدفتر)"),
     ("noon-sakinah", "أحكام النون الساكنة والتنوين"),
     ("meem-sakinah", "أحكام الميم الساكنة"),
     ("ghunnah", "النون والميم المشددتان ومراتب الغنة"),
@@ -38,7 +40,7 @@ SECTIONS = [
     ("ha-kinayah", "هاء الكناية"),
     ("waqf", "الوقف والابتداء"),
     ("sakt", "السكت"),
-    ("hafs-special", "المواضع الخاصة برواية حفص"),
+    ("hafs-special", "المواضع الخاصة برواية حفص والألفات السبع"),
 ]
 SIFA_NAMES = {}  # id → اسم الصفة، يُملأ من letters.json
 

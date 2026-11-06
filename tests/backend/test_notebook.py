@@ -19,7 +19,7 @@ def page():
 def test_all_lessons_and_titles():
     p = page()
     lessons = json.loads((DATA / "lessons.json").read_text(encoding="utf-8"))["lessons"]
-    assert len(lessons) == 42
+    assert len(lessons) == 51  # ٤٨ من دفتر الطالب + ٣ ليست فيه
     for x in lessons:
         assert html.escape(x["title"], quote=False) in p, x["id"]
 
@@ -34,7 +34,7 @@ def test_every_example_verse_is_verbatim():
             # النص قبل الكلمة المظلّلة وبعدها ونفس الكلمة، متتالية دون تغيير حرف
             assert f"{html.escape(text[:m[0]], quote=False)}<mark>{html.escape(text[m[0]:m[1]], quote=False)}</mark>{html.escape(text[m[1]:], quote=False)}" in p
             count += 1
-    assert count == 192
+    assert count == 407
 
 
 def test_letters_matrix_and_cards():

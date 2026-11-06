@@ -24,6 +24,8 @@ export const SECTIONS = [
     description: 'دروس الأحكام بالتعريف والأمثلة والتمارين',
     phase: 3,
     subsections: [
+      { id: 'isti-adha', title: 'الاستعاذة والبسملة' },
+      { id: 'makharij-sifat', title: 'المخارج والصفات (ملخص الدفتر)' },
       { id: 'noon-sakinah', title: 'أحكام النون الساكنة والتنوين' },
       { id: 'meem-sakinah', title: 'أحكام الميم الساكنة' },
       { id: 'ghunnah', title: 'النون والميم المشددتان ومراتب الغنة' },
@@ -37,7 +39,7 @@ export const SECTIONS = [
       { id: 'ha-kinayah', title: 'هاء الكناية' },
       { id: 'waqf', title: 'الوقف والابتداء' },
       { id: 'sakt', title: 'السكت' },
-      { id: 'hafs-special', title: 'المواضع الخاصة برواية حفص' },
+      { id: 'hafs-special', title: 'المواضع الخاصة برواية حفص والألفات السبع' },
     ],
   },
   {

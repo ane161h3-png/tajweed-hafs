@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router'
 import { usePageCrumb } from '../../components/Breadcrumb'
 import { findSubsection } from '../../data/sections'
@@ -7,9 +7,10 @@ import { markCompleted } from '../progress/progress'
 import { DataState } from '../mushaf/MushafLists'
 import AyahExample, { useReciter } from './AyahExample'
 import { ExamplesEditor, Field, RulesPicker, TableEditor, VersesEditor } from './LessonEditor'
-import { deleteLesson, getLesson, saveLesson, toPayload } from './lessonsApi'
+import { deleteLesson, getLesson, hasLocalEdit, resetLocalEdit, saveLesson, toPayload } from './lessonsApi'
+import { SourceBadge } from './SourceBadge'
+import { STATIC } from '../../lib/api'
 import { useRules } from '../mushaf/useRules'
-import { useSettings } from '../settings/SettingsContext'
 import ShareButton from '../../components/ShareButton'
 import LessonExercise from './LessonExercise'
 
@@ -34,12 +35,69 @@ function RuleLinks({ ids }) {
   )
 }
 
-function Block({ label, children }) {
+/** وضع «اختبر نفسك»: تُغطّى الإجابات حتى يضغط عليها الطالب. */
+const QuizContext = createContext(false)
+
+function Reveal({ children }) {
+  const [shown, setShown] = useState(false)
+  if (shown) return children
   return (
-    <section className="mt-[var(--rule)]">
+    <button
+      type="button"
+      onClick={() => setShown(true)}
+      className="relative block w-full cursor-pointer rounded-lg text-start"
+      aria-label="اضغط لإظهار الإجابة"
+    >
+      <span className="pointer-events-none block select-none blur-[6px]" aria-hidden="true">
+        {children}
+      </span>
+      <span className="absolute inset-0 grid place-items-center">
+        <span className="rounded-full bg-accent px-3 py-1 text-sm font-medium text-accent-ink shadow">تذكّر… ثم اضغط للإظهار</span>
+      </span>
+    </button>
+  )
+}
+
+function Block({ label, id, hideable = true, children }) {
+  const quiz = useContext(QuizContext)
+  return (
+    <section id={id} className="mt-[var(--rule)] scroll-mt-20">
       <h2 className="notebook-label text-lg">{label}</h2>
-      {children}
+      {quiz && hideable ? <Reveal>{children}</Reveal> : children}
     </section>
+  )
+}
+
+/** أزرار التنقل السريع بين أجزاء الدرس. */
+function JumpChips({ lesson }) {
+  const parts = [
+    ['b-def', 'التعريف', lesson.lugha?.trim() || lesson.istilah?.trim()],
+    ['b-letters', 'الحروف', lesson.letters?.trim()],
+    ['b-method', 'طريقة الأداء', lesson.method?.trim()],
+    ['b-examples', `الأمثلة (${arabicNumber(lesson.examples?.length ?? 0)})`, lesson.examples?.length],
+    ['b-table', 'الجدول', lesson.table?.headers?.length],
+    ['b-exceptions', 'الاستثناءات', lesson.exceptions?.trim()],
+    ['b-notes', 'تنبيهات', lesson.notes?.trim()],
+    ['b-verses', 'المنظومات', lesson.verses?.length],
+    ['b-exercise', 'تمرين', true],
+  ].filter((x) => x[2])
+  if (parts.length < 3) return null
+  return (
+    <nav aria-label="أجزاء الدرس" className="no-print mt-2 flex flex-wrap gap-1.5 leading-normal">
+      {parts.map(([id, label]) => (
+        <a
+          key={id}
+          href={`#${id}`}
+          onClick={(e) => {
+            e.preventDefault()
+            document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          }}
+          className="rounded-full border border-line bg-surface px-3 py-1 text-xs hover:border-accent hover:text-accent"
+        >
+          {label}
+        </a>
+      ))}
+    </nav>
   )
 }
 
@@ -103,9 +161,9 @@ function LessonTable({ table }) {
 
 /** ورقة الدرس للقراءة: تُخفى الأقسام الفارغة. */
 function LessonView({ lesson, reciter }) {
-  const text = (label, value) =>
+  const text = (label, value, id) =>
     value?.trim() ? (
-      <Block label={label}>
+      <Block label={label} id={id}>
         <p className="notebook-text">{value}</p>
       </Block>
     ) : null
@@ -113,7 +171,7 @@ function LessonView({ lesson, reciter }) {
   return (
     <>
       {hasDefinition && (
-        <Block label="التعريف">
+        <Block label="التعريف" id="b-def">
           {lesson.lugha?.trim() && (
             <p className="notebook-text">
               <span className="font-semibold text-[var(--pen-blue)]">لغةً: </span>
@@ -128,29 +186,29 @@ function LessonView({ lesson, reciter }) {
           )}
         </Block>
       )}
-      {text('الحروف', lesson.letters)}
-      {text('طريقة الأداء', lesson.method)}
+      {text('الحروف', lesson.letters, 'b-letters')}
+      {text('طريقة الأداء', lesson.method, 'b-method')}
       {lesson.examples?.length > 0 && (
-        <Block label="أمثلة من القرآن الكريم">
+        <Block label="أمثلة من القرآن الكريم" id="b-examples" hideable={false}>
           {lesson.examples.map((ex, i) => (
             <AyahExample key={i} example={ex} reciter={reciter} />
           ))}
         </Block>
       )}
       {lesson.table?.headers?.length > 0 && (
-        <Block label="جدول">
+        <Block label="جدول" id="b-table">
           <LessonTable table={lesson.table} />
         </Block>
       )}
-      {text('الاستثناءات', lesson.exceptions)}
-      {text('فوائد وتنبيهات', lesson.notes)}
+      {text('الاستثناءات', lesson.exceptions, 'b-exceptions')}
+      {text('فوائد وتنبيهات', lesson.notes, 'b-notes')}
       {lesson.verses?.length > 0 && (
-        <Block label="من المنظومات">
+        <Block label="من المنظومات" id="b-verses">
           <Verses verses={lesson.verses} />
         </Block>
       )}
       {lesson.rules?.length > 0 && <RuleLinks ids={lesson.rules} />}
-      <div className="no-print">
+      <div id="b-exercise" className="no-print scroll-mt-20">
         <LessonExercise lesson={lesson} />
       </div>
       {!hasDefinition && !lesson.examples?.length && !lesson.method?.trim() && (
@@ -193,6 +251,19 @@ function LessonForm({ draft, setDraft }) {
         <p className="text-sm text-muted">تُستعمل لزر «اعرض مواضع هذا الحكم في المصحف».</p>
         <RulesPicker value={draft.rules} onChange={set('rules')} />
       </Block>
+      <Block label="مصدر الدرس">
+        <div className="flex flex-wrap gap-4 leading-normal">
+          {[
+            ['notebook', 'من دفتر الطالب'],
+            ['app', 'إضافة من البرنامج (ليس في الدفتر)'],
+          ].map(([v, label]) => (
+            <label key={v} className="flex items-center gap-2">
+              <input type="radio" name="source" checked={(draft.source || 'app') === v} onChange={() => setDraft((d) => ({ ...d, source: v }))} />
+              {label}
+            </label>
+          ))}
+        </div>
+      </Block>
       <Block label="حالة المراجعة">
         <div className="flex flex-wrap gap-4 leading-normal">
           {[
@@ -223,7 +294,8 @@ export default function LessonPage() {
   const [saving, setSaving] = useState(false)
   const [message, setMessage] = useState(null)
   const reciter = useReciter()
-  const { settings } = useSettings()
+  const [quiz, setQuiz] = useState(false)
+  const [quizKey, setQuizKey] = useState(0)
   const { data: index } = useApi('/lessons')
   const editing = draft !== null
 
@@ -282,6 +354,12 @@ export default function LessonPage() {
       setSaving(false)
     }
   }, [draft, lesson, setParams])
+  const restore = async () => {
+    if (!window.confirm('حذف تعديلاتك على هذا الدرس والرجوع إلى النص الأصلي؟')) return
+    resetLocalEdit(lesson.id)
+    setLesson(await getLesson(lesson.id))
+    setMessage({ type: 'ok', text: 'عاد الدرس إلى نصه الأصلي' })
+  }
   const remove = async () => {
     if (!window.confirm(`حذف درس «${lesson.title}»؟ تبقى نسخة احتياطية في مجلد data/content/backups.`)) return
     await deleteLesson(lesson.id)
@@ -332,9 +410,24 @@ export default function LessonPage() {
           </>
         ) : (
           <>
-            {settings.editMode && (
-              <button type="button" onClick={startEdit} className={`${btn} bg-accent text-accent-ink`}>
-                ✎ تعديل
+            <button type="button" onClick={startEdit} className={`${btn} bg-accent text-accent-ink`}>
+              ✎ تعديل
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setQuiz((q) => !q)
+                setQuizKey((k) => k + 1)
+              }}
+              aria-pressed={quiz}
+              className={`${btn} border ${quiz ? 'border-accent bg-accent-soft text-accent' : 'border-line bg-surface'}`}
+              title="تُغطّى التعريفات والقواعد لتختبر حفظك، واضغط على كل جزء لإظهاره"
+            >
+              {quiz ? '✓ اختبر نفسك' : '🎯 اختبر نفسك'}
+            </button>
+            {STATIC && hasLocalEdit(lesson.id) && (
+              <button type="button" onClick={restore} className={`${btn} border border-line bg-surface`} title="حذف تعديلاتك على هذا الجهاز">
+                ↺ النص الأصلي
               </button>
             )}
             <span className="text-sm text-muted">
@@ -372,7 +465,17 @@ export default function LessonPage() {
           )}
           <StatusStamp status={view.status} />
         </header>
-        {editing ? <LessonForm draft={draft} setDraft={setDraft} /> : <LessonView lesson={lesson} reciter={reciter} />}
+        <div className="flex flex-wrap items-center gap-2 leading-normal">
+          <SourceBadge source={view.source} />
+        </div>
+        {!editing && <JumpChips lesson={lesson} />}
+        {editing ? (
+          <LessonForm draft={draft} setDraft={setDraft} />
+        ) : (
+          <QuizContext.Provider value={quiz}>
+            <LessonView key={quizKey} lesson={lesson} reciter={reciter} />
+          </QuizContext.Provider>
+        )}
       </div>
 
       {!editing && (

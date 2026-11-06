@@ -61,6 +61,7 @@ class LessonIn(BaseModel):
     verses: list[Verse] = []
     table: Table | None = None
     rules: list[str] = []  # معرّفات أحكام المصحف لزر «اعرض مواضع هذا الحكم»
+    source: Literal["notebook", "app", ""] = ""  # notebook: من دفتر الطالب، app: ليس في الدفتر
 
     @field_validator("title")
     @classmethod
@@ -113,7 +114,7 @@ def _new_id(section: str, existing: set[str]) -> str:
 
 
 def summaries() -> list[dict]:
-    keys = ("id", "section", "order", "title", "status", "updated_at")
+    keys = ("id", "section", "order", "title", "status", "updated_at", "source")
     lessons = sorted(load()["lessons"], key=lambda x: (x["section"], x.get("order", 0), x["id"]))
     return [{k: x.get(k) for k in keys} | {"examples": len(x.get("examples", [])), "rules": x.get("rules", [])}
             for x in lessons]

@@ -94,7 +94,6 @@ export function DisplaySettings() {
 
 /** تعديلات الدروس المحفوظة على هذا الجهاز (نسخة الموقع والتطبيق): تصدير واستيراد. */
 function LessonEditsSection() {
-  const { settings, update } = useSettings()
   const [msg, setMsg] = useState(null)
   const KEY = 'tajweed.lessons.local'
   const edits = (() => {
@@ -125,13 +124,10 @@ function LessonEditsSection() {
   }
   return (
     <section className={card}>
-      <label className="flex items-center justify-between gap-3">
-        <span>
-          <span className="block font-semibold">وضع تحرير الدروس</span>
-          <span className="block text-sm text-muted">يُظهر زر «تعديل» و«درس جديد» في قسم الأحكام.</span>
-        </span>
-        <input type="checkbox" className="size-5 accent-[var(--accent)]" checked={settings.editMode} onChange={(e) => update({ editMode: e.target.checked })} />
-      </label>
+      <p>
+        <span className="block font-semibold">تعديل دروس الأحكام</span>
+        <span className="block text-sm text-muted">اضغط «✎ تعديل» في أي درس، أو «+ درس جديد» في أي باب.</span>
+      </p>
       {STATIC && (
         <div className="mt-3 border-t border-line pt-3 text-sm">
           <p className="text-muted">

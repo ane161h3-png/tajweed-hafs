@@ -15,7 +15,7 @@ describe('فهرس البحث الشامل', () => {
   it('فيه كل أنواع المحتوى', () => {
     const groups = new Set(items.map((i) => i.group))
     for (const g of ['sections', 'guide', 'lessons', 'letters', 'makharij', 'sifat', 'surahs']) expect(groups.has(g)).toBe(true)
-    expect(items.filter((i) => i.group === 'lessons').length).toBe(42)
+    expect(items.filter((i) => i.group === 'lessons').length).toBe(51)
     expect(items.filter((i) => i.group === 'letters').length).toBe(29)
     expect(items.filter((i) => i.id.startsWith('surah-')).length).toBe(114)
     expect(items.filter((i) => i.id.startsWith('juz-')).length).toBe(30)
