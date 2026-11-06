@@ -38,6 +38,13 @@ const NotebookBook = lazy(() => import('./features/notebook/NotebookBook'))
 const GuidePage = lazy(() => import('./features/guide/GuidePage'))
 const AyahAnalysis = lazy(() => import('./features/ayah/AyahAnalysis'))
 const FeedbackPage = lazy(() => import('./features/feedback/FeedbackPage'))
+const library = () => import('./features/library/LibraryPages')
+const CollectionsHub = named(library, 'CollectionsHub')
+const CollectionIndex = named(library, 'CollectionIndex')
+const ChapterReader = named(library, 'ChapterReader')
+const masail = () => import('./features/masail/MasailPages')
+const MasailHome = named(masail, 'MasailHome')
+const MasailBab = named(masail, 'MasailBab')
 import { AudioSettings, ColorSettings, DisplaySettings, ProgressSettings } from './features/settings/SettingsPages'
 
 // المسارات المحددة (المصحف، عن البرنامج) قبل المسار العام للأقسام الفرعية.
@@ -96,6 +103,14 @@ export function AppRoutes() {
         <Route path="settings/notebook" element={<NotebookPage />} />
         <Route path="settings/feedback" element={<FeedbackPage />} />
         <Route path="settings/about" element={<About />} />
+        <Route path="adiya" element={<CollectionsHub sectionId="adiya" />} />
+        <Route path="adiya/:col" element={<CollectionIndex sectionId="adiya" />} />
+        <Route path="adiya/:col/:ch" element={<ChapterReader sectionId="adiya" />} />
+        <Route path="library" element={<CollectionsHub sectionId="library" />} />
+        <Route path="library/:col" element={<CollectionIndex sectionId="library" />} />
+        <Route path="library/:col/:ch" element={<ChapterReader sectionId="library" />} />
+        <Route path="masail" element={<MasailHome />} />
+        <Route path="masail/:bab" element={<MasailBab />} />
         <Route path=":sectionId" element={<SectionPage />} />
         <Route path=":sectionId/:subId" element={<SubsectionPage />} />
         <Route path="*" element={<NotFound />} />

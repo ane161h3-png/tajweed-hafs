@@ -26,6 +26,13 @@ const SOURCES = [
     url: 'https://mp3quran.net',
     license: 'تُشغّل من روابطها مباشرة ولا تُضمَّن في البرنامج',
   },
+  {
+    title: 'الصحيفة السجادية، ونهج البلاغة، والأدعية المشهورة من مفاتيح الجنان',
+    by: 'OpenITI (Open Islamicate Texts Initiative)',
+    url: 'https://github.com/OpenITI/RELEASE',
+    license: 'CC BY-NC-SA 4.0',
+    note: 'نصوص تراثية تُعرض كما في النسخة الرقمية دون تشكيل ودون أي تعديل في المتن، ومصدر كل كتاب مذكور في صفحته.',
+  },
 ]
 
 export default function About() {
