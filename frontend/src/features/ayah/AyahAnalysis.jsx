@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router'
 import { usePageCrumb } from '../../components/Breadcrumb'
 import { arabicNumber, useApi } from '../../lib/api'
@@ -245,9 +245,6 @@ export default function AyahAnalysis() {
 
   const wordIndex = params.has('w') ? Number(params.get('w')) : null
   usePageCrumb(data ? `تحليل ${data.surah_name} ${arabicNumber(a)}` : null)
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [s, a])
 
   const analysis = useMemo(() => (data && letters ? analyzeAyah(data.text, data.tajweed, letters) : null), [data, letters])
   const ruleInfo = useMemo(() => Object.fromEntries(Object.entries(byId).map(([id, r]) => [id, { ...r, color: dark ? r.color_dark ?? r.color : r.color }])), [byId, dark])

@@ -259,7 +259,6 @@ function VisitTracker() {
   const key = crumbs.map((c) => c.title).join('|')
   useEffect(() => {
     rememberVisit(pathname, crumbs)
-    window.scrollTo?.(0, 0)
     // عنوان التبويب والسجل: اسم الصفحة الحالية ثم اسم البرنامج
     document.title = crumbs.length > 1 ? `${crumbs.at(-1).title} · تعلّم التجويد` : 'تعلّم التجويد'
     // eslint-disable-next-line react-hooks/exhaustive-deps
