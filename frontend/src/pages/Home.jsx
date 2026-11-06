@@ -22,6 +22,9 @@ const TILES = [
   { to: '/listen/reciters', label: 'الاستماع', art: 'listen' },
   { to: '/quiz/tasmee', label: 'التسميع', art: 'tasmee' },
   { to: '/quiz', label: 'الاختبارات', art: 'quiz', badge: 'due' },
+  { to: '/adiya', label: 'الأدعية', art: 'adiya' },
+  { to: '/library', label: 'المكتبة', art: 'library' },
+  { to: '/masail', label: 'المسائل الشرعية', art: 'masail' },
 ]
 
 // تظهر عند الضغط على «المزيد»

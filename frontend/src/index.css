@@ -76,6 +76,13 @@ body {
     line-height: 2.3;
     word-spacing: 0.08em;
   }
+  /* نص الأدعية والكتب: خط نسخ كبير بمسافات سطر واسعة */
+  .font-dua {
+    font-family: 'Amiri Quran', 'Amiri', serif;
+    line-height: 2.15;
+    text-align: justify;
+    text-justify: inter-word;
+  }
   /* حرف مفرد داخل مربع: خط المصحف بلا مسافات سطر، في وسط المربع تماماً */
   .glyph {
     font-family: var(--font-quran);

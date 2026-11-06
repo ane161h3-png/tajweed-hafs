@@ -138,6 +138,44 @@ const ART = {
       <path d="M57 38l2.3 4.6 5 .7-3.6 3.5.9 5-4.6-2.4-4.6 2.4.9-5-3.6-3.5 5-.7z" fill={`url(#${id}gold)`} stroke="#8e6522" strokeWidth=".6" />
     </g>
   ),
+  // يدان مرفوعتان بالدعاء وهلال
+  adiya: (id) => (
+    <g>
+      <path d="M38 56c-6 0-11-4-12-10l-3-14c-.4-2 2.4-3 3.3-1.2L30 38V20a2.2 2.2 0 0 1 4.4 0v14l1-17a2.2 2.2 0 0 1 4.4.2L39 40z" fill="#e9c4a2" />
+      <path d="M42 56c6 0 11-4 12-10l3-14c.4-2-2.4-3-3.3-1.2L50 38V20a2.2 2.2 0 0 0-4.4 0v14l-1-17a2.2 2.2 0 0 0-4.4.2L41 40z" fill="#e2b994" />
+      <path d="M38 56c-6 0-11-4-12-10l-3-14 7 6 9 2zM42 56c6 0 11-4 12-10l3-14-7 6-9 2z" fill={`url(#${id}shine)`} />
+      <path d="M33 37.5c1.5-.7 3-.7 4.5 0M42.5 37.5c1.5-.7 3-.7 4.5 0" stroke="#b27a55" strokeWidth="1" fill="none" strokeLinecap="round" />
+      <path d="M47 8.5a6 6 0 1 0 6.5 7.6A4.6 4.6 0 1 1 47 8.5z" fill={`url(#${id}gold)`} />
+      <path d="M30 12l.9 2.1 2.1.9-2.1.9L30 18l-.9-2.1L27 15l2.1-.9z" fill={`url(#${id}gold)`} />
+    </g>
+  ),
+  // كتب مصفوفة بزخرفة ذهبية
+  library: (id) => (
+    <g>
+      <rect x="17" y="22" width="10" height="34" rx="1.5" fill={`url(#${id}green)`} />
+      <rect x="28" y="16" width="11" height="40" rx="1.5" fill="#7b2d33" />
+      <rect x="40" y="19" width="9" height="37" rx="1.5" fill="#1f4f6e" />
+      <g transform="rotate(14 56 54)">
+        <rect x="50" y="20" width="10" height="35" rx="1.5" fill={`url(#${id}wood)`} />
+        <path d="M50 26h10M50 49h10" stroke={`url(#${id}gold)`} strokeWidth="1.4" />
+      </g>
+      <path d="M17 27h10M17 51h10M28 21h11M28 51h11M40 24h9M40 51h9" stroke={`url(#${id}gold)`} strokeWidth="1.4" />
+      <circle cx="33.5" cy="36" r="3" fill="none" stroke={`url(#${id}gold)`} strokeWidth="1.3" />
+      <rect x="17" y="22" width="32" height="34" fill={`url(#${id}shine)`} opacity=".5" />
+    </g>
+  ),
+  // ميزان ذهبي على كتاب
+  masail: (id) => (
+    <g>
+      <path d="M22 54h36l-3-6H25z" fill={`url(#${id}green)`} />
+      <path d="M25 48h30" stroke={`url(#${id}gold)`} strokeWidth="1.3" />
+      <path d="M40 16v32M33 48h14" stroke={`url(#${id}gold)`} strokeWidth="2.6" strokeLinecap="round" />
+      <path d="M22 22h36" stroke={`url(#${id}gold)`} strokeWidth="2.4" strokeLinecap="round" />
+      <circle cx="40" cy="14" r="2.6" fill={`url(#${id}gold)`} />
+      <path d="M24 22l-6 13M24 22l6 13M56 22l-6 13M56 22l6 13" stroke="#8e6522" strokeWidth=".9" />
+      <path d="M16.5 35h15a7.5 4 0 0 1-15 0zM48.5 35h15a7.5 4 0 0 1-15 0z" fill={`url(#${id}gold)`} />
+    </g>
+  ),
 }
 
 export default function TileArt({ name, className = '' }) {
