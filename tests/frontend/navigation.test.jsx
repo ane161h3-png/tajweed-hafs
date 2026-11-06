@@ -122,3 +122,32 @@ describe('صفحة السور', () => {
     vi.unstubAllGlobals()
   })
 })
+
+describe('زر الرجوع', () => {
+  it('لا يظهر في الرئيسية', () => {
+    renderAt('/')
+    expect(screen.queryByRole('button', { name: 'رجوع إلى الصفحة السابقة' })).not.toBeInTheDocument()
+  })
+
+  it('يرجع إلى الصفحة التي جئت منها فعلاً، لا إلى القسم الأعلى', async () => {
+    const user = userEvent.setup()
+    renderAt('/sifat/similar')
+    const main = screen.getByRole('main')
+    // من «الحروف المتشابهة» إلى قسم آخر تماماً عبر القائمة الجانبية، ثم رجوعان
+    await user.click(within(screen.getAllByRole('navigation', { name: 'الأقسام الرئيسية' })[0]).getByRole('link', { name: /أحكام التجويد/ }))
+    await user.click(within(main).getByRole('link', { name: /القلقلة/ }))
+    expect(screen.getByRole('heading', { level: 1, name: 'القلقلة' })).toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: 'رجوع إلى الصفحة السابقة' }))
+    await user.click(screen.getByRole('button', { name: 'رجوع إلى الصفحة السابقة' }))
+    const crumbs = screen.getByRole('navigation', { name: 'مسار التنقل' })
+    expect(within(crumbs).getByText('الفرق بين الحروف المتشابهة')).toHaveAttribute('aria-current', 'page')
+  })
+
+  it('إن فُتحت الصفحة مباشرة يصعد إلى الصفحة الأعلى', async () => {
+    const user = userEvent.setup()
+    renderAt('/makharij/teeth')
+    await user.click(screen.getByRole('button', { name: 'رجوع إلى الصفحة السابقة' }))
+    const crumbs = screen.getByRole('navigation', { name: 'مسار التنقل' })
+    expect(within(crumbs).getByText('مخارج الحروف')).toHaveAttribute('aria-current', 'page')
+  })
+})

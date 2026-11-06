@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { Link, useNavigate, useParams, useSearchParams } from 'react-router'
+import { Link, useLocation, useNavigate, useParams, useSearchParams } from 'react-router'
 import { AnimatePresence, motion } from 'framer-motion'
 import { usePageCrumb } from '../../components/Breadcrumb'
 import Popover from '../../components/Popover'
 import { toAsciiDigits } from '../../lib/arabic'
+import { cancelScrollRestore, isRestoringScroll } from '../../lib/scrollRestore'
 import { api, arabicNumber, useApi } from '../../lib/api'
 import { useSettings } from '../settings/SettingsContext'
 import { usePlayer, usePlayingAyah } from '../player/PlayerContext'
@@ -227,6 +228,7 @@ function useNextSurahWithRule(rule, after) {
 export default function MushafReader({ kind }) {
   const n = Number(useParams().n)
   const [params, setParams] = useSearchParams()
+  const location = useLocation()
   const { data, loading, error } = useApi(`/${kind}/${n}`)
   const { data: surahs } = useApi('/surahs')
   const { data: pageStarts } = useApi('/pages')
@@ -384,6 +386,15 @@ export default function MushafReader({ kind }) {
   // الانتقال إلى آية من البحث (?ayah=) أو من «أكمل القراءة» (?at=)
   useEffect(() => {
     if (!data) return
+    // رجوع إلى هذه الصفحة: يُعاد الموضع المحفوظ بدل القفز إلى الآية أو أعلى الصفحة.
+    // وضع الصفحات يبدأ من الصفحة التي كانت ظاهرة (الرابط يتحدّث معها)، فأعلاها هو الموضع الصحيح.
+    if (isRestoringScroll(location)) {
+      if (kind === 'page') {
+        cancelScrollRestore()
+        window.scrollTo(0, 0)
+      }
+      return
+    }
     const target = Number(params.get('ayah') || params.get('at'))
     const surah = kind === 'surah' ? n : Number(params.get('s')) || blocks[0]?.surah.number
     if (!target) {
