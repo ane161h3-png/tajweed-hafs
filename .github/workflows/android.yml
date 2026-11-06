@@ -82,6 +82,27 @@ jobs:
           cp app/build/outputs/bundle/release/app-release.aab "$GITHUB_WORKSPACE/tajweed-hafs.aab"
           rm "$RUNNER_TEMP/upload.p12"
 
+      # إرسال التحديث إلى المختبِرين على Google Play تلقائياً (مسار الاختبار المغلق)
+      # يحتاج سرّ PLAY_SERVICE_ACCOUNT_JSON؛ المسار من متغير PLAY_TRACK (الافتراضي alpha = Closed testing)
+      - name: رفع التحديث إلى Google Play
+        env:
+          PLAY_JSON: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+        run: |
+          if [ -z "$PLAY_JSON" ] || [ ! -f tajweed-hafs.aab ]; then
+            echo "SKIP_PLAY=1" >> "$GITHUB_ENV"; echo "لا حساب خدمة أو لا AAB؛ تخطّي الرفع إلى Play"
+          fi
+
+      - name: Google Play
+        if: env.SKIP_PLAY != '1'
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+          packageName: com.Hussein.tajweed
+          releaseFiles: tajweed-hafs.aab
+          releaseName: "1.0.${{ github.run_number }}"
+          track: ${{ vars.PLAY_TRACK || 'alpha' }}
+          status: ${{ vars.PLAY_STATUS || 'completed' }}
+
       - name: نشر الإصدار
         env:
           GH_TOKEN: ${{ github.token }}

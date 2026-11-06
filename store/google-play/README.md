@@ -153,3 +153,51 @@ Google تشترط على الحسابات الشخصية الجديدة **اخت
 - **احفظ مفتاح الرفع**: الملف `signing/upload.p12` وكلمة سره في `signing/upload-key-info.txt` على هذا الجهاز فقط (غير مرفوعين إلى GitHub). انسخهما إلى مكان آمن (فلاشة أو Google Drive خاص). إن ضاعا، يمكن طلب إعادة تعيين مفتاح الرفع من دعم Google Play لأن التوقيع النهائي عند Google.
 - **من ثبّت ملف APK المباشر** لن يستطيع التحديث من نسخة المتجر فوقه (اختلاف التوقيع)؛ عليه حذف النسخة القديمة وتثبيت نسخة المتجر. التقدّم المحفوظ في التطبيق سيُفقد عند الحذف.
 - مراجعة Google لكل إصدار تستغرق عادةً من ساعات إلى بضعة أيام.
+
+---
+
+## إرسال التحديثات إلى المختبِرين تلقائياً (مرة واحدة)
+
+بعد هذا الإعداد، كل دمج في `main` يبني حزمة AAB برقم إصدار أعلى ويرفعها إلى **Closed testing**، فيصل التحديث إلى هواتف المختبِرين من Google Play دون رفع يدوي. مفتاح الرفع موجود سلفاً في أسرار المستودع؛ الناقص فقط **حساب خدمة** يسمح لـ GitHub بالرفع.
+
+### أ. إنشاء حساب الخدمة في Google Cloud
+
+1. ادخل https://console.cloud.google.com بحساب المطوّر نفسه (**hydrzyd83@gmail.com**).
+2. من الأعلى: **Select a project → New project**، الاسم `tajweed-play`، ثم **Create**.
+3. افتح https://console.cloud.google.com/apis/library/androidpublisher.googleapis.com وتأكد أن المشروع `tajweed-play` مختار، ثم **Enable** (تفعيل Google Play Android Developer API).
+4. افتح **IAM & Admin → Service accounts → Create service account**:
+   - الاسم: `github-play-upload` ← **Create and continue** ← تخطَّ الأدوار (Role) ← **Done**.
+5. اضغط على الحساب الذي أنشأته ← تبويب **Keys → Add key → Create new key → JSON → Create**. يُنزَّل ملف `.json` إلى جهازك. **لا ترسله لأحد.**
+6. انسخ بريد الحساب (يشبه `github-play-upload@tajweed-play.iam.gserviceaccount.com`).
+
+### ب. إعطاء الحساب صلاحية في Play Console
+
+1. ادخل https://play.google.com/console ← **Users and permissions → Invite new users**.
+2. **Email address**: الصق بريد حساب الخدمة.
+3. تبويب **App permissions → Add app** ← اختر «تعلّم التجويد» ← فعّل:
+   - **Release apps to testing tracks**
+   - **Manage testing tracks and edit tester lists**
+4. **Invite user** ثم **Send invite**. (قد يحتاج الإذن بضع دقائق حتى يعمل.)
+
+### ج. إضافة الملف سرّاً في GitHub
+
+1. افتح https://github.com/ane161h3-png/tajweed-hafs/settings/secrets/actions/new
+2. **Name**: `PLAY_SERVICE_ACCOUNT_JSON`
+3. **Secret**: افتح ملف `.json` بمحرّر نصوص وانسخ محتواه **كاملاً** والصقه ← **Add secret**.
+
+### د. التجربة
+
+- افتح https://github.com/ane161h3-png/tajweed-hafs/actions/workflows/android.yml ← **Run workflow**.
+- بعد نحو ١٠ دقائق يظهر الإصدار `1.0.<رقم>` في **Play Console → Testing → Closed testing → Releases**، ويصل للمختبِرين خلال ساعات (Google تراجع بعض الإصدارات قبل نشرها).
+
+### إعدادات اختيارية (Settings → Secrets and variables → Actions → Variables)
+
+| المتغير | القيمة | متى |
+|---|---|---|
+| `PLAY_TRACK` | `alpha` (الافتراضي = Closed testing)، أو `internal`، أو اسم مسار مغلق أنشأته بنفسك | إن كان المختبِرون في مسار آخر |
+| `PLAY_STATUS` | `draft` | إن ظهر خطأ «Only releases with status draft may be created on draft app» (التطبيق لم يُنشر بعد): يُرفع الإصدار مسودة فتضغط أنت **Send for review** |
+
+**ملاحظات**
+- رقم الإصدار (versionCode) = رقم تشغيل البناء، فيزيد تلقائياً مع كل دمج. لا ترفع يدوياً إصداراً برقم أعلى، وإلا يُرفض الرفع التلقائي التالي.
+- إن لم يُضف السرّ، يستمر البناء كالمعتاد ويتخطّى الرفع إلى Play دون خطأ.
+- ملف APK على صفحة الإصدارات باقٍ لمن يثبّت خارج المتجر، لكنه موقّع بمفتاح مختلف: من ثبّته يدوياً يحذفه أولاً ثم يثبّت من Google Play.
