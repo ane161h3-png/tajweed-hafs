@@ -6,21 +6,22 @@ import { useLastRead } from '../features/mushaf/reading'
 import { stats as srsStats } from '../features/quiz/srs'
 import { openGlobalSearch } from '../features/search/GlobalSearch'
 import Icon from '../components/Icon'
+import TileArt from '../components/TileArt'
 import { arabicNumber } from '../lib/api'
 import InstallCard from '../components/InstallCard'
 import ShareButton from '../components/ShareButton'
 
 const DAILY_GOAL = 10 // دقائق
 
-// الميزات الرئيسية في الشبكة؛ لكل واحدة لونان للتدرّج ورمز (أيقونة أو حرف بخط المصحف)
+// الميزات الرئيسية في الشبكة، ولكل واحدة رسم مجسّم في TileArt
 const TILES = [
-  { to: '/mushaf', label: 'المصحف', icon: 'mushaf', from: '#2f8f6f', to2: '#145a45' },
-  { to: '/ahkam', label: 'أحكام التجويد', glyph: 'نْ', from: '#c99a3e', to2: '#8a6320' },
-  { to: '/makharij/letters', label: 'المخارج', icon: 'makharij', from: '#3a7fb0', to2: '#1f4e75' },
-  { to: '/sifat/matrix', label: 'الصفات', glyph: 'ق', from: '#8a5bb0', to2: '#583878' },
-  { to: '/listen/reciters', label: 'الاستماع', icon: 'listen', from: '#c0605a', to2: '#82362f' },
-  { to: '/quiz/tasmee', label: 'التسميع', icon: 'mic', from: '#2f9aa0', to2: '#17636a' },
-  { to: '/quiz', label: 'الاختبارات', icon: 'quiz', from: '#5b8f3a', to2: '#36601d', badge: 'due' },
+  { to: '/mushaf', label: 'المصحف', art: 'mushaf' },
+  { to: '/ahkam', label: 'أحكام التجويد', art: 'ahkam' },
+  { to: '/makharij/letters', label: 'المخارج', art: 'makharij' },
+  { to: '/sifat/matrix', label: 'الصفات', art: 'sifat' },
+  { to: '/listen/reciters', label: 'الاستماع', art: 'listen' },
+  { to: '/quiz/tasmee', label: 'التسميع', art: 'tasmee' },
+  { to: '/quiz', label: 'الاختبارات', art: 'quiz', badge: 'due' },
 ]
 
 // تظهر عند الضغط على «المزيد»
@@ -105,32 +106,13 @@ function Hero({ now }) {
   )
 }
 
-/** رسم الميزة: مربع متدرّج فوق قاعدة، مع أيقونة أو حرف */
-function TileArt({ tile }) {
-  return (
-    <span className="relative block size-16 sm:size-[4.5rem]" aria-hidden="true">
-      <span className="absolute inset-x-1 bottom-0 h-3 rounded-[40%] bg-black/15 blur-[3px] dark:bg-black/40" />
-      <span
-        className="absolute inset-0 bottom-1.5 grid place-items-center rounded-2xl text-white shadow-[inset_0_2px_0_rgba(255,255,255,.35),inset_0_-4px_0_rgba(0,0,0,.18)]"
-        style={{ background: `linear-gradient(145deg, ${tile.from}, ${tile.to2})` }}
-      >
-        {tile.glyph ? (
-          <span className="glyph text-[2rem] drop-shadow">{tile.glyph}</span>
-        ) : (
-          <Icon name={tile.icon} size={30} strokeWidth={1.9} className="drop-shadow" />
-        )}
-      </span>
-    </span>
-  )
-}
-
 function Tile({ tile, due }) {
   return (
     <motion.li whileTap={{ scale: 0.94 }} whileHover={{ y: -3 }} transition={{ type: 'spring', stiffness: 400, damping: 22 }}>
       <Link to={tile.to} className="relative flex flex-col items-center gap-2 rounded-2xl p-2 text-center">
-        <TileArt tile={tile} />
+        <TileArt name={tile.art} className="size-[4.75rem] drop-shadow-sm transition-transform sm:size-24" />
         {tile.badge === 'due' && due > 0 && (
-          <span className="absolute end-2 top-1 grid min-w-5 place-items-center rounded-full bg-[#d64545] px-1.5 text-xs font-bold leading-5 text-white ring-2 ring-bg">
+          <span className="absolute end-1 top-0 grid min-w-5 place-items-center rounded-full bg-[#d64545] px-1.5 text-xs font-bold leading-5 text-white ring-2 ring-bg">
             {arabicNumber(due)}
           </span>
         )}
@@ -157,11 +139,11 @@ function FeatureGrid({ due }) {
             aria-controls="home-more"
             className="flex w-full flex-col items-center gap-2 rounded-2xl p-2"
           >
-            <span className="relative grid size-16 place-items-center sm:size-[4.5rem]">
-              <span className="absolute inset-0 bottom-1.5 grid place-items-center rounded-2xl border border-line bg-surface-2">
+            <span className="relative grid size-[4.75rem] place-items-center sm:size-24">
+              <span className="grid place-items-center">
                 <motion.span animate={{ rotate: open ? 90 : 0 }} className="flex gap-1">
                   {[0, 1, 2].map((i) => (
-                    <span key={i} className="size-2.5 rounded-full bg-gradient-to-b from-[#e2bd6c] to-[#a87b2e]" />
+                    <span key={i} className="size-3.5 rounded-full bg-[radial-gradient(circle_at_35%_30%,#fbe6a8,#c9993f_55%,#7a561c)] shadow" />
                   ))}
                 </motion.span>
               </span>
