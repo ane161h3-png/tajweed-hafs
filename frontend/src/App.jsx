@@ -45,6 +45,7 @@ const ChapterReader = named(library, 'ChapterReader')
 const masail = () => import('./features/masail/MasailPages')
 const MasailHome = named(masail, 'MasailHome')
 const MasailBab = named(masail, 'MasailBab')
+const MasailTopic = named(masail, 'MasailTopic')
 import { AudioSettings, ColorSettings, DisplaySettings, ProgressSettings } from './features/settings/SettingsPages'
 
 // المسارات المحددة (المصحف، عن البرنامج) قبل المسار العام للأقسام الفرعية.
@@ -111,6 +112,7 @@ export function AppRoutes() {
         <Route path="library/:col/:ch" element={<ChapterReader sectionId="library" />} />
         <Route path="masail" element={<MasailHome />} />
         <Route path="masail/:bab" element={<MasailBab />} />
+        <Route path="masail/:bab/:topic" element={<MasailTopic />} />
         <Route path=":sectionId" element={<SectionPage />} />
         <Route path=":sectionId/:subId" element={<SubsectionPage />} />
         <Route path="*" element={<NotFound />} />
